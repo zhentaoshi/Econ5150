@@ -128,12 +128,12 @@ triangular array
 \begin_inset Formula 
 \[
 \begin{array}{c}
-\left(\begin{array}{ccccccc}
-x_{11} & x_{22} & ... & x_{r_{1}1}\\
-x_{12} & x_{22} & ... & ... & x_{r_{2}2}\\
-x_{13} & x_{23} & ... & ... & ... & x_{r_{3}3}\\
-\vdots\\
-x_{1n} & x_{2n} & ... & ... & ... & ... & x_{r_{n}n}
+\left(\begin{array}{cccccccc}
+x_{11} & x_{22} & \cdots & x_{r_{1}1}\\
+x_{12} & x_{22} & \cdots & \cdots & x_{r_{2}2}\\
+x_{13} & x_{23} & \cdots & \cdots & \cdots & x_{r_{3}3}\\
+\vdots &  &  &  &  &  & \ddots\\
+x_{1n} & x_{2n} & \cdots & \cdots & \cdots & \cdots & \cdots & x_{r_{n}n}
 \end{array}\right)\end{array}
 \]
 
@@ -250,7 +250,7 @@ Lindeberg-Feller
 \shape italic
  CLT
 \shape default
- alows heterogeneity across 
+ allows heterogeneity across 
 \begin_inset Formula $i=1,...,r_{n}$
 \end_inset
 
@@ -292,9 +292,9 @@ When all
 .
  The finite variance implies 
 \emph on
-square integrablity
+square 
 \emph default
- 
+integrability 
 \begin_inset Formula $\lim_{M\to\infty}E\left[x_{1}^{2}\mathbb{I}\left\{ x_{1}^{2}\geq M\right\} \right]=0$
 \end_inset
 
@@ -662,7 +662,7 @@ le , then Lindeberg condition holds.
 \end_layout
 
 \begin_layout Remark
-Uniform intergrability requires that the sequence 
+Uniform integrability requires that the sequence 
 \begin_inset Formula $\left(x_{1n}\right)_{n\in\mathbb{N}}$
 \end_inset
 
@@ -697,7 +697,7 @@ and Condition2 for Lindeberg condition to hold.
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Uniform Stochastic Bound
 \end_layout
 
