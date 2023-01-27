@@ -1,0 +1,818 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+CLT for inid Sequences
+\end_layout
+
+\begin_layout Section
+Lindeberg Condition
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Lindeberg-Lévy Central Limit Theorem
+\shape default
+ is for independently and identically distributed (iid) sequences.
+ In this lecture we consider independent but heterogeneous sequences.
+ 
+\end_layout
+
+\begin_layout Standard
+A 
+\shape slanted
+triangular array
+\shape default
+ 
+\begin_inset Formula $\left(x_{1n},x_{2n},x_{3n},...,x_{r_{n}n}\right)$
+\end_inset
+
+ is needed for formal presentation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\left(\begin{array}{ccccccc}
+x_{11} & x_{22} & ... & x_{r_{1}1}\\
+x_{12} & x_{22} & ... & ... & x_{r_{2}2}\\
+x_{13} & x_{23} & ... & ... & ... & x_{r_{3}3}\\
+\vdots\\
+x_{1n} & x_{2n} & ... & ... & ... & ... & x_{r_{n}n}
+\end{array}\right)\end{array}
+\]
+
+\end_inset
+
+Here 
+\begin_inset Formula $r_{n}$
+\end_inset
+
+ is an increasing number in 
+\begin_inset Formula $n$
+\end_inset
+
+, and 
+\begin_inset Formula $r_{n}\to\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ Suppose for each 
+\begin_inset Formula $n$
+\end_inset
+
+, the elements in 
+\begin_inset Formula $\left(x_{in}\right)_{i=1}^{r_{n}}$
+\end_inset
+
+ are independent but not necessarily identically distributed (inid).
+ 
+\end_layout
+
+\begin_layout Standard
+Without loss of generality, assume 
+\begin_inset Formula $E[x_{in}]=0$
+\end_inset
+
+ and denote 
+\begin_inset Formula $\sigma_{in}^{2}=E[x_{in}^{2}]$
+\end_inset
+
+.
+ Define the 
+\emph on
+partial sum
+\emph default
+ as 
+\begin_inset Formula $S_{n}=\sum_{i=1}^{r_{n}}x_{in}$
+\end_inset
+
+ and and 
+\emph on
+aggregate variance
+\emph default
+ as 
+\begin_inset Formula $\tilde{\sigma}_{n}^{2}=\sum_{i=1}^{r_{n}}\sigma_{in}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Lindeberg Condition: 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} ]=0
+\]
+
+\end_inset
+
+for all 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Lindeberg-Feller CLT
+\end_layout
+
+\end_inset
+
+ If the triangular array 
+\begin_inset Formula $\left\{ \left(x_{in}\right)_{i=1}^{r_{n}}\right\} _{n\in\mathbb{N}}$
+\end_inset
+
+ satisfies the 
+\shape slanted
+Lindeberg condition
+\shape default
+, then
+\begin_inset Formula 
+\[
+\frac{S_{n}}{\tilde{\sigma}_{n}^{2}}\stackrel{d}{\to}N\left(0,1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Lindeberg-Feller
+\shape italic
+ CLT
+\shape default
+ alows heterogeneity across 
+\begin_inset Formula $i=1,...,r_{n}$
+\end_inset
+
+.
+ It includes 
+\shape slanted
+Lindeberg-Lévy
+\shape italic
+ CLT
+\shape default
+ as a special case, where 
+\begin_inset Formula $x_{in}\sim x_{1}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+When all 
+\begin_inset Formula $x_{in}$
+\end_inset
+
+ share the same distribution, the 
+\begin_inset Formula $\tilde{\sigma}_{n}^{2}=n\sigma_{1}^{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathrm{var}(x_{1})=\sigma_{1}^{2}\in\left(0,\infty\right)$
+\end_inset
+
+.
+ The finite variance implies 
+\emph on
+square integrablity
+\emph default
+ 
+\begin_inset Formula $\lim_{M\to\infty}E\left[x_{1}^{2}\mathbb{I}\left\{ x_{1}^{2}\geq M\right\} \right]=0$
+\end_inset
+
+.
+ As a result, 
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & =\frac{1}{r_{n}\sigma^{2}}r_{n}\left[Ex_{1}^{2}\mathbb{I}\left\{ x_{1}^{2}\geq n\sigma_{1}^{2}\varepsilon\right\} \right]\\
+ & =const\times\left[Ex_{1}^{2}\mathbb{I}\left\{ x_{1}^{2}\geq n\sigma_{1}^{2}\varepsilon\right\} \right]\to\infty
+\end{align*}
+
+\end_inset
+
+since 
+\begin_inset Formula $n\sigma_{1}^{2}\varepsilon\to\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Lyapunov Condition
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Lindeberg condition
+\shape default
+ is difficult to interpret.
+ We look for more interpretable sufficient conditions.
+\end_layout
+
+\begin_layout Definition
+Lyapunov Condition: There exists some 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\frac{1}{\tilde{\sigma}_{n}^{2+\delta}}\sum_{i=1}^{r_{n}}E[\left|x_{in}\right|^{2+\delta}]=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lyapunov condition implies Lindeberg condition.
+ 
+\end_layout
+
+\begin_layout Proof
+Use the quantify in the Lindeberg condition as a starting point:
+\shape italic
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & =\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2}\mathbb{I}\left\{ \left|x_{in}\right|^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right]\\
+ & =\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[\frac{\left|x_{in}\right|^{2+\delta}}{\left|x_{in}\right|^{\delta}}\mathbb{I}\left\{ \left|x_{in}\right|^{\delta}\geq\varepsilon^{\frac{\delta}{2}}\tilde{\sigma}_{n}^{\delta}\right\} \right]\\
+ & \leq\frac{1}{\tilde{\sigma}_{n}^{2}}\times\frac{1}{\varepsilon^{\frac{\delta}{2}}\tilde{\sigma}_{n}^{\delta}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2+\delta}\mathbb{I}\left\{ \left|x_{in}\right|^{\delta}\geq\varepsilon^{\frac{\delta}{2}}\tilde{\sigma}_{n}^{\delta}\right\} \right]\\
+ & \leq\frac{1}{\varepsilon^{\frac{\delta}{2}}}\times\frac{1}{\tilde{\sigma}_{n}^{2+\delta}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2+\delta}\right]\rightarrow0
+\end{align*}
+
+\end_inset
+
+
+\shape default
+where the limit follows by Lyapunov condition.
+ 
+\end_layout
+
+\begin_layout Subsection
+Sufficient Condition for Lyapunov Condition
+\end_layout
+
+\begin_layout Itemize
+Condition1: 
+\begin_inset Formula $\sup_{i\leq r_{n}}E[\left|x_{in}\right|^{2+\delta}]\leq B<\infty$
+\end_inset
+
+ for 
+\begin_inset Formula $n$
+\end_inset
+
+ sufficiently large.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\bar{\sigma}_{n}^{2}=\tilde{\sigma}_{n}^{2}/r_{n}$
+\end_inset
+
+ be the 
+\emph on
+average variance
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Condition2: 
+\begin_inset Formula $\liminf_{n\to\infty}\bar{\sigma}_{n}^{2}>b>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Under Condition 1 and Condition 2 we have
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{\tilde{\sigma}_{n}^{2+\delta}}\sum_{i=1}^{r_{n}}E[\left|x_{in}\right|^{2+\delta}] & \leq\frac{1}{(\sqrt{r_{n}b})^{2+\delta}}\times r\,\max_{i\leq r_{n}}E[\left|x_{in}\right|^{2+\delta}]\\
+ & =\frac{r_{n}B}{\left(r_{n}b\right)^{\frac{2+\delta}{2}}}=\frac{B}{r_{n}^{\frac{\delta}{2}}b^{\frac{2+\delta}{2}}}=const\times r_{n}^{-\delta/2}\rightarrow0.
+\end{align*}
+
+\end_inset
+
+since 
+\begin_inset Formula $r_{n}\to\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If we further assume 
+\begin_inset Formula $\bar{\sigma}_{n}^{2}\rightarrow\sigma^{*2}$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, then under Condition 1 we have 
+\begin_inset Formula 
+\[
+\frac{S_{n}}{\sqrt{n}}\stackrel{d}{\to}N\left(0,\sigma^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Similar results holds for i.i.d.
+ random vectors via the 
+\shape slanted
+Cramér-Wold Device
+\shape default
+.
+\end_layout
+
+\begin_layout Subsection
+Uniform CLT
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $E\left[\left|X\right|^{2+\delta}\right]\leq B<\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{var}\left(X\right)\geq b$
+\end_inset
+
+ for all 
+\begin_inset Formula $f\in\mathscr{F}$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+\sup_{f\in\mathscr{F}}\left|P_{f}\left(\frac{\sqrt{n}\left(\overline{x}_{n}-E\left(X\right)\right)}{\sqrt{\mathrm{var}\left(X\right)}}\leq a\right)-\Phi\left(a\right)\right|\to0.
+\]
+
+\end_inset
+
+This is a uniform CLT over a class of distributions 
+\begin_inset Formula $\mathscr{F}$
+\end_inset
+
+, instead of a single one 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Here 
+\begin_inset Formula $P_{f}$
+\end_inset
+
+ means that the probability is computed for a specific distribution 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In a direct proof, the approximation error is controlled by 
+\emph on
+
+\begin_inset Formula $B$
+\end_inset
+
+
+\emph default
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ The textbook uses a counter-positive argument: If the statement is false,
+ then there is a sequence 
+\begin_inset Formula $f_{1},f_{2},...\in\mathscr{F}$
+\end_inset
+
+ that violates the convergence.
+ That contradicts with Lyapunov CLT.
+\end_layout
+
+\begin_layout Section
+Uniform Integrability
+\end_layout
+
+\begin_layout Standard
+A random variable is 
+\begin_inset Formula $r$
+\end_inset
+
+-th 
+\series bold
+integrable
+\series default
+ if 
+\begin_inset Formula $E[\left|x\right|^{r}]<\infty$
+\end_inset
+
+.
+ Or equivalently if 
+\begin_inset Formula 
+\[
+\lim_{M\to\infty}E[\left|x\right|^{r}\mathbb{I}\left\{ \left|x\right|^{r}>M\right\} ]=0.
+\]
+
+\end_inset
+
+Without referring explicitly to the 
+\begin_inset Formula $r$
+\end_inset
+
+-th moment, we say 
+\begin_inset Formula $x$
+\end_inset
+
+ is 
+\emph on
+integrable
+\emph default
+ if 
+\begin_inset Formula $r=1$
+\end_inset
+
+, and 
+\emph on
+square integrable
+\emph default
+ if 
+\begin_inset Formula $r=2$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Now consider a sequence of random variables 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The sequence of random variables 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ is 
+\series bold
+uniformly integrable
+\series default
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+ if 
+\begin_inset Formula 
+\[
+\lim_{M\to\infty}\limsup_{n\to\infty}E[\left|x_{n}\right|\mathbb{I}\left\{ \left|x_{n}\right|>M\right\} ]=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For simplicity, for each 
+\begin_inset Formula $n$
+\end_inset
+
+, let the element 
+\begin_inset Formula $x_{in}$
+\end_inset
+
+ has the same distribution over 
+\begin_inset Formula $i=1,\ldots,r_{n}$
+\end_inset
+
+.
+ Without loss of generality, we can pick the sequence 
+\begin_inset Formula $\left(x_{1n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proposition
+If Condition2 and 
+\begin_inset Formula $\left(x_{1n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ is 
+\shape slanted
+uniform square integrab
+\shape default
+le , then Lindeberg condition holds.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} ]=\frac{1}{\bar{\sigma}_{n}^{2}}E[x_{1n}^{2}\mathbb{I}\left\{ x_{1n}^{2}\geq\varepsilon n\bar{\sigma}_{n}^{2}\right\} ]\leq\frac{1}{b}E[x_{1n}^{2}\mathbb{I}\left\{ x_{1n}^{2}\geq n\varepsilon b\right\} ]\to0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Uniform intergrability requires that the sequence 
+\begin_inset Formula $\left(x_{1n}\right)_{n\in\mathbb{N}}$
+\end_inset
+
+ is tight enough.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If 
+\begin_inset Formula $x_{in}$
+\end_inset
+
+ is heterogeneous over 
+\begin_inset Formula $i=1,\ldots,r_{n}$
+\end_inset
+
+, it is sufficient to assume 
+\begin_inset Formula 
+\[
+\lim_{M\to\infty}\limsup_{n\to\infty}\max_{i\leq r_{n}}E[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}>M\right\} ]=0
+\]
+
+\end_inset
+
+and Condition2 for Lindeberg condition to hold.
+ 
+\end_layout
+
+\begin_layout Section
+Uniform Stochastic Bound
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula 
+\[
+\lim_{M\to\infty}\limsup_{n\to\infty}\max_{i\leq r_{n}}E[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}>M\right\} ]=0,
+\]
+
+\end_inset
+
+ then 
+\begin_inset Formula 
+\[
+r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|\stackrel{p}{\to}0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If for each 
+\begin_inset Formula $n$
+\end_inset
+
+ the element 
+\begin_inset Formula $x_{in}$
+\end_inset
+
+ has the same distribution over 
+\begin_inset Formula $i=1,\ldots,r_{n}$
+\end_inset
+
+, then the condition says 
+\begin_inset Formula $x_{in}$
+\end_inset
+
+ is 
+\begin_inset Formula $r$
+\end_inset
+
+-th integrable.
+ As a special case, if we set 
+\begin_inset Formula $r_{n}=n$
+\end_inset
+
+, then 
+\begin_inset Formula $\max_{i\leq n}\left|x_{in}\right|=o_{p}\left(n\right)$
+\end_inset
+
+ if 
+\begin_inset Formula $x_{in}$
+\end_inset
+
+ is 
+\begin_inset Formula $r$
+\end_inset
+
+-th integrable.
+ 
+\end_layout
+
+\begin_layout Proof
+We start with the definition of convergence in probability:
+\begin_inset Formula 
+\begin{align*}
+P\left(r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|>\varepsilon\right) & =P\left(\max_{i\leq n}\left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right)\\
+ & \leq\sum_{i\leq r_{n}}P\left(\left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right)\\
+ & =\sum_{i\leq r_{n}}E\left[\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
+ & \leq r_{n}\max_{i\leq r_{n}}E\left[\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
+ & \leq\frac{1}{r_{n}\varepsilon^{r}}\times r_{n}\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
+ & =const\times\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}\geq r_{n}\varepsilon^{r}\right\} \right]\\
+ & \to0
+\end{align*}
+
+\end_inset
+
+given the assumption, since 
+\begin_inset Formula $r_{n}\varepsilon^{r}\to\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ Jan 17, 2022.
+   Transcribed by Shu Shen.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
