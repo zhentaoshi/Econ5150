@@ -1,0 +1,1098 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Asymptotic Theory I - Exercises
+\end_layout
+
+\begin_layout Right Address
+Shu Shen
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 7.4 Consider a random variable 
+\begin_inset Formula $Z_{n}$
+\end_inset
+
+ with the probability distribution
+\end_layout
+
+\begin_layout Subsubsection*
+\begin_inset Formula 
+\[
+Z_{n}=\begin{cases}
+-n & with\text{\ensuremath{\enskip probability\ 1/n}}\\
+0 & with\text{\ensuremath{\enskip probability\ 1-2/n}}\\
+n & with\text{\ensuremath{\enskip probability\ 1/n}}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+(a) Does 
+\begin_inset Formula $Z_{n}\stackrel{p}{\to}0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Subsubsection*
+(b) Calculate 
+\begin_inset Formula $E[Z_{n}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(c) Calculate 
+\begin_inset Formula $Var[Z_{n}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(d) Now suppose the distribution is
+\begin_inset Formula 
+\[
+Z_{n}=\begin{cases}
+0 & with\text{\ensuremath{\enskip probability\ 1-1/n}}\\
+n & with\text{\ensuremath{\enskip probability\ }}1/n
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Calculate 
+\begin_inset Formula $E[Z_{n}]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(e) Conclude that 
+\begin_inset Formula $Z_{n}\stackrel{p}{\to}0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $E[Z_{n}]\to0$
+\end_inset
+
+ are unrelated.
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+7.4
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(a) Take any 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+, as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P\left(\omega:\left|Z_{n}\left(\omega\right)-0\right|>\delta\right)=P\left(\omega:Z_{n}\left(\omega\right)=-n\right)+P\left(\omega:Z_{n}\left(\omega\right)=n\right)=2/n\rightarrow0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+so that 
+\begin_inset Formula $Z_{n}\stackrel{p}{\to}0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(b) 
+\begin_inset Formula $E[Z_{n}]=\left(-n\right)\times1/n+0\times\left(1-2/n\right)+n\times1/n=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(c) 
+\begin_inset Formula $Var[Z_{n}]=E\left(Z_{n}-E[Z_{n}]\right)^{2}=\left(-n\right)^{2}\times1/n+0^{2}\times\left(1-2/n\right)+n^{2}\times1/n=2n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(d) 
+\begin_inset Formula $E[Z_{n}]=0\times\left(1-1/n\right)+n\times1/n=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(e) Take any 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+, as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P\left(\omega:\left|Z_{n}\left(\omega\right)-0\right|>\delta\right)=P\left(\omega:Z_{n}\left(\omega\right)=n\right)=1/n\rightarrow0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+so that 
+\begin_inset Formula $Z_{n}\stackrel{p}{\to}0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $E[Z_{n}]\to0$
+\end_inset
+
+ are unrelated.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 7.7 A weighted sample mean takes the form 
+\begin_inset Formula $\overline{X_{n}^{*}}=\frac{1}{n}\sum_{i=1}^{n}w_{i}X_{i}$
+\end_inset
+
+ for some non-negative constants 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}w_{i}=1$
+\end_inset
+
+.
+ Assume 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is i.i.d.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(a) Show that 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\overline{X_{n}^{*}}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is unbiased for 
+\begin_inset Formula $\mu=E[X]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(b) Calculate 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $Var[\overline{X_{n}^{*}}]$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ .
+\end_layout
+
+\begin_layout Subsubsection*
+(c) Show that a sufficient condition for 
+\begin_inset Formula $\overline{X_{n}^{*}}\stackrel{p}{\to}\mu$
+\end_inset
+
+ is that 
+\begin_inset Formula $n^{-2}\sum_{i=1}^{n}w_{i}^{2}\to0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+(d) Show that a sufficient condition for the condition in part 3 is 
+\begin_inset Formula $\text{\ensuremath{\max_{i\leq n}}w_{i}\to0}$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+7.7
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(a) 
+\begin_inset Formula $E[\overline{X_{n}^{*}}]=E[\frac{1}{n}\sum_{i=1}^{n}w_{i}X_{i}]=\frac{1}{n}\sum_{i=1}^{n}w_{i}E[X_{i}]=\frac{1}{n}\sum_{i=1}^{n}w_{i}\mu=\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(b) 
+\begin_inset Formula 
+\[
+\begin{array}{cl}
+Var[\overline{X_{n}^{*}}] & =E\left(\overline{X_{n}^{*}}-E[\overline{X_{n}^{*}}]\right)^{2}\\
+ & =E\left(\frac{1}{n}\sum_{i=1}^{n}w_{i}X_{i}-\mu\right)^{2}\\
+ & =E\left(\frac{1}{n}\sum_{i=1}^{n}w_{i}\left(X_{i}-\mu\right)\right)^{2}\\
+ & =Var\left(\frac{1}{n}\sum_{i=1}^{n}w_{i}\left(X_{i}-\mu\right)\right)+E^{2}\left(\frac{1}{n}\sum_{i=1}^{n}w_{i}\left(X_{i}-\mu\right)\right)\\
+ & =n^{-2}\sum_{i=1}^{n}w_{i}^{2}Var[X_{i}]\\
+ & =\sigma^{2}n^{-2}\sum_{i=1}^{n}w_{i}^{2}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(c) If 
+\begin_inset Formula $n^{-2}\sum_{i=1}^{n}w_{i}^{2}\to0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\sigma^{2}n^{-2}\sum_{i=1}^{n}w_{i}^{2}\to0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+So 
+\begin_inset Formula $E\left(\overline{X_{n}^{*}}-\text{\ensuremath{\mu}}\right)^{2}=Var[\overline{X_{n}^{*}}]\to0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+\begin_inset Formula $\Rightarrow\overline{X_{n}^{*}}\stackrel{m.s.}{\to}\text{\ensuremath{\mu}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+and square-mean convergence implies 
+\begin_inset Formula $\overline{X_{n}^{*}}\stackrel{p}{\to}\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(d) If 
+\begin_inset Formula $\text{\max_{i\leq n}w_{i}\to0}$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}w_{i}^{2}\leq\frac{1}{n}n\left(\ensuremath{\max_{i}}w_{i}\right)^{2}=\left(\ensuremath{\max_{i}}w_{i}\right)^{2}\to0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+so that 
+\begin_inset Formula $n^{-2}\sum_{i=1}^{n}w_{i}^{2}\to0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 7.11 Take a random sample 
+\begin_inset Formula $\{X_{1},...,X_{n}\}$
+\end_inset
+
+ where 
+\begin_inset Formula $X>0$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left|logX\right|<\infty$
+\end_inset
+
+.
+ Consider the sample geometric mean 
+\begin_inset Formula 
+\[
+\hat{\mu}=\left(\prod_{i=1}^{n}X_{i}\right)^{1/n}
+\]
+
+\end_inset
+
+ and population geometric mean 
+\begin_inset Formula 
+\[
+\mu=\exp\left(E[\log X]\right)
+\]
+
+\end_inset
+
+Show that 
+\begin_inset Formula $\hat{\mu}\stackrel{p}{\to}\mu$
+\end_inset
+
+ as 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+7.11
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+As 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ by WLLN, 
+\begin_inset Formula 
+\[
+\begin{array}{cl}
+E\left|\log X\right|<\infty & \Rightarrow\frac{1}{n}\sum_{i=1}^{n}\log X_{i}\stackrel{p}{\to}E[\log X]\\
+ & \Rightarrow\frac{1}{n}\log\left(\prod_{i=1}^{n}X_{i}\right)\stackrel{p}{\to}E[\log X]\\
+ & \Rightarrow\log\left(\prod_{i=1}^{n}X_{i}\right)^{1/n}\stackrel{p}{\to}E[\log X]
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+Take 
+\begin_inset Formula $h\left(u\right)=\exp\left(u\right)$
+\end_inset
+
+, by CMT, 
+\begin_inset Formula 
+\[
+\begin{array}{cl}
+\log\left(\prod_{i=1}^{n}X_{i}\right)^{1/n}\stackrel{p}{\to}E[\log X] & \Rightarrow h\left(\log\left(\prod_{i=1}^{n}X_{i}\right)^{1/n}\right)\stackrel{p}{\to}h\left(E[\log X]\right)\\
+ & \Rightarrow\exp\left(\log\left(\prod_{i=1}^{n}X_{i}\right)^{1/n}\right)\stackrel{p}{\to}\exp\left(E[\log X]\right)\\
+ & \Rightarrow\left(\prod_{i=1}^{n}X_{i}\right)^{1/n}\stackrel{p}{\to}\exp\left(E[\log X]\right)\\
+ & \Rightarrow\hat{\mu}\stackrel{p}{\to}\mu
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 8.1 Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be distributed Bernoulli 
+\begin_inset Formula $P[X=1]=p$
+\end_inset
+
+ and 
+\begin_inset Formula $P[X=0]=1−p$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(a) Show that 
+\begin_inset Formula $p=E[X]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(b) Write down the moment estimator 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ of 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(c) Find 
+\begin_inset Formula $Var[\hat{p}]$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(d) Find the asymptotic distribution of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\sqrt{n}(\hat{p}-p)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ as 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+8.1
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(a) 
+\begin_inset Formula $E[X]=P[X=1]\times1+P[X=0]\times0=p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(b) 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\because$
+\end_inset
+
+
+\begin_inset Formula $E[\overline{X}]=E[\frac{1}{n}\sum_{i=1}^{n}X_{i}]=\frac{1}{n}\sum_{i=1}^{n}E[X_{i}]=\frac{1}{n}\times np=p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+\begin_inset Formula $\therefore$
+\end_inset
+
+ 
+\begin_inset Formula $\hat{p}=\overline{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(c) 
+\begin_inset Formula $Var[\hat{p}]=Var[\frac{1}{n}\sum_{i=1}^{n}X_{i}]=\frac{1}{n^{2}}Var[\sum_{i=1}^{n}X_{i}]=\frac{1}{n^{2}}\sum_{i=1}^{n}Var[X_{i}]=\frac{1}{n^{2}}np\left(1-p\right)=\frac{1}{n}p\left(1-p\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(d) By CLT, 
+\begin_inset Formula $\sqrt{n}(\hat{p}-p)\stackrel{d}{\to}N\left(0,p\left(1-p\right)\right)$
+\end_inset
+
+ as 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 8.7 Assume 
+\begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta\right)\stackrel{d}{\to}N\left(0,\upsilon^{2}\right)$
+\end_inset
+
+ .
+ Use the Delta Method to find the asymptotic distribution of the following
+ statistics
+\end_layout
+
+\begin_layout Subsubsection*
+(a) 
+\begin_inset Formula $\hat{\theta}^{2}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(b) 
+\begin_inset Formula $\hat{\theta}^{3}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(c) 
+\begin_inset Formula $\hat{\theta}^{k}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(d) 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\hat{\theta}^{2}+\hat{\theta}^{3}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ .
+\end_layout
+
+\begin_layout Subsubsection*
+(e) 
+\begin_inset Formula $\frac{1}{1+\hat{\theta}^{2}}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(f) 
+\begin_inset Formula $\frac{1}{1+\exp(\hat{\theta})}$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+8.7
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(a) Take 
+\begin_inset Formula $h(u)=u^{2}$
+\end_inset
+
+, so that by the Delta Method 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\theta}^{2}-\theta^{2}\right)\stackrel{d}{\to}N\left(0,\left(2\theta\right)^{2}\upsilon^{2}\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(b) Take 
+\begin_inset Formula $h(u)=u^{3}$
+\end_inset
+
+, so that by the Delta Method 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\theta}^{3}-\theta^{3}\right)\stackrel{d}{\to}N\left(0,\left(3\theta^{2}\right)^{2}\upsilon^{2}\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(c) Take 
+\begin_inset Formula $h(u)=u^{k}$
+\end_inset
+
+, so that by the Delta Method 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\theta}^{k}-\theta^{k}\right)\stackrel{d}{\to}N\left(0,\left(k\theta^{k-1}\right)^{2}\upsilon^{2}\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(d) Take 
+\begin_inset Formula $h(u)=u^{2}+u^{3}$
+\end_inset
+
+, so that by the Delta Method 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\left(\hat{\theta}^{2}+\hat{\theta}^{3}\right)-\left(\theta^{2}+\theta^{3}\right)\right)\stackrel{d}{\to}N\left(0,\left(2\theta+3\theta^{2}\right)^{2}\upsilon^{2}\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(e) Take 
+\begin_inset Formula $h(u)=\frac{1}{1+u^{2}}$
+\end_inset
+
+, so that by the Delta Method 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\frac{1}{1+\hat{\theta}^{2}}-\frac{1}{1+\theta^{2}}\right)\stackrel{d}{\to}N\left(0,\frac{4\theta^{2}}{\left(1+\theta^{2}\right)^{4}}\upsilon^{2}\right)
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(f) Take 
+\begin_inset Formula $h(u)=\frac{1}{1+\exp(u)}$
+\end_inset
+
+, so that by the Delta Method 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\frac{1}{1+\exp(\hat{\theta})}-\frac{1}{1+\exp(\theta)}\right)\stackrel{d}{\to}N\left(0,\frac{\exp(2\theta)}{\left(1+\exp(\theta)\right)^{4}}\upsilon^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
