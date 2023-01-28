@@ -712,9 +712,9 @@ Consider a counterexample
 \begin_inset Formula 
 \[
 z_{n}=\begin{cases}
--\sqrt{n} & with\text{\ensuremath{\enskip probability\ 1/n}}\\
-0 & with\text{\ensuremath{\enskip probability\ 1-2/n}}\\
-\sqrt{n} & with\text{\ensuremath{\enskip probability\ 1/n}}.
+-\sqrt{n} & \text{with probability }1/n\\
+0 & \text{with probability }1-2/n\\
+\sqrt{n} & \text{with probability }\text{1/n}.
 \end{cases}
 \]
 
