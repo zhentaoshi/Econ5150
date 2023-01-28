@@ -710,7 +710,7 @@ uniformly integrable
  if 
 \begin_inset Formula 
 \begin{equation}
-\lim_{M\to\infty}\limsup_{n\to\infty}\max_{i\leq r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}>M\right\} \right]=0.\label{eq:uniform_int_tri}
+\lim_{M\to\infty}\limsup_{n\to\infty}\max_{i\leq r_{n}}E\left[\left|x_{in}\right|\mathbb{I}\left\{ \left|x_{in}\right|>M\right\} \right]=0.\label{eq:uniform_int_tri}
 \end{equation}
 
 \end_inset
@@ -740,7 +740,7 @@ For any
 \begin{align*}
 \frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & \leq\frac{1}{r_{n}b}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon r_{n}b\right\} \right]\\
  & \leq\frac{1}{r_{n}b}\times r_{n}\max_{i\leq r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq r_{n}\varepsilon b\right\} \right]\\
- & \leq const\times\max_{i\leq r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq r_{n}\varepsilon b\right\} \right]\to0
+ & =const\times\max_{i\leq r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq r_{n}\varepsilon b\right\} \right]\to0
 \end{align*}
 
 \end_inset
@@ -761,17 +761,15 @@ Uniform Stochastic Bound
 \end_layout
 
 \begin_layout Theorem
-If (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:uniform_int_tri"
-plural "false"
-caps "false"
-noprefix "false"
+If 
+\begin_inset Formula 
+\[
+\lim_{M\to\infty}\limsup_{n\to\infty}\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}>M\right\} \right]=0.
+\]
 
 \end_inset
 
-) holds, then 
+holds, then 
 \begin_inset Formula 
 \[
 r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|\stackrel{p}{\to}0.
@@ -818,17 +816,11 @@ P\left(r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|>\varepsilon\right) & =P
 
 \end_inset
 
-under (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:uniform_int_tri"
-plural "false"
-caps "false"
-noprefix "false"
-
+under the uniform 
+\begin_inset Formula $r$
 \end_inset
 
-), since 
+th integrability, since 
 \begin_inset Formula $r_{n}\varepsilon^{r}\to\infty$
 \end_inset
 
@@ -839,7 +831,7 @@ noprefix "false"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Proof
 \begin_inset ERT
 status open
 

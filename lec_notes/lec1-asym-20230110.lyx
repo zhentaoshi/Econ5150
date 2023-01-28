@@ -1341,28 +1341,11 @@ Because
 and the conclusion follows.
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout Proof
 
-\begin_layout Plain Layout
-
-
-\backslash
-bigskip
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-texttt{ Zhentao Shi.
- Jan 10, 2023.}
-\end_layout
-
-\end_inset
-
-
+\family typewriter
+Zhentao Shi.
+ Jan 10, 2023.
 \end_layout
 
 \end_body
