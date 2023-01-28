@@ -12,10 +12,10 @@
 %\lhead{Lecture Notes}
 %\rhead{Zhentao Shi}
 
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.15}
-\usepackage{mathrsfs}
-\usetikzlibrary{arrows}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.15}
+% \usepackage{mathrsfs}
+% \usetikzlibrary{arrows}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -72,8 +72,7 @@ theorems-ams-extended-chap-bytype
 \cite_engine natbib
 \cite_engine_type authoryear
 \biblio_style chicagoa
-\multibib child
-\use_bibtopic true
+\use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date true
@@ -150,23 +149,10 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Part
-Core Theory
-\end_layout
-
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand input
 filename "lec1-asym-20230110.lyx"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 
@@ -181,14 +167,6 @@ filename "lec2-asym-20230117.lyx"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Part
-Applications
-\end_layout
-
-\begin_layout Standard
-To add time series lecture notes.
 \end_layout
 
 \end_body
