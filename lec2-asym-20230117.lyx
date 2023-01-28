@@ -99,16 +99,65 @@ CLT for inid Sequences
 \end_layout
 
 \begin_layout Section
-Lindeberg Condition
+Notations and Definitions
 \end_layout
 
 \begin_layout Standard
+A random variable 
+\begin_inset Formula $z$
+\end_inset
 
-\shape slanted
-Lindeberg-Lévy Central Limit Theorem
-\shape default
- is for independently and identically distributed (iid) sequences.
- In this lecture we consider independent but heterogeneous sequences.
+ is 
+\begin_inset Formula $r$
+\end_inset
+
+th 
+\emph on
+integrable
+\emph default
+ if 
+\begin_inset Formula $E[\left|z\right|^{r}]<\infty$
+\end_inset
+
+.
+ Equivalently, 
+\begin_inset Formula 
+\[
+\lim_{M\to\infty}E[\left|z\right|^{r}\mathbb{I}\left\{ \left|z\right|^{r}>M\right\} ]=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbb{I}\left\{ \cdot\right\} $
+\end_inset
+
+ is the indicator function.
+ Without referring explicitly to the 
+\begin_inset Formula $r$
+\end_inset
+
+th moment, we say 
+\begin_inset Formula $z$
+\end_inset
+
+ is 
+\emph on
+integrable
+\emph default
+ if 
+\begin_inset Formula $r=1$
+\end_inset
+
+, and 
+\emph on
+square integrable
+\emph default
+ if 
+\begin_inset Formula $r=2$
+\end_inset
+
+.
  
 \end_layout
 
@@ -118,13 +167,10 @@ A
 triangular array
 \shape default
  
-\begin_inset Formula $\left(x_{1n},x_{2n},x_{3n},...,x_{r_{n}n}\right)$
+\begin_inset Formula $\left\{ \left(x_{1n},x_{2n},x_{3n},...,x_{r_{n}n}\right)\right\} _{n\in\mathbb{N}}$
 \end_inset
 
- is needed for formal presentation.
-\end_layout
-
-\begin_layout Standard
+ stacks like a triangular:
 \begin_inset Formula 
 \[
 \begin{array}{c}
@@ -164,13 +210,37 @@ Here
 \begin_inset Formula $\left(x_{in}\right)_{i=1}^{r_{n}}$
 \end_inset
 
- are independent but not necessarily identically distributed (inid).
- 
+ are independently non-identically distributed (inid).
+ (Please keep a liberal mind and consider 
+\begin_inset Quotes eld
+\end_inset
+
+identically distributed
+\begin_inset Quotes erd
+\end_inset
+
+ as a special case of 
+\begin_inset Quotes eld
+\end_inset
+
+non-identically distributed
+\begin_inset Quotes erd
+\end_inset
+
+.)
 \end_layout
 
 \begin_layout Standard
 Without loss of generality, assume 
 \begin_inset Formula $E[x_{in}]=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
 \end_inset
 
  and denote 
@@ -182,11 +252,19 @@ Without loss of generality, assume
 \emph on
 partial sum
 \emph default
- as 
+ (up to 
+\begin_inset Formula $n$
+\end_inset
+
+) as 
 \begin_inset Formula $S_{n}=\sum_{i=1}^{r_{n}}x_{in}$
 \end_inset
 
- and and 
+ and and (the 
+\begin_inset Formula $n$
+\end_inset
+
+th) 
 \emph on
 aggregate variance
 \emph default
@@ -195,6 +273,20 @@ aggregate variance
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+Lindeberg Condition
+\end_layout
+
+\begin_layout Standard
+
+\shape slanted
+Lindeberg-Lévy Central Limit Theorem
+\shape default
+ is for independently and identically distributed (iid) sequences.
+ In this lecture we consider independent but heterogeneous sequences.
+ 
 \end_layout
 
 \begin_layout Definition
@@ -235,7 +327,7 @@ Lindeberg condition
 , then
 \begin_inset Formula 
 \[
-\frac{S_{n}}{\tilde{\sigma}_{n}^{2}}\stackrel{d}{\to}N\left(0,1\right)
+\frac{S_{n}}{\tilde{\sigma}_{n}}\stackrel{d}{\to}N\left(0,1\right)
 \]
 
 \end_inset
@@ -244,13 +336,7 @@ Lindeberg condition
 \end_layout
 
 \begin_layout Standard
-
-\shape slanted
-Lindeberg-Feller
-\shape italic
- CLT
-\shape default
- allows heterogeneity across 
+Lindeber-Feller CLT allows heterogeneity across 
 \begin_inset Formula $i=1,...,r_{n}$
 \end_inset
 
@@ -261,49 +347,35 @@ Lindeberg-Lévy
 \shape italic
  CLT
 \shape default
- as a special case, where 
-\begin_inset Formula $x_{in}\sim x_{1}$
+ as a special case.
+ To see this fact, under iid let us use 
+\begin_inset Formula $z$
 \end_inset
 
- for all 
-\begin_inset Formula $i$
+ to represent the homogeneous distribution.
+ Denote 
+\begin_inset Formula $\mathrm{var}(z)=\sigma_{z}^{2}\in\left(0,\infty\right)$
 \end_inset
 
- and 
-\begin_inset Formula $n$
+, and equivalently 
+\begin_inset Formula $\lim_{M\to\infty}E\left[z^{2}\mathbb{I}\left\{ z^{2}\geq M\right\} \right]=0$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Proof
-When all 
-\begin_inset Formula $x_{in}$
+ (square integrability).
+ Set 
+\begin_inset Formula $r_{n}=n$
 \end_inset
 
- share the same distribution, the 
-\begin_inset Formula $\tilde{\sigma}_{n}^{2}=n\sigma_{1}^{2}$
-\end_inset
-
- where 
-\begin_inset Formula $\mathrm{var}(x_{1})=\sigma_{1}^{2}\in\left(0,\infty\right)$
-\end_inset
-
-.
- The finite variance implies 
-\emph on
-square 
-\emph default
-integrability 
-\begin_inset Formula $\lim_{M\to\infty}E\left[x_{1}^{2}\mathbb{I}\left\{ x_{1}^{2}\geq M\right\} \right]=0$
+, and thus 
+\begin_inset Formula $\tilde{\sigma}_{n}^{2}=n\sigma_{z}^{2}$
 \end_inset
 
 .
  As a result, 
 \begin_inset Formula 
 \begin{align*}
-\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & =\frac{1}{r_{n}\sigma^{2}}r_{n}\left[Ex_{1}^{2}\mathbb{I}\left\{ x_{1}^{2}\geq n\sigma_{1}^{2}\varepsilon\right\} \right]\\
- & =const\times\left[Ex_{1}^{2}\mathbb{I}\left\{ x_{1}^{2}\geq n\sigma_{1}^{2}\varepsilon\right\} \right]\to\infty
+\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{n}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & =\frac{1}{n\sigma_{1}^{2}}\times nE\left[z^{2}\mathbb{I}\left\{ z^{2}\geq n\sigma_{z}^{2}\varepsilon\right\} \right]\\
+ & =const\times E\left[z^{2}\mathbb{I}\left\{ z^{2}\geq n\sigma_{z}^{2}\varepsilon\right\} \right]\to\infty
 \end{align*}
 
 \end_inset
@@ -319,6 +391,32 @@ since
 .
 \end_layout
 
+\begin_layout Standard
+With iid and 
+\begin_inset Formula $r_{n}=n$
+\end_inset
+
+, we can drop the subscript 
+\begin_inset Formula $n$
+\end_inset
+
+ and write 
+\begin_inset Formula $z_{i}=x_{in}$
+\end_inset
+
+.
+ The ratio 
+\begin_inset Formula 
+\[
+\frac{S_{n}}{\tilde{\sigma}_{n}}=\frac{\sum_{i=1}^{n}z_{i}}{\sqrt{n\sigma_{z}^{2}}}=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\frac{z_{i}}{\sigma_{z}}
+\]
+
+\end_inset
+
+ retains its familiar for in CLT.
+ 
+\end_layout
+
 \begin_layout Section
 Lyapunov Condition
 \end_layout
@@ -329,7 +427,7 @@ Lyapunov Condition
 Lindeberg condition
 \shape default
  is difficult to interpret.
- We look for more interpretable sufficient conditions.
+ Lyapunov condition is a more interpretable sufficient condition.
 \end_layout
 
 \begin_layout Definition
@@ -350,26 +448,27 @@ Lyapunov Condition: There exists some
 
 \begin_layout Standard
 Lyapunov condition implies Lindeberg condition.
- 
-\end_layout
-
-\begin_layout Proof
-Use the quantify in the Lindeberg condition as a starting point:
+ To see this fact, we use the quantify in the Lindeberg condition as a starting
+ point:
 \shape italic
 
 \begin_inset Formula 
 \begin{align*}
-\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & =\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2}\mathbb{I}\left\{ \left|x_{in}\right|^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right]\\
+\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & =\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2}\mathbb{I}\left\{ \left|x_{in}\right|^{\delta}\geq\varepsilon^{\frac{\delta}{2}}\tilde{\sigma}_{n}^{\delta}\right\} \right]\\
  & =\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[\frac{\left|x_{in}\right|^{2+\delta}}{\left|x_{in}\right|^{\delta}}\mathbb{I}\left\{ \left|x_{in}\right|^{\delta}\geq\varepsilon^{\frac{\delta}{2}}\tilde{\sigma}_{n}^{\delta}\right\} \right]\\
- & \leq\frac{1}{\tilde{\sigma}_{n}^{2}}\times\frac{1}{\varepsilon^{\frac{\delta}{2}}\tilde{\sigma}_{n}^{\delta}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2+\delta}\mathbb{I}\left\{ \left|x_{in}\right|^{\delta}\geq\varepsilon^{\frac{\delta}{2}}\tilde{\sigma}_{n}^{\delta}\right\} \right]\\
- & \leq\frac{1}{\varepsilon^{\frac{\delta}{2}}}\times\frac{1}{\tilde{\sigma}_{n}^{2+\delta}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2+\delta}\right]\rightarrow0
+ & \leq\frac{1}{\tilde{\sigma}_{n}^{2}}\times\frac{1}{\varepsilon^{\delta/2}\tilde{\sigma}_{n}^{\delta}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2+\delta}\mathbb{I}\left\{ \left|x_{in}\right|^{\delta}\geq\varepsilon^{\frac{\delta}{2}}\tilde{\sigma}_{n}^{\delta}\right\} \right]\\
+ & \leq\frac{1}{\varepsilon^{\delta/2}}\times\frac{1}{\tilde{\sigma}_{n}^{2+\delta}}\sum_{i=1}^{r_{n}}E\left[\left|x_{in}\right|^{2+\delta}\right]\rightarrow0
 \end{align*}
 
 \end_inset
 
 
 \shape default
-where the limit follows by Lyapunov condition.
+as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, where the limit follows from Lyapunov condition.
  
 \end_layout
 
@@ -382,11 +481,11 @@ Condition1:
 \begin_inset Formula $\sup_{i\leq r_{n}}E[\left|x_{in}\right|^{2+\delta}]\leq B<\infty$
 \end_inset
 
- for 
+ for all sufficiently large 
 \begin_inset Formula $n$
 \end_inset
 
- sufficiently large.
+.
 \end_layout
 
 \begin_layout Standard
@@ -411,12 +510,12 @@ Condition2:
  
 \end_layout
 
-\begin_layout Proof
+\begin_layout Standard
 Under Condition 1 and Condition 2 we have
 \begin_inset Formula 
 \begin{align*}
-\frac{1}{\tilde{\sigma}_{n}^{2+\delta}}\sum_{i=1}^{r_{n}}E[\left|x_{in}\right|^{2+\delta}] & \leq\frac{1}{(\sqrt{r_{n}b})^{2+\delta}}\times r\,\max_{i\leq r_{n}}E[\left|x_{in}\right|^{2+\delta}]\\
- & =\frac{r_{n}B}{\left(r_{n}b\right)^{\frac{2+\delta}{2}}}=\frac{B}{r_{n}^{\frac{\delta}{2}}b^{\frac{2+\delta}{2}}}=const\times r_{n}^{-\delta/2}\rightarrow0.
+\frac{1}{\tilde{\sigma}_{n}^{2+\delta}}\sum_{i=1}^{r_{n}}E[\left|x_{in}\right|^{2+\delta}] & \leq\frac{1}{(\sqrt{r_{n}b})^{2+\delta}}\times r_{n}\,\max_{i\leq r_{n}}E[\left|x_{in}\right|^{2+\delta}]\\
+ & \leq\frac{r_{n}B}{(\sqrt{r_{n}b})^{2+\delta}}=const\times r_{n}^{-\delta/2}\rightarrow0
 \end{align*}
 
 \end_inset
@@ -432,9 +531,9 @@ since
 .
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 If we further assume 
-\begin_inset Formula $\bar{\sigma}_{n}^{2}\rightarrow\sigma^{*2}$
+\begin_inset Formula $\bar{\sigma}_{n}^{2}\rightarrow\sigma_{*}^{2}$
 \end_inset
 
  as 
@@ -442,22 +541,9 @@ If we further assume
 \end_inset
 
 , then under Condition 1 we have 
-\begin_inset Formula 
-\[
-\frac{S_{n}}{\sqrt{n}}\stackrel{d}{\to}N\left(0,\sigma^{2}\right)
-\]
-
+\begin_inset Formula $\frac{S_{n}}{\sqrt{n}}\stackrel{d}{\to}N\left(0,\sigma_{*}^{2}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Similar results holds for i.i.d.
- random vectors via the 
-\shape slanted
-Cramér-Wold Device
-\shape default
 .
 \end_layout
 
@@ -467,11 +553,11 @@ Uniform CLT
 
 \begin_layout Standard
 If 
-\begin_inset Formula $E\left[\left|X\right|^{2+\delta}\right]\leq B<\infty$
+\begin_inset Formula $E\left[\left|z\right|^{2+\delta}\right]\leq B<\infty$
 \end_inset
 
  and 
-\begin_inset Formula $\mathrm{var}\left(X\right)\geq b$
+\begin_inset Formula $\mathrm{var}\left(z\right)\geq b>0$
 \end_inset
 
  for all 
@@ -481,16 +567,16 @@ If
 , then
 \begin_inset Formula 
 \[
-\sup_{f\in\mathscr{F}}\left|P_{f}\left(\frac{\sqrt{n}\left(\overline{x}_{n}-E\left(X\right)\right)}{\sqrt{\mathrm{var}\left(X\right)}}\leq a\right)-\Phi\left(a\right)\right|\to0.
+\sup_{f\in\mathscr{F}}\left|P_{f}\left(\frac{\sqrt{n}\left(\overline{z}_{n}-E\left(z\right)\right)}{\sqrt{\mathrm{var}\left(z\right)}}\leq a\right)-\Phi\left(a\right)\right|\to0.
 \]
 
 \end_inset
 
-This is a uniform CLT over a class of distributions 
+This is a uniform CLT over a class of distributions in 
 \begin_inset Formula $\mathscr{F}$
 \end_inset
 
-, instead of a single one 
+, instead of a single distribution 
 \begin_inset Formula $f$
 \end_inset
 
@@ -499,7 +585,7 @@ This is a uniform CLT over a class of distributions
 \begin_inset Formula $P_{f}$
 \end_inset
 
- means that the probability is computed for a specific distribution 
+ means that the probability is computed under a specific distribution 
 \begin_inset Formula $f$
 \end_inset
 
@@ -534,73 +620,15 @@ In a direct proof, the approximation error is controlled by
 Uniform Integrability
 \end_layout
 
-\begin_layout Standard
-A random variable is 
-\begin_inset Formula $r$
-\end_inset
-
--th 
-\series bold
-integrable
-\series default
- if 
-\begin_inset Formula $E[\left|x\right|^{r}]<\infty$
-\end_inset
-
-.
- Or equivalently if 
-\begin_inset Formula 
-\[
-\lim_{M\to\infty}E[\left|x\right|^{r}\mathbb{I}\left\{ \left|x\right|^{r}>M\right\} ]=0.
-\]
-
-\end_inset
-
-Without referring explicitly to the 
-\begin_inset Formula $r$
-\end_inset
-
--th moment, we say 
-\begin_inset Formula $x$
-\end_inset
-
- is 
-\emph on
-integrable
-\emph default
- if 
-\begin_inset Formula $r=1$
-\end_inset
-
-, and 
-\emph on
-square integrable
-\emph default
- if 
-\begin_inset Formula $r=2$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Now consider a sequence of random variables 
-\begin_inset Formula $x_{n}$
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Definition
 The sequence of random variables 
-\begin_inset Formula $x_{n}$
+\begin_inset Formula $z_{n}$
 \end_inset
 
  is 
-\series bold
+\emph on
 uniformly integrable
-\series default
+\emph default
  as 
 \begin_inset Formula $n\to\infty$
 \end_inset
@@ -608,7 +636,61 @@ uniformly integrable
  if 
 \begin_inset Formula 
 \[
-\lim_{M\to\infty}\limsup_{n\to\infty}E[\left|x_{n}\right|\mathbb{I}\left\{ \left|x_{n}\right|>M\right\} ]=0
+\lim_{M\to\infty}\limsup_{n\to\infty}E\left[\left|z_{n}\right|\mathbb{I}\left\{ \left|z_{n}\right|>M\right\} \right]=0.
+\]
+
+\end_inset
+
+Uniform integrability requires that the triangular array 
+\begin_inset Formula $z_{n}$
+\end_inset
+
+ is asymptotic tight.
+ 
+\end_layout
+
+\begin_layout Example
+Consider a counterexample
+\begin_inset Formula 
+\[
+z_{n}=\begin{cases}
+-\sqrt{n} & with\text{\ensuremath{\enskip probability\ 1/n}}\\
+0 & with\text{\ensuremath{\enskip probability\ 1-2/n}}\\
+\sqrt{n} & with\text{\ensuremath{\enskip probability\ 1/n}}.
+\end{cases}
+\]
+
+\end_inset
+
+Each 
+\begin_inset Formula $z_{n}$
+\end_inset
+
+ is square integrable in that 
+\begin_inset Formula $\mathrm{var}\left[z_{n}\right]=2n\times\left(1/n\right)=2$
+\end_inset
+
+.
+ However, this 
+\begin_inset Formula $z_{n}$
+\end_inset
+
+ is NOT uniformly square integrable because for any finite 
+\begin_inset Formula $M$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+\limsup_{n\to\infty}E\left[z_{n}^{2}\mathbb{I}\left\{ z_{n}^{2}>M\right\} \right]=2
+\]
+
+\end_inset
+
+ and thus 
+\begin_inset Formula 
+\[
+\lim_{M\to\infty}\limsup_{n\to\infty}E\left[z_{n}^{2}\mathbb{I}\left\{ z_{n}^{2}>M\right\} \right]=2\neq0.
 \]
 
 \end_inset
@@ -616,85 +698,62 @@ uniformly integrable
 
 \end_layout
 
-\begin_layout Standard
-For simplicity, for each 
-\begin_inset Formula $n$
+\begin_layout Definition
+A triangular array of random variables is 
+\emph on
+uniformly integrable
+\emph default
+ as 
+\begin_inset Formula $n\to\infty$
 \end_inset
 
-, let the element 
-\begin_inset Formula $x_{in}$
+ if 
+\begin_inset Formula 
+\begin{equation}
+\lim_{M\to\infty}\limsup_{n\to\infty}\max_{i\leq r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}>M\right\} \right]=0.\label{eq:uniform_int_tri}
+\end{equation}
+
 \end_inset
 
- has the same distribution over 
-\begin_inset Formula $i=1,\ldots,r_{n}$
-\end_inset
 
-.
- Without loss of generality, we can pick the sequence 
-\begin_inset Formula $\left(x_{1n}\right)_{n\in\mathbb{N}}$
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Proposition
-If Condition2 and 
-\begin_inset Formula $\left(x_{1n}\right)_{n\in\mathbb{N}}$
+If Condition2 and the triangular array 
+\begin_inset Formula $\left\{ \left(x_{in}\right)_{i=1}^{r_{n}}\right\} _{n\in\mathbb{N}}$
 \end_inset
 
  is 
 \shape slanted
 uniform square integrab
 \shape default
-le , then Lindeberg condition holds.
+le, then Lindeberg condition holds.
 \end_layout
 
 \begin_layout Proof
+For any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, we have 
 \begin_inset Formula 
-\[
-\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} ]=\frac{1}{\bar{\sigma}_{n}^{2}}E[x_{1n}^{2}\mathbb{I}\left\{ x_{1n}^{2}\geq\varepsilon n\bar{\sigma}_{n}^{2}\right\} ]\leq\frac{1}{b}E[x_{1n}^{2}\mathbb{I}\left\{ x_{1n}^{2}\geq n\varepsilon b\right\} ]\to0.
-\]
+\begin{align*}
+\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & \leq\frac{1}{r_{n}b}\sum_{i=1}^{r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon r_{n}b\right\} \right]\\
+ & \leq\frac{1}{r_{n}b}\times r_{n}\max_{i\leq r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq r_{n}\varepsilon b\right\} \right]\\
+ & \leq const\times\max_{i\leq r_{n}}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq r_{n}\varepsilon b\right\} \right]\to0
+\end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Remark
-Uniform integrability requires that the sequence 
-\begin_inset Formula $\left(x_{1n}\right)_{n\in\mathbb{N}}$
+by the definition of uniform integrability since 
+\begin_inset Formula $r_{n}\varepsilon b\to\infty$
 \end_inset
 
- is tight enough.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
+ as 
+\begin_inset Formula $n\to\infty$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Remark
-If 
-\begin_inset Formula $x_{in}$
-\end_inset
-
- is heterogeneous over 
-\begin_inset Formula $i=1,\ldots,r_{n}$
-\end_inset
-
-, it is sufficient to assume 
-\begin_inset Formula 
-\[
-\lim_{M\to\infty}\limsup_{n\to\infty}\max_{i\leq r_{n}}E[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}>M\right\} ]=0
-\]
-
-\end_inset
-
-and Condition2 for Lindeberg condition to hold.
- 
+.
 \end_layout
 
 \begin_layout Subsection
@@ -702,15 +761,17 @@ Uniform Stochastic Bound
 \end_layout
 
 \begin_layout Theorem
-If 
-\begin_inset Formula 
-\[
-\lim_{M\to\infty}\limsup_{n\to\infty}\max_{i\leq r_{n}}E[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}>M\right\} ]=0,
-\]
+If (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uniform_int_tri"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
- then 
+) holds, then 
 \begin_inset Formula 
 \[
 r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|\stackrel{p}{\to}0.
@@ -722,33 +783,12 @@ r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|\stackrel{p}{\to}0.
 \end_layout
 
 \begin_layout Remark
-If for each 
-\begin_inset Formula $n$
-\end_inset
-
- the element 
-\begin_inset Formula $x_{in}$
-\end_inset
-
- has the same distribution over 
-\begin_inset Formula $i=1,\ldots,r_{n}$
-\end_inset
-
-, then the condition says 
-\begin_inset Formula $x_{in}$
-\end_inset
-
- is 
-\begin_inset Formula $r$
-\end_inset
-
--th integrable.
- As a special case, if we set 
+As a special case, if we set 
 \begin_inset Formula $r_{n}=n$
 \end_inset
 
 , then 
-\begin_inset Formula $\max_{i\leq n}\left|x_{in}\right|=o_{p}\left(n\right)$
+\begin_inset Formula $\max_{i\leq n}\left|x_{in}\right|=o_{p}\left(n^{1/r}\right)$
 \end_inset
 
  if 
@@ -759,7 +799,7 @@ If for each
 \begin_inset Formula $r$
 \end_inset
 
--th integrable.
+th uniformly integrable.
  
 \end_layout
 
@@ -771,14 +811,24 @@ P\left(r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|>\varepsilon\right) & =P
  & \leq\sum_{i\leq r_{n}}P\left(\left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right)\\
  & =\sum_{i\leq r_{n}}E\left[\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
  & \leq r_{n}\max_{i\leq r_{n}}E\left[\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
- & \leq\frac{1}{r_{n}\varepsilon^{r}}\times r_{n}\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
+ & \leq r_{n}\times\frac{1}{r_{n}\varepsilon^{r}}\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
  & =const\times\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}\geq r_{n}\varepsilon^{r}\right\} \right]\\
  & \to0
 \end{align*}
 
 \end_inset
 
-given the assumption, since 
+under (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uniform_int_tri"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), since 
 \begin_inset Formula $r_{n}\varepsilon^{r}\to\infty$
 \end_inset
 
