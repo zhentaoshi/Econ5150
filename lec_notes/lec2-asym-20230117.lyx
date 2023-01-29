@@ -714,7 +714,7 @@ Consider a counterexample
 z_{n}=\begin{cases}
 -\sqrt{n} & \text{with probability }1/n\\
 0 & \text{with probability }1-2/n\\
-\sqrt{n} & \text{with probability }\text{1/n}.
+\sqrt{n} & \text{with probability }1/n.
 \end{cases}
 \]
 
