@@ -103,17 +103,23 @@ Motivation
 \end_layout
 
 \begin_layout Standard
-OLS, 2SLS have closed form solutions.
- More general GMM, NLS, MLE do not have closed form solutions.
- We need asymptotic apparatus for estimators that cannot be expressed in
- closed-forms.
+OLS and 2SLS have closed-form solutions.
+ In general, however, GMM, NLS and MLE estimators cannot be expressed in
+ closed-form.
+ New asymptotic apparatus are needed for them.
 \end_layout
 
 \begin_layout Example
-For maximum likelihood estimator 
+\begin_inset CommandInset label
+LatexCommand label
+name "eg:MLE-EP"
+
+\end_inset
+
+The maximum likelihood estimator is 
 \begin_inset Formula 
 \[
-\hat{\theta}=\arg\max_{\theta\in\Theta}\frac{1}{n}\sum_{i=1}^{n}\log f\left(x_{i},\theta\right)=\arg\min_{\theta\in\Theta}\frac{1}{n}\sum_{i=1}^{n}-\log f\left(x_{i},\theta\right).
+\hat{\theta}=\arg\max_{\theta\in\Theta}\frac{1}{n}\sum_{i=1}^{n}\log f\left(X_{i},\theta\right)=\arg\min_{\theta\in\Theta}\frac{1}{n}\sum_{i=1}^{n}-\log f\left(X_{i},\theta\right).
 \]
 
 \end_inset
@@ -122,11 +128,11 @@ For maximum likelihood estimator
 \emph on
 uniform
 \emph default
- law of large numbers (ULLN) to establish the consistency of 
+ law of large numbers to establish the consistency of 
 \begin_inset Formula $\widehat{\theta}$
 \end_inset
 
- to the true coefficient.
+.
  Pointwise convergence at every 
 \begin_inset Formula $\theta\in\Theta$
 \end_inset
@@ -156,24 +162,34 @@ Let
 \end_inset
 
 .
- To make things simple, we consider 
+ To keep it simple, we consider 
 \begin_inset Formula $\Theta$
 \end_inset
 
- as a subset of the finite dimensional Euclidean space 
+ a subset of a finite-dimensional Euclidean space 
 \begin_inset Formula $\mathbb{R}^{D}$
 \end_inset
 
 .
- In the above example of MLE 
-\begin_inset Formula $g\left(x_{i},\theta\right)=-\log f\left(x_{i},\theta\right)$
+ In Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eg:MLE-EP"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\begin_inset Formula $g\left(X_{i}\left(\omega\right),\theta\right)=-\log f\left(X_{i}\left(\omega\right),\theta\right)$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-We are interested in the large sample behavior of two objects: the 
+We are interested in large sample behaviors of two objects: the 
 \emph on
 sample average
 \emph default
@@ -192,12 +208,12 @@ normalized average
  
 \begin_inset Formula 
 \[
-\nu_{n}=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left(g\left(X_{i},\theta\right)-E\left[g\left(X_{i},\theta\right)\right]\right)
+\nu_{n}=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left(g\left(X_{i},\theta\right)-E\left[g\left(X_{i},\theta\right)\right]\right).
 \]
 
 \end_inset
 
-Some books call 
+Some books call this form of 
 \begin_inset Formula $\nu_{n}$
 \end_inset
 
@@ -213,6 +229,15 @@ Throughout this chapter, we discuss iid
 \end_inset
 
  for simplicity.
+ Without loss of generality, the marginal distribution of 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ can be represented by 
+\begin_inset Formula $X$
+\end_inset
+
+.
  
 \end_layout
 
@@ -221,7 +246,7 @@ A classical statistical example that motivates the Empirical Cumulative
  Distribution Function (ECDF) 
 \begin_inset Formula 
 \[
-F_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\mathbb{I}\left(x_{i}\leq\theta\right)
+F_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\mathbb{I}\left(X_{i}\leq\theta\right)
 \]
 
 \end_inset
@@ -231,11 +256,11 @@ for
 \end_inset
 
 .
- By the pointwise LLN and CLT, we know 
+ The pointwise LLN and CLT yield 
 \begin_inset Formula 
 \begin{align*}
 F_{n}\left(\theta\right) & \stackrel{p}{\to}F\left(\theta\right)=P\left(X_{1}\leq\theta\right)\\
-\sqrt{n}\left(F_{n}\left(\theta\right)-F\left(\theta\right)\right) & \stackrel{d}{\to}N\left(0,F(\theta)\left(1-F\left(\theta\right)\right)\right)
+\sqrt{n}\left(F_{n}\left(\theta\right)-F\left(\theta\right)\right) & \stackrel{d}{\to}N\left(0,F(\theta)\left(1-F\left(\theta\right)\right)\right).
 \end{align*}
 
 \end_inset
@@ -248,7 +273,11 @@ Can we strengthen the convergence to hold uniformly over
 \begin_inset Formula $\sqrt{n}\left(F_{n}\left(\theta\right)-F\left(\theta\right)\right)$
 \end_inset
 
- as a random function?
+ as a random function indexed by 
+\begin_inset Formula $\theta$
+\end_inset
+
+?
 \end_layout
 
 \begin_layout Section
@@ -261,7 +290,7 @@ We first work with uniform convergence.
  to study the complexity of the class of functions
 \begin_inset Formula 
 \[
-\mathcal{G}:=\left\{ g\left(x,\theta\right):\theta\in\Theta\right\} 
+\mathcal{G}:=\left\{ g\left(\cdot,\theta\right):\theta\in\Theta\right\} 
 \]
 
 \end_inset
@@ -280,7 +309,7 @@ We first work with uniform convergence.
 
 \begin_layout Standard
 For a generic function 
-\begin_inset Formula $h\left(X\right)$
+\begin_inset Formula $h\left(x\right)$
 \end_inset
 
 , define the 
@@ -290,7 +319,7 @@ For a generic function
 -norm as 
 \begin_inset Formula 
 \[
-\left\Vert h\right\Vert _{Q,r}=\left(E_{Q}\left[\left\Vert h\left(x\right)\right\Vert ^{r}\right]\right)^{1/r}=\left(\int\left\Vert h\left(x\right)\right\Vert ^{r}{\rm d}Q\right)^{1/r}.
+\left\Vert h\right\Vert _{Q,r}=\left(E_{Q}\left[\left\Vert h\left(X\right)\right\Vert ^{r}\right]\right)^{1/r}=\left(\int\left\Vert h\left(X\right)\right\Vert ^{r}{\rm d}Q\right)^{1/r}.
 \]
 
 \end_inset
@@ -303,7 +332,7 @@ A function
 \begin_inset Formula $G\left(x\right)$
 \end_inset
 
- is an
+ is called an
 \series bold
  envelope function
 \series default
@@ -320,8 +349,8 @@ A function
 \end_inset
 
 .
- The envelope function works as the dominating function in the dominated
- convergence theorem.
+ The envelope function works as the dominating function in the celebrated
+ dominated convergence theorem.
  
 \end_layout
 
@@ -331,30 +360,30 @@ The
 distance
 \series default
  between two functions 
-\begin_inset Formula $g\left(x,\theta_{1}\right)$
+\begin_inset Formula $g\left(\cdot,\theta_{1}\right)$
 \end_inset
 
  and 
-\begin_inset Formula $g\left(x,\theta_{2}\right)$
+\begin_inset Formula $g\left(\cdot,\theta_{2}\right)$
 \end_inset
 
  is defined as 
-\begin_inset Formula $\left\Vert g\left(x,\theta_{1}\right)-g\left(x,\theta_{2}\right)\right\Vert _{Q,r}$
+\begin_inset Formula $\left\Vert g\left(\cdot,\theta_{1}\right)-g\left(\cdot,\theta_{2}\right)\right\Vert _{Q,r}$
 \end_inset
 
 .
- Given the distance, we can define an 
+ Given the distance, we define an 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
--neighborhood around a function 
-\begin_inset Formula $g\left(x,\theta\right):$
+-neighborhood centered around 
+\begin_inset Formula $g\left(\cdot,\theta\right):$
 \end_inset
 
 
 \begin_inset Formula 
 \[
-\mathcal{N}_{\varepsilon,Q}\left(g\left(x,\theta\right)\right):=\left\{ h\in\mathcal{G}:\left\Vert h\left(x\right)-g\left(x,\theta\right)\right\Vert _{Q,r}\leq\varepsilon\right\} .
+\mathcal{N}_{\varepsilon,r,Q}\left(g\left(\cdot,\theta\right)\right):=\left\{ h\in\mathcal{G}:\left\Vert h\left(\cdot\right)-g\left(\cdot,\theta\right)\right\Vert _{Q,r}\leq\varepsilon\right\} .
 \]
 
 \end_inset
@@ -372,14 +401,14 @@ covering number
 \end_inset
 
  such that 
-\begin_inset Formula $\mathcal{G}\subseteq\bigcup_{\ell=1}^{m}\mathcal{N}_{\varepsilon,Q}\left(g\left(x,\theta_{\ell}\right)\right).$
+\begin_inset Formula $\mathcal{G}\subseteq\bigcup_{\ell=1}^{m}\mathcal{N}_{\varepsilon,r,Q}\left(g\left(\cdot,\theta_{\ell}\right)\right).$
 \end_inset
 
  In other words, those 
 \begin_inset Formula $m$
 \end_inset
 
- neighborhoods covers the set of functions 
+ neighborhoods cover the set of functions 
 \begin_inset Formula $\mathcal{G}$
 \end_inset
 
@@ -400,11 +429,12 @@ It is straightforward to generalize from pointwise convergence to uniform
 .
  If the covering number is finite, we can focus on a finite set of functions
  
-\begin_inset Formula $\left\{ g\left(x,\theta_{\ell}\right)\right\} _{\ell=1}^{m}$
+\begin_inset Formula $\left\{ g\left(\cdot,\theta_{\ell}\right)\right\} _{\ell=1}^{m}$
 \end_inset
 
-, and those 
-\begin_inset Formula $g\left(x,\theta\right)$
+.
+ Those 
+\begin_inset Formula $g\left(\cdot,\theta\right)$
 \end_inset
 
  in the 
@@ -412,11 +442,11 @@ It is straightforward to generalize from pointwise convergence to uniform
 \end_inset
 
 -neighborhood of 
-\begin_inset Formula $g\left(x,\theta_{\ell}\right)$
+\begin_inset Formula $g\left(\cdot,\theta_{\ell}\right)$
 \end_inset
 
  will behave similarly to the center 
-\begin_inset Formula $g\left(x,\theta_{\ell}\right)$
+\begin_inset Formula $g\left(\cdot,\theta_{\ell}\right)$
 \end_inset
 
 .
@@ -432,7 +462,7 @@ If a pair of functions
 \end_inset
 
  satisfies 
-\begin_inset Formula $\left\Vert u\left(x\right)-l\left(x\right)\right\Vert _{Q,r}\leq\varepsilon$
+\begin_inset Formula $\left\Vert u-l\right\Vert _{Q,r}\leq\varepsilon$
 \end_inset
 
  and 
@@ -440,7 +470,7 @@ If a pair of functions
 \end_inset
 
 , we call 
-\begin_inset Formula $\left(l\left(x\right),u\left(x\right)\right)$
+\begin_inset Formula $\left(l,u\right)$
 \end_inset
 
  an 
@@ -465,24 +495,37 @@ bracketing number
 \end_inset
 
 , is the smallest number of brackets such that for each 
-\begin_inset Formula $g\left(x,\theta\right)\in\mathcal{G}$
+\begin_inset Formula $g\left(\cdot,\theta\right)\in\mathcal{G}$
 \end_inset
 
  there exists a bracket 
-\begin_inset Formula $\left(l_{\ell}(x),u_{\ell}(x)\right)$
+\begin_inset Formula $\left(l_{\ell},u_{\ell}\right)$
 \end_inset
 
- satisfying
-\begin_inset Formula $l_{\ell}(x)\leq g\left(x\right)\leq u_{\ell}(x).$
+ satisfying 
+\begin_inset Formula $l_{\ell}(x)\leq g\left(x,\theta\right)\leq u_{\ell}(x).$
 \end_inset
 
+ The upper bracket 
+\begin_inset Formula $u_{\ell}$
+\end_inset
+
+ or the lower bracket 
+\begin_inset Formula $l_{\ell}$
+\end_inset
+
+ does not have to in 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+.
  
 \end_layout
 
 \begin_layout Example
 The covering number and the bracketing number on the functional space are
  somewhat abstract.
- Let us cook up a trivial example on the unit real interval 
+ Let us use a trivial example of the unit real interval 
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
@@ -499,9 +542,9 @@ The covering number and the bracketing number on the functional space are
 \begin_inset Formula $0.1$
 \end_inset
 
--neighborhoods of these points will cover the entire unit interval.
+-neighborhoods of these points covers the entire unit interval.
  The covering number in this case is 5.
- Regarding bracketing, we have 
+ Regarding bracketing, 
 \begin_inset Formula $\left[0,0.1\right],[0.1,0.2],\ldots,,[0.9,1]$
 \end_inset
 
@@ -512,7 +555,11 @@ The covering number and the bracketing number on the functional space are
 
 \begin_layout Standard
 Bracketing number is more restrictive than covering number.
- Consider a 
+ For any fixed 
+\begin_inset Formula $r$
+\end_inset
+
+, we consider a 
 \begin_inset Formula $2\varepsilon$
 \end_inset
 
@@ -526,7 +573,7 @@ Bracketing number is more restrictive than covering number.
 \end_inset
 
  decomposes the 
-\begin_inset Formula $\varepsilon$
+\begin_inset Formula $2\varepsilon$
 \end_inset
 
 -bracket into two 
@@ -534,7 +581,7 @@ Bracketing number is more restrictive than covering number.
 \end_inset
 
 -brackets 
-\begin_inset Formula $[l,\frac{l+u}{2}$
+\begin_inset Formula $[l,\frac{l+u}{2}]$
 \end_inset
 
  and 
@@ -542,7 +589,7 @@ Bracketing number is more restrictive than covering number.
 \end_inset
 
  and thus 
-\begin_inset Formula $l,u\in\mathcal{N}_{\varepsilon,Q}\left(\frac{l+u}{2}\right)$
+\begin_inset Formula $l,u\in\mathcal{N}_{\varepsilon,r,Q}\left(\frac{l+u}{2}\right)$
 \end_inset
 
 .
@@ -555,7 +602,7 @@ Bracketing number is more restrictive than covering number.
 \end_inset
 
 , it must fall into 
-\begin_inset Formula $\mathcal{N}_{\varepsilon,Q}\left(\frac{l+u}{2}\right)$
+\begin_inset Formula $\mathcal{N}_{\varepsilon,r,Q}\left(\frac{l+u}{2}\right)$
 \end_inset
 
 .
@@ -587,7 +634,7 @@ uniform law of large numbers (ULLN)
  if
 \begin_inset Formula 
 \[
-\sup_{\theta\in\Theta}\left|\bar{g}_{n}\left(\theta\right)-E\left[g\left(x_{i},\theta\right)\right]\right|\stackrel{p}{\to}0.
+\sup_{\theta\in\Theta}\left|\bar{g}_{n}\left(\theta\right)-E\left[g\left(X_{i},\theta\right)\right]\right|\stackrel{p}{\to}0.
 \]
 
 \end_inset
@@ -596,8 +643,7 @@ uniform law of large numbers (ULLN)
 \end_layout
 
 \begin_layout Definition
-The sufficient condition for ULLN is as follows.
- 
+Below is a set of sufficient conditions for ULLN.
 \end_layout
 
 \begin_layout Theorem
@@ -623,7 +669,7 @@ ULLN
 \begin_layout Theorem
 1.
  
-\begin_inset Formula $x_{i}$
+\begin_inset Formula $X_{i}$
 \end_inset
 
  are i.i.d.
@@ -632,7 +678,7 @@ ULLN
 \begin_layout Theorem
 2.
  
-\begin_inset Formula $E\left[G\left(x\right)\right]<\infty$
+\begin_inset Formula $E\left[G\left(X\right)\right]<\infty$
 \end_inset
 
 .
@@ -672,25 +718,25 @@ ULLN
 \begin_inset Formula $\Theta$
 \end_inset
 
- is compact and at every 
-\begin_inset Formula $\theta\in\Theta$
-\end_inset
-
- we have 
+ is compact and 
 \begin_inset Formula 
 \[
-P\left\{ \omega\in\Omega:g\left(X\left(\omega\right),\theta\right)\ \text{is continuous in }\theta\right\} =1.
+P\left\{ \omega\in\Omega:g\left(X\left(\omega\right),\theta\right)\ \text{is continuous in }\theta\right\} =1
 \]
 
 \end_inset
 
+at every 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Standard
 Condition 1 is for simplicity.
  Condition 2 allows us to invoke dominated convergence theorem.
- Condition 3(i) and (ii) are about finite covering number or bracketing
+ Condition 3(i) and (ii) are about finite covering number and bracketing
  number, respectively.
  See Newey and MacFadden (1994, Handbook of Econometrics, Chapter 36)'s
  Lemma 2.4 for Condition 3(iii).
@@ -698,7 +744,13 @@ Condition 1 is for simplicity.
 \end_layout
 
 \begin_layout Example
-We verify that of ECDF satisfies Theorem 
+\begin_inset CommandInset label
+LatexCommand label
+name "eg:bracket"
+
+\end_inset
+
+ We verify that of ECDF satisfies Theorem 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:ULLN"
@@ -718,11 +770,15 @@ noprefix "false"
 \end_inset
 
 , which is integrable as 
-\begin_inset Formula $E_{Q}\left[G\left(x\right)\right]=1$
+\begin_inset Formula $E\left[G\left(x\right)\right]=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $Q$
 \end_inset
 
 .
- Let's construct a 
+ Next, we construct an 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
@@ -777,11 +833,11 @@ noprefix "false"
 \end_inset
 
 , which form 8 brackets 
-\begin_inset Formula $h_{\ell}(x)=\mathbb{I}\left(x\leq q_{\ell}\right)$
+\begin_inset Formula $[h_{\ell-1},h_{\ell}]=[\mathbb{I}\left(x\leq q_{\ell-1}\right),\mathbb{I}\left(x\leq q_{\ell}\right)]$
 \end_inset
 
 , for 
-\begin_inset Formula $\ell=0,1,\ldots8$
+\begin_inset Formula $\ell=1,\ldots8$
 \end_inset
 
 .
@@ -793,9 +849,13 @@ noprefix "false"
 \begin_inset Formula $h_{8}=1$
 \end_inset
 
+ are outside of 
+\begin_inset Formula $\left\{ \mathbb{I}\left(x\leq\theta\right):\theta\in\mathbb{R}\right\} $
+\end_inset
+
 ).
- It is easy to check each 
-\begin_inset Formula $[h_{\ell},h_{\ell+1}]$
+ It is easy to check that each 
+\begin_inset Formula $[h_{\ell-1},h_{\ell}]$
 \end_inset
 
  is a 1/8-
@@ -821,8 +881,17 @@ noprefix "false"
 \end_layout
 
 \begin_layout Example
-Since the bracketing system in the above example is independent of the underlyin
-g probability distribution 
+Since the bracketing system in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eg:bracket"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is independent of the underlying probability distribution 
 \begin_inset Formula $Q$
 \end_inset
 
@@ -841,15 +910,23 @@ Glivenko-Cantelli Theorem
 \end_inset
 
  If 
-\begin_inset Formula $x_{i}$
+\begin_inset Formula $X_{i}$
 \end_inset
 
- is i.i.d, then 
+ is iid, then 
 \begin_inset Formula $\sup_{\theta\in\mathbb{R}}\left|F_{n}\left(\theta\right)-F\left(\theta\right)\right|\stackrel{p}{\to}0$
 \end_inset
 
 .
  
+\end_layout
+
+\begin_layout Section
+Functional Central Limit Theorem 
+\end_layout
+
+\begin_layout Standard
+To be continued on Feb 7.
 \end_layout
 
 \begin_layout Standard
