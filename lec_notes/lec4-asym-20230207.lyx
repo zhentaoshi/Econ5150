@@ -1,0 +1,395 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+M-Estimators
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\rho_{i}\left(\theta\right)=\rho\left(z_{i},\theta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ is a date vector.
+\end_layout
+
+\begin_layout Standard
+Sample criterion is an average of 
+\begin_inset Formula $\rho_{i}\left(\theta\right)$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+S_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\rho_{i}\left(\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+m-estimator: 
+\begin_inset Formula 
+\[
+\hat{\theta}_{n}=\arg\min_{\theta\in\Theta}S_{n}\left(\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+include many examples: OLS, MLE, NLS, least absolute deviation (LAD)
+\end_layout
+
+\begin_layout Section
+Identification
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S\left(\theta\right)=E\left[S_{n}\left(\theta\right)\right]=E\left[\rho_{i}\left(\theta\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we say 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is identified if 
+\begin_inset Formula $\theta_{0}=\arg\min_{\theta\in\Theta}S\left(\theta\right)$
+\end_inset
+
+ is unique.
+\end_layout
+
+\begin_layout Section
+Consistency
+\end_layout
+
+\begin_layout Standard
+For consistent estimation, we need ULLN.
+\end_layout
+
+\begin_layout Standard
+The graph has been given before.
+\end_layout
+
+\begin_layout Theorem
+1.
+ ULLN: 
+\begin_inset Formula $\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\stackrel{p}{\to}0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+2.
+ Identification: for all 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\inf_{\theta:\left|\theta-\theta_{0}\right|>\varepsilon}S\left(\theta\right)>S\left(\theta_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+equivalently, for any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, 
+\begin_inset Formula $\exists\delta:\delta\left(\varepsilon\right)$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula $\inf_{\theta\in\Theta\backslash N_{\delta}\left(\theta_{0}\right)}S\left(\theta\right)-S\left(\theta_{0}\right)>\delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+then 
+\begin_inset Formula $\hat{\theta}\stackrel{p}{\to}\theta_{0}$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $\begin{array}{cl}
+Pr\left(\left|\hat{\theta}-\theta\right|>\varepsilon\right) & \leq Pr\left(S\left(\theta_{0}\right)-S\left(\hat{\theta}\right)>\delta\left(\varepsilon\right)\right)\\
+ & \leq Pr\left(S\left(\theta_{0}\right)-S_{n}\left(\theta_{0}\right)+S_{n}\left(\theta_{0}\right)-S_{n}\left(\hat{\theta}\right)+S_{n}\left(\hat{\theta}\right)-S\left(\hat{\theta}\right)>\delta\left(\varepsilon\right)\right)\\
+ & \leq Pr\left(\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\delta\right)\to0
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Asymptotic Normality
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{\psi}\left(\theta\right)=\frac{\partial}{\partial\theta}S\left(\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By Taylor expansion,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0=\bar{\psi}\left(\hat{\theta}\right)=\bar{\psi}\left(\theta_{0}\right)+\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\dot{\theta}\right)\left(\hat{\theta}-\theta_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Rearrange,
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\theta}-\theta\right)=-\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\dot{\theta}\right)\right]^{-1}\sqrt{n}\bar{\psi}\left(\theta_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $\dot{\theta}$
+\end_inset
+
+ lies in 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+, and 
+\begin_inset Formula $\hat{\theta}\stackrel{p}{\to}\theta_{0}$
+\end_inset
+
+, by CMT
+\begin_inset Formula 
+\[
+\frac{\partial^{2}}{\partial\theta\partial\theta'}S\left(\dot{\theta}\right)\stackrel{p}{\to}\frac{\partial^{2}}{\partial\theta\partial\theta'}S\left(\theta_{0}\right)=Q
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\frac{\partial^{2}}{\partial\theta\partial\theta'}S\left(\cdot\right)$
+\end_inset
+
+ is continuous, by identification
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E\left[\bar{\psi}\left(\theta_{0}\right)\right]=E\left[\psi\left(\theta_{0}\right)\right]=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sqrt{n}\bar{\psi}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,E\left[\psi_{i}\left(\theta_{0}\right)\psi_{i}'\left(\theta_{0}\right)\right]\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,Q^{-1}\Omega Q^{-1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ Feb 7, 2023.
+   Transcribed by Shu Shen.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

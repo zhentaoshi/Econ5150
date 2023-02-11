@@ -926,7 +926,480 @@ Functional Central Limit Theorem
 \end_layout
 
 \begin_layout Standard
-To be continued on Feb 7.
+The past CLT are pointwise about 
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
+\end_inset
+
+ for a fixed 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Now 
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
+\end_inset
+
+ is a process indexed by 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ We study it as a function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ jointly.
+\end_layout
+
+\begin_layout Standard
+Uniform metric 
+\begin_inset Formula $\rho\left(\nu_{1},\nu_{2}\right)=\sup_{\theta\in\Theta}\left|\left(\nu_{1}-\nu_{2}\right)\left(\theta\right)\right|$
+\end_inset
+
+ to measure the distance, where 
+\begin_inset Formula $\nu_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\nu_{2}$
+\end_inset
+
+ are non-random.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $V$
+\end_inset
+
+ be the class of processes 
+\begin_inset Formula $\nu:\Theta\to\mathbb{R}$
+\end_inset
+
+.
+ It is a set of functions.
+\end_layout
+
+\begin_layout Definition
+Convergence in distribution: 
+\begin_inset Formula $\nu_{n}\stackrel{d}{\to}\nu$
+\end_inset
+
+ if for every bounded, continuous 
+\begin_inset Formula $f:V\to\mathbb{R}$
+\end_inset
+
+ we have 
+\begin_inset Formula $E\left[f\left(\nu_{n}\right)\right]\to E\left[f\left(\nu\right)\right]$
+\end_inset
+
+ where continuity is defined with respect to the uniform metric.
+\end_layout
+
+\begin_layout Example
+Consider the ECDF example
+\begin_inset Formula 
+\[
+\text{\ensuremath{\nu_{n}=j_{n}\left(F_{n}\left(\theta\right)-F\left(\theta\right)\right)}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+[diagram]
+\end_layout
+
+\begin_layout Example
+one realization:
+\end_layout
+
+\begin_layout Example
+A candidate 
+\begin_inset Formula $f$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+f\left(\nu_{n}\left(\theta\right)\right)=\int_{\left[0,1\right]}\left(\left|\nu_{n}\left(\theta\right)\right|\wedge M\right){\rm d}Q
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+where the constant 
+\begin_inset Formula $M$
+\end_inset
+
+ and the integration domain 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ set the upper bound 
+\begin_inset Formula $f\left(\nu_{n}\left(\theta\right)\right)\leq M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Another function can be
+\begin_inset Formula 
+\[
+f\left(\nu_{n}\left(\theta\right)\right)=\int\left(\nu_{n}\left(\theta\right)\wedge M\right)^{2}{\rm d}P_{normal}\left(0,1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+where 
+\begin_inset Formula $P_{normal}\left(0,1\right)$
+\end_inset
+
+ is the probability distribution of a standard normal distribution.
+\end_layout
+
+\begin_layout Definition
+A random function 
+\begin_inset Formula $S_{n}\left(\theta\right)$
+\end_inset
+
+ is 
+\series bold
+stochastic equicontinuous
+\series default
+ if for each pair of 
+\begin_inset Formula $\varepsilon,\eta>0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+, s.t.
+\begin_inset Formula 
+\[
+\limsup_{n\to\infty}P_{r}\left(\sup_{\theta\in\Theta}\sup_{\theta'\in N_{\delta}\left(\theta\right)}\left\Vert S_{n}\left(\theta\right)-S_{n}\left(\theta'\right)\right\Vert >\eta\right)\leq\varepsilon
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+where 
+\begin_inset Formula $N_{\delta}\left(\theta\right)$
+\end_inset
+
+ is a neighbor of 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+.
+ That is 
+\begin_inset Formula $N_{\delta}\left(\theta\right)=\left\{ \theta'\in\Theta:\left\Vert \theta-\theta'\right\Vert \leq\delta\right\} $
+\end_inset
+
+.
+ (
+\begin_inset Formula $\left\Vert \cdot\right\Vert $
+\end_inset
+
+ is the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+-norm)
+\end_layout
+
+\begin_layout Standard
+[diagram]
+\end_layout
+
+\begin_layout Standard
+[diagram]
+\end_layout
+
+\begin_layout Standard
+If far paths have jumps, the prob associated with the jumps are small enough.
+ It's an asymptotic and probabilistic generalization of uniform continuity.
+\end_layout
+
+\begin_layout Theorem
+FCLT
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\nu_{n}\stackrel{d}{\to}\nu$
+\end_inset
+
+ over 
+\begin_inset Formula $\Theta=U_{j=1}^{J}\Theta_{j}$
+\end_inset
+
+ if and only if 
+\end_layout
+
+\begin_layout Theorem
+1.
+ 
+\begin_inset Formula $\left(\nu_{n}\left(\theta_{1}\right),\nu_{n}\left(\theta_{2}\right),...,\nu_{n}\left(\theta_{m}\right)\right)\stackrel{d}{\to}\left(\nu\left(\theta_{1}\right),\nu\left(\theta_{2}\right),...,\nu\left(\theta_{m}\right)\right)$
+\end_inset
+
+ for every finite set 
+\begin_inset Formula $\theta_{1},\theta_{2},...,\theta_{m}\in\Theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+2.
+ 
+\begin_inset Formula $\nu_{n}$
+\end_inset
+
+ is stochastic equicontinuous over each 
+\begin_inset Formula $\Theta_{1},\Theta_{2},...,\Theta_{J}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Stochastic equicontinuity if difficult to verify, a sufficient condition
+ is related to bracket integral
+\begin_inset Formula 
+\[
+J_{\left[\;\right]}\left(\delta,L_{2}\left(Q\right)\right)=\int_{0}^{\delta}\sqrt{\log N_{\left[\;\right]}\left(u,L_{2}\left(Q\right)\right)}{\rm d}u
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+If 
+\begin_inset Formula $N_{\left[\;\right]}\left(u,L_{2}\left(Q\right)\right)=u^{-\rho}$
+\end_inset
+
+ for some 
+\begin_inset Formula $\rho>0$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Example
+then 
+\begin_inset Formula $\sqrt{\log N_{\left[\;\right]}\left(u,L_{2}\left(Q\right)\right)}=\rho^{1/2}\left(\log\frac{1}{u}\right)^{1/2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+As 
+\begin_inset Formula $u\to\infty$
+\end_inset
+
+, 
+\begin_inset Formula $\log\frac{1}{u}\to\infty$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\int_{0}^{1}\sqrt{\log\frac{1}{u}}{\rm d}u=\frac{\sqrt{\pi}}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
+\end_inset
+
+ is stochastically equicontinuous if 
+\begin_inset Formula $J_{\left[\;\right]}\left(1,L_{2}\left(Q\right)\right)<\infty$
+\end_inset
+
+, or 
+\begin_inset Formula $J_{2}\left(1\right)=\int_{0}^{1}\sqrt{\log N_{2}\left(u,Q\right)}{\rm d}u<\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[G^{2}\left(x\right)\right]<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Donsker's Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g\left(X,\theta\right)=\mathbb{I}\left(X\leq\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g\left(X,\theta\right)=\begin{cases}
+1 & with\text{\ensuremath{\enskip probability\ F\left(\theta\right)}}\\
+0 & with\text{\ensuremath{\enskip probability\ 1-F\left(\theta\right)}}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u_{i}\left(\theta\right)=\mathbb{I}\left(X\leq\theta\right)-F\left(\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+var\left(u_{i}\left(\theta\right)\right)=\left(1-F\left(\theta\right)\right)F\left(\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{cl}
+Cov\left(u_{i}\left(\theta_{1}\right),u_{i}\left(\theta_{2}\right)\right) & =E\left[\mathbb{I}\left(X\leq\theta_{1}\right)\mathbb{I}\left(X\leq\theta_{2}\right)\right]-F\left(\theta_{1}\right)F\left(\theta_{2}\right)\\
+ & =F\left(\theta_{1}\wedge\theta_{2}\right)-F\left(\theta_{1}\right)F\left(\theta_{2}\right)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $u_{i}\left(\theta\right)$
+\end_inset
+
+ is i.i.d
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\nu_{n}\left(\theta_{1}\right)\\
+\nu_{n}\left(\theta_{2}\right)
+\end{array}\right)=\sqrt{n}\sum_{i=1}^{n}\left(\begin{array}{c}
+u_{i}\left(\theta_{1}\right)\\
+u_{i}\left(\theta_{2}\right)
+\end{array}\right)\stackrel{d}{\to}N\left(\left(\begin{array}{c}
+0\\
+0
+\end{array}\right),\left(\begin{array}{cc}
+F\left(\theta_{1}\right)\left(1-F\left(\theta_{1}\right)\right) & F\left(\theta_{1}\wedge\theta_{2}\right)-F\left(\theta_{1}\right)F\left(\theta_{2}\right)\\
+F\left(\theta_{1}\wedge\theta_{2}\right)-F\left(\theta_{1}\right)F\left(\theta_{2}\right) & F\left(\theta_{2}\right)\left(1-F\left(\theta_{2}\right)\right)
+\end{array}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The joint distribution is satisfied for any finity 
+\begin_inset Formula $\theta_{1},\theta_{2},...,\theta_{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the special case of 
+\begin_inset Formula $X\sim Uniform\left(0,1\right)$
+\end_inset
+
+, the above limit distribution becomes 
+\begin_inset Formula 
+\[
+N\left(\left(\begin{array}{c}
+0\\
+0
+\end{array}\right),\left(\begin{array}{cc}
+\theta_{1}\left(1-\theta_{1}\right) & \theta_{1}\wedge\theta_{2}-\theta_{1}\theta_{2}\\
+\theta_{1}\wedge\theta_{2}-\theta_{1}\theta_{2} & \theta_{2}\left(1-\theta_{2}\right)
+\end{array}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This special process is called 
+\series bold
+Brownian bridge
+\series default
+, denoted as 
+\begin_inset Formula 
+\[
+\widetilde{B}\left(r\right)=B\left(r\right)-rB\left(1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $B\left(r\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $r\in\left[0,1\right]$
+\end_inset
+
+ is a Brownian motion on the unit interval.
 \end_layout
 
 \begin_layout Standard
@@ -945,7 +1418,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Jan 31, 2022.
+ Jan 31, 2023.
    Transcribed by Shu Shen.}
 \end_layout
 
