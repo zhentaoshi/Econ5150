@@ -1,0 +1,588 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Empirical Process Theory - Exercises
+\end_layout
+
+\begin_layout Right Address
+Shu Shen
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 18.1 Let 
+\begin_inset Formula $g\left(x,\theta\right)=\mathbb{I}\left(x\leq\theta\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\in\left[0,1\right]$
+\end_inset
+
+ and assume 
+\begin_inset Formula $X\thicksim F=\mathcal{U}\left[0,1\right]$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $N_{1}\left(\varepsilon,F\right)$
+\end_inset
+
+ be 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ packing numbers.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(a) Show that 
+\begin_inset Formula $N_{1}\left(\varepsilon,F\right)$
+\end_inset
+
+ equal the packing numbers constructed with respect to the Euclidean metric
+ 
+\begin_inset Formula $d\left(\theta_{1},\theta_{2}\right)=\left|\theta_{1}-\theta_{2}\right|$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(b) Verify that 
+\begin_inset Formula $N_{1}\left(\varepsilon,F\right)\leq\left\lceil \frac{1}{\varepsilon}\right\rceil $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+18.1
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(a) Distance: 
+\begin_inset Formula 
+\[
+\begin{array}{cl}
+\left\Vert g\left(x,\theta_{1}\right)-g\left(x,\theta_{2}\right)\right\Vert _{F,1} & =E_{F}\left[\left\Vert g\left(x,\theta_{1}\right)-g\left(x,\theta_{2}\right)\right\Vert \right]\\
+ & =\int\left\Vert g\left(x,\theta_{1}\right)-g\left(x,\theta_{2}\right)\right\Vert {\rm d}F\\
+ & =\int\left|\mathbb{I}\left(x\leq\theta_{1}\right)-\mathbb{I}\left(x\leq\theta_{2}\right)\right|{\rm d}F\\
+ & =\left|\int\mathbb{I}\left(x\leq\theta_{1}\right){\rm d}F-\int\mathbb{I}\left(x\leq\theta_{2}\right){\rm d}F\right|\\
+ & =\left|F\left(\theta_{1}\right)-F\left(\theta_{2}\right)\right|\\
+ & =\left|\theta_{1}-\theta_{2}\right|=d\left(\theta_{1},\theta_{2}\right)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(b) Set 
+\begin_inset Formula $N=\left\lceil \frac{1}{\varepsilon}\right\rceil $
+\end_inset
+
+, 
+\begin_inset Formula $\theta_{j}=\frac{j}{N}$
+\end_inset
+
+, 
+\begin_inset Formula $l_{j}\left(x\right)=\mathbb{I}\left(x\leq\theta_{j+1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{j}\left(x\right)=\mathbb{I}\left(x\leq\theta_{j}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+The pair 
+\begin_inset Formula $\left[l_{j},u_{j}\right]$
+\end_inset
+
+ brackets 
+\begin_inset Formula $g\left(x,\theta\right)=\mathbb{I}\left(x\leq\theta\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta_{j}<\theta\leq\theta_{j+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\begin{array}{cl}
+\left\Vert u_{j}\left(x\right)-l_{j}\left(x\right)\right\Vert _{F,1}=\left\Vert g\left(x,\theta_{j+1}\right)-g\left(x,\theta_{j}\right)\right\Vert _{F,1} & =\left|\theta_{j+1}-\theta_{j}\right|=\left|\frac{j+1}{N}-\frac{j}{N}\right|=\frac{1}{\left\lceil \frac{1}{\varepsilon}\right\rceil }\leq2\varepsilon\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Thus 
+\begin_inset Formula $N_{[\,]}\left(2\varepsilon,L_{1}\left(Q\right)\right)\leq N=\left\lceil \frac{1}{\varepsilon}\right\rceil $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+From the relationship between bracketing and covering numbers,
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+N_{1}\left(\varepsilon,Q\right)\leq N_{[\,]}\left(2\varepsilon,L_{1}\left(Q\right)\right)\leq\left\lceil \frac{1}{\varepsilon}\right\rceil 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 18.3 Define 
+\begin_inset Formula $\nu_{n}\left(\theta\right)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\in\left[0,1\right]$
+\end_inset
+
+ where 
+\begin_inset Formula $E\left[X\right]=0$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[X^{2}\right]=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(a) Show that 
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
+\end_inset
+
+ is stochastically equicontinuous.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(b) Find the stochastic process 
+\begin_inset Formula $\nu\left(\theta\right)$
+\end_inset
+
+ which has asymptotic finite dimensional distributions of 
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(c) Show that 
+\begin_inset Formula $\nu_{n}\stackrel{d}{\to}\nu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+18.3
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(a) 
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]=F\left(\theta\right)\times E\left[X\right]+\left(1-\text{\ensuremath{F\left(\theta\right)}}\right)\times0=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+\begin_inset Formula 
+\[
+\nu_{n}\left(\theta\right)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left(X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)-E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+To show that 
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
+\end_inset
+
+ is stochastically equicontinuous, we need to show that 
+\begin_inset Formula $J_{\left[\;\right]}\left(1,L_{2}\left(F\right)\right)<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+A sufficient condition for 
+\begin_inset Formula $J_{\left[\;\right]}\left(1,L_{2}\left(F\right)\right)<\infty$
+\end_inset
+
+ is that 
+\begin_inset Formula $N_{[\,]}\left(\varepsilon,L_{2}\left(F\right)\right)\leq O\left(\varepsilon^{-\rho}\right)$
+\end_inset
+
+ for some 
+\begin_inset Formula $0<\rho<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+Set 
+\begin_inset Formula $N=2\varepsilon^{-2}$
+\end_inset
+
+, 
+\begin_inset Formula $\theta_{j}=f\left(\frac{j}{N}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $l_{j}\left(x\right)=x\mathbb{I}\left(x\leq\theta_{j+1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{j}\left(x\right)=x\mathbb{I}\left(x\leq\theta_{j}\right)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+where 
+\begin_inset Formula $f\left(\frac{j}{N}\right)$
+\end_inset
+
+ is the quantile function of a distribution 
+\begin_inset Formula $F\left(x\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $\frac{j}{N}\leq F\left(\theta_{j}\right)<\frac{j+1}{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+The pair 
+\begin_inset Formula $\left[l_{j},u_{j}\right]$
+\end_inset
+
+ brackets 
+\begin_inset Formula $g\left(x,\theta\right)=x\mathbb{I}\left(x\leq\theta\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta_{j}<\theta\leq\theta_{j+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\begin{array}{c}
+\left\Vert u_{j}\left(x\right)-l_{j}\left(x\right)\right\Vert _{Q,2}=\left(F\left(\theta_{j+1}\right)-F\left(\theta_{j}\right)\right)^{1/2}\leq\left(\frac{j+2}{N}-\frac{j}{N}\right)^{1/2}=\left(\frac{2}{N}\right)^{1/2}=\varepsilon\end{array}\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Thus 
+\begin_inset Formula $N_{[\,]}\left(\varepsilon,L_{r}\left(Q\right)\right)\leq N=2\varepsilon^{-2}=O\left(\varepsilon^{-\rho}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+Therefore, 
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
+\end_inset
+
+ is stochastically equicontinuous.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(b) 
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+u_{i}\left(\theta\right)=X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)-E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]=X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\begin{array}{cl}
+var\left[u_{i}\left(\theta\right)\right]=var\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right] & =E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]^{2}-E^{2}\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]\\
+ & =E\left[X_{i}^{2}\mathbb{I}\left(X_{i}\leq\theta\right)\right]\\
+ & =F\left(\theta\right)\times E\left[X^{2}\right]+\left(1-\text{F\left(\theta\right)}\right)\times0=F\left(\theta\right)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+By the CLT
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\nu_{n}\left(\theta\right)\stackrel{d}{\to}N\left(0,F\left(\theta\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(c) 
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\begin{array}{cl}
+Cov\left(u_{i}\left(\theta_{1}\right),u_{i}\left(\theta_{2}\right)\right) & =Cov\left(X\mathbb{I}\left(X\leq\theta_{1}\right),X\mathbb{I}\left(X\leq\theta_{2}\right)\right)\\
+ & =E\left[X^{2}\mathbb{I}\left(X\leq\theta_{1}\right)\mathbb{I}\left(X\leq\theta_{2}\right)\right]\\
+ & =F\left(\theta_{1}\wedge\theta_{2}\right)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Since 
+\begin_inset Formula $u_{i}\left(\theta\right)$
+\end_inset
+
+ is i.i.d
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\nu_{n}\left(\theta_{1}\right)\\
+\nu_{n}\left(\theta_{2}\right)
+\end{array}\right)=\sqrt{n}\sum_{i=1}^{n}\left(\begin{array}{c}
+X\mathbb{I}\left(X\leq\theta_{1}\right)\\
+X\mathbb{I}\left(X\leq\theta_{2}\right)
+\end{array}\right)\stackrel{d}{\to}N\left(\left(\begin{array}{c}
+0\\
+0
+\end{array}\right),\left(\begin{array}{cc}
+F\left(\theta_{1}\right) & F\left(\theta_{1}\wedge\theta_{2}\right)\\
+F\left(\theta_{1}\wedge\theta_{2}\right) & F\left(\theta_{2}\right)
+\end{array}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+The joint distribution is satisfied for any finity 
+\begin_inset Formula $\theta_{1},\theta_{2},...,\theta_{m}$
+\end_inset
+
+, so 
+\begin_inset Formula $\left(\nu_{n}\left(\theta_{1}\right),\nu_{n}\left(\theta_{2}\right),...,\nu_{n}\left(\theta_{m}\right)\right)\stackrel{d}{\to}\left(\nu\left(\theta_{1}\right),\nu\left(\theta_{2}\right),...,\nu\left(\theta_{m}\right)\right)$
+\end_inset
+
+ for every finite set 
+\begin_inset Formula $\theta_{1},\theta_{2},...,\theta_{m}\in\theta\in\left[0,1\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Since 
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
+\end_inset
+
+ is stochastically equicontinuous, 
+\begin_inset Formula $\nu_{n}\stackrel{d}{\to}\nu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
