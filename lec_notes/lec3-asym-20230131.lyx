@@ -926,7 +926,7 @@ Functional Central Limit Theorem
 \end_layout
 
 \begin_layout Standard
-The past CLT are pointwise about 
+In earlier lectures, CLT is pointwise about 
 \begin_inset Formula $\nu_{n}\left(\theta\right)$
 \end_inset
 
@@ -935,52 +935,45 @@ The past CLT are pointwise about
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Now 
+ In this lecture, we consider 
 \begin_inset Formula $\nu_{n}\left(\theta\right)$
 \end_inset
 
- is a process indexed by 
+ as a process indexed by 
 \begin_inset Formula $\theta$
 \end_inset
 
-.
- We study it as a function of 
-\begin_inset Formula $\theta$
-\end_inset
-
- jointly.
+ as an entity.
 \end_layout
 
 \begin_layout Standard
-Uniform metric 
-\begin_inset Formula $\rho\left(\nu_{1},\nu_{2}\right)=\sup_{\theta\in\Theta}\left|\left(\nu_{1}-\nu_{2}\right)\left(\theta\right)\right|$
+For two non-random processes 
+\begin_inset Formula $\nu_{1}(\theta)$
 \end_inset
 
- to measure the distance, where 
-\begin_inset Formula $\nu_{1}$
+ and 
+\begin_inset Formula $\nu_{2}(\theta)$
 \end_inset
 
-, 
-\begin_inset Formula $\nu_{2}$
+, we define a 
+\series bold
+uniform metric
+\series default
+ 
+\begin_inset Formula $\rho\left(\nu_{1},\nu_{2}\right)=\sup_{\theta\in\Theta}\left|\nu_{1}(\theta)-\nu_{2}(\theta)\right|$
 \end_inset
 
- are non-random.
-\end_layout
-
-\begin_layout Standard
-Let 
+ as a measure of the distance.
+ Let 
 \begin_inset Formula $V$
 \end_inset
 
- be the class of processes 
+ be a class of processes 
 \begin_inset Formula $\nu:\Theta\to\mathbb{R}$
 \end_inset
 
 .
- It is a set of functions.
+ 
 \end_layout
 
 \begin_layout Definition
@@ -992,50 +985,35 @@ Convergence in distribution:
 \begin_inset Formula $f:V\to\mathbb{R}$
 \end_inset
 
- we have 
+, we have 
 \begin_inset Formula $E\left[f\left(\nu_{n}\right)\right]\to E\left[f\left(\nu\right)\right]$
 \end_inset
 
- where continuity is defined with respect to the uniform metric.
+, where continuity is defined with respect to the uniform metric.
 \end_layout
 
 \begin_layout Example
 Consider the ECDF example
 \begin_inset Formula 
 \[
-\text{\ensuremath{\nu_{n}=j_{n}\left(F_{n}\left(\theta\right)-F\left(\theta\right)\right)}}
+\text{\ensuremath{\nu_{n}=\sqrt{n}(F_{n}(\theta)-F(\theta))}}
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
-[diagram]
-\end_layout
-
-\begin_layout Example
-one realization:
-\end_layout
-
-\begin_layout Example
-A candidate 
+[diagram] one realization.
+ A candidate 
 \begin_inset Formula $f$
 \end_inset
 
  is 
 \begin_inset Formula 
 \[
-f\left(\nu_{n}\left(\theta\right)\right)=\int_{\left[0,1\right]}\left(\left|\nu_{n}\left(\theta\right)\right|\wedge M\right){\rm d}Q
+f\left(\nu_{n}\left(\theta\right)\right)=\int_{\left[0,1\right]}\left(\left|\nu_{n}\left(\theta\right)\right|\wedge M\right){\rm d}\theta
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
 where the constant 
 \begin_inset Formula $M$
 \end_inset
@@ -1048,27 +1026,25 @@ where the constant
 \begin_inset Formula $f\left(\nu_{n}\left(\theta\right)\right)\leq M$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Example
-Another function can be
+, and the integration is with respect to the Lebesgue measure.
+ Another function can be
 \begin_inset Formula 
 \[
-f\left(\nu_{n}\left(\theta\right)\right)=\int\left(\nu_{n}\left(\theta\right)\wedge M\right)^{2}{\rm d}P_{normal}\left(0,1\right)
+f\left(\nu_{n}\left(\theta\right)\right)=\int\left(\nu_{n}\left(\theta\right)\wedge M\right)^{2}{\rm d}\Phi(\theta)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
 where 
-\begin_inset Formula $P_{normal}\left(0,1\right)$
+\begin_inset Formula $\Phi(\theta)$
 \end_inset
 
- is the probability distribution of a standard normal distribution.
+ is the CDF of 
+\begin_inset Formula $N(0,1)$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Definition
@@ -1088,7 +1064,7 @@ stochastic equicontinuous
 \begin_inset Formula $\delta>0$
 \end_inset
 
-, s.t.
+ such that 
 \begin_inset Formula 
 \[
 \limsup_{n\to\infty}P_{r}\left(\sup_{\theta\in\Theta}\sup_{\theta'\in N_{\delta}\left(\theta\right)}\left\Vert S_{n}\left(\theta\right)-S_{n}\left(\theta'\right)\right\Vert >\eta\right)\leq\varepsilon
@@ -1096,33 +1072,16 @@ stochastic equicontinuous
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Definition
 where 
-\begin_inset Formula $N_{\delta}\left(\theta\right)$
+\begin_inset Formula $N_{\delta}\left(\theta\right)=\left\{ \theta'\in\Theta:\left\Vert \theta-\theta'\right\Vert \leq\delta\right\} $
 \end_inset
 
- is a neighbor of 
+is a neighbor of 
 \begin_inset Formula $\theta\in\Theta$
 \end_inset
 
 .
- That is 
-\begin_inset Formula $N_{\delta}\left(\theta\right)=\left\{ \theta'\in\Theta:\left\Vert \theta-\theta'\right\Vert \leq\delta\right\} $
-\end_inset
-
-.
- (
-\begin_inset Formula $\left\Vert \cdot\right\Vert $
-\end_inset
-
- is the 
-\begin_inset Formula $L_{2}$
-\end_inset
-
--norm)
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1134,15 +1093,22 @@ where
 \end_layout
 
 \begin_layout Standard
-If far paths have jumps, the prob associated with the jumps are small enough.
+If allows paths with jumps, as long as the probability associated with the
+ jumps are small enough.
  It's an asymptotic and probabilistic generalization of uniform continuity.
 \end_layout
 
 \begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 FCLT
 \end_layout
 
-\begin_layout Theorem
+\end_inset
+
+ 
 \begin_inset Formula $\nu_{n}\stackrel{d}{\to}\nu$
 \end_inset
 
@@ -1184,7 +1150,7 @@ Stochastic equicontinuity if difficult to verify, a sufficient condition
  is related to bracket integral
 \begin_inset Formula 
 \[
-J_{\left[\;\right]}\left(\delta,L_{2}\left(Q\right)\right)=\int_{0}^{\delta}\sqrt{\log N_{\left[\;\right]}\left(u,L_{2}\left(Q\right)\right)}{\rm d}u
+J_{\left[\;\right]}\left(\delta,L_{2}\left(Q\right)\right)=\int_{0}^{\delta}\sqrt{\log N_{\left[\;\right]}\left(\varepsilon,L_{2}\left(Q\right)\right)}{\rm d}\varepsilon
 \]
 
 \end_inset
@@ -1194,7 +1160,7 @@ J_{\left[\;\right]}\left(\delta,L_{2}\left(Q\right)\right)=\int_{0}^{\delta}\sqr
 
 \begin_layout Example
 If 
-\begin_inset Formula $N_{\left[\;\right]}\left(u,L_{2}\left(Q\right)\right)=u^{-\rho}$
+\begin_inset Formula $N_{\left[\;\right]}\left(\varepsilon,L_{2}\left(Q\right)\right)=\varepsilon^{-\rho}$
 \end_inset
 
  for some 
@@ -1206,24 +1172,21 @@ If
 
 \begin_layout Example
 then 
-\begin_inset Formula $\sqrt{\log N_{\left[\;\right]}\left(u,L_{2}\left(Q\right)\right)}=\rho^{1/2}\left(\log\frac{1}{u}\right)^{1/2}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-As 
-\begin_inset Formula $u\to\infty$
-\end_inset
-
-, 
-\begin_inset Formula $\log\frac{1}{u}\to\infty$
+\begin_inset Formula $\sqrt{\log N_{\left[\;\right]}\left(\varepsilon,L_{2}\left(Q\right)\right)}=\rho^{1/2}\left(\log\frac{1}{\varepsilon}\right)^{1/2}$
 \end_inset
 
 .
- 
-\begin_inset Formula $\int_{0}^{1}\sqrt{\log\frac{1}{u}}{\rm d}u=\frac{\sqrt{\pi}}{2}$
+ As 
+\begin_inset Formula $\varepsilon\to0$
+\end_inset
+
+, obviously 
+\begin_inset Formula $\log\frac{1}{\varepsilon}\to\infty$
+\end_inset
+
+.
+ The increase is slow in that 
+\begin_inset Formula $\int_{0}^{1}\sqrt{\log\frac{1}{\varepsilon}}{\rm d}\varepsilon=\frac{\sqrt{\pi}}{2}$
 \end_inset
 
 .
@@ -1233,12 +1196,12 @@ As
 \begin_inset Formula $\nu_{n}\left(\theta\right)$
 \end_inset
 
- is stochastically equicontinuous if 
+ is stochastic equicontinuous if 
 \begin_inset Formula $J_{\left[\;\right]}\left(1,L_{2}\left(Q\right)\right)<\infty$
 \end_inset
 
 , or 
-\begin_inset Formula $J_{2}\left(1\right)=\int_{0}^{1}\sqrt{\log N_{2}\left(u,Q\right)}{\rm d}u<\infty$
+\begin_inset Formula $J_{2}\left(1\right)=\int_{0}^{1}\sqrt{\log N_{2}\left(\varepsilon,Q\right)}{\rm d}\varepsilon<\infty$
 \end_inset
 
  and 
@@ -1253,20 +1216,11 @@ Donsker's Theorem
 \end_layout
 
 \begin_layout Standard
+We characterize the distribution of the empirical CDF.
+ Let 
 \begin_inset Formula 
 \[
-g\left(X,\theta\right)=\mathbb{I}\left(X\leq\theta\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-g\left(X,\theta\right)=\begin{cases}
+g\left(X,\theta\right)=\mathbb{I}\left(X\leq\theta\right)=\begin{cases}
 1 & with\text{\ensuremath{\enskip probability\ F\left(\theta\right)}}\\
 0 & with\text{\ensuremath{\enskip probability\ 1-F\left(\theta\right)}}
 \end{cases}
@@ -1274,62 +1228,44 @@ g\left(X,\theta\right)=\begin{cases}
 
 \end_inset
 
+and the demeaned version is 
+\begin_inset Formula $U_{i}\left(\theta\right)=\mathbb{I}\left(X\leq\theta\right)-F\left(\theta\right)$
+\end_inset
 
-\end_layout
+.
+ The variance of 
+\begin_inset Formula $U_{i}(\theta)$
+\end_inset
 
-\begin_layout Standard
+ is 
 \begin_inset Formula 
 \[
-u_{i}\left(\theta\right)=\mathbb{I}\left(X\leq\theta\right)-F\left(\theta\right)
+var\left(U_{i}\left(\theta\right)\right)=\left(1-F\left(\theta\right)\right)F\left(\theta\right)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+and the covariance is 
 \begin_inset Formula 
 \[
-var\left(u_{i}\left(\theta\right)\right)=\left(1-F\left(\theta\right)\right)F\left(\theta\right)
+Cov\left(U_{i}\left(\theta_{1}\right),U_{i}\left(\theta_{2}\right)\right)=E\left[\mathbb{I}\left(X\leq\theta_{1}\right)\mathbb{I}\left(X\leq\theta_{2}\right)\right]-F\left(\theta_{1}\right)F\left(\theta_{2}\right)=F\left(\theta_{1}\wedge\theta_{2}\right)-F\left(\theta_{1}\right)F\left(\theta_{2}\right).
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\begin{array}{cl}
-Cov\left(u_{i}\left(\theta_{1}\right),u_{i}\left(\theta_{2}\right)\right) & =E\left[\mathbb{I}\left(X\leq\theta_{1}\right)\mathbb{I}\left(X\leq\theta_{2}\right)\right]-F\left(\theta_{1}\right)F\left(\theta_{2}\right)\\
- & =F\left(\theta_{1}\wedge\theta_{2}\right)-F\left(\theta_{1}\right)F\left(\theta_{2}\right)
-\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Since 
-\begin_inset Formula $u_{i}\left(\theta\right)$
+\begin_inset Formula $U_{i}\left(\theta\right)$
 \end_inset
 
- is i.i.d
-\end_layout
-
-\begin_layout Standard
+ is i.i.d, 
 \begin_inset Formula 
 \[
 \left(\begin{array}{c}
 \nu_{n}\left(\theta_{1}\right)\\
 \nu_{n}\left(\theta_{2}\right)
-\end{array}\right)=\sqrt{n}\sum_{i=1}^{n}\left(\begin{array}{c}
-u_{i}\left(\theta_{1}\right)\\
-u_{i}\left(\theta_{2}\right)
+\end{array}\right)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left(\begin{array}{c}
+U_{i}\left(\theta_{1}\right)\\
+U_{i}\left(\theta_{2}\right)
 \end{array}\right)\stackrel{d}{\to}N\left(\left(\begin{array}{c}
 0\\
 0
@@ -1341,11 +1277,7 @@ F\left(\theta_{1}\wedge\theta_{2}\right)-F\left(\theta_{1}\right)F\left(\theta_{
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The joint distribution is satisfied for any finity 
+The joint normal distribution can be extended to for any finite 
 \begin_inset Formula $\theta_{1},\theta_{2},...,\theta_{m}$
 \end_inset
 
@@ -1371,10 +1303,6 @@ N\left(\left(\begin{array}{c}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 This special process is called 
 \series bold
 Brownian bridge
