@@ -103,19 +103,16 @@ Motivation
 \end_layout
 
 \begin_layout Standard
-Let 
+Let the loss function be 
 \begin_inset Formula $\rho_{i}\left(\theta\right)=\rho\left(z_{i},\theta\right)$
 \end_inset
 
-, 
+, where 
 \begin_inset Formula $z_{i}$
 \end_inset
 
  is a date vector.
-\end_layout
-
-\begin_layout Standard
-Sample criterion is an average of 
+ The sample criterion is an average of 
 \begin_inset Formula $\rho_{i}\left(\theta\right)$
 \end_inset
 
@@ -127,11 +124,7 @@ S_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\rho_{i}\left(\theta\right)
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-m-estimator: 
+The m-estimator minimizes the sample criterion function: 
 \begin_inset Formula 
 \[
 \hat{\theta}_{n}=\arg\min_{\theta\in\Theta}S_{n}\left(\theta\right)
@@ -139,18 +132,14 @@ m-estimator:
 
 \end_inset
 
-
+The m-estimator includes many examples as special cases.
+ For example, OLS, MLE, NLS, and quantile regressions are all m-estimators.
+ 
 \end_layout
 
 \begin_layout Standard
-include many examples: OLS, MLE, NLS, least absolute deviation (LAD)
-\end_layout
-
-\begin_layout Section
-Identification
-\end_layout
-
-\begin_layout Standard
+For simplicity, in this lecture we work with iid data.
+ Let 
 \begin_inset Formula 
 \[
 S\left(\theta\right)=E\left[S_{n}\left(\theta\right)\right]=E\left[\rho_{i}\left(\theta\right)\right]
@@ -158,11 +147,12 @@ S\left(\theta\right)=E\left[S_{n}\left(\theta\right)\right]=E\left[\rho_{i}\left
 
 \end_inset
 
-
+be the population criterion function.
+ 
 \end_layout
 
-\begin_layout Standard
-we say 
+\begin_layout Definition
+We say 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -171,65 +161,37 @@ we say
 \end_inset
 
  is unique.
+ In other words, for any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ there exists a 
+\begin_inset Formula $\delta=\delta\left(\varepsilon\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\inf_{\theta\in\Theta\backslash N_{\delta}\left(\theta_{0}\right)}S\left(\theta\right)-S\left(\theta_{0}\right)>\varepsilon$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
 Consistency
 \end_layout
 
-\begin_layout Standard
-For consistent estimation, we need ULLN.
-\end_layout
-
-\begin_layout Standard
-The graph has been given before.
-\end_layout
-
 \begin_layout Theorem
-1.
+If 1.
  ULLN: 
 \begin_inset Formula $\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\stackrel{p}{\to}0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Theorem
-2.
- Identification: for all 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, 
-\begin_inset Formula 
-\[
-\inf_{\theta:\left|\theta-\theta_{0}\right|>\varepsilon}S\left(\theta\right)>S\left(\theta_{0}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Theorem
-equivalently, for any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, 
-\begin_inset Formula $\exists\delta:\delta\left(\varepsilon\right)$
-\end_inset
-
- s.t.
+; 2.
  
-\begin_inset Formula $\inf_{\theta\in\Theta\backslash N_{\delta}\left(\theta_{0}\right)}S\left(\theta\right)-S\left(\theta_{0}\right)>\delta$
+\begin_inset Formula $\theta_{0}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Theorem
-then 
+ is identified, then 
 \begin_inset Formula $\hat{\theta}\stackrel{p}{\to}\theta_{0}$
 \end_inset
 
@@ -241,11 +203,22 @@ then
 \end_layout
 
 \begin_layout Proof
-\begin_inset Formula $\begin{array}{cl}
-Pr\left(\left|\hat{\theta}-\theta\right|>\varepsilon\right) & \leq Pr\left(S\left(\theta_{0}\right)-S\left(\hat{\theta}\right)>\delta\left(\varepsilon\right)\right)\\
- & \leq Pr\left(S\left(\theta_{0}\right)-S_{n}\left(\theta_{0}\right)+S_{n}\left(\theta_{0}\right)-S_{n}\left(\hat{\theta}\right)+S_{n}\left(\hat{\theta}\right)-S\left(\hat{\theta}\right)>\delta\left(\varepsilon\right)\right)\\
- & \leq Pr\left(\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\delta\right)\to0
-\end{array}$
+We start from the condition of identification.
+ 
+\begin_inset Formula 
+\begin{align*}
+\Pr\left(|\hat{\theta}-\theta|>\delta\right) & \leq\Pr\left(S(\hat{\theta})-S\left(\theta_{0}\right)>\varepsilon\right)\\
+ & =\Pr\left(S(\hat{\theta})-S_{n}(\hat{\theta})+S_{n}(\hat{\theta})-S_{n}\left(\theta_{0}\right)+S_{n}\left(\theta_{0}\right)-S\left(\theta_{0}\right)>\varepsilon\right)\\
+ & \leq\Pr\left(S(\hat{\theta})-S_{n}(\hat{\theta})+S_{n}\left(\theta_{0}\right)-S\left(\theta_{0}\right)>\varepsilon\right)\\
+ & \leq\Pr\left(\left|S_{n}(\hat{\theta})-S(\hat{\theta})\right|+\left|S\left(\theta_{0}\right)-S_{n}\left(\theta_{0}\right)\right|>\varepsilon\right)\\
+ & \leq\Pr\left(\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\frac{\varepsilon}{2}\right)\to0
+\end{align*}
+
+\end_inset
+
+where the second inequality follows from the definition of the m-estimator
+ that 
+\begin_inset Formula $S_{n}(\hat{\theta})\leq S_{n}\left(\theta_{0}\right)$
 \end_inset
 
 
@@ -256,33 +229,42 @@ Asymptotic Normality
 \end_layout
 
 \begin_layout Standard
+We go with a heuristic argument.
+ Define 
+\begin_inset Formula $\bar{\psi}\left(\theta\right)=\frac{\partial}{\partial\theta}S_{n}\left(\theta\right)$
+\end_inset
+
+.
+ Taylor expansion of 
+\begin_inset Formula $\bar{\psi}(\hat{\theta})$
+\end_inset
+
+ around 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ gives 
 \begin_inset Formula 
 \[
-\bar{\psi}\left(\theta\right)=\frac{\partial}{\partial\theta}S\left(\theta\right)
+0=\bar{\psi}(\hat{\theta})=\bar{\psi}\left(\theta_{0}\right)+\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\dot{\theta}\right)\left(\hat{\theta}-\theta_{0}\right)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-By Taylor expansion,
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-0=\bar{\psi}\left(\hat{\theta}\right)=\bar{\psi}\left(\theta_{0}\right)+\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\dot{\theta}\right)\left(\hat{\theta}-\theta_{0}\right)
-\]
-
+where 
+\begin_inset Formula $\dot{\theta}$
 \end_inset
 
+ lies in between 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
 
-\end_layout
+ and 
+\begin_inset Formula $\theta_{0}$
+\end_inset
 
-\begin_layout Standard
-Rearrange,
+.
+ Rearrange the above inequality, 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\theta}-\theta\right)=-\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\dot{\theta}\right)\right]^{-1}\sqrt{n}\bar{\psi}\left(\theta_{0}\right)
@@ -290,27 +272,16 @@ Rearrange,
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Because 
-\begin_inset Formula $\dot{\theta}$
-\end_inset
-
- lies in 
-\begin_inset Formula $\theta_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $\hat{\theta}$
-\end_inset
-
-, and 
+Since 
 \begin_inset Formula $\hat{\theta}\stackrel{p}{\to}\theta_{0}$
 \end_inset
 
-, by CMT
+, we also have 
+\begin_inset Formula $\dot{\theta}\stackrel{p}{\to}\theta_{0}$
+\end_inset
+
+.
+ By the continuous mapping theorem: 
 \begin_inset Formula 
 \[
 \frac{\partial^{2}}{\partial\theta\partial\theta'}S\left(\dot{\theta}\right)\stackrel{p}{\to}\frac{\partial^{2}}{\partial\theta\partial\theta'}S\left(\theta_{0}\right)=Q
@@ -318,41 +289,29 @@ Because
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-If 
+if 
 \begin_inset Formula $\frac{\partial^{2}}{\partial\theta\partial\theta'}S\left(\cdot\right)$
 \end_inset
 
- is continuous, by identification
-\end_layout
+ is continuous.
+ In the population, 
+\begin_inset Formula $E\left[\bar{\psi}\left(\theta_{0}\right)\right]=E\left[\psi\left(\theta_{0}\right)\right]=0$
+\end_inset
 
-\begin_layout Standard
+, and 
 \begin_inset Formula 
 \[
-E\left[\bar{\psi}\left(\theta_{0}\right)\right]=E\left[\psi\left(\theta_{0}\right)\right]=0
+\sqrt{n}\bar{\psi}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\sqrt{n}\bar{\psi}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,E\left[\psi_{i}\left(\theta_{0}\right)\psi_{i}'\left(\theta_{0}\right)\right]\right)
-\]
-
+where 
+\begin_inset Formula $\Omega=E\left[\psi_{i}\left(\theta_{0}\right)\psi_{i}'\left(\theta_{0}\right)\right]$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-So
+.
+ As a result, 
 \end_layout
 
 \begin_layout Standard
@@ -363,7 +322,8 @@ So
 
 \end_inset
 
-
+where the asymptotic variance follows a sandwich form.
+ 
 \end_layout
 
 \begin_layout Standard
