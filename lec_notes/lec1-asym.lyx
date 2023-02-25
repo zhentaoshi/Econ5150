@@ -793,10 +793,7 @@ It is easy to verify the Markov inequality.
  
 \begin_inset Formula 
 \[
-\begin{aligned}E\left[\left|x\right|^{r}\right] & =\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}\left|x\right|^{r}dF_{X}\\
- & \geq\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}\\
- & \geq\varepsilon^{r}\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left\{ \left|x\right|>\varepsilon\right\} .
-\end{aligned}
+E\left[\left|x\right|^{r}\right]=\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}\left|x\right|^{r}dF_{X}\geq\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}\geq\varepsilon^{r}\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left\{ \left|x\right|>\varepsilon\right\} .
 \]
 
 \end_inset
@@ -1105,9 +1102,7 @@ for all
 , and by independence we have 
 \begin_inset Formula 
 \[
-\begin{aligned}M_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}M_{\frac{X_{i}}{\sqrt{n}}}\left(t\right)=\left(1+\frac{t^{2}}{2n}\sigma^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)\right)^{n}\\
- & \to\exp\left(\frac{\sigma^{2}}{2}t^{2}\right),
-\end{aligned}
+M_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right)=\prod_{i=1}^{n}M_{\frac{X_{i}}{\sqrt{n}}}\left(t\right)=\left(1+\frac{t^{2}}{2n}\sigma^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)\right)^{n}\to\exp\left(\frac{\sigma^{2}}{2}t^{2}\right),
 \]
 
 \end_inset

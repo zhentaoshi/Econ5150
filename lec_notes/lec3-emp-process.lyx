@@ -1221,8 +1221,8 @@ We characterize the distribution of the empirical CDF.
 \begin_inset Formula 
 \[
 g\left(X,\theta\right)=\mathbb{I}\left(X\leq\theta\right)=\begin{cases}
-1 & with\text{\ensuremath{\enskip probability\ F\left(\theta\right)}}\\
-0 & with\text{\ensuremath{\enskip probability\ 1-F\left(\theta\right)}}
+1, & with\text{\ensuremath{\enskip probability\ F\left(\theta\right)}}\\
+0, & with\text{\ensuremath{\enskip probability\ 1-F\left(\theta\right)}}
 \end{cases}
 \]
 
@@ -1315,10 +1315,6 @@ Brownian bridge
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 where 
 \begin_inset Formula $B\left(r\right)$
 \end_inset

@@ -152,7 +152,7 @@ LatexCommand tableofcontents
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lec1-asym-20230110.lyx"
+filename "lec1-asym.lyx"
 
 \end_inset
 
@@ -162,7 +162,7 @@ filename "lec1-asym-20230110.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lec2-asym-20230117.lyx"
+filename "lec2-inid.lyx"
 
 \end_inset
 
@@ -172,7 +172,27 @@ filename "lec2-asym-20230117.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lec3-asym-20230131.lyx"
+filename "lec3-emp-process.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lec4-m-estimator.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lec5-mle.lyx"
 
 \end_inset
 
