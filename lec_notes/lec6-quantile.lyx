@@ -1,0 +1,539 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Quantile Regression
+\end_layout
+
+\begin_layout Section
+Univariate quantile estimation
+\end_layout
+
+\begin_layout Standard
+Sample 
+\begin_inset Formula $y_{1},y_{2},...,y_{n}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\arg\min\left|\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} -\tau\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\tau\in\left(0,1\right)$
+\end_inset
+
+ is the 
+\begin_inset Formula $\tau$
+\end_inset
+
+-th quantile of interent.
+\end_layout
+
+\begin_layout Standard
+Ignore discreteness, we solve the equation
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} =\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+notice if the distribution of 
+\begin_inset Formula $y$
+\end_inset
+
+ is continuous,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E\left[y\leq q\right]=\tau
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+uniquely solve 
+\begin_inset Formula $q_{\tau}^{0}$
+\end_inset
+
+ the true parameter.
+\end_layout
+
+\begin_layout Section
+Asymptotic Distribution
+\end_layout
+
+\begin_layout Standard
+The above is a method of moment characterization.
+\end_layout
+
+\begin_layout Standard
+Now we cast the problem into an m-estimation.
+\end_layout
+
+\begin_layout Standard
+Introduce the check function 
+\begin_inset Formula $\rho\left(z\right)=z\left(\tau-\mathbb{I}\left(z\leq0\right)\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi\left(z\right)=\tau-\mathbb{I}\left(z\leq0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\psi\left(z\right)$
+\end_inset
+
+ can be roughly considered as a 
+\begin_inset Quotes eld
+\end_inset
+
+subgradient
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset Formula $\rho\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notice 
+\begin_inset Formula $\rho\left(z\right)$
+\end_inset
+
+ is continuous but 
+\begin_inset Formula $\psi\left(z\right)$
+\end_inset
+
+ is discontinuous.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula 
+\begin{align*}
+S_{n}\left(q\right) & =\frac{1}{n}\sum\rho\left(y_{i}-q\right)\\
+ & =\frac{1}{n}\sum\left(y_{i}-q\right)\left(\tau-\mathbb{I}\left\{ y_{i}-q\leq0\right\} \right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first-order condition is 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial q}S_{n}\left(q\right) & =\frac{1}{n}\sum\left(\tau-\mathbb{I}\left\{ y_{i}-q\leq0\right\} \right)\times\left(-1\right)\\
+ & =\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} -\tau\\
+ & \stackrel{p}{\to}F\left(y\leq q\right)-\tau
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Quotes eld
+\end_inset
+
+second derivative
+\begin_inset Quotes erd
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}}{\partial q^{2}}S_{n}\left(q\right) & \triangleq\lim_{\delta\to0}\frac{\frac{\partial}{\partial q}S_{n}\left(q+\delta\right)-\frac{\partial}{\partial q}S_{n}\left(q-\delta\right)}{2\delta}\\
+ & \stackrel{p}{\to}\lim_{\delta\to0}\frac{F\left(y\leq q+\delta\right)-F\left(y\leq q-\delta\right)}{2\delta}\\
+ & =\lim_{\delta\to0}\frac{\frac{1}{n}\sum\left(\mathbb{I}\left\{ y_{i}\leq q+\delta\right\} -\mathbb{I}\left\{ y_{i}\leq q-\delta\right\} \right)}{2\delta}\\
+ & =\lim_{\delta\to0}\frac{\frac{1}{n}\sum\mathbb{I}\left\{ q-\delta\leq y_{i}\leq q+\delta\right\} }{2\delta}\\
+ & =f_{y}\left(q\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By ULLN, if true coefficient is identified, then 
+\begin_inset Formula 
+\[
+\hat{q}\stackrel{p}{\to}q_{\tau}^{0}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Identification is equivalent to 
+\begin_inset Formula $f_{y}\left(q_{\tau}\right)>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notice 
+\begin_inset Formula $\mathbb{I}\left\{ y_{i}\leq q\right\} -\tau$
+\end_inset
+
+ follows a binary distribution, with variance 
+\begin_inset Formula $\tau\left(1-\tau\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+thus 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{q}-q_{\tau}^{0}\right)\stackrel{d}{\to}N\left(0,\frac{\tau\left(1-\tau\right)}{f_{y}^{2}\left(q_{\tau}^{0}\right)}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Quantile Regression
+\end_layout
+
+\begin_layout Standard
+With other regression, use 
+\begin_inset Formula $X_{i}'\beta$
+\end_inset
+
+ to mimic 
+\begin_inset Formula $\theta$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{n}\left(\beta\right)=\frac{1}{n}\sum\rho_{\tau}\left(y_{i}-X_{i}'\beta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+FOC
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial\beta}S_{n}\left(\beta\right) & =\frac{1}{n}\sum X_{i}\left(\mathbb{I}\left\{ y_{i}\leq X_{i}'\beta\right\} -\tau\right)\\
+ & \stackrel{p}{\to}E\left[X_{i}\psi\left(y_{i}-X_{i}'\beta\right)\right]\\
+ & =E\left[X_{i}\psi\left(y_{i}-X_{i}'\beta_{\tau}+X_{i}'\beta_{\tau}-X_{i}'\beta\right)\right]\\
+ & =E\left[X_{i}\psi\left(e_{i}+X_{i}'\left(\beta-\beta_{\tau}\right)\right)\right]\\
+ & =E\left[X_{i}\left(F_{e\mid X}\left(X_{i}'\left(\beta-\beta_{\tau}\right)\right)-\tau\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+SOC in the population version: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E\left[X_{i}X_{i}'f_{e\mid X}\left(X_{i}'\left(\beta-\beta_{\tau}\right)\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similarly, by ULLN and LD we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\beta}\stackrel{p}{\to}\beta_{\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The identification condition is 
+\begin_inset Formula $Q_{\tau}=E\left[XX'f_{e\mid X}\left(0\right)\right]$
+\end_inset
+
+ which is positive definite.
+\end_layout
+
+\begin_layout Standard
+The variance of the score function is 
+\begin_inset Formula 
+\[
+\varOmega_{\tau}=E\left[XX'\psi^{2}\left(e\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By asymptotic normality,
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\beta}-\beta_{\tau}\right)\stackrel{d}{\to}N\left(0,Q_{\tau}^{-1}\varOmega_{\tau}Q_{\tau}^{-1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conditional Quantile
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q_{y\mid X}\left(\tau\right)$
+\end_inset
+
+ is a function of 
+\begin_inset Formula $X$
+\end_inset
+
+ if the conditional quantile 
+\begin_inset Formula $Q_{y\mid X}\left(\tau\right)=X'\beta_{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau=F_{y\mid X}\left(X'\beta\right)=E\left[\mathbb{I}\left\{ y\leq X'\beta\right\} \mid X\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\varOmega_{\tau} & =E\left[XX'E\left[\left(\mathbb{I}\left\{ y\leq X'\beta_{\tau}\right\} -\tau\right)^{2}\mid X\right]\right]\\
+ & =\tau\left(1-\tau\right)E\left[XX'\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Under this condition,
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\beta}-\beta_{\tau}\right)\stackrel{d}{\to}N\left(0,\tau\left(1-\tau\right)Q_{\tau}^{-1}E\left[XX'\right]Q_{\tau}^{-1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we further assume 
+\begin_inset Formula $e$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $X$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+then the Hessian is simplified as 
+\begin_inset Formula $Q_{\tau}=E\left[XX'\right]f_{e}\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+thus 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\beta}-\beta_{\tau}\right)\stackrel{d}{\to}N\left(0,\frac{\tau\left(1-\tau\right)}{f_{e}\left(0\right)}\left(E\left[XX'\right]\right)^{-1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ Feb 21, 2023.
+   Transcribed by Shu Shen.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
