@@ -332,7 +332,7 @@ Score, Hessian, and Information
 Score:
 \begin_inset Formula 
 \[
-S_{n}\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta\right)
+\psi_{n}\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta\right)
 \]
 
 \end_inset
@@ -356,7 +356,7 @@ Hessian:
 Efficient score:
 \begin_inset Formula 
 \[
-S_{0}=\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta_{0}\right)
+\psi_{0}=\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta_{0}\right)
 \]
 
 \end_inset
@@ -382,7 +382,7 @@ If the model is correctly specified, the support of
 \end_inset
 
 , then 
-\begin_inset Formula $E\left(S_{0}\right)=0$
+\begin_inset Formula $E\left(\psi_{0}\right)=0$
 \end_inset
 
 .
@@ -392,7 +392,7 @@ If the model is correctly specified, the support of
 By the Leibniz rule,
 \begin_inset Formula 
 \[
-E\left(S_{0}\right)=E\left[\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta_{0}\right)\right]=0
+E\left(\psi_{0}\right)=E\left[\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta_{0}\right)\right]=0
 \]
 
 \end_inset
@@ -408,7 +408,7 @@ as
 Fisher information matrix:
 \begin_inset Formula 
 \[
-\mathscr{I}_{0}=E\left[S_{0}S_{0}'\right]
+\mathscr{I}_{0}=E\left[\psi_{0}\psi_{0}'\right]
 \]
 
 \end_inset
@@ -476,7 +476,7 @@ E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\rig
 The second term:
 \begin_inset Formula 
 \[
-E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]=E\left[\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[S_{0}S_{0}'\right].
+E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]=E\left[\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[\psi_{0}\psi_{0}'\right].
 \]
 
 \end_inset
@@ -563,7 +563,7 @@ for any
 \frac{\partial}{\partial\theta'}\int\widetilde{\theta}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x} & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
  & =\int\widetilde{\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\mathbf{X}\mid\theta\right)}{f\left(\mathbf{X}\mid\theta\right)}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
  & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}\log f\left(\mathbf{X}\mid\theta\right)f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
- & =\int\widetilde{\theta}S_{n}\left(\theta\right)f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}
+ & =\int\widetilde{\theta}\psi_{n}\left(\theta\right)f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}
 \end{align*}
 
 \end_inset
@@ -576,13 +576,13 @@ Evaluate at the true
  data
 \begin_inset Formula 
 \[
-\mathbf{I}_{p}=\int\widetilde{\theta}S_{n}(\theta_{0})f\left(\mathbf{X}\mid\theta_{0}\right)d\mathbf{x}=E\left[\widetilde{\theta}S_{n}(\theta_{0})\right]=E\left[\left(\widetilde{\theta}-\theta_{0}\right)S_{n}(\theta_{0})\right]
+\mathbf{I}_{p}=\int\widetilde{\theta}\psi_{n}(\theta_{0})f\left(\mathbf{X}\mid\theta_{0}\right)d\mathbf{x}=E\left[\widetilde{\theta}\psi_{n}(\theta_{0})\right]=E\left[\left(\widetilde{\theta}-\theta_{0}\right)\psi_{n}(\theta_{0})\right]
 \]
 
 \end_inset
 
 where the last equality holds by 
-\begin_inset Formula $E\left[\theta_{0}S_{n}(\theta_{0})\right]=\theta_{0}E\left[S_{n}(\theta_{0})\right]=\theta_{0}E\left[nS_{0}\right]=0$
+\begin_inset Formula $E\left[\theta_{0}\psi_{n}(\theta_{0})\right]=\theta_{0}E\left[\psi_{n}(\theta_{0})\right]=\theta_{0}E\left[n\psi_{0}\right]=0$
 \end_inset
 
 .
@@ -591,7 +591,7 @@ where the last equality holds by
 \[
 var\left(\begin{array}{c}
 \widetilde{\theta}-\theta_{0}\\
-S_{n}(\theta_{0})
+\psi_{n}(\theta_{0})
 \end{array}\right)=\left[\begin{array}{cc}
 \boldsymbol{V} & \mathbf{I}_{p}\\
 \mathbf{I}_{p} & n\mathscr{I}_{0}
@@ -660,7 +660,7 @@ Normal distribution: Let
 \begin_layout Example
 \begin_inset Formula 
 \[
-S_{n}\left(\mu,\sigma^{2}\right)=\begin{cases}
+\psi_{n}\left(\mu,\sigma^{2}\right)=\begin{cases}
 \frac{1}{\gamma}\sum_{i=1}^{n}\left(X_{i}-\mu\right)\\
 -\frac{n}{2\gamma}+\frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(X_{i}-\mu\right)^{2}
 \end{cases}
@@ -751,7 +751,7 @@ The sample mean is Cramér-Rao efficient.
 \begin_layout Example
 \begin_inset Formula 
 \[
-S_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}=\frac{1}{n-1}X'\left(I-\frac{1}{n}1_{n}1_{n}'\right)X
+s_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}=\frac{1}{n-1}X'\left(I-\frac{1}{n}1_{n}1_{n}'\right)X
 \]
 
 \end_inset
@@ -769,7 +769,7 @@ S_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}=\frac{1}{n-1
 \begin_layout Example
 \begin_inset Formula 
 \[
-\left(n-1\right)\frac{S_{n}^{2}}{\sigma^{2}}=\left(\frac{X}{\sigma}\right)'\left(I-\frac{1}{n}1_{n}1_{n}'\right)\left(\frac{X}{\sigma}\right)\sim\chi^{2}\left(n-1\right)
+\left(n-1\right)\frac{s_{n}^{2}}{\sigma^{2}}=\left(\frac{X}{\sigma}\right)'\left(I-\frac{1}{n}1_{n}1_{n}'\right)\left(\frac{X}{\sigma}\right)\sim\chi^{2}\left(n-1\right)
 \]
 
 \end_inset
@@ -781,7 +781,7 @@ S_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}=\frac{1}{n-1
 So,
 \begin_inset Formula 
 \[
-S_{n}^{2}=\frac{\chi^{2}\left(n-1\right)}{n-1}\sigma^{2}
+s_{n}^{2}=\frac{\chi^{2}\left(n-1\right)}{n-1}\sigma^{2}
 \]
 
 \end_inset
@@ -792,7 +792,7 @@ S_{n}^{2}=\frac{\chi^{2}\left(n-1\right)}{n-1}\sigma^{2}
 \begin_layout Example
 \begin_inset Formula 
 \[
-var\left(S_{n}^{2}\right)=\frac{\sigma^{4}}{\left(n-1\right)^{2}}2\left(n-1\right)=\frac{2\sigma^{4}}{n-1}>\frac{2\sigma^{4}}{n}
+var\left(s_{n}^{2}\right)=\frac{\sigma^{4}}{\left(n-1\right)^{2}}2\left(n-1\right)=\frac{2\sigma^{4}}{n-1}>\frac{2\sigma^{4}}{n}
 \]
 
 \end_inset
