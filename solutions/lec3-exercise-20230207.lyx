@@ -315,218 +315,136 @@ Exercise 18.3 Define
 \begin_layout Solution*
 \paragraph_spacing double
 (a) 
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
-\[
-E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]=F\left(\theta\right)\times E\left[X\right]+\left(1-\text{\ensuremath{F\left(\theta\right)}}\right)\times0=0
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Solution*
-\paragraph_spacing double
-\begin_inset Formula 
-\[
-\nu_{n}\left(\theta\right)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left(X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)-E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Solution*
-\paragraph_spacing double
-To show that 
-\begin_inset Formula $\nu_{n}\left(\theta\right)$
-\end_inset
-
- is stochastically equicontinuous, we need to show that 
-\begin_inset Formula $J_{\left[\;\right]}\left(1,L_{2}\left(F\right)\right)<\infty$
+\begin_inset Formula $\nu_{n}\left(\theta\right)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left(X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)-E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]\right)$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Solution*
-A sufficient condition for 
-\begin_inset Formula $J_{\left[\;\right]}\left(1,L_{2}\left(F\right)\right)<\infty$
+ Suppose 
+\begin_inset Formula $X_{i}\sim F$
 \end_inset
 
- is that 
-\begin_inset Formula $N_{[\,]}\left(\varepsilon,L_{2}\left(F\right)\right)\leq O\left(\varepsilon^{-\rho}\right)$
+, where 
+\begin_inset Formula $F$
 \end_inset
 
- for some 
-\begin_inset Formula $0<\rho<\infty$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Solution*
-\paragraph_spacing double
-Set 
-\begin_inset Formula $N=2\varepsilon^{-2}$
-\end_inset
-
-, 
-\begin_inset Formula $\theta_{j}=f\left(\frac{j}{N}\right)$
-\end_inset
-
-, 
-\begin_inset Formula $l_{j}\left(x\right)=x\mathbb{I}\left(x\leq\theta_{j+1}\right)$
-\end_inset
-
- and 
-\begin_inset Formula $u_{j}\left(x\right)=x\mathbb{I}\left(x\leq\theta_{j}\right)$
-\end_inset
-
-,
-\end_layout
-
-\begin_layout Solution*
-\paragraph_spacing double
-where 
-\begin_inset Formula $f\left(\frac{j}{N}\right)$
-\end_inset
-
- is the quantile function of a distribution 
-\begin_inset Formula $F\left(x\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $\frac{j}{N}\leq F\left(\theta_{j}\right)<\frac{j+1}{N}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Solution*
-The pair 
-\begin_inset Formula $\left[l_{j},u_{j}\right]$
-\end_inset
-
- brackets 
-\begin_inset Formula $g\left(x,\theta\right)=x\mathbb{I}\left(x\leq\theta\right)$
+ can be either continuous or discrete.
+ We can compute the bracket integral to check the complexity of the function
+ 
+\begin_inset Formula $x\mathbb{I}\left(x\leq\theta\right)$
 \end_inset
 
  for 
-\begin_inset Formula $\theta_{j}<\theta\leq\theta_{j+1}$
+\begin_inset Formula $\theta\in[0,1$
+\end_inset
+
+].
+ Set 
+\begin_inset Formula $N=\varepsilon^{-1}$
+\end_inset
+
+ as an integer, and let 
+\begin_inset Formula $\theta_{j}=F^{-1}\left(\frac{j}{N}\right)$
+\end_inset
+
+ be the 
+\begin_inset Formula $\frac{j}{N}$
+\end_inset
+
+-th quantile.
+ We construct a bracket with the lower bound function 
+\begin_inset Formula $l_{j}\left(x\right)=x\mathbb{I}\left(x\leq\theta_{j}\right)$
+\end_inset
+
+ and the upper bound function 
+\begin_inset Formula $u_{j}\left(x\right)=x\mathbb{I}\left(x\leq\theta_{j+1}\right)$
 \end_inset
 
 .
-\end_layout
+ Obviously, for any 
+\begin_inset Formula $\theta\in[0,1]$
+\end_inset
 
-\begin_layout Solution*
+, there exists a pair 
+\begin_inset Formula $\left[l_{j},u_{j}\right]$
+\end_inset
+
+ such that 
+\begin_inset Formula $l_{j}(x)\leq x\mathbb{I}\left(x\leq\theta\right)\leq u_{j}\left(x\right)$
+\end_inset
+
+.
+ The size of such a bracket is 
 \begin_inset Formula 
-\[
-\begin{array}{c}
-\begin{array}{c}
-\left\Vert u_{j}\left(x\right)-l_{j}\left(x\right)\right\Vert _{Q,2}=\left(F\left(\theta_{j+1}\right)-F\left(\theta_{j}\right)\right)^{1/2}\leq\left(\frac{j+2}{N}-\frac{j}{N}\right)^{1/2}=\left(\frac{2}{N}\right)^{1/2}=\varepsilon\end{array}\end{array}
-\]
+\begin{align*}
+\left\Vert u_{j}\left(x\right)-l_{j}\left(x\right)\right\Vert _{F,2}^{2} & =E\left[\left[x\mathbb{I}\left(\theta_{j}\leq x\leq\theta_{j+1}\right)\right]^{2}\right]\\
+ & \leq E\left[\mathbb{I}\left(\theta_{j}\leq x\leq\theta_{j+1}\right)\right]\\
+ & =F\left(\theta_{j+1}\right)-F\left(\theta_{j}\right)\leq\varepsilon
+\end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-Thus 
-\begin_inset Formula $N_{[\,]}\left(\varepsilon,L_{r}\left(Q\right)\right)\leq N=2\varepsilon^{-2}=O\left(\varepsilon^{-\rho}\right)$
+where the inequality holds as 
+\begin_inset Formula $x\in\left[\theta_{j},\theta_{j+1}\right]\subseteq\left[0,1\right]$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Solution*
-Therefore, 
-\begin_inset Formula $\nu_{n}\left(\theta\right)$
+ Thus 
+\begin_inset Formula $N_{[\,]}\left(\varepsilon,L_{2}\left(F\right)\right)\leq N=\varepsilon^{-1}=O\left(\varepsilon^{-1}\right)$
 \end_inset
 
- is stochastically equicontinuous.
+, we have 
+\begin_inset Formula $J_{\left[\;\right]}\left(1,L_{2}\left(F\right)\right)<\infty$
+\end_inset
+
+.
+ We invoke the textbook's Theorem 18.4 to establish stochastic equicontinuity.
+ 
 \end_layout
 
 \begin_layout Solution*
 \paragraph_spacing double
-(b) 
+(b) Let 
+\begin_inset Formula $u_{i}\left(\theta\right)=X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)-E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]$
+\end_inset
+
+.
+ Denote 
+\begin_inset Formula $m\left(\theta\right):=E\left[X^{2}\mathbb{I}\left(X\leq\theta\right)\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu(\theta)=E\left[X\mathbb{I}\left(X\leq\theta\right)\right]$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{align*}
+\sigma^{2}\left(\theta\right):=var\left[u_{i}\left(\theta\right)\right] & =E\left[X^{2}\mathbb{I}\left(X\leq\theta\right)\right]-\left(E\left[X\mathbb{I}\left(X\leq\theta\right)\right]\right)^{2}=m^{2}\left(\theta\right)-\mu^{2}\left(\theta\right)
+\end{align*}
+
+\end_inset
+
+and 
 \end_layout
 
 \begin_layout Solution*
 \begin_inset Formula 
-\[
-u_{i}\left(\theta\right)=X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)-E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]=X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)
-\]
+\begin{align*}
+\sigma\left(\theta_{1},\theta_{2}\right) & :=Cov\left(u_{i}\left(\theta_{1}\right),u_{i}\left(\theta_{2}\right)\right)\\
+ & =Cov\left(X\mathbb{I}\left(X\leq\theta_{1}\right),X\mathbb{I}\left(X\leq\theta_{2}\right)\right)\\
+ & =E\left[X^{2}\mathbb{I}\left(X\leq\theta_{1}\right)\mathbb{I}\left(X\leq\theta_{2}\right)\right]-E\left[X\mathbb{I}\left(X\leq\theta_{1}\right)\right]E\left[X\mathbb{I}\left(X\leq\theta_{2}\right)\right]\\
+ & =E\left[X^{2}\mathbb{I}\left(X\leq\theta_{1}\wedge\theta_{2}\right)\right]-E\left[X\mathbb{I}\left(X\leq\theta_{1}\right)\right]E\left[X\mathbb{I}\left(X\leq\theta_{2}\right)\right]\\
+ & =m^{2}\left(\theta_{1}\wedge\theta_{2}\right)-\mu\left(\theta_{1}\right)\mu\left(\theta_{2}\right).
+\end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
-\[
-\begin{array}{cl}
-var\left[u_{i}\left(\theta\right)\right]=var\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right] & =E\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]^{2}-E^{2}\left[X_{i}\mathbb{I}\left(X_{i}\leq\theta\right)\right]\\
- & =E\left[X_{i}^{2}\mathbb{I}\left(X_{i}\leq\theta\right)\right]\\
- & =F\left(\theta\right)\times E\left[X^{2}\right]+\left(1-\text{F\left(\theta\right)}\right)\times0=F\left(\theta\right)
-\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Solution*
-By the CLT
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
-\[
-\nu_{n}\left(\theta\right)\stackrel{d}{\to}N\left(0,F\left(\theta\right)\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Solution*
-\paragraph_spacing double
-(c) 
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
-\[
-\begin{array}{cl}
-Cov\left(u_{i}\left(\theta_{1}\right),u_{i}\left(\theta_{2}\right)\right) & =Cov\left(X\mathbb{I}\left(X\leq\theta_{1}\right),X\mathbb{I}\left(X\leq\theta_{2}\right)\right)\\
- & =E\left[X^{2}\mathbb{I}\left(X\leq\theta_{1}\right)\mathbb{I}\left(X\leq\theta_{2}\right)\right]\\
- & =F\left(\theta_{1}\wedge\theta_{2}\right)
-\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Solution*
 Since 
 \begin_inset Formula $u_{i}\left(\theta\right)$
 \end_inset
 
- is i.i.d
-\end_layout
-
-\begin_layout Solution*
+ is i.i.d, we have the CLT
 \begin_inset Formula 
 \[
 \left(\begin{array}{c}
@@ -539,23 +457,23 @@ X\mathbb{I}\left(X\leq\theta_{2}\right)
 0\\
 0
 \end{array}\right),\left(\begin{array}{cc}
-F\left(\theta_{1}\right) & F\left(\theta_{1}\wedge\theta_{2}\right)\\
-F\left(\theta_{1}\wedge\theta_{2}\right) & F\left(\theta_{2}\right)
+\sigma^{2}\left(\theta_{1}\right) & \sigma\left(\theta_{1},\theta_{2}\right)\\
+\sigma\left(\theta_{1},\theta_{2}\right) & \sigma^{2}\left(\theta_{2}\right)
 \end{array}\right)\right)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
 The joint distribution is satisfied for any finity 
 \begin_inset Formula $\theta_{1},\theta_{2},...,\theta_{m}$
 \end_inset
 
 , so 
-\begin_inset Formula $\left(\nu_{n}\left(\theta_{1}\right),\nu_{n}\left(\theta_{2}\right),...,\nu_{n}\left(\theta_{m}\right)\right)\stackrel{d}{\to}\left(\nu\left(\theta_{1}\right),\nu\left(\theta_{2}\right),...,\nu\left(\theta_{m}\right)\right)$
+\begin_inset Formula 
+\[
+\left(\nu_{n}\left(\theta_{1}\right),\nu_{n}\left(\theta_{2}\right),...,\nu_{n}\left(\theta_{m}\right)\right)\stackrel{d}{\to}\left(\nu\left(\theta_{1}\right),\nu\left(\theta_{2}\right),...,\nu\left(\theta_{m}\right)\right)
+\]
+
 \end_inset
 
  for every finite set 
@@ -566,11 +484,8 @@ The joint distribution is satisfied for any finity
 \end_layout
 
 \begin_layout Solution*
-Since 
-\begin_inset Formula $\nu_{n}\left(\theta\right)$
-\end_inset
-
- is stochastically equicontinuous, 
+(c) Given (a) and (b), we invoke the textbook's Theorem 18.3 to establish
+ 
 \begin_inset Formula $\nu_{n}\stackrel{d}{\to}\nu$
 \end_inset
 
