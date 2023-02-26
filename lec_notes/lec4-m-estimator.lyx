@@ -111,7 +111,7 @@ Let the loss function be
 \begin_inset Formula $z_{i}$
 \end_inset
 
- is a date vector.
+ is a data vector.
  The sample criterion is an average of 
 \begin_inset Formula $\rho_{i}\left(\theta\right)$
 \end_inset
@@ -127,7 +127,7 @@ S_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\rho_{i}\left(\theta\right)
 The m-estimator minimizes the sample criterion function: 
 \begin_inset Formula 
 \[
-\hat{\theta}_{n}=\arg\min_{\theta\in\Theta}S_{n}\left(\theta\right)
+\hat{\theta}_{n}=\arg\min_{\theta\in\Theta}S_{n}\left(\theta\right).
 \]
 
 \end_inset
@@ -181,13 +181,11 @@ Consistency
 \end_layout
 
 \begin_layout Theorem
-If 1.
- ULLN: 
+If (i) ULLN: 
 \begin_inset Formula $\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\stackrel{p}{\to}0$
 \end_inset
 
-; 2.
- 
+; (ii) 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
