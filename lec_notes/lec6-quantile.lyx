@@ -95,7 +95,7 @@ theorems-ams-chap-bytype
 \begin_body
 
 \begin_layout Chapter
-Quantile Regression
+Quantile Estimation
 \end_layout
 
 \begin_layout Section
@@ -103,117 +103,92 @@ Univariate quantile estimation
 \end_layout
 
 \begin_layout Standard
-Sample 
-\begin_inset Formula $y_{1},y_{2},...,y_{n}$
+Given a sample 
+\begin_inset Formula $(y_{1},y_{2},...,y_{n})$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-\arg\min\left|\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} -\tau\right|
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-where 
-\begin_inset Formula $\tau\in\left(0,1\right)$
-\end_inset
-
- is the 
+, we are interested in estimating its 
 \begin_inset Formula $\tau$
 \end_inset
 
--th quantile of interent.
-\end_layout
-
-\begin_layout Standard
-Ignore discreteness, we solve the equation
-\begin_inset Formula 
-\[
-\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} =\tau
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-notice if the distribution of 
-\begin_inset Formula $y$
-\end_inset
-
- is continuous,
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-E\left[y\leq q\right]=\tau
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-uniquely solve 
-\begin_inset Formula $q_{\tau}^{0}$
-\end_inset
-
- the true parameter.
-\end_layout
-
-\begin_layout Section
-Asymptotic Distribution
-\end_layout
-
-\begin_layout Standard
-The above is a method of moment characterization.
-\end_layout
-
-\begin_layout Standard
-Now we cast the problem into an m-estimation.
-\end_layout
-
-\begin_layout Standard
-Introduce the check function 
-\begin_inset Formula $\rho\left(z\right)=z\left(\tau-\mathbb{I}\left(z\leq0\right)\right)$
-\end_inset
-
- and 
-\begin_inset Formula $\psi\left(z\right)=\tau-\mathbb{I}\left(z\leq0\right)$
+-th quantile, where 
+\begin_inset Formula $\tau\in\left(0,1\right)$
 \end_inset
 
 .
+ To find the quantile from the sample, we can look for 
+\begin_inset Formula $q$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} \approx\tau.\label{eq:mm_quan}
+\end{equation}
+
+\end_inset
+
+ If we ignore discreteness on the left-hand side, we solve the equation
+ 
+\begin_inset Formula $\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} =\tau.$
+\end_inset
+
+ In this chapter, we always work with continuously distributed 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ In the population model, 
+\begin_inset Formula $q_{\tau}^{0}$
+\end_inset
+
+ that solves 
+\begin_inset Formula $E\left[y\leq q\right]=\tau$
+\end_inset
+
+ is the population parameter.
+ 
+\end_layout
+
+\begin_layout Subsection
+Asymptotic Result
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\psi\left(z\right)$
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mm_quan"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
- can be roughly considered as a 
-\begin_inset Quotes eld
+) characterize the estimation by a method of moment.
+ Now we cast the problem into an m-estimation.
+ Introduce the check function 
+\begin_inset Formula 
+\[
+\rho\left(z\right)=z\left(\tau-\mathbb{I}\left(z\leq0\right)\right).
+\]
+
 \end_inset
 
+Define 
+\begin_inset Formula $\psi\left(z\right)=\tau-\mathbb{I}\left(z\leq0\right)$
+\end_inset
+
+, which be considered as a 
+\series bold
 subgradient
-\begin_inset Quotes erd
-\end_inset
-
+\series default
  of 
 \begin_inset Formula $\rho\left(z\right)$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Notice 
+ Notice 
 \begin_inset Formula $\rho\left(z\right)$
 \end_inset
 
@@ -227,31 +202,20 @@ Notice
 \begin_layout Standard
 Let 
 \begin_inset Formula 
-\begin{align*}
-S_{n}\left(q\right) & =\frac{1}{n}\sum\rho\left(y_{i}-q\right)\\
- & =\frac{1}{n}\sum\left(y_{i}-q\right)\left(\tau-\mathbb{I}\left\{ y_{i}-q\leq0\right\} \right)
-\end{align*}
+\[
+S_{n}\left(q\right)=\frac{1}{n}\sum\rho\left(y_{i}-q\right)=\frac{1}{n}\sum\left(y_{i}-q\right)\left(\tau-\mathbb{I}\left\{ y_{i}-q\leq0\right\} \right).
+\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 The first-order condition is 
 \begin_inset Formula 
-\begin{align*}
-\frac{\partial}{\partial q}S_{n}\left(q\right) & =\frac{1}{n}\sum\left(\tau-\mathbb{I}\left\{ y_{i}-q\leq0\right\} \right)\times\left(-1\right)\\
- & =\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} -\tau\\
- & \stackrel{p}{\to}F\left(y\leq q\right)-\tau
-\end{align*}
+\[
+\frac{\partial}{\partial q}S_{n}\left(q\right)=\frac{1}{n}\sum\left(\tau-\mathbb{I}\left\{ y_{i}-q\leq0\right\} \right)\times\left(-1\right)=\frac{1}{n}\sum\mathbb{I}\left\{ y_{i}\leq q\right\} -\tau\stackrel{p}{\to}F\left(y\leq q\right)-\tau.
+\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 The 
 \begin_inset Quotes eld
 \end_inset
@@ -264,19 +228,32 @@ second derivative
 \begin_inset Formula 
 \begin{align*}
 \frac{\partial^{2}}{\partial q^{2}}S_{n}\left(q\right) & \triangleq\lim_{\delta\to0}\frac{\frac{\partial}{\partial q}S_{n}\left(q+\delta\right)-\frac{\partial}{\partial q}S_{n}\left(q-\delta\right)}{2\delta}\\
- & \stackrel{p}{\to}\lim_{\delta\to0}\frac{F\left(y\leq q+\delta\right)-F\left(y\leq q-\delta\right)}{2\delta}\\
  & =\lim_{\delta\to0}\frac{\frac{1}{n}\sum\left(\mathbb{I}\left\{ y_{i}\leq q+\delta\right\} -\mathbb{I}\left\{ y_{i}\leq q-\delta\right\} \right)}{2\delta}\\
- & =\lim_{\delta\to0}\frac{\frac{1}{n}\sum\mathbb{I}\left\{ q-\delta\leq y_{i}\leq q+\delta\right\} }{2\delta}\\
+ & \stackrel{p}{\to}\lim_{\delta\to0}\frac{F\left(y\leq q+\delta\right)-F\left(y\leq q-\delta\right)}{2\delta}\\
  & =f_{y}\left(q\right)
 \end{align*}
 
 \end_inset
 
+where the above heuristic calculation implicitly assumes the exchangeability
+ between 
+\begin_inset Formula $\lim_{\delta\to0}$
+\end_inset
 
+ and 
+\begin_inset Formula $\stackrel{p}{\to}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-By ULLN, if true coefficient is identified, then 
+If true coefficient 
+\begin_inset Formula $q_{\tau}^{0}$
+\end_inset
+
+ is identified, then by ULLN we have 
 \begin_inset Formula 
 \[
 \hat{q}\stackrel{p}{\to}q_{\tau}^{0}.
@@ -284,15 +261,12 @@ By ULLN, if true coefficient is identified, then
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Identification is equivalent to 
 \begin_inset Formula $f_{y}\left(q_{\tau}\right)>0$
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -300,18 +274,15 @@ Notice
 \begin_inset Formula $\mathbb{I}\left\{ y_{i}\leq q\right\} -\tau$
 \end_inset
 
- follows a binary distribution, with variance 
+ follows a binary distribution with variance 
 \begin_inset Formula $\tau\left(1-\tau\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-thus 
+.
+ As a result, 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{q}-q_{\tau}^{0}\right)\stackrel{d}{\to}N\left(0,\frac{\tau\left(1-\tau\right)}{f_{y}^{2}\left(q_{\tau}^{0}\right)}\right)
+\sqrt{n}\left(\hat{q}-q_{\tau}^{0}\right)\stackrel{d}{\to}N\left(0,\frac{\tau\left(1-\tau\right)}{f_{y}^{2}\left(q_{\tau}^{0}\right)}\right).
 \]
 
 \end_inset
@@ -424,7 +395,7 @@ By asymptotic normality,
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Conditional Quantile
 \end_layout
 
