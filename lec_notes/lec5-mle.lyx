@@ -188,36 +188,46 @@ can help to identify
 \end_layout
 
 \begin_layout Definition
-Model is 
+
+\series bold
+Parametric model
+\series default
+.
+ The distribution of the data 
 \begin_inset Formula $\left(x_{1},...,x_{n}\right)$
 \end_inset
 
- from some distribution function, where the only unknown part is the finite
- dimensional parameter.
+ is known up to a finite dimensional parameter.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
+Let 
+\begin_inset Formula $\Theta$
 \end_inset
 
-
+ be the parameter space a researcher specifies.
+ 
 \end_layout
 
 \begin_layout Definition
-Model is correctly specified, if the true DGP is 
+A model is 
+\series bold
+correctly specified
+\series default
+, if the true DGP is 
 \begin_inset Formula $f\left(X\mid\theta_{0}\right)$
 \end_inset
 
-, 
-\begin_inset Formula $\theta_{0}$
-\end_inset
-
- is in the parameter space 
-\begin_inset Formula $\varTheta$
+ for some 
+\begin_inset Formula $\theta_{0}\in\Theta$
 \end_inset
 
 .
- Otherwise, misspecified.
+ Otherwise, the model is 
+\series bold
+misspecified
+\series default
+.
 \end_layout
 
 \begin_layout Section
@@ -225,58 +235,55 @@ Likelihood
 \end_layout
 
 \begin_layout Standard
-Today we will mostly talk about unconditional model.
- The results are almost always applicable to conditional model.
-\end_layout
+In this chapter we will mostly talk about unconditional models.
+ The results can be carried over to conditional models.
+ To keep the setting simple, let 
+\begin_inset Formula $(X_{1},\ldots,X_{n})$
+\end_inset
 
-\begin_layout Standard
-Because data are i.i.d., 
+ be i.i.d.
+ The 
+\series bold
+likelihood
+\series default
+ of the sample is 
 \begin_inset Formula $\prod_{i=1}^{n}f\left(X_{i}\mid\theta_{0}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Definition
-Log-likelihood: 
+.
+ The 
+\series bold
+log-likelihood
+\series default
+ is 
 \begin_inset Formula 
 \[
-\ell_{n}\left(\theta\right)=\sum_{i=1}^{n}\log f\left(X_{i}\mid\theta\right)
+\ell_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\log f\left(X_{i}\mid\theta\right).
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
+Here, we put 
+\begin_inset Formula $1/n$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $f\left(X_{i}\mid\theta\right)$
-\end_inset
-
- v.s.
+ to average the log-likelihood.
+ This scaling factor does not change the estimation at all.
  
-\begin_inset Formula $\ell\left(\theta\mid X_{i}\right)$
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
+In practice, we work with the log-likelihood, which is more convenient.
+ the MLE estimator is defined as 
 \begin_inset Formula 
 \[
-\hat{\theta}=\arg\max_{\theta\in\varTheta}\ell_{n}\left(\theta\right)
+\hat{\theta}=\arg\max_{\theta\in\varTheta}\ell_{n}\left(\theta\right).
 \]
 
 \end_inset
 
-
+To justify the likelihood principle, consider the population version of
+ the 
 \end_layout
 
 \begin_layout Standard
@@ -309,7 +316,12 @@ E\left[\log p\left(\theta_{0}\right)\right]-E\left[\log p\left(\theta\right)\rig
 
 \end_inset
 
+where the inequality holds by Jensen's inequality for the convex function
+ 
+\begin_inset Formula $-\log(\cdot)$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Section
@@ -318,9 +330,6 @@ Score, Hessian, and Information
 
 \begin_layout Standard
 Score:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 S_{n}\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta\right)
@@ -333,9 +342,6 @@ S_{n}\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\lef
 
 \begin_layout Standard
 Hessian:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 \mathscr{H}_{n}\left(\theta\right)=-\sum_{i=1}^{n}\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(X_{i}\mid\theta\right)
@@ -348,12 +354,9 @@ Hessian:
 
 \begin_layout Standard
 Efficient score:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
-S\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\left(X\mid\theta_{0}\right)
+S_{0}=\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta_{0}\right)
 \]
 
 \end_inset
@@ -362,7 +365,7 @@ S\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\left(X\
 \end_layout
 
 \begin_layout Theorem
-Correctly specified, the support of 
+If the model is correctly specified, the support of 
 \begin_inset Formula $X$
 \end_inset
 
@@ -370,26 +373,26 @@ Correctly specified, the support of
 \begin_inset Formula $\theta$
 \end_inset
 
- and 
+, and 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
  is in the interior of 
-\begin_inset Formula $\theta$
+\begin_inset Formula $\Theta$
 \end_inset
 
 , then 
-\begin_inset Formula $E\left(S\right)=0$
+\begin_inset Formula $E\left(S_{0}\right)=0$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Proof
-By the Leibniz Rule,
+By the Leibniz rule,
 \begin_inset Formula 
 \[
-E\left(S\right)=E\left[\frac{\partial}{\partial\theta}\log f\left(X\mid\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}E\left[\log f\left(X\mid\theta_{0}\right)\right]=0
+E\left(S_{0}\right)=E\left[\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta_{0}\right)\right]=0
 \]
 
 \end_inset
@@ -405,7 +408,7 @@ as
 Fisher information matrix:
 \begin_inset Formula 
 \[
-\mathscr{I}_{0}=E\left[SS'\right]
+\mathscr{I}_{0}=E\left[S_{0}S_{0}'\right]
 \]
 
 \end_inset
@@ -440,11 +443,15 @@ Expected Hessian:
 \end_layout
 
 \begin_layout Theorem
-Information matrix equality: 
+If the model is correctly specified, we have the 
+\series bold
+information matrix equality
+\series default
+: 
 \begin_inset Formula $\mathscr{I}_{0}=\mathscr{H}_{0}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Proof
@@ -453,34 +460,23 @@ Start with Hessian,
 \begin{align*}
 E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\right)\right] & =E\left[\frac{\partial}{\partial\theta}\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]\\
  & =E\left[\frac{\partial}{\partial\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]\\
- & =E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}\right]+E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]
+ & =E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}\right]+E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right].
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
 The first term:
 \begin_inset Formula 
-\begin{align*}
-E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}\right] & =\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}f\left(\theta_{0}\right)dx\\
- & =\int\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)dx\\
- & =\frac{\partial^{2}}{\partial\theta\partial\theta'}\int f\left(\theta\right)dx\\
- & =\frac{\partial^{2}}{\partial\theta\partial\theta'}1=0
-\end{align*}
+\[
+E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}\right]=\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}f\left(\theta_{0}\right)dx=\int\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}\int f\left(\theta\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}1=0.
+\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
 The second term:
 \begin_inset Formula 
 \[
-E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]=E\left[\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[SS'\right]
+E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]=E\left[\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[S_{0}S_{0}'\right].
 \]
 
 \end_inset
@@ -488,12 +484,19 @@ E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{
 
 \end_layout
 
+\begin_layout Standard
+Notice that the information matrix equality holds only when the model is
+ correctly specified.
+ It fails when the model is misspecified.
+ 
+\end_layout
+
 \begin_layout Section
 Cramér-Rao Lower Bound
 \end_layout
 
 \begin_layout Theorem
-If the prob model is correctly specified, the support of 
+Suppose the model is correctly specified, the support of 
 \begin_inset Formula $X$
 \end_inset
 
@@ -501,21 +504,20 @@ If the prob model is correctly specified, the support of
 \begin_inset Formula $\theta$
 \end_inset
 
- and 
+, and 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
  is in the interior of 
-\begin_inset Formula $\theta$
+\begin_inset Formula $\Theta$
 \end_inset
 
 .
- Support 
+ If 
 \begin_inset Formula $\widetilde{\theta}$
 \end_inset
 
- is unbiased estimator.
- Then 
+ is unbiased estimator, then 
 \begin_inset Formula $var\left(\widetilde{\theta}\right)\geq\left(n\mathscr{I}_{0}\right)^{-1}$
 \end_inset
 
@@ -526,63 +528,46 @@ If the prob model is correctly specified, the support of
 Because of unbiasedness,
 \begin_inset Formula 
 \[
-\theta=E_{\theta}\left[\widetilde{\theta}\right]=\int\widetilde{\theta}f\left(X\mid\theta\right)dx
+\theta=E_{\theta}\left[\widetilde{\theta}\right]=\int\widetilde{\theta}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
 for any 
-\begin_inset Formula $\theta\in\varTheta$
+\begin_inset Formula $\theta\in\Theta$
 \end_inset
 
 .
  
-\begin_inset Formula $X$
+\begin_inset Formula $\mathbf{X}$
 \end_inset
 
  here is for the entire sample, 
-\begin_inset Formula $f\left(X\mid\theta\right)=f\left(X_{1},...,X_{n}\mid\theta\right)=\prod_{i=1}^{n}f\left(X_{i}\mid\theta\right)$
+\begin_inset Formula $f\left(\mathbf{X}\mid\theta\right)=f\left(X_{1},...,X_{n}\mid\theta\right)=\prod_{i=1}^{n}f\left(X_{i}\mid\theta\right)$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Proof
-Take derivative at the two sides, 
-\end_layout
-
-\begin_layout Proof
-LHS:
+ Take derivative at the two sides.
+ The LHS is 
 \begin_inset Formula 
 \[
-\frac{\partial\theta}{\partial\theta'}=\boldsymbol{I}_{p}
+\frac{\partial\theta}{\partial\theta'}=\mathbf{I}_{p}
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-RHS:
+.
+ The RHS:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial}{\partial\theta'}\int\widetilde{\theta}f\left(X\mid\theta\right)dx & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}f\left(X\mid\theta\right)dx\\
- & =\int\widetilde{\theta}\frac{\frac{\partial}{\partial\theta'}f\left(X\mid\theta\right)}{f\left(X\mid\theta\right)}f\left(X\mid\theta\right)dx\\
- & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}\log f\left(X\mid\theta\right)f\left(X\mid\theta\right)dx\\
- & =\int\widetilde{\theta}S_{n}\left(\theta\right)f\left(X\mid\theta\right)dx
+\frac{\partial}{\partial\theta'}\int\widetilde{\theta}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x} & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
+ & =\int\widetilde{\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\mathbf{X}\mid\theta\right)}{f\left(\mathbf{X}\mid\theta\right)}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
+ & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}\log f\left(\mathbf{X}\mid\theta\right)f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
+ & =\int\widetilde{\theta}S_{n}\left(\theta\right)f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
 Evaluate at the true 
 \begin_inset Formula $\theta_{0}$
 \end_inset
@@ -591,53 +576,38 @@ Evaluate at the true
  data
 \begin_inset Formula 
 \[
-\boldsymbol{I}_{p}=\frac{1}{n}\sum_{i=1}^{n}\int\widetilde{\theta}S_{n}\left(\theta\right)f\left(X_{i}\mid\theta\right)dx_{i}=E\left[\widetilde{\theta}S_{n}\left(\theta_{0}\right)\right]=E\left[\left(\widetilde{\theta}-\theta_{0}\right)S_{n}\left(\theta_{0}\right)\right]
+\mathbf{I}_{p}=\int\widetilde{\theta}S_{n}(\theta_{0})f\left(\mathbf{X}\mid\theta_{0}\right)d\mathbf{x}=E\left[\widetilde{\theta}S_{n}(\theta_{0})\right]=E\left[\left(\widetilde{\theta}-\theta_{0}\right)S_{n}(\theta_{0})\right]
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-because 
-\begin_inset Formula $E\left[\theta_{0}S_{n}\left(\theta_{0}\right)\right]=0$
+where the last equality holds by 
+\begin_inset Formula $E\left[\theta_{0}S_{n}(\theta_{0})\right]=\theta_{0}E\left[S_{n}(\theta_{0})\right]=\theta_{0}E\left[nS_{0}\right]=0$
 \end_inset
 
 .
  We thus have
-\end_layout
-
-\begin_layout Proof
 \begin_inset Formula 
 \[
 var\left(\begin{array}{c}
 \widetilde{\theta}-\theta_{0}\\
-S_{n}\left(\theta_{0}\right)
+S_{n}(\theta_{0})
 \end{array}\right)=\left[\begin{array}{cc}
-\boldsymbol{V} & \boldsymbol{I}_{p}\\
-\boldsymbol{I}_{p} & n\mathscr{I}_{0}
-\end{array}\right]
+\boldsymbol{V} & \mathbf{I}_{p}\\
+\mathbf{I}_{p} & n\mathscr{I}_{0}
+\end{array}\right].
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-pre and post multiply 
+Pre- and post-multiply 
 \begin_inset Formula $\left[\begin{array}{cc}
 \boldsymbol{I}_{p} & -\left(n\mathscr{I}_{0}\right)^{-1}\end{array}\right]$
 \end_inset
 
 , we have
-\end_layout
-
-\begin_layout Proof
 \begin_inset Formula 
 \[
-\begin{array}{cl}
 \left[\begin{array}{cc}
 \boldsymbol{I}_{p} & -\left(n\mathscr{I}_{0}\right)^{-1}\end{array}\right]\left[\begin{array}{cc}
 \boldsymbol{V} & \boldsymbol{I}_{p}\\
@@ -645,13 +615,7 @@ pre and post multiply
 \end{array}\right]\left[\begin{array}{c}
 \boldsymbol{I}_{p}\\
 -\left(n\mathscr{I}_{0}\right)^{-1}
-\end{array}\right] & =\left[\begin{array}{cc}
-\boldsymbol{V}-\left(n\mathscr{I}_{0}\right)^{-1} & 0\end{array}\right]\left[\begin{array}{c}
-\boldsymbol{I}_{p}\\
--\left(n\mathscr{I}_{0}\right)^{-1}
-\end{array}\right]\\
- & =\boldsymbol{V}-\left(n\mathscr{I}_{0}\right)^{-1}\geq0
-\end{array}
+\end{array}\right]=\boldsymbol{V}-\left(n\mathscr{I}_{0}\right)^{-1}\geq0.
 \]
 
 \end_inset
@@ -659,13 +623,19 @@ pre and post multiply
 
 \end_layout
 
-\begin_layout Definition
-An estimator is Cramér-Rao efficient if it is unbiased and the variance
- is 
+\begin_layout Standard
+The Cramér-Rao Lower Bound is a lower bound.
+ It may not reachable.
+ When it is reached, an estimator is 
+\series bold
+Cramér-Rao efficient
+\series default
+ if it is unbiased and the variance is 
 \begin_inset Formula $\left(n\mathscr{I}_{0}\right)^{-1}$
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Example
@@ -840,18 +810,11 @@ Asymptotic Normality
 
 \begin_layout Standard
 MLE is a special case of m-estimator.
-\end_layout
-
-\begin_layout Standard
-Under regularity conditions, 
+ Under regularity conditions, 
 \begin_inset Formula $\hat{\theta}\stackrel{p}{\to}\theta_{0}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-and asymptotic normality:
+, and asymptotically normal:
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathscr{H}_{0}^{-1}\mathscr{I}_{0}\mathscr{H}_{0}^{-1}\right)
@@ -859,29 +822,29 @@ and asymptotic normality:
 
 \end_inset
 
+When the information equality hods, the asymptotic variance is simplified
+ as 
+\begin_inset Formula $\mathscr{\mathscr{I}}_{0}^{-1}\mathscr{I}_{0}\mathscr{\mathscr{I}}_{0}^{-1}=\mathscr{\mathscr{I}}_{0}^{-1}$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
+, and thus 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\sim N\left(0,\mathscr{I}_{0}^{-1}\right)
+\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathscr{I}_{0}^{-1}\right).
 \]
 
 \end_inset
 
+In other words, it achieves asymptotic efficiency.
+ 
+\begin_inset Note Note
+status open
 
-\end_layout
-
-\begin_layout Standard
-This is the asymptotic efficiency.
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 For any variable,
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\tilde{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\sum\right)
+\sqrt{n}\left(\tilde{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Sigma\right)
 \]
 
 \end_inset
@@ -889,16 +852,21 @@ For any variable,
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 We say it is asymptotically unbiased.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Then 
 \begin_inset Formula $\mathscr{I}_{0}^{-1}$
 \end_inset
 
  is the asymptotic Cramér-Rao efficiency bound.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -967,10 +935,6 @@ If
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 which is correctly specified model.
 \end_layout
 
@@ -983,10 +947,6 @@ Pseudo-true parameter:
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 which is misspecified model.
 \end_layout
 
@@ -1001,52 +961,37 @@ KLIC\left(f,f_{\theta}\right) & =\int f\left(x\right)\log f\left(x\right)dx-\int
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 the pseudo-true value
 \begin_inset Formula 
 \[
-\theta_{0}=\arg\max_{\theta\in\varTheta}\ell\left(\theta\right)
+\theta^{*}=\arg\max_{\theta\in\varTheta}\ell\left(\theta\right)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The information equality is proved under correct specification.
-\end_layout
-
-\begin_layout Standard
-When the model is misspecified,
+The information equality was proved under correct specification.
+ When the model is misspecified,
 \begin_inset Formula 
 \[
-E\left[S\left(\theta_{0}\right)S\left(\theta_{0}\right)'\right]\neq E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\right)\right]
+E\left[S\left(\theta^{*}\right)S\left(\theta^{*}\right)'\right]\neq E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta^{*}\right)\right].
 \]
 
 \end_inset
 
-
+As a result, we will have a sandwich-form asymptotic variance in 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathscr{H}_{0}^{-1}\mathscr{I}_{0}\mathscr{H}_{0}^{-1}\right)
+\sqrt{n}\left(\hat{\theta}-\theta^{*}\right)\stackrel{d}{\to}N\left(0,\mathscr{H}_{*}^{-1}\mathscr{I}_{*}\mathscr{H}_{*}^{-1}\right)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 understand that 
-\begin_inset Formula $\mathscr{I}_{0}$
+\begin_inset Formula $\mathscr{I}_{*}$
 \end_inset
 
  and 
-\begin_inset Formula $\mathscr{H}_{0}$
+\begin_inset Formula $\mathscr{H}_{*}$
 \end_inset
 
  are evaluated at the pseudo-true value.
