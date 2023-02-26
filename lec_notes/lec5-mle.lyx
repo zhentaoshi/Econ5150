@@ -300,17 +300,12 @@ When model is correctly specified,
 
 \begin_layout Proof
 Kullback-Leibler distence
-\end_layout
-
-\begin_layout Proof
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 E\left[\log p\left(\theta_{0}\right)\right]-E\left[\log p\left(\theta\right)\right] & =E\left[\log\left(p\left(\theta_{0}\right)/p\left(\theta\right)\right)\right]\\
  & =-E\left[\log\left(p\left(\theta\right)/p\left(\theta_{0}\right)\right)\right]\\
  & \geq-\log E\left[p\left(\theta\right)/p\left(\theta_{0}\right)\right]=0
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
@@ -455,13 +450,11 @@ Information matrix equality:
 \begin_layout Proof
 Start with Hessian,
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\right)\right] & =E\left[\frac{\partial}{\partial\theta}\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]\\
  & =E\left[\frac{\partial}{\partial\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]\\
  & =E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}\right]+E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
@@ -471,14 +464,12 @@ E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\
 \begin_layout Proof
 The first term:
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}\right] & =\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}f\left(\theta_{0}\right)dx\\
  & =\int\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)dx\\
  & =\frac{\partial^{2}}{\partial\theta\partial\theta'}\int f\left(\theta\right)dx\\
  & =\frac{\partial^{2}}{\partial\theta\partial\theta'}1=0
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
@@ -579,14 +570,12 @@ LHS:
 \begin_layout Proof
 RHS:
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 \frac{\partial}{\partial\theta'}\int\widetilde{\theta}f\left(X\mid\theta\right)dx & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}f\left(X\mid\theta\right)dx\\
  & =\int\widetilde{\theta}\frac{\frac{\partial}{\partial\theta'}f\left(X\mid\theta\right)}{f\left(X\mid\theta\right)}f\left(X\mid\theta\right)dx\\
  & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}\log f\left(X\mid\theta\right)f\left(X\mid\theta\right)dx\\
  & =\int\widetilde{\theta}S_{n}\left(\theta\right)f\left(X\mid\theta\right)dx
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
@@ -1003,17 +992,12 @@ which is misspecified model.
 
 \begin_layout Standard
 KLIC is the distance measure of any two distributions.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 KLIC\left(f,f_{\theta}\right) & =\int f\left(x\right)\log f\left(x\right)dx-\int f\left(x\right)\log f\left(x\mid\theta\right)dx\\
  & =\int f\left(x\right)\log f\left(x\right)dx-E\left[\log f\left(x\mid\theta\right)\right]\\
  & =\int f\left(x\right)\log f\left(x\right)dx-\ell\left(\theta\right)
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
