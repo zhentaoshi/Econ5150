@@ -158,18 +158,20 @@ Exercise 18.1 Let
 
 \begin_layout Solution*
 \paragraph_spacing double
-(a) Distance: 
+(a) When 
+\begin_inset Formula $\theta_{1}\geq\theta_{2}$
+\end_inset
+
+,
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 \left\Vert g\left(x,\theta_{1}\right)-g\left(x,\theta_{2}\right)\right\Vert _{F,1} & =E_{F}\left[\left\Vert g\left(x,\theta_{1}\right)-g\left(x,\theta_{2}\right)\right\Vert \right]\\
  & =\int\left\Vert g\left(x,\theta_{1}\right)-g\left(x,\theta_{2}\right)\right\Vert {\rm d}F\\
- & =\int\left|\mathbb{I}\left(x\leq\theta_{1}\right)-\mathbb{I}\left(x\leq\theta_{2}\right)\right|{\rm d}F\\
- & =\left|\int\mathbb{I}\left(x\leq\theta_{1}\right){\rm d}F-\int\mathbb{I}\left(x\leq\theta_{2}\right){\rm d}F\right|\\
- & =\left|F\left(\theta_{1}\right)-F\left(\theta_{2}\right)\right|\\
- & =\left|\theta_{1}-\theta_{2}\right|=d\left(\theta_{1},\theta_{2}\right)
-\end{array}
-\]
+ & =\int\left(\mathbb{I}\left(x\leq\theta_{1}\right)-\mathbb{I}\left(x\leq\theta_{2}\right)\right){\rm d}F\\
+ & =\int\mathbb{I}\left(x\leq\theta_{1}\right){\rm d}F-\int\mathbb{I}\left(x\leq\theta_{2}\right){\rm d}F\\
+ & =F\left(\theta_{1}\right)-F\left(\theta_{2}\right)\\
+ & =\theta_{1}-\theta_{2}=d\left(\theta_{1},\theta_{2}\right)
+\end{align*}
 
 \end_inset
 
@@ -178,48 +180,45 @@ Exercise 18.1 Let
 
 \begin_layout Solution*
 \paragraph_spacing double
-(b) Set 
-\begin_inset Formula $N=\left\lceil \frac{1}{\varepsilon}\right\rceil $
+When 
+\begin_inset Formula $\theta_{1}<\theta_{2}$
 \end_inset
 
-, 
+, a similar calculation is given 
+\begin_inset Formula $d\left(\theta_{1},\theta_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+\paragraph_spacing double
+(b) Set 
+\begin_inset Formula $N=\frac{1}{\varepsilon}$
+\end_inset
+
+ as an integer, and let 
 \begin_inset Formula $\theta_{j}=\frac{j}{N}$
 \end_inset
 
-, 
-\begin_inset Formula $l_{j}\left(x\right)=\mathbb{I}\left(x\leq\theta_{j+1}\right)$
+ be the 
+\begin_inset Formula $\frac{j}{N}$
 \end_inset
 
- and 
-\begin_inset Formula $u_{j}\left(x\right)=\mathbb{I}\left(x\leq\theta_{j}\right)$
-\end_inset
-
-.
+-th quantile.
 \end_layout
 
 \begin_layout Solution*
-The pair 
-\begin_inset Formula $\left[l_{j},u_{j}\right]$
+\paragraph_spacing double
+\begin_inset Formula $\theta_{j}$
 \end_inset
 
- brackets 
-\begin_inset Formula $g\left(x,\theta\right)=\mathbb{I}\left(x\leq\theta\right)$
+ can be packed into 
+\begin_inset Formula $\left[0,1\right]$
 \end_inset
 
- for 
-\begin_inset Formula $\theta_{j}<\theta\leq\theta_{j+1}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
-\[
-\begin{array}{cl}
-\left\Vert u_{j}\left(x\right)-l_{j}\left(x\right)\right\Vert _{F,1}=\left\Vert g\left(x,\theta_{j+1}\right)-g\left(x,\theta_{j}\right)\right\Vert _{F,1} & =\left|\theta_{j+1}-\theta_{j}\right|=\left|\frac{j+1}{N}-\frac{j}{N}\right|=\frac{1}{\left\lceil \frac{1}{\varepsilon}\right\rceil }\leq2\varepsilon\end{array}
-\]
-
+ with each pair satisfying 
+\begin_inset Formula $d\left(\theta_{j+1},\theta_{j}\right)=\left|\theta_{j+1}-\theta_{j}\right|=\varepsilon$
 \end_inset
 
 
@@ -227,25 +226,10 @@ The pair
 
 \begin_layout Solution*
 Thus 
-\begin_inset Formula $N_{[\,]}\left(2\varepsilon,L_{1}\left(Q\right)\right)\leq N=\left\lceil \frac{1}{\varepsilon}\right\rceil $
+\begin_inset Formula $N_{1}\left(\varepsilon,F\right)\leq\left\lceil \frac{1}{\varepsilon}\right\rceil $
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-From the relationship between bracketing and covering numbers,
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
-\[
-N_{1}\left(\varepsilon,Q\right)\leq N_{[\,]}\left(2\varepsilon,L_{1}\left(Q\right)\right)\leq\left\lceil \frac{1}{\varepsilon}\right\rceil 
-\]
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Standard
