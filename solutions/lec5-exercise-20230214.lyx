@@ -95,11 +95,15 @@ theorems-ams-chap-bytype
 \begin_body
 
 \begin_layout Chapter
-Empirical Process Theory - Exercises
+M-Estimator and MLE - Exercises
 \end_layout
 
 \begin_layout Right Address
 Shu Shen
+\end_layout
+
+\begin_layout Section
+M-Estimator
 \end_layout
 
 \begin_layout Subsubsection*
@@ -165,27 +169,19 @@ Exercise 22.1 Take the model
 
 \begin_layout Solution*
 \paragraph_spacing double
-(a) Since the density function of 
-\begin_inset Formula $e$
+(a) Since 
+\begin_inset Formula $e=Y−X'\theta$
 \end_inset
 
- is 
-\begin_inset Formula $f\left(e\right)$
-\end_inset
-
- and 
-\begin_inset Formula $X=x$
+ is independent of 
+\begin_inset Formula $X$
 \end_inset
 
 ,
 \begin_inset Formula 
-\[
-\begin{array}{rc}
-\int_{-\infty}^{+\infty}f\left(e\right){\rm d}e & =1\\
-\int_{-\infty}^{+\infty}f\left(y−x'\theta\right){\rm d}\left(y−x'\theta\right) & =1\\
-\int_{-\infty}^{+\infty}f\left(y−x'\theta\right){\rm d}y & =1
-\end{array}
-\]
+\begin{align*}
+f\left(Y−X'\theta\mid X\right) & =f\left(e\mid X\right)=f\left(e\right)
+\end{align*}
 
 \end_inset
 
@@ -223,14 +219,12 @@ then the conditional density of
 
 \begin_layout Solution*
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 \psi\left(Y,X,θ\right) & =\frac{\partial}{\partial\theta}ρ\left(Y,X,θ\right)\\
  & =\frac{\partial}{\partial\theta}\left(Y-X'\theta\right)^{2}\\
  & =-2\left(Y-X'\theta\right)X\\
  & =-2eX
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
@@ -251,17 +245,12 @@ then the conditional density of
 
 \begin_layout Solution*
 the asymptotic covariance matrix is
-\end_layout
-
-\begin_layout Solution*
 \begin_inset Formula 
-\[
-\begin{array}{ll}
+\begin{align*}
  & \left(E\left[\frac{\partial}{\partial\theta}\psi_{i}\left(θ_{0}\right)\right]\right)^{-1}E\left[\psi_{i}\left(θ_{0}\right)\psi_{i}'\left(θ_{0}\right)\right]\left(E\left[\frac{\partial}{\partial\theta}\psi_{i}\left(θ_{0}\right)\right]\right)^{-1}\\
 = & \left(E\left[2XX'\right]\right)^{-1}E\left[\left(-2eX\right)\left(-2eX\right)'\right]\left(E\left[2XX'\right]\right)^{-1}\\
 = & \left(E\left[XX'\right]\right)^{-1}E\left[e^{2}XX'\right]\left(E\left[XX'\right]\right)^{-1}
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
@@ -421,13 +410,11 @@ Since
 
 \begin_layout Solution*
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 \psi\left(Y,X,θ\right) & =\frac{\partial}{\partial\theta}ρ\left(Y,X,θ\right)\\
  & =\frac{\partial}{\partial\theta}\left(1−\cos\left(Y−X'\theta\right)\right)\\
  & =\sin\left(e\right)X
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
@@ -448,17 +435,12 @@ Since
 
 \begin_layout Solution*
 the asymptotic covariance matrix is
-\end_layout
-
-\begin_layout Solution*
 \begin_inset Formula 
-\[
-\begin{array}{ll}
+\begin{align*}
  & \left(E\left[\frac{\partial}{\partial\theta}\psi_{i}\left(θ_{0}\right)\right]\right)^{-1}E\left[\psi_{i}\left(θ_{0}\right)\psi_{i}'\left(θ_{0}\right)\right]\left(E\left[\frac{\partial}{\partial\theta}\psi_{i}\left(θ_{0}\right)\right]\right)^{-1}\\
 = & \left(E\left[\cos\left(e\right)XX'\right]\right)^{-1}E\left[\left(\sin\left(e\right)X\right)\left(\sin\left(e\right)X\right)'\right]\left(E\left[\cos\left(e\right)XX'\right]\right)^{-1}\\
 = & \left(E\left[\cos\left(e\right)XX'\right]\right)^{-1}E\left[\sin^{2}\left(e\right)XX'\right]\left(E\left[\cos\left(e\right)XX'\right]\right)^{-1}
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
@@ -470,6 +452,10 @@ the asymptotic covariance matrix is
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+MLE
 \end_layout
 
 \begin_layout Subsubsection*
@@ -753,19 +739,14 @@ E\left[S\right]=\frac{E\left[X\right]}{p_{0}}-\frac{1-E\left[X\right]}{1-p_{0}}=
 
 \begin_layout Solution*
 and variance of the score
-\end_layout
-
-\begin_layout Solution*
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 var\left[S\right] & =var\left[\frac{X}{p_{0}}-\frac{1-X}{1-p_{0}}\right]\\
- & =E\left[\frac{X}{p_{0}}-\frac{1-X}{1-p_{0}}\right]^{2}-E^{2}\left[\frac{X}{p_{0}}-\frac{1-X}{1-p_{0}}\right]\\
- & =E\left[\frac{X^{2}}{p_{0}^{2}}-\frac{2X-2X^{2}}{p_{0}\left(1-p_{0}\right)}+\frac{1-2X+X^{2}}{\left(1-p_{0}\right)^{2}}\right]\\
- & =\frac{E\left[X^{2}\right]}{p_{0}^{2}}-\frac{2E\left[X\right]-2E\left[X^{2}\right]}{p_{0}\left(1-p_{0}\right)}+\frac{1-2E\left[X\right]+E\left[X^{2}\right]}{\left(1-p_{0}\right)^{2}}\\
- & =\frac{p_{0}}{p_{0}^{2}}-\frac{2p_{0}-2p_{0}}{p_{0}\left(1-p_{0}\right)}+\frac{1-2p_{0}+p_{0}}{\left(1-p_{0}\right)^{2}}=\frac{1}{p_{0}\left(1-p_{0}\right)}
-\end{array}
-\]
+ & =var\left[\frac{X-p_{0}}{p_{0}\left(1-p_{0}\right)}\right]\\
+ & =var\left[\frac{X}{p_{0}\left(1-p_{0}\right)}\right]\\
+ & =\frac{p_{0}\left(1-p_{0}\right)}{\left(p_{0}\left(1-p_{0}\right)\right)^{2}}\\
+ & =\frac{1}{p_{0}\left(1-p_{0}\right)}
+\end{align*}
 
 \end_inset
 
@@ -803,19 +784,13 @@ the Fisher information is
 \begin_layout Solution*
 \paragraph_spacing double
 The expectation of (minus) the second derivative
-\end_layout
-
-\begin_layout Solution*
-\paragraph_spacing double
 \begin_inset Formula 
-\[
-\begin{array}{cl}
+\begin{align*}
 \mathscr{H}_{0} & =-E\left[\frac{\partial^{2}}{\partial p^{2}}\log\pi\left(X\mid p_{0}\right)\right]\\
  & =E\left[\frac{X}{p_{0}^{2}}+\frac{1-X}{\left(1-p_{0}\right)^{2}}\right]\\
  & =\frac{E\left[X\right]}{p_{0}^{2}}+\frac{1-E\left[X\right]}{\left(1-p_{0}\right)^{2}}\\
  & =\frac{p_{0}}{p_{0}^{2}}+\frac{1-p_{0}}{\left(1-p_{0}\right)^{2}}=\frac{1}{p_{0}\left(1-p_{0}\right)}
-\end{array}
-\]
+\end{align*}
 
 \end_inset
 
