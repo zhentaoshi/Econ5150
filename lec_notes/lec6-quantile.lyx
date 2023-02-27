@@ -95,7 +95,17 @@ theorems-ams-chap-bytype
 \begin_body
 
 \begin_layout Chapter
-Quantile Estimation
+Quantile Regression
+\end_layout
+
+\begin_layout Standard
+Quantile regression is an important topic in theoretical econometrics.
+ It is particularly useful if we are interested in the tail of the distribution,
+ instead of the center.
+ For example, in financial risk management, we are concerned about some
+ rare events, rather than everyday routines.
+ This line of research started from Roger Koenker.
+ 
 \end_layout
 
 \begin_layout Section
@@ -176,10 +186,14 @@ noprefix "false"
 \end_inset
 
 Define 
-\begin_inset Formula $\psi\left(z\right)=\tau-\mathbb{I}\left(z\leq0\right)$
+\begin_inset Formula 
+\[
+\psi\left(z\right)=\tau-\mathbb{I}\left(z\leq0\right),
+\]
+
 \end_inset
 
-, which be considered as a 
+ which be considered as a 
 \series bold
 subgradient
 \series default
@@ -227,10 +241,7 @@ second derivative
  is 
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial^{2}}{\partial q^{2}}S_{n}\left(q\right) & \triangleq\lim_{\delta\to0}\frac{\frac{\partial}{\partial q}S_{n}\left(q+\delta\right)-\frac{\partial}{\partial q}S_{n}\left(q-\delta\right)}{2\delta}\\
- & =\lim_{\delta\to0}\frac{\frac{1}{n}\sum\left(\mathbb{I}\left\{ y_{i}\leq q+\delta\right\} -\mathbb{I}\left\{ y_{i}\leq q-\delta\right\} \right)}{2\delta}\\
- & \stackrel{p}{\to}\lim_{\delta\to0}\frac{F\left(y\leq q+\delta\right)-F\left(y\leq q-\delta\right)}{2\delta}\\
- & =f_{y}\left(q\right)
+\frac{\partial^{2}}{\partial q^{2}}S_{n}\left(q\right) & \stackrel{p}{\to}\frac{\partial}{\partial q}\left\{ F\left(y\leq q\right)-\tau\right\} =f_{y}\left(q\right)
 \end{align*}
 
 \end_inset
@@ -245,7 +256,7 @@ where the above heuristic calculation implicitly assumes the exchangeability
 \end_inset
 
 .
- 
+ (See Chapter 21 of var der Vaart (1998) for a rigorous treatment.)
 \end_layout
 
 \begin_layout Standard
@@ -287,7 +298,25 @@ Notice
 
 \end_inset
 
+In the expression of the asymptotic variance, 
+\begin_inset Formula $\tau$
+\end_inset
 
+ is known but the density 
+\begin_inset Formula $f_{y}^{2}\left(q_{\tau}^{0}\right)$
+\end_inset
+
+ must be estimated despite that we will plug 
+\begin_inset Formula $\hat{q}$
+\end_inset
+
+ to replace 
+\begin_inset Formula $q_{\tau}^{0}$
+\end_inset
+
+.
+ The problem of density estimation is fundamentally a nonparametric estimation.
+ 
 \end_layout
 
 \begin_layout Section
@@ -295,7 +324,13 @@ Quantile Regression
 \end_layout
 
 \begin_layout Standard
-With other regression, use 
+The above univariate quantile estimation is similar to a regression with
+ intercept only.
+ When other regressors 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ are present, we use 
 \begin_inset Formula $X_{i}'\beta$
 \end_inset
 
@@ -303,10 +338,7 @@ With other regression, use
 \begin_inset Formula $\theta$
 \end_inset
 
-:
-\end_layout
-
-\begin_layout Standard
+ in the quantile estimation:
 \begin_inset Formula 
 \[
 S_{n}\left(\beta\right)=\frac{1}{n}\sum\rho_{\tau}\left(y_{i}-X_{i}'\beta\right)
@@ -314,45 +346,47 @@ S_{n}\left(\beta\right)=\frac{1}{n}\sum\rho_{\tau}\left(y_{i}-X_{i}'\beta\right)
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 FOC
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial}{\partial\beta}S_{n}\left(\beta\right) & =\frac{1}{n}\sum X_{i}\left(\mathbb{I}\left\{ y_{i}\leq X_{i}'\beta\right\} -\tau\right)\\
- & \stackrel{p}{\to}E\left[X_{i}\psi\left(y_{i}-X_{i}'\beta\right)\right]\\
- & =E\left[X_{i}\psi\left(y_{i}-X_{i}'\beta_{\tau}+X_{i}'\beta_{\tau}-X_{i}'\beta\right)\right]\\
- & =E\left[X_{i}\psi\left(e_{i}+X_{i}'\left(\beta-\beta_{\tau}\right)\right)\right]\\
+\frac{\partial}{\partial\beta}S_{n}\left(\beta\right) & =-\frac{1}{n}\sum X_{i}\psi\left(y_{i}-X_{i}'\beta\right)\\
+ & =-\frac{1}{n}\sum X_{i}\psi\left(y_{i}-X_{i}'\beta_{\tau}+X_{i}'\beta_{\tau}-X_{i}'\beta\right)\\
+ & =-\frac{1}{n}\sum X_{i}\psi\left(e_{i}+X_{i}'\beta_{\tau}-X_{i}'\beta\right)\\
+ & \stackrel{p}{\to}-E\left[X_{i}\psi\left(e_{i}+X_{i}'\beta_{\tau}-X_{i}'\beta\right)\right]\\
+ & =-E\left[X_{i}E\left[\psi\left(e_{i}+X_{i}'\left(\beta_{\tau}-\beta\right)\right)|X_{i}\right]\right]\\
+ & =-E\left[X_{i}E\left[\tau-\mathbb{I}\left\{ e_{i}\leq X_{i}'\left(\beta-\beta_{\tau}\right)\right\} |X_{i}\right]\right]\\
  & =E\left[X_{i}\left(F_{e\mid X}\left(X_{i}'\left(\beta-\beta_{\tau}\right)\right)-\tau\right)\right]
 \end{align*}
 
 \end_inset
 
-
+where the fourth equality follows by the law of iterated expectations.
 \end_layout
 
 \begin_layout Standard
-SOC in the population version: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-E\left[X_{i}X_{i}'f_{e\mid X}\left(X_{i}'\left(\beta-\beta_{\tau}\right)\right)\right]
-\]
-
+SOC with respect to 
+\begin_inset Formula $\beta$
 \end_inset
 
+ in the population version is 
+\begin_inset Formula $E\left[X_{i}X_{i}'f_{e\mid X}\left(X_{i}'\left(\beta-\beta_{\tau}\right)\right)\right]$
+\end_inset
 
+.
+ Evaluate it at 
+\begin_inset Formula $\beta=\beta_{\tau}$
+\end_inset
+
+, the Hessian is 
+\begin_inset Formula $E\left[X_{i}X_{i}'f_{e\mid X}\left(0\right)\right]$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-Similarly, by ULLN and LD we have
-\end_layout
-
-\begin_layout Standard
+Similarly, by ULLN and ID we have consistency 
 \begin_inset Formula 
 \[
 \hat{\beta}\stackrel{p}{\to}\beta_{\tau}
@@ -360,34 +394,27 @@ Similarly, by ULLN and LD we have
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The identification condition is 
+The identification condition is that 
 \begin_inset Formula $Q_{\tau}=E\left[XX'f_{e\mid X}\left(0\right)\right]$
 \end_inset
 
- which is positive definite.
+ must positive definite.
 \end_layout
 
 \begin_layout Standard
-The variance of the score function is 
-\begin_inset Formula 
-\[
-\varOmega_{\tau}=E\left[XX'\psi^{2}\left(e\right)\right]
-\]
-
+Again evaluated at 
+\begin_inset Formula $\beta=\beta_{\tau},$
 \end_inset
 
+ the variance of the score function is 
+\begin_inset Formula $\Omega_{\tau}=E\left[XX'\psi^{2}\left(e\right)\right]$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-By asymptotic normality,
+.
+ We have asymptotic normality
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\beta}-\beta_{\tau}\right)\stackrel{d}{\to}N\left(0,Q_{\tau}^{-1}\varOmega_{\tau}Q_{\tau}^{-1}\right)
+\sqrt{n}\left(\hat{\beta}-\beta_{\tau}\right)\stackrel{d}{\to}N\left(0,Q_{\tau}^{-1}\Omega_{\tau}Q_{\tau}^{-1}\right)
 \]
 
 \end_inset
@@ -396,49 +423,45 @@ By asymptotic normality,
 \end_layout
 
 \begin_layout Subsection
-Conditional Quantile
+Linear Conditional Quantile
 \end_layout
 
 \begin_layout Standard
+Let 
 \begin_inset Formula $Q_{y\mid X}\left(\tau\right)$
 \end_inset
 
- is a function of 
-\begin_inset Formula $X$
+ be the 
+\begin_inset Formula $\tau$
 \end_inset
 
- if the conditional quantile 
-\begin_inset Formula $Q_{y\mid X}\left(\tau\right)=X'\beta_{\tau}$
+-th conditional quantile.
+ If the linear function is correct specified for the 
+\begin_inset Formula $\tau$
 \end_inset
 
-.
+-th conditional quantile, then 
+\begin_inset Formula 
+\[
+\tau=F_{y\mid X}\left(X'\beta_{\tau}\right)=E\left[\mathbb{I}\left\{ y\leq X'\beta_{\tau}\right\} \mid X\right]=E\left[\mathbb{I}\left\{ e\leq0\right\} \mid X\right]=F_{e|X}(0).
+\]
+
+\end_inset
+
+This condition simplifies the expression of the variance of the score function
+ as 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\tau=F_{y\mid X}\left(X'\beta\right)=E\left[\mathbb{I}\left\{ y\leq X'\beta\right\} \mid X\right]
+\Omega_{\tau}=E\left[XX'E\left[\left(\mathbb{I}\left\{ y\leq X'\beta_{\tau}\right\} -\tau\right)^{2}\mid X\right]\right]=\tau\left(1-\tau\right)E\left[XX'\right].
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\varOmega_{\tau} & =E\left[XX'E\left[\left(\mathbb{I}\left\{ y\leq X'\beta_{\tau}\right\} -\tau\right)^{2}\mid X\right]\right]\\
- & =\tau\left(1-\tau\right)E\left[XX'\right]
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Under this condition,
+As a result, the asymptotic variance.
+ 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\beta}-\beta_{\tau}\right)\stackrel{d}{\to}N\left(0,\tau\left(1-\tau\right)Q_{\tau}^{-1}E\left[XX'\right]Q_{\tau}^{-1}\right)
@@ -454,31 +477,129 @@ If we further assume
 \begin_inset Formula $e$
 \end_inset
 
- is independent of 
+ is statistically independent of 
 \begin_inset Formula $X$
 \end_inset
 
-,
-\end_layout
-
-\begin_layout Standard
-then the Hessian is simplified as 
+, then the Hessian is simplified as 
 \begin_inset Formula $Q_{\tau}=E\left[XX'\right]f_{e}\left(0\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-thus 
+, and we end up with 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\beta}-\beta_{\tau}\right)\stackrel{d}{\to}N\left(0,\frac{\tau\left(1-\tau\right)}{f_{e}\left(0\right)}\left(E\left[XX'\right]\right)^{-1}\right)
+\sqrt{n}\left(\hat{\beta}-\beta_{\tau}\right)\stackrel{d}{\to}N\left(0,\frac{\tau\left(1-\tau\right)}{f_{e}^{2}\left(0\right)}\left(E\left[XX'\right]\right)^{-1}\right).
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+The derivations in this chapter are heuristic, but they deliver the essence.
+\end_layout
+
+\begin_layout Standard
+It is helpful to compare quantile regression with our familiar linear regression.
+ The univariate mean model is 
+\begin_inset Formula $y=\mu+\varepsilon$
+\end_inset
+
+, where 
+\begin_inset Formula $E\left[y\right]=u$
+\end_inset
+
+, or equivalently 
+\begin_inset Formula $E\left[\varepsilon\right]=0$
+\end_inset
+
+.
+ The univariate quantile model is 
+\begin_inset Formula $y=q_{\tau}+e$
+\end_inset
+
+, where 
+\begin_inset Formula $Q_{y}(\tau)=q_{\tau}$
+\end_inset
+
+, or equivalently 
+\begin_inset Formula $Q_{e}\left(\tau\right)=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In regression model, the conditional mean 
+\begin_inset Formula $E\left[y|X\right]$
+\end_inset
+
+ is in general a nonlinear function of 
+\begin_inset Formula $X$
+\end_inset
+
+, and we approximate it by the linear function 
+\begin_inset Formula $X'\beta$
+\end_inset
+
+.
+ Identification is determined by the minimum eigenvalue of 
+\begin_inset Formula $E\left[XX'\right]$
+\end_inset
+
+.
+ The conditional quantile 
+\begin_inset Formula $Q_{y|X}\left(\tau\right)$
+\end_inset
+
+ is in general a nonlinear function of 
+\begin_inset Formula $X$
+\end_inset
+
+ too, while we approximate it with a linear function 
+\begin_inset Formula $X'\beta$
+\end_inset
+
+ for simplicity.
+ Identification is determined by the minimum eigenvalue of 
+\begin_inset Formula $E\left[XX'f_{e\mid X}\left(0\right)\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In regression models, correct specification 
+\begin_inset Formula $E\left[y|X\right]=X'\beta$
+\end_inset
+
+ or equivalently 
+\begin_inset Formula $E\left[e|X\right]=0$
+\end_inset
+
+ gives unbiasedness to the OLS estimator, and homoskedasticity simplifies
+ the variance.
+ In quantile regression, correct specification 
+\begin_inset Formula $Q_{y|X}\left(\tau\right)=X'\beta$
+\end_inset
+
+ provides an explicit form of the variance of the score function, and independen
+ce between 
+\begin_inset Formula $e$
+\end_inset
+
+ and 
+\begin_inset Formula $X$
+\end_inset
+
+ simplifies the sandwich-form variance into one piece.
 \end_layout
 
 \begin_layout Standard
