@@ -241,12 +241,18 @@ second derivative
  is 
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial^{2}}{\partial q^{2}}S_{n}\left(q\right) & \stackrel{p}{\to}\frac{\partial}{\partial q}\left\{ F\left(y\leq q\right)-\tau\right\} =f_{y}\left(q\right)
+\frac{\partial^{2}}{\partial q^{2}}S_{n}\left(q\right) & \stackrel{p}{\to}\frac{\partial}{\partial q}\left\{ F\left(y\leq q\right)-\tau\right\} \\
+ & =\frac{\partial}{\partial q}\left\{ F\left(y-q_{\tau}\leq q-q_{\tau}\right)-\tau\right\} \\
+ & =\frac{\partial}{\partial q}\left\{ F\left(e\leq q-q_{\tau}\right)-\tau\right\} =f_{e}\left(q-q_{\tau}\right)
 \end{align*}
 
 \end_inset
 
-where the above heuristic calculation implicitly assumes the exchangeability
+where we define 
+\begin_inset Formula $e=y-q_{\tau}$
+\end_inset
+
+, and the above heuristic calculation implicitly assumes the exchangeability
  between 
 \begin_inset Formula $\lim_{\delta\to0}$
 \end_inset
@@ -273,7 +279,7 @@ If true coefficient
 \end_inset
 
 Identification is equivalent to 
-\begin_inset Formula $f_{y}\left(q_{\tau}\right)>0$
+\begin_inset Formula $f_{y}\left(q_{\tau}\right)=f_{e}\left(0\right)>0$
 \end_inset
 
 .
@@ -281,19 +287,27 @@ Identification is equivalent to
 \end_layout
 
 \begin_layout Standard
-Notice 
-\begin_inset Formula $\mathbb{I}\left\{ y_{i}\leq q\right\} -\tau$
+Evaluated at the true value 
+\begin_inset Formula $q=q_{\tau}$
 \end_inset
 
- follows a binary distribution with variance 
+, the binary random variable 
+\begin_inset Formula $\mathbb{I}\left\{ y_{i}\leq q_{\tau}\right\} -\tau$
+\end_inset
+
+ has variance 
 \begin_inset Formula $\tau\left(1-\tau\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $f_{e}\left(q-q_{\tau}\right)|_{q=q_{\tau}}$
 \end_inset
 
 .
  As a result, 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{q}-q_{\tau}^{0}\right)\stackrel{d}{\to}N\left(0,\frac{\tau\left(1-\tau\right)}{f_{y}^{2}\left(q_{\tau}^{0}\right)}\right).
+\sqrt{n}\left(\hat{q}-q_{\tau}^{0}\right)\stackrel{d}{\to}N\left(0,\frac{\tau\left(1-\tau\right)}{f_{e}^{2}\left(0\right)}\right).
 \]
 
 \end_inset
@@ -303,15 +317,19 @@ In the expression of the asymptotic variance,
 \end_inset
 
  is known but the density 
-\begin_inset Formula $f_{y}^{2}\left(q_{\tau}^{0}\right)$
+\begin_inset Formula $f_{e}^{2}\left(0\right)$
 \end_inset
 
- must be estimated despite that we will plug 
-\begin_inset Formula $\hat{q}$
+ must be estimated based on observed 
+\begin_inset Quotes eld
 \end_inset
 
- to replace 
-\begin_inset Formula $q_{\tau}^{0}$
+quantile residual
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\widehat{e}_{i}=y_{i}-\hat{q}$
 \end_inset
 
 .
@@ -346,16 +364,16 @@ S_{n}\left(\beta\right)=\frac{1}{n}\sum\rho_{\tau}\left(y_{i}-X_{i}'\beta\right)
 
 \end_inset
 
-FOC
+The first order condition
 \begin_inset Formula 
 \begin{align*}
 \frac{\partial}{\partial\beta}S_{n}\left(\beta\right) & =-\frac{1}{n}\sum X_{i}\psi\left(y_{i}-X_{i}'\beta\right)\\
  & =-\frac{1}{n}\sum X_{i}\psi\left(y_{i}-X_{i}'\beta_{\tau}+X_{i}'\beta_{\tau}-X_{i}'\beta\right)\\
  & =-\frac{1}{n}\sum X_{i}\psi\left(e_{i}+X_{i}'\beta_{\tau}-X_{i}'\beta\right)\\
- & \stackrel{p}{\to}-E\left[X_{i}\psi\left(e_{i}+X_{i}'\beta_{\tau}-X_{i}'\beta\right)\right]\\
- & =-E\left[X_{i}E\left[\psi\left(e_{i}+X_{i}'\left(\beta_{\tau}-\beta\right)\right)|X_{i}\right]\right]\\
- & =-E\left[X_{i}E\left[\tau-\mathbb{I}\left\{ e_{i}\leq X_{i}'\left(\beta-\beta_{\tau}\right)\right\} |X_{i}\right]\right]\\
- & =E\left[X_{i}\left(F_{e\mid X}\left(X_{i}'\left(\beta-\beta_{\tau}\right)\right)-\tau\right)\right]
+ & \stackrel{p}{\to}-E\left[X\psi\left(e+X'\beta_{\tau}-X'\beta\right)\right]\\
+ & =-E\left[XE\left[\psi\left(e_{i}+X'\left(\beta_{\tau}-\beta\right)\right)|X\right]\right]\\
+ & =-E\left[XE\left[\tau-\mathbb{I}\left\{ e\leq X'\left(\beta-\beta_{\tau}\right)\right\} |X\right]\right]\\
+ & =E\left[X\left(F_{e\mid X}\left(X'\left(\beta-\beta_{\tau}\right)\right)-\tau\right)\right]
 \end{align*}
 
 \end_inset
@@ -369,7 +387,7 @@ SOC with respect to
 \end_inset
 
  in the population version is 
-\begin_inset Formula $E\left[X_{i}X_{i}'f_{e\mid X}\left(X_{i}'\left(\beta-\beta_{\tau}\right)\right)\right]$
+\begin_inset Formula $E\left[XX'f_{e\mid X}\left(X'\left(\beta-\beta_{\tau}\right)\right)\right]$
 \end_inset
 
 .
@@ -378,7 +396,7 @@ SOC with respect to
 \end_inset
 
 , the Hessian is 
-\begin_inset Formula $E\left[X_{i}X_{i}'f_{e\mid X}\left(0\right)\right]$
+\begin_inset Formula $E\left[XX'f_{e\mid X}\left(0\right)\right]$
 \end_inset
 
 .
