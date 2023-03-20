@@ -103,64 +103,43 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Random variable: measure function
-\begin_inset Formula 
-\[
-\left(\varOmega,\mathscr{F}\right)\mapsto\left(\mathbb{R}^{m},\mathscr{B}\right)
-\]
-
+A random variable is a 
+\begin_inset Formula $\left(\Omega,\mathscr{F}\right)\backslash\left(\mathbb{R}^{m},\mathscr{B}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-What is time series? Time series is a sequence of random variables 
-\begin_inset Formula $\left(y_{1}\left(w\right),y_{2}\left(w\right),y_{3}\left(w\right)\text{，}...\text{，}y_{n}\left(w\right)\right)\in\mathbb{R}^{m\times n}$
+ measure function.
+ A time series is a sequence of random variables 
+\begin_inset Formula $\left(y_{1}\left(\omega\right),y_{2}\left(\omega\right),y_{3}\left(\omega\right)\text{，}...\text{，}y_{n}\left(\omega\right)\right)\in\mathbb{R}^{m\times n}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-It can be extended to a doubly infinite sequence 
+, and it can be extended to a doubly infinite sequence 
 \begin_inset Formula $\left(...,y_{t-1},y_{t},y_{t+1,}...\right)\in\mathbb{R}^{m\times\infty}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Here is discrete time series (v.s.
- continuous time series)
-\end_layout
-
-\begin_layout Itemize
-for each fixed 
-\begin_inset Formula $w$
+.
+ We consider discrete time series (instead of the continuous time series).
+ For each fixed 
+\begin_inset Formula $\omega$
 \end_inset
 
 , the sequence is a deterministic vector 
-\begin_inset Formula $\left(y_{1},y_{2}\text{，}...\text{，}y_{n}\right)\in\mathbb{R}^{m\times n}$
+\begin_inset Formula $\left(y_{1},y_{2}\text{，}...\text{，}y_{n}\right)\left(\omega\right)\in\mathbb{R}^{m\times n}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-for each fixed 
+; for each fixed 
 \begin_inset Formula $t$
 \end_inset
 
 , 
-\begin_inset Formula $y_{t}\left(w\right)$
+\begin_inset Formula $y_{t}\left(\omega\right)$
 \end_inset
 
- is a random vector in 
+ is a common random vector in 
 \begin_inset Formula $\mathbb{R}^{m}$
 \end_inset
 
-
+.
+ 
 \end_layout
 
 \begin_layout Section
@@ -171,14 +150,18 @@ Stationarity
 In reality, we have only one realized sequence, but statistics needs repeated
  observations.
  We introduce the concept 
+\emph on
+stationarity
+\emph default
+ to produce 
 \begin_inset Quotes eld
 \end_inset
 
-stationarity
+repeated
 \begin_inset Quotes erd
 \end_inset
 
-.
+ observations.
 \end_layout
 
 \begin_layout Definition
@@ -198,11 +181,11 @@ weakly stationarity
 \end_inset
 
 , covariance 
-\begin_inset Formula $\varSigma=E\left[\left(y_{t}-\mu\right)\left(y_{t}-\mu\right)'\right]$
+\begin_inset Formula $\Sigma=E\left[\left(y_{t}-\mu\right)\left(y_{t}-\mu\right)'\right]$
 \end_inset
 
  and autocovariance 
-\begin_inset Formula $\varGamma\left(k\right)=E\left[\left(y_{t}-\mu\right)\left(y_{t-k}-\mu\right)'\right]$
+\begin_inset Formula $\Gamma\left(\ell\right)=E\left[\left(y_{t}-\mu\right)\left(y_{t-\ell}-\mu\right)'\right]$
 \end_inset
 
  are independent of 
@@ -210,28 +193,28 @@ weakly stationarity
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
-If weakly stationarity, 
+For a vector-valued weakly stationarity time series, 
+\begin_inset Formula $\Sigma=\Gamma\left(0\right)$
+\end_inset
+
+ is a positive-definite symmetric matrix.
+ The autovariance 
+\begin_inset Formula $\Gamma\left(\ell\right),\ell\neq0$
+\end_inset
+
+ is not symmetric in general, and 
 \begin_inset Formula 
-\begin{align*}
-\varGamma\left(-k\right) & =E\left[\left(y_{t}-\mu\right)\left(y_{t+k}-\mu\right)'\right]\\
- & =E\left[\left(y_{t-k}-\mu\right)\left(y_{t}-\mu\right)'\right]\\
- & =\varGamma\left(k\right)'
-\end{align*}
+\[
+\Gamma\left(-\ell\right)=E\left[\left(y_{t}-\mu\right)\left(y_{t+\ell}-\mu\right)'\right]=E\left[\left(y_{t-\ell}-\mu\right)\left(y_{t}-\mu\right)'\right]=\Gamma\left(\ell\right)'.
+\]
 
 \end_inset
 
 
-\begin_inset Formula $\varSigma=\varGamma\left(0\right)$
-\end_inset
-
- is symmetric, but 
-\begin_inset Formula $\varGamma\left(k\right),k\neq0$
-\end_inset
-
- is not symmetric in general.
 \end_layout
 
 \begin_layout Itemize
@@ -239,22 +222,35 @@ When
 \begin_inset Formula $m=1$
 \end_inset
 
-, we use 
+ (scalar time series), we use 
 \begin_inset Formula $\gamma\left(0\right),\gamma\left(1\right),...$
 \end_inset
 
-, autocorrelation 
-\begin_inset Formula $\rho\left(k\right)=\gamma\left(k\right)/\gamma\left(0\right)\in\left(-1,1\right)$
+, for the autocovariance, and we define 
+\emph on
+autocorrelation
+\emph default
+ as 
+\begin_inset Formula $\rho\left(\ell\right)=\gamma\left(\ell\right)/\gamma\left(0\right)$
 \end_inset
 
- by Cauchy-Schwarz inequality.
+.
+ By the Cauchy-Schwarz inequality 
+\begin_inset Formula $\rho(\ell)\in[-1,1]$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Definition
 \begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
- is strictly stationarity, if for each 
+ is 
+\emph on
+strictly stationarity
+\emph default
+, if for every 
 \begin_inset Formula $\ell\in\mathbb{Z}^{+}$
 \end_inset
 
@@ -269,7 +265,7 @@ When
 .
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 When mentioning 
 \begin_inset Quotes eld
 \end_inset
