@@ -289,60 +289,8 @@ S_{n}\left(r_{1}\right)\\
 S_{n}\left(r_{2}\right)-S_{n}\left(r_{1}\right)
 \end{array}\right)\overset{d}{\to}N\left(0,\left(\begin{array}{cc}
 r_{1}\sum & 0\\
-0 & r_{2}\sum
+0 & \left(r_{2}-r_{1}\right)\sum
 \end{array}\right)\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-consider time series with deterministic structural breaks
-\begin_inset Formula 
-\[
-u_{t}=\left(\begin{array}{c}
-e_{t}\\
-0
-\end{array}\right)\left(\begin{array}{c}
-0\\
-e_{t}
-\end{array}\right)\left(\begin{array}{c}
-0\\
-0
-\end{array}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-r\in\left[0,r_{1}\right]\left[r_{1},r_{2}\right]\left[r_{2},1\right]
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-E\left[u_{t}u_{t}'\right]=\left(\begin{array}{cc}
-r_{1}\sum & 0\\
-0 & 0
-\end{array}\right)+\left(\begin{array}{cc}
-0 & 0\\
-0 & r_{2}\sum
-\end{array}\right)+\left(\begin{array}{cc}
-0 & 0\\
-0 & 0
-\end{array}\right)=\left(\begin{array}{cc}
-r_{1}\sum & 0\\
-0 & r_{2}\sum
-\end{array}\right)
 \]
 
 \end_inset
