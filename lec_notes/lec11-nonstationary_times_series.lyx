@@ -116,34 +116,41 @@ Let
 \end_inset
 
  is a vector mds.
-\end_layout
-
-\begin_layout Standard
-Iterative substitution makes 
+ Iterative substitution makes 
 \begin_inset Formula $y_{t}=y_{0}+\sum_{i=1}^{t}e_{i}=y_{0}+S_{t}$
 \end_inset
 
+, where 
+\begin_inset Formula 
+\[
+S_{t}=\sum_{i=1}^{t}e_{i}
+\]
 
-\end_layout
-
-\begin_layout Standard
-Consider 
-\begin_inset Formula $t=\left\lfloor nr\right\rfloor $
 \end_inset
 
+ is the 
+\emph on
+partial sum
+\emph default
+.
+ We define the 
+\emph on
+standardized partial sum
+\emph default
+ as 
+\begin_inset Formula 
+\[
+S_{n}\left(r\right)=\frac{1}{\sqrt{n}}S_{\left\lfloor nr\right\rfloor }=\frac{1}{\sqrt{n}}\sum_{t=1}^{\left\lfloor nr\right\rfloor }e_{t}
+\]
 
-\end_layout
-
-\begin_layout Itemize
-standardized partial sum 
-\begin_inset Formula $S_{n}\left(r\right)=\frac{1}{\sqrt{n}}S_{\left\lfloor nr\right\rfloor }=\frac{1}{\sqrt{n}}\sum_{t=1}^{\left\lfloor nr\right\rfloor }e_{t}$
 \end_inset
 
+for some real number 
+\begin_inset Formula $r\in[0,1]$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-For a finite 
+.
+ For a finite 
 \begin_inset Formula $n$
 \end_inset
 
@@ -151,39 +158,16 @@ For a finite
 \begin_inset Formula $S_{n}\left(r\right)$
 \end_inset
 
- is a step function of 
+ is a step function in 
 \begin_inset Formula $r$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Itemize
-As 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-, asymptotically, the maximal jump size 
-\begin_inset Formula $\frac{1}{\sqrt{n}}\max_{i\leq n}\left\Vert e_{t}\right\Vert =O_{p}\left(1\right)$
-\end_inset
-
-, so jumps vanish.
+ 
 \end_layout
 
 \begin_layout Standard
-Recall: we measure the distance between two functions with the uniform metric
-\begin_inset Formula 
-\[
-\rho\left(\nu_{1},\nu_{2}\right)=\sup_{0\leq r\leq1}\left\Vert \nu_{1}\left(r\right)-\nu_{2}\left(r\right)\right\Vert 
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-
+Recall 
 \series bold
 Convergence in distribution
 \series default
@@ -199,34 +183,44 @@ Convergence in distribution
 \begin_inset Formula $f:\nu\to\mathbb{R}$
 \end_inset
 
-, where continuity is defined with respect to the uniform metric.
-\end_layout
+, where continuity is defined with respect to the uniform metric 
+\begin_inset Formula $\rho\left(\nu_{1},\nu_{2}\right)=\sup_{0\leq r\leq1}\left\Vert \nu_{1}\left(r\right)-\nu_{2}\left(r\right)\right\Vert .$
+\end_inset
 
-\begin_layout Itemize
-Equivalence conditions:
-\end_layout
-
-\begin_layout Enumerate
-for any finite 
+ The definition of convergence in distribution is abstract and difficult
+ to verify.
+ It is easier to verify its equivalent conditions: (i) for any finite 
 \begin_inset Formula $r_{1},...,r_{m}$
 \end_inset
 
 , we have 
-\begin_inset Formula $\left(S_{n}\left(r_{1}\right),...,S_{n}\left(r_{m}\right)\right)\overset{d}{\to}\left(S\left(r_{1}\right),...,S\left(r_{m}\right)\right)$
+\begin_inset Formula $\left(\nu_{n}\left(r_{1}\right),...,\nu_{n}\left(r_{m}\right)\right)\overset{d}{\to}\left(\nu\left(r_{1}\right),...,\nu\left(r_{m}\right)\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $S_{n}\left(r\right)$
+; (ii) 
+\begin_inset Formula $\nu_{n}\left(r\right)$
 \end_inset
 
- is stochastically equicontinuous (s.e.c).
+ is stochastically equicontinuous.
+ 
 \end_layout
 
-\begin_layout Itemize
-For 
+\begin_layout Standard
+As 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, asymptotically, the maximal jump size 
+\begin_inset Formula $\frac{1}{\sqrt{n}}\max_{i\leq n}\left\Vert e_{t}\right\Vert =O_{p}\left(1\right)$
+\end_inset
+
+, so jumps vanish and 
+\begin_inset Formula $S_{n}$
+\end_inset
+
+ is stochastically equicontinuous.
+ Now we verify its finite joint distribution.
+ For 
 \begin_inset Formula $S_{n}\left(r\right)$
 \end_inset
 
@@ -246,7 +240,7 @@ For any
 \end_inset
 
 , 
-\begin_inset Formula $S_{n}\left(r\right)\overset{d}{\to}N\left(0,r\sum\right)$
+\begin_inset Formula $S_{n}\left(r\right)\overset{d}{\to}N\left(0,r\Sigma\right)$
 \end_inset
 
 
@@ -266,22 +260,19 @@ For
 \end_inset
 
  are asymptotically independent.
+ 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 The second point holds as 
 \begin_inset Formula 
 \[
-S_{n}\left(r\right)=\frac{1}{\sqrt{n}}\sum_{t=1}^{\left\lfloor nr\right\rfloor }e_{t}=\sqrt{\frac{\left\lfloor nr\right\rfloor }{n}}\frac{1}{\sqrt{\left\lfloor nr\right\rfloor }}\sum_{t=1}^{\left\lfloor nr\right\rfloor }e_{t}\overset{d}{\to}N\left(0,r\sum\right)
+S_{n}\left(r\right)=\frac{1}{\sqrt{n}}\sum_{t=1}^{\left\lfloor nr\right\rfloor }e_{t}=\sqrt{\frac{\left\lfloor nr\right\rfloor }{n}}\frac{1}{\sqrt{\left\lfloor nr\right\rfloor }}\sum_{t=1}^{\left\lfloor nr\right\rfloor }e_{t}\overset{d}{\to}N\left(0,r\Sigma\right).
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-The third point holds as 
+And the third point holds as 
 \begin_inset Formula 
 \[
 \left(\begin{array}{c}
@@ -289,8 +280,8 @@ S_{n}\left(r_{1}\right)\\
 S_{n}\left(r_{2}\right)-S_{n}\left(r_{1}\right)
 \end{array}\right)\overset{d}{\to}N\left(0,\left(\begin{array}{cc}
 r_{1}\sum & 0\\
-0 & \left(r_{2}-r_{1}\right)\sum
-\end{array}\right)\right)
+0 & \left(r_{2}-r_{1}\right)\Sigma
+\end{array}\right)\right).
 \]
 
 \end_inset
@@ -298,12 +289,21 @@ r_{1}\sum & 0\\
 
 \end_layout
 
+\begin_layout Standard
+Next, we introduce the Brownian motion.
+ 
+\end_layout
+
 \begin_layout Definition
-a vector 
+A vector 
 \series bold
 Brownian motion
 \series default
- satisfies
+ satisfies (of variance 
+\begin_inset Formula $var(B(1))=\Sigma$
+\end_inset
+
+) 
 \end_layout
 
 \begin_layout Enumerate
@@ -314,7 +314,7 @@ Brownian motion
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $B\left(r\right)\sim N\left(0,r\sum\right)$
+\begin_inset Formula $B\left(r\right)\sim N\left(0,r\Sigma\right)$
 \end_inset
 
 
@@ -333,6 +333,10 @@ Brownian motion
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+There
 \end_layout
 
 \begin_layout Theorem
