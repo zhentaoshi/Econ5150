@@ -354,11 +354,16 @@ If
 Ergodicity
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+A time series 
 \begin_inset Formula $\left\{ y_{t}\right\} $
 \end_inset
 
- is ergodic if all invariant events are trivial.
+ is 
+\emph on
+ergodic
+\emph default
+ if all invariant events are trivial.
  Any event unaffected by time shift is of probability 0 or 1.
  
 \begin_inset Quotes eld
@@ -369,7 +374,12 @@ invariant
 \end_inset
 
  means the sequence of a random variable gets stuck somewhere.
- Such invariant can not happen if 
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Such invariant can not happen if 
 \begin_inset Formula $P\left(A\right)=0$
 \end_inset
 
@@ -380,8 +390,9 @@ invariant
 .
 \end_layout
 
-\begin_layout Itemize
-Ergodicty is preserved by transformation.
+\end_inset
+
+ Ergodicty is preserved by transformation.
  If 
 \begin_inset Formula $\left\{ y_{t}\right\} $
 \end_inset
@@ -390,17 +401,26 @@ Ergodicty is preserved by transformation.
 \begin_inset Formula $x_{t}\in\phi\left(y_{t},y_{t-1},...\right)$
 \end_inset
 
- (function with infinite terms)
+ (function with infinite terms).
 \end_layout
 
 \begin_layout Example
+If 
 \begin_inset Formula $x_{t}=\sum_{j=0}^{\infty}a_{j}y_{t-j}$
 \end_inset
 
- if convergent 
+ if convergent and 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is erdogic, then 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ is also erdogic.
 \end_layout
 
-\begin_layout Example
+\begin_layout Standard
 (Cesaro means) If 
 \begin_inset Formula $a_{j}\to a$
 \end_inset
@@ -435,6 +455,16 @@ If
 
  as 
 \begin_inset Formula $n\to\infty$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+need to revise
+\end_layout
+
 \end_inset
 
 
@@ -1382,15 +1412,12 @@ Project
 \begin_inset Formula $e_{t},e_{t-1,}e_{t-2},...$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-For simplicity, we can condiser the case 
+.
+ For simplicity, we can consider the case 
 \begin_inset Formula $\mu_{t}=\mu$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Definition

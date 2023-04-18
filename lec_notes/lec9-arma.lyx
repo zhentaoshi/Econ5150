@@ -95,7 +95,7 @@ theorems-ams-chap-bytype
 \begin_body
 
 \begin_layout Chapter
-ARMA Regressions
+ARMA Models
 \end_layout
 
 \begin_layout Section
@@ -103,11 +103,13 @@ AR(p) Processes
 \end_layout
 
 \begin_layout Standard
-We have learned Wold decomposition in the previous lecture 
+We have learned Wold decomposition in the previous lecture.
+ Let 
 \begin_inset Formula $e_{t}$
 \end_inset
 
- are strictly stationary ergodic white noise.
+ be strictly stationary ergodic white noise.
+ 
 \end_layout
 
 \begin_layout Itemize

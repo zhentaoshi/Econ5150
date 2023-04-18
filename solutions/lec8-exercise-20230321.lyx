@@ -176,17 +176,14 @@ Use the Ergodic Theorem,
 \end_layout
 
 \begin_layout Solution*
-As 
+as 
 \begin_inset Formula $n\to\infty$
 \end_inset
 
-,
-\end_layout
-
-\begin_layout Solution*
+, and therefore 
 \begin_inset Formula 
 \[
-\hat{\gamma}\left(k\right)=n^{-1}\sum_{t=k+1}^{n}\left(Y_{t}-\bar{Y}\right)\left(Y_{t-k}-\bar{Y}\right)=\frac{n-k-1}{n}\left(n-k-1\right)^{-1}\sum_{t=k+1}^{n}\left(Y_{t}-\bar{Y}\right)\left(Y_{t-k}-\bar{Y}\right)\overset{p}{\to}\gamma\left(k\right)
+\hat{\gamma}\left(k\right)=n^{-1}\sum_{t=k+1}^{n}\left(Y_{t}-\bar{Y}\right)\left(Y_{t-k}-\bar{Y}\right)=\frac{n-k-1}{n}\times\frac{1}{n-k-1}\sum_{t=k+1}^{n}\left(Y_{t}-\bar{Y}\right)\left(Y_{t-k}-\bar{Y}\right)\overset{p}{\to}\gamma\left(k\right).
 \]
 
 \end_inset
@@ -198,7 +195,7 @@ As
 (2) 
 \begin_inset Formula 
 \[
-\hat{\rho}\left(k\right)=\frac{\hat{\gamma}\left(k\right)}{\hat{\gamma}\left(0\right)}\to\frac{\gamma\left(k\right)}{\gamma\left(0\right)}=\rho\left(k\right)
+\hat{\rho}\left(k\right)=\frac{\hat{\gamma}\left(k\right)}{\hat{\gamma}\left(0\right)}\overset{p}{\to}\frac{\gamma\left(k\right)}{\gamma\left(0\right)}=\rho\left(k\right)
 \]
 
 \end_inset
@@ -241,30 +238,6 @@ Exercise 14.2 Show that if
 
 \begin_layout Solution*
 Since 
-\begin_inset Formula $\left(e_{t},\mathscr{F}_{t}\right)$
-\end_inset
-
- is a MDS, 
-\begin_inset Formula $e_{t}$
-\end_inset
-
- is adapted to 
-\begin_inset Formula $\mathscr{F}_{t}$
-\end_inset
-
-, 
-\begin_inset Formula $E\left|e_{t}\right|<\infty$
-\end_inset
-
-, and 
-\begin_inset Formula $E\left[e_{t}\mid\mathscr{F}_{t-1}\right]=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Solution*
-(1) Since 
 \begin_inset Formula $X_{t}$
 \end_inset
 
@@ -272,42 +245,32 @@ Since
 \begin_inset Formula $\mathscr{F}_{t}$
 \end_inset
 
--measurable, 
+-measurable, we have 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ adapted to 
+\begin_inset Formula $\mathscr{F}_{t}$
+\end_inset
+
+ in that 
 \begin_inset Formula 
 \[
-E\left[u_{t}\mid\mathscr{F}_{t}\right]=E\left[X_{t-1}e_{t}\mid\mathscr{F}_{t}\right]=X_{t-1}e_{t}
+E\left[u_{t}\mid\mathscr{F}_{t}\right]=E\left[X_{t-1}e_{t}\mid\mathscr{F}_{t}\right]=X_{t-1}e_{t}.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula $u_{t}$
+as 
+\begin_inset Formula $x_{t-1}$
 \end_inset
 
- is adapted to 
+is 
 \begin_inset Formula $\mathscr{F}_{t}$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Solution*
-(2) Since 
-\begin_inset Formula $E\left|e_{t}\right|<\infty$
-\end_inset
-
-, 
-\begin_inset Formula $E\left|u_{t}\right|=E\left|X_{t-1}e_{t}\right|<\infty$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Solution*
-(3) 
+ measurable.
+ Moreover, 
 \begin_inset Formula 
 \[
 E\left[u_{t}\mid\mathscr{F}_{t-1}\right]=E\left[X_{t-1}e_{t}\mid\mathscr{F}_{t-1}\right]=X_{t-1}E\left[e_{t}\mid\mathscr{F}_{t-1}\right]=0
@@ -315,15 +278,11 @@ E\left[u_{t}\mid\mathscr{F}_{t-1}\right]=E\left[X_{t-1}e_{t}\mid\mathscr{F}_{t-1
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-Therefore, 
+We thus have verified 
 \begin_inset Formula $u_{t}=X_{t-1}e_{t}$
 \end_inset
 
- is a MDS.
+ being a MDS.
 \end_layout
 
 \begin_layout Standard
@@ -468,11 +427,11 @@ var\left[Y_{t}\right]=var\left[\sum_{i=1}^{t}e_{i}\right]=\sum_{i=1}^{t}var\left
 \begin_inset Formula $Y_{t}$
 \end_inset
 
- is not stationary because the covariance of 
-\begin_inset Formula $Y_{t}$
+ is not stationary because 
+\begin_inset Formula $var\left[Y_{t}\right]$
 \end_inset
 
- is not independent of 
+ varies with 
 \begin_inset Formula $t$
 \end_inset
 
