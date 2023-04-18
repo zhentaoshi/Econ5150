@@ -606,11 +606,11 @@ Orders of Integration
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $y_{t}\sim{\rm I}\left(d\right)$
+\begin_inset Formula $y_{t}\sim I\left(d\right)$
 \end_inset
 
  if 
-\begin_inset Formula $\Delta^{d}y_{t}\sim{\rm I}\left(0\right)$
+\begin_inset Formula $\Delta^{d}y_{t}\sim I\left(0\right)$
 \end_inset
 
  
@@ -1525,7 +1525,7 @@ when
 \end_inset
 
 is a sample average of the square of the standardized paritial sum 
-\begin_inset Formula $\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{\hat{e}_{\left\lfloor nr\right\rfloor }}{\sqrt{n}\hat{\omega}}\overset{d}{\to}W\left(r\right)-rW\left(1\right)=V\left(r\right)$
+\begin_inset Formula $\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{\hat{e}_{t}}{\sqrt{n}\hat{\omega}}\overset{d}{\to}W\left(r\right)-rW\left(1\right)=V\left(r\right)$
 \end_inset
 
  is a Brownian Bridge.
@@ -1543,7 +1543,7 @@ To see this point, consider the simple case when
 
 \begin_inset Formula 
 \[
-\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{\hat{e}_{\left\lfloor nr\right\rfloor }}{\sqrt{n}\sigma}=\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{e_{\left\lfloor nr\right\rfloor }-\frac{1}{n}\sum_{t=1}^{n}e_{t}}{\sqrt{n}\sigma}=\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{e_{\left\lfloor nr\right\rfloor }}{\sqrt{n}\sigma}-\frac{\left\lfloor nr\right\rfloor }{n}\sum_{t=1}^{n}\frac{e_{t}}{\sqrt{n}\sigma}=S_{n}\left(r\right)-rS\left(1\right)
+\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{\hat{e}_{t}}{\sqrt{n}\sigma}=\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{t-\frac{1}{n}\sum_{t=1}^{n}e_{t}}{\sqrt{n}\sigma}=\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{e_{t}}{\sqrt{n}\sigma}-\frac{\left\lfloor nr\right\rfloor }{n}\sum_{t=1}^{n}\frac{e_{t}}{\sqrt{n}\sigma}=S_{n}\left(r\right)-rS\left(1\right)
 \]
 
 \end_inset
