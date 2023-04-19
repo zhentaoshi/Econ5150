@@ -1,0 +1,583 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Nonstationary Times Series - Exercises
+\end_layout
+
+\begin_layout Right Address
+Shu Shen
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 16.3 Suppose 
+\begin_inset Formula $Y_{t}=X_{t}+u_{t}$
+\end_inset
+
+ where 
+\begin_inset Formula $X_{t}=X_{t-1}+e_{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\left(e_{t},u_{t}\right)\sim I\left(0\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(a) Is 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ 
+\begin_inset Formula $I\left(0\right)$
+\end_inset
+
+ or 
+\begin_inset Formula $I\left(1\right)$
+\end_inset
+
+?.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(b) Find the asymptotic functional distribution of 
+\begin_inset Formula $n^{−1/2}Y_{\left\lfloor nr\right\rfloor }$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+16.3
+\end_layout
+
+\begin_layout Solution*
+(a) 
+\begin_inset Formula 
+\begin{align*}
+Y_{t} & =X_{t}+u_{t}\\
+ & =X_{t-1}+e_{t}+u_{t}\\
+ & =X_{t-2}+e_{t-1}+e_{t}+u_{t}\\
+ & =...\\
+ & =X_{0}+\sum_{i=1}^{t}e_{i}+u_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\begin{align*}
+\Delta Y_{t} & =Y_{t}-Y_{t-1}\\
+ & =X_{t}-X_{t-1}+u_{t}-u_{t-1}\\
+ & =e_{t}+\Delta u_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Since 
+\begin_inset Formula $\left(e_{t},u_{t}\right)\sim I\left(0\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta Y_{t}$
+\end_inset
+
+ is stationary with positive long-run variance.
+\end_layout
+
+\begin_layout Solution*
+Thus, 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ is 
+\begin_inset Formula $I\left(1\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+(b)
+\begin_inset Formula 
+\begin{align*}
+Y_{t} & =\sum_{i=1}^{t}e_{i}+u_{t}+X_{0}\\
+ & =S_{t}+u_{t}+X_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Because 
+\begin_inset Formula $\Delta Y_{t}$
+\end_inset
+
+ is stationary and 
+\begin_inset Formula $E\left[\Delta Y_{t}\right]=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\begin{align*}
+n^{-1/2}Y_{\left\lfloor nr\right\rfloor } & =S_{n}\left(r\right)+n^{-1/2}u_{\left\lfloor nr\right\rfloor }+n^{-1/2}X_{0}\\
+ & =S_{n}\left(r\right)+o_{p}\left(1\right)\\
+ & \overset{d}{\to}B\left(r\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+with covariance matrix 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ which is the long-run variance of 
+\begin_inset Formula $\Delta Y_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 16.4 Let 
+\begin_inset Formula $Y_{t}=e_{t}$
+\end_inset
+
+ be i.i.d.
+ and 
+\begin_inset Formula $X_{t}=∆Y_{t}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(a) Show that 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ is stationary and 
+\begin_inset Formula $I\left(0\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+(b) Show that 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is stationary but not 
+\begin_inset Formula $I\left(0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+16.4
+\end_layout
+
+\begin_layout Solution*
+(a) Since 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ is i.i.d.
+ with finite variance, 
+\begin_inset Formula $Y_{t}=e_{t}$
+\end_inset
+
+ is stationary with constant mean and variance.
+\begin_inset Formula 
+\[
+\gamma_{Y}\left(\ell\right)=Cov\left(Y_{t},Y_{t-\ell}\right)=Cov\left(e_{t},e_{t-\ell}\right)=\begin{cases}
+var\left(e_{t}\right) & \text{if }\ell=0\\
+0 & \text{if }\ell\neq0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\sum_{\ell=-\infty}^{\infty}\gamma_{Y}\left(\ell\right)>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Therefore, 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ is 
+\begin_inset Formula $I\left(0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution*
+(b) 
+\begin_inset Formula $X_{t}=\Delta Y_{t}$
+\end_inset
+
+ is stationary because 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ is stationary.
+\begin_inset Formula 
+\begin{align*}
+\gamma_{X}\left(\ell\right) & =Cov\left(X_{t},X_{t-\ell}\right)=Cov\left(\Delta Y_{t},\Delta Y_{t-\ell}\right)\\
+ & =Cov\left(Y_{t}-Y_{t-1},Y_{t-\ell}-Y_{t-\ell-1}\right)\\
+ & =2\gamma_{Y}\left(\ell\right)-\gamma_{Y}\left(\ell+1\right)-\gamma_{Y}\left(\ell-1\right)\\
+ & =\begin{cases}
+-var\left(e_{t}\right) & \text{if }\ell=-1\\
+2var\left(e_{t}\right) & \text{if }\ell=0\\
+-var\left(e_{t}\right) & \text{if }\ell=1\\
+0 & \text{if }\ell\neq-1,0,1
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\sum_{\ell=-\infty}^{\infty}\gamma_{X}\left(\ell\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Therefore, 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ is not 
+\begin_inset Formula $I\left(0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Exercise 16.6 Take the AR(1) model 
+\begin_inset Formula $Y_{t}=\alpha Y_{t-1}+e_{t}$
+\end_inset
+
+ with i.i.d.
+ 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ and the least squares estimator 
+\begin_inset Formula $\hat{\alpha}$
+\end_inset
+
+.
+ In Chaper 14 we learned that the asymptotic distribution when 
+\begin_inset Formula $\left|\alpha\right|<1$
+\end_inset
+
+ is 
+\begin_inset Formula $\sqrt{n}\left(\hat{\alpha}-\alpha\right)\overset{d}{\to}N\left(0,1-\alpha^{2}\right)$
+\end_inset
+
+ .
+ How do you reconcile this with Theorem 16.9, especially for 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ close to one?
+\end_layout
+
+\begin_layout Solution*
+
+\series bold
+16.6
+\end_layout
+
+\begin_layout Solution*
+(1) When 
+\begin_inset Formula $\left|\alpha\right|<1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+var\left(Y_{t}\right)=var\left(\sum_{i=0}^{\infty}\alpha^{i}e_{t-i}\right)=\sum_{i=0}^{\infty}(\alpha^{i})^{2}var\left(e_{t-i}\right)=\sigma^{2}\sum_{i=0}^{\infty}(\alpha^{i})^{2}=\frac{\sigma^{2}}{1-\alpha^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}}{\frac{1}{n}\sum Y_{t}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+The numerator 
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}\overset{d}{\to}N\left(0,var\left(Y_{t-1}e_{t}\right)\right)=N\left(0,var\left(Y_{t-1}\right)\sigma_{e}^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+The denominator 
+\begin_inset Formula $\frac{1}{n}\sum Y_{t}^{2}\overset{p}{\to}var\left(Y_{t}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Therefore, 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}}{\frac{1}{n}\sum Y_{t}^{2}}\sim N\left(0,\frac{\sigma_{e}^{2}}{var\left(Y_{t}\right)}\right)=N\left(0,1-\alpha^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+(2) When 
+\begin_inset Formula $\alpha\to1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+var\left(Y_{t}\right)=var\left(\sum_{i=0}^{\infty}\alpha^{i}e_{t-i}\right)=\sum_{i=0}^{\infty}(\alpha^{i})^{2}var\left(e_{t-i}\right)=\sigma^{2}\sum_{i=0}^{\infty}(\alpha^{i})^{2}=\frac{\sigma^{2}}{1-\alpha^{2}}\to\infty
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}}{\frac{1}{n}\sum Y_{t}^{2}}\sim N\left(0,\frac{\sigma_{e}^{2}}{var\left(Y_{t}\right)}\right)=N\left(0,0\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+(3) When 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+n\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{n}\sum Y_{t-1}e_{t}}{\frac{1}{n^{2}}\sum Y_{t}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+The numerator 
+\begin_inset Formula 
+\begin{align*}
+\sum_{t=0}^{n-1}\frac{Y_{t}}{\sqrt{n}}\frac{Y_{t+1}-Y_{t}}{\sqrt{n}}=\varint S_{n}\left(r\right){\rm d}S_{n}\left(r\right)\overset{d}{\to}\varint_{0}^{1}B{\rm d}B=\sigma^{2}\varint W{\rm d}W
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+The denominator 
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{t=0}^{n-1}\left(\frac{Y_{t}}{\sqrt{n}}\right)^{2}=\sum_{t=0}^{n-1}\frac{1}{n}S_{n}^{2}\left(r\right)\overset{d}{\to}\varint_{0}^{1}B^{2}=\sigma^{2}\varint_{0}^{1}W^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution*
+Therefore, 
+\begin_inset Formula 
+\[
+n\left(\hat{\alpha}-1\right)\overset{d}{\to}\frac{\varint_{0}^{1}W{\rm d}W}{\varint_{0}^{1}W^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
