@@ -286,7 +286,42 @@ r_{1}\Sigma & 0\\
 
 \end_inset
 
+The above joint distribution are written for any two points 
+\begin_inset Formula $r_{1},r_{2}\in[0,1]$
+\end_inset
 
+, and it is easy to see that the asymptotic normality can be extended to
+ any 
+\begin_inset Formula $r_{1},\ldots,r_{m}\in[0,1]$
+\end_inset
+
+ with a finite 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Notice that the initial value 
+\begin_inset Formula $y_{0}$
+\end_inset
+
+ does not affect the asymptotic behavior, since 
+\begin_inset Formula $\frac{1}{\sqrt{n}}y_{\left\lfloor nr\right\rfloor }=S_{n}\left(r\right)+\frac{1}{\sqrt{n}}y_{0}$
+\end_inset
+
+ with the initial value 
+\begin_inset Formula $\frac{1}{\sqrt{n}}y_{0}=O_{p}\left(\frac{1}{\sqrt{n}}\right)=o_{p}\left(1\right)$
+\end_inset
+
+.
+ (For simplicity, we can simply assume 
+\begin_inset Formula $y_{0}=0$
+\end_inset
+
+.)
 \end_layout
 
 \begin_layout Standard
@@ -336,7 +371,12 @@ Brownian motion
 \end_layout
 
 \begin_layout Standard
-There
+We find the limiting behavior of 
+\begin_inset Formula $S_{n}\left(r\right)$
+\end_inset
+
+ in any finite coordinates coincides with the Brownian motion, and thus
+ we have the following functional CLT.
 \end_layout
 
 \begin_layout Theorem
@@ -353,30 +393,6 @@ if
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-For the observed time series, 
-\begin_inset Formula $\frac{1}{\sqrt{n}}y_{\left\lfloor nr\right\rfloor }=S_{n}\left(r\right)+\frac{1}{\sqrt{n}}y_{0}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-The effect of the initial value 
-\begin_inset Formula $\frac{1}{\sqrt{n}}y_{0}=O_{p}\left(\frac{1}{\sqrt{n}}\right)=o_{p}\left(1\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-It can be replaced with 
-\begin_inset Formula $y_{0}=0$
-\end_inset
-
- for simplicity.
 \end_layout
 
 \begin_layout Section
