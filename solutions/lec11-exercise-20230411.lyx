@@ -190,10 +190,7 @@ Since
 \end_inset
 
  is stationary with positive long-run variance.
-\end_layout
-
-\begin_layout Solution*
-Thus, 
+ Thus, 
 \begin_inset Formula $Y_{t}$
 \end_inset
 
@@ -226,10 +223,7 @@ Because
 \begin_inset Formula $E\left[\Delta Y_{t}\right]=0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
+, 
 \begin_inset Formula 
 \begin{align*}
 n^{-1/2}Y_{\left\lfloor nr\right\rfloor } & =S_{n}\left(r\right)+n^{-1/2}u_{\left\lfloor nr\right\rfloor }+n^{-1/2}X_{0}\\
@@ -239,10 +233,6 @@ n^{-1/2}Y_{\left\lfloor nr\right\rfloor } & =S_{n}\left(r\right)+n^{-1/2}u_{\lef
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
 with covariance matrix 
 \begin_inset Formula $\Omega$
 \end_inset
@@ -316,7 +306,7 @@ Exercise 16.4 Let
 \begin_inset Formula $Y_{t}=e_{t}$
 \end_inset
 
- is stationary with constant mean and variance.
+ is stationary with constant mean and variance
 \begin_inset Formula 
 \[
 \gamma_{Y}\left(\ell\right)=Cov\left(Y_{t},Y_{t-\ell}\right)=Cov\left(e_{t},e_{t-\ell}\right)=\begin{cases}
@@ -327,22 +317,12 @@ var\left(e_{t}\right) & \text{if }\ell=0\\
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
-\[
-\sum_{\ell=-\infty}^{\infty}\gamma_{Y}\left(\ell\right)>0
-\]
-
+and thus its long-run variance 
+\begin_inset Formula $\sum_{\ell=-\infty}^{\infty}\gamma_{Y}\left(\ell\right)>0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-Therefore, 
+ is positive.
+ As a result, 
 \begin_inset Formula $Y_{t}$
 \end_inset
 
@@ -363,6 +343,7 @@ Therefore,
 \end_inset
 
  is stationary.
+ Its variance is 
 \begin_inset Formula 
 \begin{align*}
 \gamma_{X}\left(\ell\right) & =Cov\left(X_{t},X_{t-\ell}\right)=Cov\left(\Delta Y_{t},\Delta Y_{t-\ell}\right)\\
@@ -378,22 +359,11 @@ Therefore,
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
-\[
-\sum_{\ell=-\infty}^{\infty}\gamma_{X}\left(\ell\right)=0
-\]
-
+Because its long-run variance 
+\begin_inset Formula $\sum_{\ell=-\infty}^{\infty}\gamma_{X}\left(\ell\right)=0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-Therefore, 
+, we conclude that 
 \begin_inset Formula $X_{t}$
 \end_inset
 
@@ -456,7 +426,7 @@ Exercise 16.6 Take the AR(1) model
 , 
 \begin_inset Formula 
 \[
-var\left(Y_{t}\right)=var\left(\sum_{i=0}^{\infty}\alpha^{i}e_{t-i}\right)=\sum_{i=0}^{\infty}(\alpha^{i})^{2}var\left(e_{t-i}\right)=\sigma^{2}\sum_{i=0}^{\infty}(\alpha^{i})^{2}=\frac{\sigma^{2}}{1-\alpha^{2}}
+var\left(Y_{t}\right)=var\left(\sum_{i=0}^{\infty}\alpha^{i}e_{t-i}\right)=\sum_{i=0}^{\infty}(\alpha^{i})^{2}var\left(e_{t-i}\right)=\sigma^{2}\sum_{i=0}^{\infty}(\alpha^{i})^{2}=\frac{\sigma_{e}^{2}}{1-\alpha^{2}}
 \]
 
 \end_inset
@@ -469,30 +439,20 @@ var\left(Y_{t}\right)=var\left(\sum_{i=0}^{\infty}\alpha^{i}e_{t-i}\right)=\sum_
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
 The numerator 
 \begin_inset Formula $\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}\overset{d}{\to}N\left(0,var\left(Y_{t-1}e_{t}\right)\right)=N\left(0,var\left(Y_{t-1}\right)\sigma_{e}^{2}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-The denominator 
+.
+ The denominator 
 \begin_inset Formula $\frac{1}{n}\sum Y_{t}^{2}\overset{p}{\to}var\left(Y_{t}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-Therefore, 
+.
+ Therefore, 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}}{\frac{1}{n}\sum Y_{t}^{2}}\sim N\left(0,\frac{\sigma_{e}^{2}}{var\left(Y_{t}\right)}\right)=N\left(0,1-\alpha^{2}\right)
+\sqrt{n}\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}}{\frac{1}{n}\sum Y_{t}^{2}}\sim N\left(0,\frac{\sigma_{e}^{2}}{var\left(Y_{t}\right)}\right)=N\left(0,1-\alpha^{2}\right).
 \]
 
 \end_inset
@@ -501,30 +461,36 @@ Therefore,
 \end_layout
 
 \begin_layout Solution*
-(2) When 
+(2) The last expression implies that when 
 \begin_inset Formula $\alpha\to1$
 \end_inset
 
 , 
 \begin_inset Formula 
-\begin{align*}
-var\left(Y_{t}\right)=var\left(\sum_{i=0}^{\infty}\alpha^{i}e_{t-i}\right)=\sum_{i=0}^{\infty}(\alpha^{i})^{2}var\left(e_{t-i}\right)=\sigma^{2}\sum_{i=0}^{\infty}(\alpha^{i})^{2}=\frac{\sigma^{2}}{1-\alpha^{2}}\to\infty
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Solution*
-\begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}}{\frac{1}{n}\sum Y_{t}^{2}}\sim N\left(0,\frac{\sigma_{e}^{2}}{var\left(Y_{t}\right)}\right)=N\left(0,0\right)=0
+\sqrt{n}\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{\sqrt{n}}\sum Y_{t-1}e_{t}}{\frac{1}{n}\sum Y_{t}^{2}}\sim N\left(0,\frac{\sigma_{e}^{2}}{var\left(Y_{t}\right)}\right)\sim N\left(0,0\right)=0
 \]
 
 \end_inset
 
+In other words, the scaling factor 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
 
+ is not big enough to blow 
+\begin_inset Formula $\left(\hat{\alpha}-\alpha\right)$
+\end_inset
+
+ into an non-degenerate random variable.
+ Actually, then 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+, the proper scaling factor should be 
+\begin_inset Formula $n$
+\end_inset
+
+, as we will see in the next question.
 \end_layout
 
 \begin_layout Solution*
@@ -535,39 +501,27 @@ var\left(Y_{t}\right)=var\left(\sum_{i=0}^{\infty}\alpha^{i}e_{t-i}\right)=\sum_
 , 
 \begin_inset Formula 
 \[
-n\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{n}\sum Y_{t-1}e_{t}}{\frac{1}{n^{2}}\sum Y_{t}^{2}}
+n\left(\hat{\alpha}-\alpha\right)=\frac{\frac{1}{n}\sum Y_{t-1}e_{t}}{\frac{1}{n^{2}}\sum Y_{t}^{2}}.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
 The numerator 
 \begin_inset Formula 
-\begin{align*}
-\sum_{t=0}^{n-1}\frac{Y_{t}}{\sqrt{n}}\frac{Y_{t+1}-Y_{t}}{\sqrt{n}}=\varint S_{n}\left(r\right){\rm d}S_{n}\left(r\right)\overset{d}{\to}\varint_{0}^{1}B{\rm d}B=\sigma^{2}\varint W{\rm d}W
-\end{align*}
+\[
+\sum_{t=0}^{n-1}\frac{Y_{t}}{\sqrt{n}}\frac{Y_{t+1}-Y_{t}}{\sqrt{n}}=\varint S_{n}\left(r\right){\rm d}S_{n}\left(r\right)\overset{d}{\to}\varint_{0}^{1}B{\rm d}B=\sigma_{e}^{2}\varint W{\rm d}W.
+\]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
 The denominator 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{t=0}^{n-1}\left(\frac{Y_{t}}{\sqrt{n}}\right)^{2}=\sum_{t=0}^{n-1}\frac{1}{n}S_{n}^{2}\left(r\right)\overset{d}{\to}\varint_{0}^{1}B^{2}=\sigma^{2}\varint_{0}^{1}W^{2}
+\frac{1}{n}\sum_{t=0}^{n-1}\left(\frac{Y_{t}}{\sqrt{n}}\right)^{2}=\sum_{t=0}^{n-1}\frac{1}{n}S_{n}^{2}\left(r\right)\overset{d}{\to}\varint_{0}^{1}B^{2}=\sigma^{2}\varint_{0}^{1}W^{2}.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
 Therefore, 
 \begin_inset Formula 
 \[
