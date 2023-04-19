@@ -164,9 +164,8 @@ Hint: Use the MA representation of
 
 \series bold
 14.15
-\end_layout
+\series default
 
-\begin_layout Solution*
 \begin_inset Formula 
 \begin{align*}
 Y_{t} & =\alpha_{0}+\alpha_{1}Y_{t-1}+e_{t}\\
@@ -188,9 +187,6 @@ The mean of
 \end_inset
 
  is:
-\end_layout
-
-\begin_layout Solution*
 \begin_inset Formula 
 \begin{align*}
 E\left[Y_{t}\right] & =E\left[\sum_{i=0}^{\infty}\alpha_{1}^{i}e_{t-i}+\frac{\alpha_{0}}{1-\alpha_{1}}\right]\\
@@ -200,18 +196,11 @@ E\left[Y_{t}\right] & =E\left[\sum_{i=0}^{\infty}\alpha_{1}^{i}e_{t-i}+\frac{\al
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
 The variance of 
 \begin_inset Formula $Y_{t}$
 \end_inset
 
  is:
-\end_layout
-
-\begin_layout Solution*
 \begin_inset Formula 
 \begin{align*}
 var\left(Y_{t}\right) & =var\left(\sum_{i=0}^{\infty}\alpha_{1}^{i}e_{t-i}+\frac{\alpha_{0}}{1-\alpha_{1}}\right)\\
@@ -223,11 +212,7 @@ var\left(Y_{t}\right) & =var\left(\sum_{i=0}^{\infty}\alpha_{1}^{i}e_{t-i}+\frac
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
-Therefore,
+Thus we conclude
 \begin_inset Formula 
 \[
 Y_{t}\sim N\left(\frac{\alpha_{0}}{1-\alpha_{1}},\frac{\sigma^{2}}{1-\alpha_{1}^{2}}\right)
@@ -350,10 +335,7 @@ var\left(S_{t}\right) & =var\left(\sum_{i=1}^{t}e_{i}\right)\\
 \end_layout
 
 \begin_layout Solution*
-(b)
-\end_layout
-
-\begin_layout Solution*
+(b) Notice that 
 \begin_inset Formula 
 \[
 Y_{t}=\frac{S_{t}-E\left[S_{t}\right]}{\sqrt{var\left[S_{t}\right]}}=\frac{S_{t}}{\sqrt{t}\sigma}=\frac{\sum_{i=1}^{t}e_{i}}{\sqrt{t}\sigma}=\frac{1}{\sigma}\frac{1}{\sqrt{t}}\sum_{i=1}^{t}e_{i}
@@ -361,10 +343,16 @@ Y_{t}=\frac{S_{t}-E\left[S_{t}\right]}{\sqrt{var\left[S_{t}\right]}}=\frac{S_{t}
 
 \end_inset
 
+If 
+\begin_inset Formula $Y_{t}$
+\end_inset
 
-\end_layout
+ is stationary, its covariance must not depend on 
+\begin_inset Formula $t$
+\end_inset
 
-\begin_layout Solution*
+.
+ However, 
 \begin_inset Formula 
 \begin{align*}
 Cov\left(Y_{t},Y_{t+k}\right) & =E\left[\left(Y_{t}-E\left[Y_{t}\right]\right)\left(Y_{t+k}-E\left[Y_{t+k}\right]\right)\right]\\
@@ -372,15 +360,11 @@ Cov\left(Y_{t},Y_{t+k}\right) & =E\left[\left(Y_{t}-E\left[Y_{t}\right]\right)\l
  & =E\left[\frac{1}{\sigma}\frac{1}{\sqrt{t}}\sum_{i=1}^{t}e_{i}\frac{1}{\sigma}\frac{1}{\sqrt{t+k}}\sum_{i=1}^{t+k}e_{i}\right]\\
  & =\frac{1}{\sigma^{2}\sqrt{t\left(t+k\right)}}E\left[\left(e_{1}+\cdots+e_{t}\right)\left(e_{1}+\cdots+e_{t}+\cdots e_{t+k}\right)\right]\\
  & =\frac{1}{\sigma^{2}\sqrt{t\left(t+k\right)}}\sum_{i=1}^{t}E\left[e_{i}^{2}\right]\\
- & =\sqrt{\frac{t}{t+k}}
+ & =\sqrt{\frac{t}{t+k}}.
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Solution*
 Therefore, 
 \begin_inset Formula $Y_{t}$
 \end_inset
