@@ -279,7 +279,7 @@ And the third point holds as
 S_{n}\left(r_{1}\right)\\
 S_{n}\left(r_{2}\right)-S_{n}\left(r_{1}\right)
 \end{array}\right)\overset{d}{\to}N\left(0,\left(\begin{array}{cc}
-r_{1}\sum & 0\\
+r_{1}\Sigma & 0\\
 0 & \left(r_{2}-r_{1}\right)\Sigma
 \end{array}\right)\right).
 \]
@@ -345,7 +345,7 @@ if
 \end_inset
 
  is strictly stationary, ergodic mds with 
-\begin_inset Formula $\sum<\infty$
+\begin_inset Formula $\Sigma<\infty$
 \end_inset
 
 , then 
@@ -486,8 +486,8 @@ then
 \begin_inset Formula 
 \begin{align*}
 var\left(\frac{1}{\sqrt{n}}\sum_{s=1}^{n}e_{s}\right) & =var\left(\Theta\left(1\right)\frac{1}{\sqrt{n}}\sum_{s=1}^{t}u_{s}+\frac{\nu_{t}}{\sqrt{n}}-\frac{\nu_{0}}{\sqrt{n}}\right)\\
- & =\Theta\left(1\right)\sum\Theta'\left(1\right)+o\left(1\right)\\
- & \to\Theta\left(1\right)\sum\Theta'\left(1\right)
+ & =\Theta\left(1\right)\Sigma\Theta'\left(1\right)+o\left(1\right)\\
+ & \to\Theta\left(1\right)\Sigma\Theta'\left(1\right)
 \end{align*}
 
 \end_inset
@@ -497,7 +497,7 @@ var\left(\frac{1}{\sqrt{n}}\sum_{s=1}^{n}e_{s}\right) & =var\left(\Theta\left(1\
 
 \begin_layout Standard
 where 
-\begin_inset Formula $\sum=var\left(u_{s}\right)$
+\begin_inset Formula $\Sigma=var\left(u_{s}\right)$
 \end_inset
 
 
@@ -548,7 +548,7 @@ We conclude
 
 \begin_layout Standard
 where 
-\begin_inset Formula $B\left(1\right)\sim N\left(0,\Theta\left(1\right)\sum\Theta'\left(1\right)\right)$
+\begin_inset Formula $B\left(1\right)\sim N\left(0,\Theta\left(1\right)\Sigma\Theta'\left(1\right)\right)$
 \end_inset
 
 
