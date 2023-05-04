@@ -109,6 +109,7 @@ We have learned Wold decomposition in the previous lecture.
 \end_inset
 
  be strictly stationary ergodic white noise.
+ The ARMA are the classical approach to model a univariate time series.
  
 \end_layout
 
@@ -218,46 +219,50 @@ MA(
 \begin_inset Formula $\mu=\frac{\alpha_{0}}{1-\alpha_{1}}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-lag operator representations:
-\end_layout
+To facilitate the notation, we introduce the 
+\series bold
+lag operator
+\series default
+ 
+\begin_inset Formula ${\rm L}$
+\end_inset
 
-\begin_layout Standard
+.
+ Its effect is to push any time series observation one period to the past.
+ That is, 
+\begin_inset Formula ${\rm L}x_{t}=x_{t-1}$
+\end_inset
+
+.
+ An AR(1) can be written as 
 \begin_inset Formula 
 \begin{align*}
 \left(1-\alpha{\rm L}\right)y_{t} & =\alpha_{0}+e_{t}\\
-y_{t} & =\left(1-\alpha{\rm L}\right)^{-1}\left(\alpha_{0}+e_{t}\right)
+y_{t} & =\left(1-\alpha{\rm L}\right)^{-1}\left(\alpha_{0}+e_{t}\right).
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-For stationary, 
+For stationarity, the AR coefficient 
 \begin_inset Formula $\left|\alpha\right|<1$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-If 
+.
+ If 
 \begin_inset Formula $\alpha=1$
 \end_inset
 
-, unit root.
+, it becomes a unit root process, which is very different from stationary
+ time series.
+ 
 \end_layout
 
 \begin_layout Itemize
 AR(p)
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 y_{t}=\alpha_{0}+\alpha_{1}y_{t-1}+\alpha_{2}y_{t-2}+...++\alpha_{p}y_{t-p}+e_{t}
@@ -273,22 +278,30 @@ lag operator:
 \begin_inset Formula $\left(1-\alpha\left({\rm L}\right)\right)y_{t}=\alpha_{0}+e_{t}$
 \end_inset
 
+, where 
+\begin_inset Formula $\alpha(z)$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-stationary: all roots of 
+ is a polynomial.
+ Stationarity requires that : all roots of 
 \begin_inset Formula $1-\alpha\left(z\right)=0$
 \end_inset
 
- are at the side of the unit circle.
-\end_layout
+ are strictly outside of the unit circle.
+ That is, all the 
+\begin_inset Formula $p$
+\end_inset
+
+ roots (on the complex plain) must have their modulus strictly greater than
+ 1.
+\begin_inset Note Note
+status collapsed
 
 \begin_layout Section
 Impulse Response
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
 y_{t}=b\left({\rm L}\right)e_{t}
@@ -299,7 +312,7 @@ y_{t}=b\left({\rm L}\right)e_{t}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
 b_{j}=\frac{\partial y_{t+j}}{\partial e_{t}}
@@ -319,7 +332,7 @@ If the underlying model is AR(p), we do not want to estimate all
  How to compute the impulse response?
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Recursive representations
 \begin_inset Formula 
 \begin{align*}
@@ -335,7 +348,7 @@ y_{t+p} & =\alpha_{1}y_{t+p-1}+\alpha_{2}y_{t+p-2}+...++\alpha_{p}y_{t}+e_{t+p}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The effect of a shock to 
 \begin_inset Formula $e_{t}$
 \end_inset
@@ -343,7 +356,7 @@ The effect of a shock to
  alone will spread via the dynamic system.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 (1) If 
 \begin_inset Formula $\Delta e_{t}=1$
 \end_inset
@@ -355,7 +368,7 @@ The effect of a shock to
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 (2) 
 \begin_inset Formula $\Delta y_{t+1}=\alpha_{1}\Delta y_{t}=\alpha_{1}b_{0}\equiv b_{1}$
 \end_inset
@@ -363,7 +376,7 @@ The effect of a shock to
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 (3) 
 \begin_inset Formula $\Delta y_{t+2}=\alpha_{1}\Delta y_{t+1}+\alpha_{2}\Delta y_{t}=\alpha_{1}b_{1}+\alpha_{2}\cdot1\equiv b_{2}$
 \end_inset
@@ -371,29 +384,34 @@ The effect of a shock to
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula $\vdots$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula $\Delta y_{t+p}=\alpha_{1}b_{p-1}+\alpha_{2}b_{p-2}+...+\alpha_{p}b_{0}$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula $\vdots$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula $\Delta y_{t+j}=\alpha_{1}b_{j-1}+\alpha_{2}b_{j-2}+...+\alpha_{p}b_{j-p}$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -517,10 +535,6 @@ Under conditional homoskedasticity
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 then 
 \begin_inset Formula $\sqrt{n}\left(\hat{\alpha}-\alpha\right)\overset{p}{\to}N\left(0,Q^{-1}\sigma^{2}\right)$
 \end_inset
@@ -534,7 +548,7 @@ Without MDS,
 \end_inset
 
  can be serially correlated, we need to estimate the long-run variance 
-\begin_inset Formula $\varOmega=\sum_{\ell=-\infty}^{\infty}E\left[X_{t}X_{t-\ell}'e_{t}e_{t-\ell}\right]$
+\begin_inset Formula $\Omega=\sum_{\ell=-\infty}^{\infty}E\left[X_{t}X_{t-\ell}'e_{t}e_{t-\ell}\right]$
 \end_inset
 
 
@@ -627,11 +641,7 @@ If we impose MDS,
 \begin_inset Formula $\left(X_{t},e_{t-1}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-then we have MDS CLT, because
+, then we have MDS CLT, because
 \begin_inset Formula 
 \[
 E\left[X_{t}e_{t}\mid\mathscr{F}_{t-1}\right]=X_{t}E\left[e_{t}\mid\mathscr{F}_{t-1}\right]=X_{t}\cdot0=0
@@ -652,7 +662,7 @@ Under MDS
 \end_inset
 
 where 
-\begin_inset Formula $\varOmega=E\left[X_{t}X_{t}'e_{t}^{2}\right]$
+\begin_inset Formula $\Omega=E\left[X_{t}X_{t}'e_{t}^{2}\right]$
 \end_inset
 
 
@@ -822,10 +832,6 @@ The denominator
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
 The numerator is 
 \begin_inset Formula 
 \[
@@ -847,7 +853,7 @@ where
 \end{array}\right)$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Example
@@ -858,10 +864,6 @@ var\left(\frac{1}{\sqrt{n}}\sum X_{t}u_{t}\right)=\frac{1}{n}\sum_{i=1}^{n}\sum_
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
 In the special case when 
 \begin_inset Formula $u_{i}$
 \end_inset
@@ -876,7 +878,7 @@ var\left(\frac{1}{\sqrt{n}}\sum X_{t}u_{t}\right) & =\left(\frac{1}{n}\sum_{i=1}
 \end{array}\right)\sigma^{2}\overset{d}{\to}\left(\begin{array}{cc}
 1 & \frac{1}{2}\\
 \frac{1}{2} & \frac{1}{3}
-\end{array}\right)\sigma^{2}
+\end{array}\right)\sigma^{2}.
 \end{align*}
 
 \end_inset
