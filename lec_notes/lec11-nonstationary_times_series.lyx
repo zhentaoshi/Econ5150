@@ -400,12 +400,9 @@ Beveridge-Nelson Decomposition
 \end_layout
 
 \begin_layout Standard
-So far we discussed mds innovation.
- What if the innovations are serially correlated?
-\end_layout
-
-\begin_layout Standard
-That is 
+So far we discussed mds innovation, which is a special case.
+ In general, we want to allow the the innovations to be serially correlated.
+ Let the innovation be 
 \begin_inset Formula $e_{t}=\Theta\left(L\right)u_{t}$
 \end_inset
 
@@ -413,19 +410,20 @@ That is
 \begin_inset Formula $u_{t}$
 \end_inset
 
-is white noise.
-\end_layout
-
-\begin_layout Standard
-Notice the polynomial 
+ is mds and the polynomial 
 \begin_inset Formula $\Theta\left(z\right)=\theta_{0}+\theta_{1}z+\theta_{2}z^{2}+\theta_{3}z^{3}+...$
 \end_inset
 
+.
+ Obviously, 
+\begin_inset Formula 
+\begin{align*}
+e_{t}=\Theta\left(L\right)u_{t} & =\Theta\left(1\right)u_{t}+\left(\Theta\left(L\right)-\Theta\left(1\right)\right)u_{t}.
+\end{align*}
 
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Thus 
+Notice 
 \begin_inset Formula 
 \begin{align*}
 \Theta\left(1\right)-\Theta\left(z\right) & =\theta_{0}+\theta_{1}+\theta_{2}+\theta_{3}+...-\left(\theta_{0}+\theta_{1}z+\theta_{2}z^{2}+\theta_{3}z^{3}+...\right)\\
@@ -436,11 +434,7 @@ Thus
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-replace 
+Replacing the dummy 
 \begin_inset Formula $z$
 \end_inset
 
@@ -448,57 +442,39 @@ replace
 \begin_inset Formula $L$
 \end_inset
 
-, 
-\end_layout
-
-\begin_layout Standard
+, we write 
 \begin_inset Formula 
 \begin{align*}
-e_{t}=\Theta\left(L\right)u_{t} & =\Theta\left(1\right)u_{t}+\left(\Theta\left(L\right)-\Theta\left(1\right)\right)u_{t}\\
- & =\Theta\left(1\right)u_{t}+\left(1-L\right)\left[-\Theta^{*}\left(L\right)u_{t}\right]\\
+e_{t} & =\Theta\left(1\right)u_{t}+\left(1-L\right)\left[-\Theta^{*}\left(L\right)u_{t}\right]\\
  & =\Theta\left(1\right)u_{t}+\left(1-L\right)\nu_{t}\\
  & =\Theta\left(1\right)u_{t}+\nu_{t}-\nu_{t-1}
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-where 
+ where 
 \begin_inset Formula $\nu_{t}=-\Theta^{*}\left(L\right)u_{t}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-As a result, 
+.
+ As a result, 
 \begin_inset Formula 
 \[
-y_{t}=\sum_{s=1}^{t}e_{s}+y_{0}=\Theta\left(1\right)\sum_{s=1}^{t}u_{s}+\nu_{t}+y_{0}-\nu_{0}
+y_{t}=\sum_{s=1}^{t}e_{s}+y_{0}=\Theta\left(1\right)\sum_{s=1}^{t}u_{s}+\nu_{t}+\left(y_{0}-\nu_{0}\right)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Section
-Long-run Variance
+where the first term is the permanent component, the second term the transitory
+ component, and the third term in the parenthesis is the initial value.
 \end_layout
 
 \begin_layout Standard
-If 
-\begin_inset Formula $e_{t}=\Theta\left(L\right)u_{t}$
+The MA form of 
+\begin_inset Formula $e_{t}$
 \end_inset
 
- has a Wold decomposition 
-\end_layout
-
-\begin_layout Standard
-then
+ ensures that it is stationary, with long-run variance 
 \begin_inset Formula 
 \begin{align*}
 var\left(\frac{1}{\sqrt{n}}\sum_{s=1}^{n}e_{s}\right) & =var\left(\Theta\left(1\right)\frac{1}{\sqrt{n}}\sum_{s=1}^{t}u_{s}+\frac{\nu_{t}}{\sqrt{n}}-\frac{\nu_{0}}{\sqrt{n}}\right)\\
@@ -508,15 +484,17 @@ var\left(\frac{1}{\sqrt{n}}\sum_{s=1}^{n}e_{s}\right) & =var\left(\Theta\left(1\
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 where 
 \begin_inset Formula $\Sigma=var\left(u_{s}\right)$
 \end_inset
 
+.
+ In other word, the effect of the MA representation is multiply with the
+ white noise variance by a factor 
+\begin_inset Formula $\Theta(1)$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Section
@@ -524,63 +502,53 @@ Functional CLT
 \end_layout
 
 \begin_layout Standard
+Consider the representation 
 \begin_inset Formula 
 \[
-y_{t}=S_{t}+u_{t}+\nu_{0}
+y_{t}=S_{t}+u_{t}+(y_{0}-\nu_{0}).
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Define 
-\begin_inset Formula $z_{n}\left(r\right)=\frac{1}{\sqrt{n}}y_{\left\lfloor nr\right\rfloor }$
-\end_inset
-
-, 
 \begin_inset Formula $S_{n}\left(r\right)=\frac{1}{\sqrt{n}}S_{\left\lfloor nr\right\rfloor }$
 \end_inset
 
+ and 
+\begin_inset Formula 
+\[
+z_{n}\left(r\right)=\frac{1}{\sqrt{n}}y_{\left\lfloor nr\right\rfloor }=S_{n}\left(r\right)+\frac{1}{\sqrt{n}}u_{\left\lfloor nr\right\rfloor }+\frac{1}{\sqrt{n}}(y_{0}-\nu_{0}).
+\]
 
-\end_layout
-
-\begin_layout Standard
-then 
-\begin_inset Formula $z_{n}\left(r\right)=S_{n}\left(r\right)+\frac{1}{\sqrt{n}}u_{\left\lfloor nr\right\rfloor }+\frac{1}{\sqrt{n}}\nu_{0}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-We conclude 
-\begin_inset Formula $z_{n}\left(r\right)=S_{n}\left(r\right)+o_{p}\left(1\right)\overset{d}{\to}B\left(r\right)$
+If 
+\begin_inset Formula $u_{t}$
 \end_inset
 
+ is mds, we have 
+\begin_inset Formula 
+\[
+z_{n}\left(r\right)=S_{n}\left(r\right)+o_{p}\left(1\right)\overset{d}{\to}B\left(r\right)
+\]
 
-\end_layout
+\end_inset
 
-\begin_layout Standard
 where 
 \begin_inset Formula $B\left(1\right)\sim N\left(0,\Theta\left(1\right)\Sigma\Theta'\left(1\right)\right)$
 \end_inset
 
-
+.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 Linear projection ensures the innovations 
 \begin_inset Formula $e_{t}$
 \end_inset
 
  in the Wold decomposition are white noise, but may not necessarily be mds.
-\end_layout
-
-\begin_layout Itemize
-If 
-\begin_inset Formula $e_{t}$
+ If 
+\begin_inset Formula $u_{t}$
 \end_inset
 
  is not mds, we impose assumptions on the 
@@ -596,49 +564,65 @@ z_{n}\left(r\right)\overset{d}{\to}B\left(r\right)
 \end_inset
 
 where 
+\begin_inset Formula $B(1)\sim\Omega$
+\end_inset
+
+ with 
 \begin_inset Formula $\Omega$
 \end_inset
 
- is the long-run variance of 
+ being the long-run variance of 
 \begin_inset Formula $\Delta y_{t}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
 Orders of Integration
 \end_layout
 
-\begin_layout Itemize
-\begin_inset Formula $y_{t}\in\mathbb{R}$
+\begin_layout Standard
+We say a time series 
+\begin_inset Formula $y_{t}$
 \end_inset
 
  is 
-\begin_inset Formula $z\left(0\right)$
+\begin_inset Formula $I\left(0\right)$
 \end_inset
 
  if 
 \begin_inset Formula $y_{t}$
 \end_inset
 
- is weakly stationary with positive long-run variance
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $y_{t}\sim I\left(d\right)$
+ is weakly stationary with positive long-run variance.
+ We say it is 
+\begin_inset Formula $I(d)$
 \end_inset
 
  if 
 \begin_inset Formula $\Delta^{d}y_{t}\sim I\left(0\right)$
 \end_inset
 
+.
  
 \end_layout
 
 \begin_layout Standard
-Suppose 
-\begin_inset Formula $y_{t}=\Theta\left(L\right)e_{t}$
+What happens if we 
+\begin_inset Quotes eld
+\end_inset
+
+over differentiate
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+? Suppose 
+\begin_inset Formula $y_{t}=\Theta\left(L\right)u_{t}$
 \end_inset
 
  in MA(
@@ -648,15 +632,11 @@ Suppose
 ) representation
 \begin_inset Formula 
 \[
-\Delta y_{t}=\left(1-L\right)\Theta\left(L\right)e_{t}
+\Delta y_{t}=\left(1-L\right)\Theta\left(L\right)u_{t}.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Consider 
 \begin_inset Formula $\left(1-L\right)\Theta\left(L\right)$
 \end_inset
@@ -665,15 +645,11 @@ Consider
 \begin_inset Formula $\infty$
 \end_inset
 
-) representation
-\end_layout
-
-\begin_layout Standard
-long-run 
-\begin_inset Formula $var\left(\Delta y_{t}\right)=\left(1-1\right)\Theta\left(L\right)var\left(e_{t}\right)=0$
+) representation, and then the long-run 
+\begin_inset Formula $var\left(\Delta y_{t}\right)=\left(1-1\right)\Theta\left(L\right)var\left(u_{t}\right)=0$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -681,11 +657,7 @@ Means
 \end_layout
 
 \begin_layout Standard
-By the continuous mapping theorem,
-\end_layout
-
-\begin_layout Standard
-if 
+By the continuous mapping theorem, if 
 \begin_inset Formula $z_{n}\left(r\right)\overset{d}{\to}B\left(r\right)$
 \end_inset
 
@@ -698,17 +670,14 @@ if
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Notice 
+ Notice 
 \begin_inset Formula $\frac{1}{\sqrt{n}}y_{\left\lfloor nr\right\rfloor }=z_{n}\left(r\right)$
 \end_inset
 
  is a step function.
 \begin_inset Formula 
 \[
-\frac{1}{\sqrt{n}}\overline{y}_{n}=\frac{1}{n}\sum_{t=1}^{n}\frac{y_{t}}{\sqrt{n}}=\frac{1}{n}\sum_{r\in\left\{ \frac{1}{n},\frac{2}{n},..,\frac{n-1}{n},1\right\} }z_{n}\left(r\right)=\varint_{0}^{1}z_{n}\left(r\right){\rm d}r
+\frac{1}{\sqrt{n}}\overline{y}_{n}=\frac{1}{n}\sum_{t=1}^{n}\frac{y_{t}}{\sqrt{n}}=\frac{1}{n}\sum_{r\in\left\{ \frac{1}{n},\frac{2}{n},..,\frac{n-1}{n},1\right\} }z_{n}\left(r\right)=\int_{0}^{1}z_{n}\left(r\right){\rm d}r
 \]
 
 \end_inset
@@ -718,11 +687,12 @@ for any finite
 \end_inset
 
 .
-\end_layout
+ We conclude 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{n}}\overline{y}_{n}\overset{d}{\to}\int_{0}^{1}B\left(r\right){\rm d}r
+\]
 
-\begin_layout Standard
-We conclude 
-\begin_inset Formula $\frac{1}{\sqrt{n}}\overline{y}_{n}\overset{d}{\to}\varint_{0}^{1}B\left(r\right){\rm d}r$
 \end_inset
 
  is an average of a Brownian motions over 
@@ -737,27 +707,28 @@ Regression with intercept and time trend
 \end_layout
 
 \begin_layout Standard
-fit a unit root process with a dterminstic trend 
-\begin_inset Formula $y_{t}=\beta_{0}+\beta_{1}t+\varepsilon_{t}$
+If we fit a unit root process 
+\begin_inset Formula $y_{t}$
 \end_inset
 
- where 
+ with a deterministic trend 
+\begin_inset Formula $y_{t}=\beta_{0}+\beta_{1}t+error_{t}$
+\end_inset
+
+, we can denote the regressor as 
 \begin_inset Formula $X_{t}=\left(\begin{array}{c}
 1\\
 t
 \end{array}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+, and thus the OLS estimator is 
 \begin_inset Formula 
 \[
 \left(\begin{array}{c}
 \hat{\beta}_{0}\\
 \hat{\beta}_{1}
-\end{array}\right)=\left(X'X\right)^{-1}X'y
+\end{array}\right)=\left(X'X\right)^{-1}X'y.
 \]
 
 \end_inset
@@ -766,31 +737,24 @@ t
 \end_layout
 
 \begin_layout Standard
-As we have seen before, set 
+As we have seen before, if we set 
 \begin_inset Formula $D_{n}=\left(\begin{array}{cc}
-\sqrt{n}\\
- & n^{\frac{3}{2}}
+\sqrt{n} & 0\\
+0 & n^{\frac{3}{2}}
 \end{array}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+, then 
 \begin_inset Formula 
 \[
 \frac{1}{n}D_{n}\left(\begin{array}{c}
 \hat{\beta}_{0}\\
 \hat{\beta}_{1}
-\end{array}\right)=D_{n}\left(X'X\right)^{-1}D_{n}D_{n}^{-1}X'y=\left(D_{n}^{-1}\left(X'X\right)D_{n}^{-1}\right)^{-1}\frac{X'y}{n}
+\end{array}\right)=D_{n}\left(X'X\right)^{-1}D_{n}D_{n}^{-1}X'y=\left(D_{n}^{-1}\left(X'X\right)D_{n}^{-1}\right)^{-1}\frac{X'y}{n}.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 The denominator 
 \begin_inset Formula 
 \[
@@ -800,30 +764,22 @@ n^{-2}\sum t & n^{-3}\sum t^{2}
 \end{array}\right)\to\left(\begin{array}{cc}
 1 & \frac{1}{2}\\
 \frac{1}{2} & \frac{1}{3}
-\end{array}\right)
+\end{array}\right).
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 The numerator 
 \begin_inset Formula 
 \[
 D_{n}^{-1}\frac{1}{n}\sum_{t=1}^{n}X_{t}y_{t}=\frac{1}{n}\sum_{t=1}^{n}\left(\begin{array}{cc}
 1 & 0\\
 0 & \frac{1}{n}
-\end{array}\right)X_{t}\frac{y_{t}}{\sqrt{n}}=\frac{1}{n}\sum_{r\in\left\{ \frac{1}{n},\frac{2}{n},..,\frac{n-1}{n},1\right\} }X_{n}\left(r\right)z_{n}\left(r\right)=\varint_{0}^{1}X\left(r\right)z\left(r\right){\rm d}r
+\end{array}\right)X_{t}\frac{y_{t}}{\sqrt{n}}=\frac{1}{n}\sum_{r\in\left\{ \frac{1}{n},\frac{2}{n},..,\frac{n-1}{n},1\right\} }X_{n}\left(r\right)z_{n}\left(r\right)=\int_{0}^{1}X\left(r\right)z\left(r\right){\rm d}r.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 We conclude 
 \begin_inset Formula 
 \[
@@ -837,28 +793,25 @@ n^{-\frac{1}{2}}\hat{\beta}_{1}
 1 & \frac{1}{2}\\
 \frac{1}{2} & \frac{1}{3}
 \end{array}\right)^{-1}\left(\begin{array}{c}
-\varint_{0}^{1}B\left(r\right){\rm d}r\\
-\varint_{0}^{1}rB\left(r\right){\rm d}r
-\end{array}\right)
+\int_{0}^{1}B\left(r\right){\rm d}r\\
+\int_{0}^{1}rB\left(r\right){\rm d}r
+\end{array}\right).
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
+The behavior of the OLS estimator is very different from our familiar iid
+ cases.
+ The intercept 
 \begin_inset Formula $\hat{\beta}_{0}=O_{p}\left(\sqrt{n}\right)$
 \end_inset
 
- is explosive
-\end_layout
-
-\begin_layout Itemize
+ is explosive, whereas 
 \begin_inset Formula $\hat{\beta}_{1}=O_{p}\left(n^{-\frac{1}{2}}\right)$
 \end_inset
 
- to match the order of the two sides.
+.
+ In particular, the trend coefficient matches the order of the two sides,
  but the estimated right-end of the trend is 
 \begin_inset Formula $n\hat{\beta}_{1}=O_{p}\left(n^{-\frac{1}{2}}\right)$
 \end_inset
@@ -892,7 +845,7 @@ demean:
 The standardized version
 \begin_inset Formula 
 \[
-Z_{n}^{*}\left(r\right)=\frac{1}{\sqrt{n}}y_{\left\lfloor nr\right\rfloor }-\frac{1}{\sqrt{n}}\overline{y}_{n}=z_{n}\left(r\right)-\varint_{0}^{1}z\left(r\right){\rm d}r\overset{d}{\to}B\left(r\right)-\varint_{0}^{1}B\left(r\right){\rm d}r=:B^{*}\left(r\right)
+Z_{n}^{*}\left(r\right)=\frac{1}{\sqrt{n}}y_{\left\lfloor nr\right\rfloor }-\frac{1}{\sqrt{n}}\overline{y}_{n}=z_{n}\left(r\right)-\int_{0}^{1}z\left(r\right){\rm d}r\overset{d}{\to}B\left(r\right)-\int_{0}^{1}B\left(r\right){\rm d}r=:B^{*}\left(r\right)
 \]
 
 \end_inset
@@ -910,7 +863,7 @@ detrending
 \begin{align*}
 Z_{n}^{**}\left(r\right) & =\frac{1}{\sqrt{n}}y_{\left\lfloor nr\right\rfloor }-\frac{1}{\sqrt{n}}X_{\left\lfloor nr\right\rfloor }\hat{\beta}\\
  & =Z_{n}\left(r\right)-\frac{1}{\sqrt{n}}X'_{\left\lfloor nr\right\rfloor }nD_{n}^{-1}\frac{1}{n}D_{n}\hat{\beta}\\
- & \overset{d}{\to}Z_{n}\left(r\right)-X'\left(r\right)\left(\varint_{0}^{1}XX'\right)^{-1}\left(\varint_{0}^{1}XB\right)=:B^{**}\left(r\right)
+ & \overset{d}{\to}Z_{n}\left(r\right)-X'\left(r\right)\left(\int_{0}^{1}XX'\right)^{-1}\left(\int_{0}^{1}XB\right)=:B^{**}\left(r\right)
 \end{align*}
 
 \end_inset
@@ -987,34 +940,38 @@ Brownian bridge
 \end_layout
 
 \begin_layout Section
-Stochastic Integrals
+Stochastic Integral
 \end_layout
 
-\begin_layout Itemize
-Riemann-Stieltijes integral (deterministic)
+\begin_layout Standard
+The Riemann-Stieltijes integral (deterministic) in 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ is defined as 
 \begin_inset Formula 
 \[
-\varint_{0}^{1}g\left(X\right){\rm d}f\left(X\right)=\lim_{N\to\infty}\sum_{i=0}^{N-1}g\left(\frac{i}{n}\right)\left(f\left(\frac{i+1}{N}\right)-f\left(\frac{i}{N}\right)\right)
+\int_{0}^{1}g\left(X\right){\rm d}f\left(X\right)=\lim_{N\to\infty}\sum_{i=0}^{N-1}g\left(\frac{i}{n}\right)\left(f\left(\frac{i+1}{N}\right)-f\left(\frac{i}{N}\right)\right).
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Stochastic integral: the measure for integration is a random variable
+The key difference of the 
+\series bold
+stochastic integral
+\series default
+ is that the measure for integration is a random:
 \begin_inset Formula 
 \[
-\varint_{0}^{1}X{\rm d}z'=\varint_{0}^{1}X\left(r\right){\rm d}z\left(r\right)'={\rm plim}_{N\to\infty}\sum_{i=0}^{N-1}X\left(\frac{i}{n}\right)\left(z\left(\frac{i+1}{N}\right)-z\left(\frac{i}{N}\right)\right)
+\int_{0}^{1}X{\rm d}z'=\int_{0}^{1}X\left(r\right){\rm d}z\left(r\right)'={\rm plim}_{N\to\infty}\sum_{i=0}^{N-1}X\left(\frac{i}{n}\right)\left(z\left(\frac{i+1}{N}\right)-z\left(\frac{i}{N}\right)\right)
 \]
 
 \end_inset
 
-This Rits limit is a usually random variable, not a constant.
+This RHS limit is a usually random variable, not a constant.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 Consider 
 \begin_inset Formula $\left(X_{t},e_{t}\right)$
 \end_inset
@@ -1027,7 +984,8 @@ Consider
 \begin_inset Formula $X_{t}$
 \end_inset
 
- is non-stationary, 
+ is non-stationary.
+ If 
 \begin_inset Formula $X_{n}\left(r\right)=D_{n}^{-1}X_{\left\lfloor nr\right\rfloor }$
 \end_inset
 
@@ -1043,7 +1001,7 @@ Consider
 \begin_inset Formula 
 \begin{align*}
 \frac{1}{\sqrt{n}}D_{n}^{-1}\sum_{t=0}^{n-1}X_{t}e_{t+1}' & =\sum_{t=0}^{n-1}\left(D_{n}^{-1}X_{t}\right)\frac{e_{t+1}'}{\sqrt{n}}\\
- & =\sum_{t=0}^{n-1}\left(D_{n}^{-1}X_{t}\right)\left(S_{n}\left(\frac{t+1}{N}\right)-S_{n}\left(\frac{t}{N}\right)\right)=\varint_{0}^{1}X_{n}{\rm d}S_{n}'
+ & =\sum_{t=0}^{n-1}\left(D_{n}^{-1}X_{t}\right)\left(S_{n}\left(\frac{t+1}{N}\right)-S_{n}\left(\frac{t}{N}\right)\right)=\int_{0}^{1}X_{n}{\rm d}S_{n}'
 \end{align*}
 
 \end_inset
@@ -1071,7 +1029,7 @@ If
 , then 
 \begin_inset Formula 
 \[
-\varint_{0}^{1}X_{n}{\rm d}S_{n}'\overset{d}{\to}\varint_{0}^{1}X_{n}{\rm d}B'
+\int_{0}^{1}X_{n}{\rm d}S_{n}'\overset{d}{\to}\int_{0}^{1}X_{n}{\rm d}B'
 \]
 
 \end_inset
@@ -1095,19 +1053,19 @@ if
  is mds, then
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{t=0}^{n-1}S_{t}e_{t+1}'=\sum_{t=0}^{n-1}\frac{S_{t}}{\sqrt{n}}\frac{e_{t+1}'}{\sqrt{n}}\overset{d}{\to}\varint B{\rm d}B'
+\frac{1}{n}\sum_{t=0}^{n-1}S_{t}e_{t+1}'=\sum_{t=0}^{n-1}\frac{S_{t}}{\sqrt{n}}\frac{e_{t+1}'}{\sqrt{n}}\overset{d}{\to}\int B{\rm d}B'
 \]
 
 \end_inset
 
-if 
+If 
 \begin_inset Formula $e_{t}$
 \end_inset
 
  is serially correlated, then
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{t=0}^{n-1}S_{t}e_{t+1}'\overset{d}{\to}\varint B{\rm d}B'+\Lambda
+\frac{1}{n}\sum_{t=0}^{n-1}S_{t}e_{t+1}'\overset{d}{\to}\int B{\rm d}B'+\Lambda
 \]
 
 \end_inset
@@ -1132,6 +1090,8 @@ AR(1) Regression
 \end_layout
 
 \begin_layout Standard
+Let us start with the simplest model, an AR(1) regression with no intercept:
+ 
 \begin_inset Formula 
 \[
 y_{t}=\alpha y_{t-1}+e_{t}
@@ -1139,10 +1099,12 @@ y_{t}=\alpha y_{t-1}+e_{t}
 
 \end_inset
 
+where 
+\begin_inset Formula $e_{t}$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
+ is a homoskedastic mds.
+ Obviously, the OLS estimator satisfies 
 \begin_inset Formula 
 \[
 \hat{\alpha}-\alpha=\left(\sum_{t=0}^{n-1}y_{t}^{2}\right)^{-1}\sum_{t=0}^{n-1}y_{t}e_{t+1}
@@ -1150,13 +1112,10 @@ y_{t}=\alpha y_{t-1}+e_{t}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
+and proper scaling yields 
 \begin_inset Formula 
 \[
-n\left(\hat{\alpha}-\alpha\right)=\frac{1}{n}\sum_{t=0}^{n-1}y_{t}e_{t+1}/\frac{1}{n^{2}}\sum_{t=0}^{n-1}y_{t}^{2}
+n\left(\hat{\alpha}-\alpha\right)=\frac{1}{n}\sum_{t=0}^{n-1}y_{t}e_{t+1}/\frac{1}{n^{2}}\sum_{t=0}^{n-1}y_{t}^{2}.
 \]
 
 \end_inset
@@ -1165,23 +1124,19 @@ n\left(\hat{\alpha}-\alpha\right)=\frac{1}{n}\sum_{t=0}^{n-1}y_{t}e_{t+1}/\frac{
 \end_layout
 
 \begin_layout Standard
-The numerator 
+The numerator in the last expression is 
 \begin_inset Formula 
 \begin{align*}
 \sum_{t=0}^{n-1}\frac{y_{t}}{\sqrt{n}}\frac{y_{t+1}-y_{t}}{\sqrt{n}} & =\sum S_{n}\left(r\right)\left(S_{n}\left(r+\frac{1}{N}\right)-S\left(r\right)\right)\\
- & =\varint S_{n}\left(r\right){\rm d}S_{n}\left(r\right)\overset{d}{\to}\varint_{0}^{1}B{\rm d}B=\sigma^{2}\varint W{\rm d}W
+ & =\int S_{n}\left(r\right){\rm d}S_{n}\left(r\right)\overset{d}{\to}\int_{0}^{1}B{\rm d}B=\sigma^{2}\int W{\rm d}W
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The denominator 
+and the denominator is 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{t=0}^{n-1}\left(\frac{y_{t}}{\sqrt{n}}\right)^{2}=\sum_{t=0}^{n-1}\frac{1}{n}S_{n}^{2}\left(r\right)\overset{d}{\to}\varint_{0}^{1}B^{2}=\sigma^{2}\varint_{0}^{1}W^{2}
+\frac{1}{n}\sum_{t=0}^{n-1}\left(\frac{y_{t}}{\sqrt{n}}\right)^{2}=\sum_{t=0}^{n-1}\frac{1}{n}S_{n}^{2}\left(r\right)\overset{d}{\to}\int_{0}^{1}B^{2}=\sigma^{2}\int_{0}^{1}W^{2}.
 \]
 
 \end_inset
@@ -1197,17 +1152,31 @@ if
  is stationary, ergodic mds, then
 \begin_inset Formula 
 \[
-n\left(\hat{\alpha}-1\right)\overset{d}{\to}\varint_{0}^{1}W{\rm d}W/\varint_{0}^{1}W^{2}
+n\left(\hat{\alpha}-1\right)\overset{d}{\to}\int_{0}^{1}W{\rm d}W/\int_{0}^{1}W^{2}
 \]
 
 \end_inset
 
-superconsistant
+
+\end_layout
+
+\begin_layout Standard
+This estimator is super-consistent, in the sense that its rate of convergence
+ is 
+\begin_inset Formula $n$
+\end_inset
+
+, instead of 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ as in the iid case.
+ 
 \end_layout
 
 \begin_layout Standard
 The stochastic integral 
-\begin_inset Formula $\varint_{0}^{1}W{\rm d}W=\frac{1}{2}\left(W^{2}\left(1\right)-1\right)$
+\begin_inset Formula $\int_{0}^{1}W{\rm d}W=\frac{1}{2}\left(W^{2}\left(1\right)-1\right)$
 \end_inset
 
  is an Ito integral.
@@ -1226,12 +1195,17 @@ The stochastic integral
  is a mds.
 \end_layout
 
-\begin_layout Itemize
-Next, for inference, 
+\begin_layout Standard
+Next, we usually use the 
+\begin_inset Formula $t$
+\end_inset
+
+-statistic to infer the slope coefficient.
+ Notice that the residual 
 \begin_inset Formula $\hat{e}_{t}=y_{t}-\hat{\alpha}y_{t-1}$
 \end_inset
 
-
+ gives 
 \begin_inset Formula 
 \[
 \hat{\sigma}^{2}=\frac{1}{n}\sum\hat{e}_{t}^{2}=\frac{1}{n}\sum\hat{e}_{t}^{2}+o_{p}\left(1\right)\overset{d}{\to}\sigma^{2}
@@ -1239,10 +1213,6 @@ Next, for inference,
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 Assume 
 \begin_inset Formula $\left(e_{t},\mathscr{F}_{t}\right)$
 \end_inset
@@ -1252,15 +1222,16 @@ Assume
 \begin_inset Formula $\hat{var}\left(\hat{\alpha}\right)=\frac{\hat{\sigma}^{2}}{\sum y_{t}^{2}}$
 \end_inset
 
+.
+ The 
+\begin_inset Formula $t$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-The t-statistic:
+-statistic is 
 \begin_inset Formula 
 \begin{align*}
 t & =\frac{\hat{\alpha}-1}{s.e.\left(\hat{\alpha}\right)}=\frac{\left(\sum_{t=0}^{n-1}y_{t}^{2}\right)^{-1}\sum_{t=0}^{n-1}y_{t}e_{t+1}}{\hat{\sigma}/\sqrt{\sum y_{t}^{2}}}=\frac{\sum_{t=0}^{n-1}y_{t}e_{t+1}/\hat{\sigma}}{\sqrt{\sum y_{t}^{2}}}\\
- & \overset{d}{\to}\frac{\sigma\varint_{0}^{1}W{\rm d}W/\sigma}{\sqrt{\varint_{0}^{1}W^{2}}}=\varint_{0}^{1}W{\rm d}W/\sqrt{\varint_{0}^{1}W^{2}}
+ & \overset{d}{\to}\frac{\sigma\int_{0}^{1}W{\rm d}W/\sigma}{\sqrt{\int_{0}^{1}W^{2}}}=\int_{0}^{1}W{\rm d}W/\sqrt{\int_{0}^{1}W^{2}}
 \end{align*}
 
 \end_inset
@@ -1268,40 +1239,43 @@ t & =\frac{\hat{\alpha}-1}{s.e.\left(\hat{\alpha}\right)}=\frac{\left(\sum_{t=0}
 
 \end_layout
 
-\begin_layout Itemize
-If the regression has an intercept, 
+\begin_layout Standard
+The above calculation is demonstrated by a regression with no intercept.
+ For the regression with an intercept, 
 \begin_inset Formula $y_{t}=\mu+\alpha y_{t-1}+e_{t}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-By Frisch-Waugh-Lovell Theorem, this is numerically equivalent to 
+, by the Frisch-Waugh-Lovell Theorem the slope coefficient will be numerically
+ equivalent to running OLS with 
 \begin_inset Formula $y_{t}=\alpha\left(y_{t}-\overline{y}_{n}\right)+e_{t}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Thus 
+, and thus 
 \begin_inset Formula 
 \[
-n\left(\hat{\alpha}-1\right)\overset{d}{\to}\varint_{0}^{1}W^{*}{\rm d}W/\varint_{0}^{1}W^{*2}
+n\left(\hat{\alpha}-1\right)\overset{d}{\to}\int_{0}^{1}W^{*}{\rm d}W/\int_{0}^{1}W^{*2}
 \]
 
 \end_inset
 
-Similarly, if the regression has both an intercept and a trend, then
+where 
+\begin_inset Formula $W^{*}$
+\end_inset
+
+ is the demeaned Brownian motion.
+ Similarly, if the regression has both an intercept and a time trend, then
 \begin_inset Formula 
 \[
-n\left(\hat{\alpha}-1\right)\overset{d}{\to}\varint_{0}^{1}W^{**}{\rm d}W/\varint_{0}^{1}W^{**2}
+n\left(\hat{\alpha}-1\right)\overset{d}{\to}\int_{0}^{1}W^{**}{\rm d}W/\int_{0}^{1}W^{**2}
 \]
 
 \end_inset
 
+where 
+\begin_inset Formula $W^{**}$
+\end_inset
 
+ is the demeaned-and-detrended Brownian motion.
 \end_layout
 
 \begin_layout Section
@@ -1309,41 +1283,73 @@ AR(p) Models with a Unit Root
 \end_layout
 
 \begin_layout Standard
+If the true DGP is 
+\begin_inset Formula $e_{t}=a\left(L\right)\Delta y_{t}=a\left(L\right)(1-L)y_{t}$
+\end_inset
+
+, then 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 y_{t} & =a_{1}y_{t-1}+a_{2}y_{t-2}+...+a_{p}y_{t-p}+e_{t}\\
- & =\left(a_{1}\,a_{2}\,...\,a_{p}\right)\left(y_{t-1}\,y_{t-2}\,...\,y_{t-p}\right)'+e_{t}\\
- & =\left(a_{1}\,a_{2}\,...\,a_{p}\right)\left[\begin{array}{ccccc}
+ & =\left(a_{1},a_{2},...,a_{p}\right)\left(y_{t-1},y_{t-2},...,y_{t-p}\right)'+e_{t}\\
+ & =\left(a_{1},a_{2},...,a_{p}\right)AA^{-1}\left(y_{t-1},y_{t-2}\,...,y_{t-p}\right)'+e_{t}\\
+ & =\left(\rho,\beta_{1}...\beta_{p-1}\right)\left(y_{t-1},\Delta y_{t-1},...,\Delta y_{t-p-1}\right)'+e_{t}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+A=\left[\begin{array}{ccccc}
 1 &  &  & \cdots & 0\\
 1 & -1 &  &  & \vdots\\
 \vdots & \vdots & -1\\
  &  &  & \ddots\\
 1 & -1 &  & \cdots & -1
-\end{array}\right]\left[\begin{array}{ccccc}
+\end{array}\right],\ \text{and}\ A^{-1}=\left[\begin{array}{ccccc}
 1 &  &  & \cdots & 0\\
 1 & -1 &  &  & \vdots\\
  & 1 & -1\\
 \vdots &  & \ddots & \ddots\\
 0 & \cdots &  & 1 & -1
-\end{array}\right]\left(y_{t-1}\,y_{t-2}\,...\,y_{t-p}\right)'+e_{t}\\
- & =\left(\rho\,\beta_{1}\,...\,\beta_{p-1}\right)\left(y_{t-1}\,\Delta y_{t-1}\,...\,\Delta y_{t-p-1}\right)'+e_{t}
-\end{align*}
+\end{array}\right]
+\]
 
 \end_inset
 
-if 
-\begin_inset Formula $a_{1}+...+a_{p}=1$
+transforms keeps only one level variable 
+\begin_inset Formula $y_{t-1}$
 \end_inset
 
-, then 1 is a solution to the characteristic equation, 
+ while transforms all other further lagged level variables 
+\begin_inset Formula $(y_{t-2},...,y_{t-p})$
+\end_inset
+
+ into differenced variables 
+\begin_inset Formula $X_{t-1}=(\Delta y_{t-1},...,\Delta y_{t-p-1})$
+\end_inset
+
+.
+ If 
 \begin_inset Formula $y_{t}$
 \end_inset
 
- is non-stationary.
+ is unit root, we have 
+\begin_inset Formula $a(1)=a_{1}+...+a_{p}=1$
+\end_inset
+
+.
+ 
 \end_layout
 
-\begin_layout Itemize
-In the transformed equation,
+\begin_layout Standard
+The transformation separates the regressors into two types: one nonstationary
+ variable and the other stationary variables.
+ The OLS estimator of the transformed equation satisfies
 \begin_inset Formula 
 \[
 \left(\begin{array}{c}
@@ -1355,7 +1361,7 @@ n\left(\hat{\rho}-1\right)\\
 \end{array}\right)\left(\begin{array}{c}
 \frac{1}{n}\sum_{t=p+1}^{n}y_{t-1}e_{t}\\
 \frac{1}{\sqrt{n}}\sum_{t=p+1}^{n}X_{t-1}e_{t}
-\end{array}\right)
+\end{array}\right).
 \]
 
 \end_inset
@@ -1391,8 +1397,11 @@ The denominator
 \begin_layout Standard
 \begin_inset Formula 
 \[
-:\overset{d}{\to}\left(\begin{array}{cc}
-\omega^{2}\varint_{0}^{1}W^{2}\left(r\right) & 0\\
+\left(\begin{array}{cc}
+\frac{1}{n^{2}}\sum_{t=p+1}^{n}y_{t-1}^{2} & \frac{1}{n^{3/2}}\sum_{t=p+1}^{n}y_{t-1}X_{t-1}'\\
+\frac{1}{n^{3/2}}\sum_{t=p+1}^{n}y_{t-1}X_{t-1}' & \frac{1}{n}\sum_{t=p+1}^{n}X_{t-1}X_{t-1}'
+\end{array}\right)\overset{d}{\to}\left(\begin{array}{cc}
+\omega^{2}\int_{0}^{1}W^{2}\left(r\right) & 0\\
 0 & Q
 \end{array}\right)
 \]
@@ -1406,8 +1415,11 @@ The denominator
 The numerator 
 \begin_inset Formula 
 \[
-:\overset{d}{\to}\left(\begin{array}{c}
-\omega\sigma\varint_{0}^{1}W{\rm d}W\\
+\left(\begin{array}{c}
+\frac{1}{n}\sum_{t=p+1}^{n}y_{t-1}e_{t}\\
+\frac{1}{\sqrt{n}}\sum_{t=p+1}^{n}X_{t-1}e_{t}
+\end{array}\right)\overset{d}{\to}\left(\begin{array}{c}
+\omega\sigma\int_{0}^{1}W{\rm d}W\\
 N\left(0,\Omega\right)
 \end{array}\right)
 \]
@@ -1430,7 +1442,7 @@ where
 \begin_inset Formula $\Omega$
 \end_inset
 
- is the long-run variance of 
+ is the variance of 
 \begin_inset Formula $X_{t-1}e_{t}$
 \end_inset
 
@@ -1438,7 +1450,7 @@ where
 \end_layout
 
 \begin_layout Section
-Test for a Unit Root: ADF Test
+Test for Unit Root: ADF Test
 \end_layout
 
 \begin_layout Standard
@@ -1446,11 +1458,17 @@ When
 \begin_inset Formula $\left(e_{t},\mathscr{F}_{t}\right)$
 \end_inset
 
- is mds, 
-\begin_inset Formula $W=\sigma$
+ is mds, we have 
+\begin_inset Formula $\omega=\sigma$
 \end_inset
 
+.
+ If we are interested in the null hypothesis that 
+\begin_inset Formula $y_{t}$
+\end_inset
 
+ is a unit root process, we have the celebrated Dicky-Fuller test.
+ 
 \end_layout
 
 \begin_layout Theorem
@@ -1476,9 +1494,10 @@ Assume
 \end_inset
 
 .
+ Then 
 \begin_inset Formula 
 \[
-{\rm ADF}=\frac{\hat{\alpha}-\alpha}{s.e.\left(\hat{\alpha}\right)}\overset{d}{\to}\frac{\varint_{0}^{1}u{\rm d}W}{\sqrt{\varint_{0}^{1}u^{2}}}
+{\rm ADF}=\frac{\hat{\alpha}-\alpha}{s.e.\left(\hat{\alpha}\right)}\overset{d}{\to}\frac{\int_{0}^{1}u{\rm d}W}{\sqrt{\int_{0}^{1}u^{2}}},
 \]
 
 \end_inset
@@ -1494,28 +1513,36 @@ where
 Test for a Unit Root: KPSS Stationarity Test
 \end_layout
 
-\begin_layout Itemize
-Kwiatkowski, Phillips, Schmidt, and Shin (1992)
-\end_layout
+\begin_layout Standard
+Kwiatkowski, Phillips, Schmidt, and Shin (1992) is an alternative test for
+ nonstationarity.
+ Its null hypothesis is that 
+\begin_inset Formula $y_{t}$
+\end_inset
 
-\begin_layout Itemize
-Null hypothesis: stationary
+ is a stationary time series.
+ Consider the model 
 \begin_inset Formula 
 \[
-y_{t}=\mu+\theta S_{t}+e_{t}
+y_{t}=\mu+S_{t}+e_{t},
 \]
 
 \end_inset
 
+where 
+\begin_inset Formula $S_{t}=\sum_{s=1}^{t}u_{t}$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-when 
+.
+ If 
 \begin_inset Formula $\sigma_{u}^{2}=0$
 \end_inset
 
-, 
+, then 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ drops out and 
 \begin_inset Formula $y_{t}$
 \end_inset
 
@@ -1523,10 +1550,12 @@ when
 \begin_inset Formula $y_{t}=\mu+e_{t}$
 \end_inset
 
-
+.
+ 
 \end_layout
 
 \begin_layout Standard
+The null hypothesis 
 \begin_inset Formula $H_{0}:\sigma_{u}^{2}=0$
 \end_inset
 
@@ -1535,23 +1564,22 @@ when
 \begin_inset Formula $H_{1}:\sigma_{u}^{2}>0$
 \end_inset
 
-
+: we have the KPSS test statistic defined as 
 \begin_inset Formula 
-\begin{align*}
-{\rm KPSS} & =\frac{1}{n^{2}\hat{\omega}^{2}}\sum_{i=1}^{n}\sum_{t=1}^{i}\hat{e}_{t}^{2}\\
- & =\frac{1}{n}\sum_{i=1}^{n}\left[\sum_{t=1}^{i}\frac{\hat{e}_{t}}{\sqrt{n}\hat{\omega}}\right]^{2}
-\end{align*}
+\[
+{\rm KPSS}=\frac{1}{n^{2}\hat{\omega}^{2}}\sum_{i=1}^{n}\sum_{t=1}^{i}\hat{e}_{t}^{2}=\frac{1}{n}\sum_{i=1}^{n}\left[\sum_{t=1}^{i}\frac{\hat{e}_{t}}{\sqrt{n}\hat{\omega}}\right]^{2}
+\]
 
 \end_inset
 
-is a sample average of the square of the standardized paritial sum 
+It is a sample average of the square of the standardized paritial sum 
 \begin_inset Formula $\sum_{t=1}^{\left\lfloor nr\right\rfloor }\frac{\hat{e}_{t}}{\sqrt{n}\hat{\omega}}\overset{d}{\to}W\left(r\right)-rW\left(1\right)=V\left(r\right)$
 \end_inset
 
  is a Brownian Bridge.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 To see this point, consider the simple case when 
 \begin_inset Formula $e_{t}$
 \end_inset
@@ -1568,23 +1596,17 @@ To see this point, consider the simple case when
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 as 
 \begin_inset Formula $\hat{e}_{t}=y_{t}-\overline{y}_{n}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Thus 
-\begin_inset Formula ${\rm KPSS}\overset{d}{\to}\varint_{0}^{1}V\left(r\right){\rm d}r$
+.
+ Thus 
+\begin_inset Formula ${\rm KPSS}\overset{d}{\to}\int_{0}^{1}V\left(r\right){\rm d}r$
 \end_inset
 
-
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1595,7 +1617,7 @@ If a trend is added in the form
 , then
 \begin_inset Formula 
 \[
-{\rm KPSS}\overset{d}{\to}\varint_{0}^{1}V_{2}\left(r\right){\rm d}r
+{\rm KPSS}\overset{d}{\to}\int_{0}^{1}V_{2}\left(r\right){\rm d}r
 \]
 
 \end_inset
@@ -1604,10 +1626,10 @@ where
 \begin_inset Formula $V_{2}\left(r\right)$
 \end_inset
 
- is a detrended B-motion 
+ is a 2nd-type Brownian bridge.
 \begin_inset Formula 
 \[
-V_{2}\left(r\right)=W\left(r\right)-\left(\varint_{0}^{r}X\left(S\right){\rm d}S\right)'\left(\varint_{0}^{1}XX'\right)^{-1}\varint_{0}^{1}X{\rm d}W
+V_{2}\left(r\right)=W\left(r\right)-\left(\int_{0}^{r}X\left(S\right){\rm d}S\right)'\left(\int_{0}^{1}XX'\right)^{-1}\int_{0}^{1}X{\rm d}W
 \]
 
 \end_inset
@@ -1616,7 +1638,7 @@ where
 \begin_inset Formula $X\left(S\right)=\left(\begin{array}{c}
 1\\
 S
-\end{array}\right)$
+\end{array}\right).$
 \end_inset
 
 
