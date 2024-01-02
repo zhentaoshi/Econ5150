@@ -109,7 +109,7 @@ A random variable is a
 
  measure function.
  A time series is a sequence of random variables 
-\begin_inset Formula $\left(y_{1}\left(\omega\right),y_{2}\left(\omega\right),y_{3}\left(\omega\right)\text{，}...\text{，}y_{n}\left(\omega\right)\right)\in\mathbb{R}^{m\times n}$
+\begin_inset Formula $\left(y_{1}\left(\omega\right),y_{2}\left(\omega\right),\ldots,y_{n}\left(\omega\right)\right)\in\mathbb{R}^{m\times n}$
 \end_inset
 
 , and it can be extended to a doubly infinite sequence 
@@ -123,7 +123,7 @@ A random variable is a
 \end_inset
 
 , the sequence is a deterministic vector 
-\begin_inset Formula $\left(y_{1},y_{2}\text{，}...\text{，}y_{n}\right)\left(\omega\right)\in\mathbb{R}^{m\times n}$
+\begin_inset Formula $\left(\omega\right)\in\mathbb{R}^{m\times n}$
 \end_inset
 
 ; for each fixed 
@@ -255,7 +255,7 @@ strictly stationarity
 \end_inset
 
 , joint distribution of 
-\begin_inset Formula $\left(y_{t},y_{t+1}\text{，}...\text{，}y_{t+\ell}\right)$
+\begin_inset Formula $\left(y_{t},y_{t+1},\ldots,y_{t+\ell}\right)$
 \end_inset
 
  is independent of 
