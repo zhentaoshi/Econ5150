@@ -1,6 +1,6 @@
 # Econ5150 @ CUHK
 
-## 2023 Spring
+## 2024 Spring
 
 This repository hosts lecture notes and code.
 
