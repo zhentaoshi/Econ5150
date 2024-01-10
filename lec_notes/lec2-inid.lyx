@@ -103,134 +103,6 @@ Notations and Definitions
 \end_layout
 
 \begin_layout Standard
-A random variable 
-\begin_inset Formula $z$
-\end_inset
-
- is 
-\begin_inset Formula $r$
-\end_inset
-
-th 
-\emph on
-integrable
-\emph default
- if 
-\begin_inset Formula $E[\left|z\right|^{r}]<\infty$
-\end_inset
-
-.
- Equivalently, 
-\begin_inset Formula 
-\[
-\lim_{M\to\infty}E[\left|z\right|^{r}\mathbb{I}\left\{ \left|z\right|^{r}>M\right\} ]=0,
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\mathbb{I}\left\{ \cdot\right\} $
-\end_inset
-
- is the indicator function.
- Without referring explicitly to the 
-\begin_inset Formula $r$
-\end_inset
-
-th moment, we say 
-\begin_inset Formula $z$
-\end_inset
-
- is 
-\emph on
-integrable
-\emph default
- if 
-\begin_inset Formula $r=1$
-\end_inset
-
-, and 
-\emph on
-square integrable
-\emph default
- if 
-\begin_inset Formula $r=2$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-A 
-\shape slanted
-triangular array
-\shape default
- 
-\begin_inset Formula $\left\{ \left(x_{1n},x_{2n},x_{3n},...,x_{r_{n}n}\right)\right\} _{n\in\mathbb{N}}$
-\end_inset
-
- stacks like a triangular:
-\begin_inset Formula 
-\[
-\begin{array}{c}
-\left(\begin{array}{cccccccc}
-x_{11} & x_{22} & \cdots & x_{r_{1}1}\\
-x_{12} & x_{22} & \cdots & \cdots & x_{r_{2}2}\\
-x_{13} & x_{23} & \cdots & \cdots & \cdots & x_{r_{3}3}\\
-\vdots &  &  &  &  &  & \ddots\\
-x_{1n} & x_{2n} & \cdots & \cdots & \cdots & \cdots & \cdots & x_{r_{n}n}
-\end{array}\right)\end{array}
-\]
-
-\end_inset
-
-Here 
-\begin_inset Formula $r_{n}$
-\end_inset
-
- is an increasing number in 
-\begin_inset Formula $n$
-\end_inset
-
-, and 
-\begin_inset Formula $r_{n}\to\infty$
-\end_inset
-
- as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-.
- Suppose for each 
-\begin_inset Formula $n$
-\end_inset
-
-, the elements in 
-\begin_inset Formula $\left(x_{in}\right)_{i=1}^{r_{n}}$
-\end_inset
-
- are independently non-identically distributed (inid).
- (Please keep a liberal mind and consider 
-\begin_inset Quotes eld
-\end_inset
-
-identically distributed
-\begin_inset Quotes erd
-\end_inset
-
- as a special case of 
-\begin_inset Quotes eld
-\end_inset
-
-non-identically distributed
-\begin_inset Quotes erd
-\end_inset
-
-.)
-\end_layout
-
-\begin_layout Standard
 Without loss of generality, assume 
 \begin_inset Formula $E[x_{in}]=0$
 \end_inset
@@ -275,6 +147,79 @@ aggregate variance
 .
 \end_layout
 
+\begin_layout Standard
+A 
+\shape slanted
+triangular array
+\shape default
+ 
+\begin_inset Formula $\left\{ \left(x_{1n},x_{2n},x_{3n},...,x_{r_{n}n}\right)\right\} _{n\in\mathbb{N}}$
+\end_inset
+
+ stacks like a triangle:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\left(\begin{array}{cccccccc}
+x_{11} & x_{22} & \cdots & x_{r_{1}1}\\
+x_{12} & x_{22} & \cdots & \cdots & x_{r_{2}2}\\
+x_{13} & x_{23} & \cdots & \cdots & \cdots & x_{r_{3}3}\\
+\vdots &  &  &  &  &  & \ddots\\
+x_{1n} & x_{2n} & \cdots & \cdots & \cdots & \cdots & \cdots & x_{r_{n}n}
+\end{array}\right).\end{array}
+\]
+
+\end_inset
+
+Here 
+\begin_inset Formula $r_{n}$
+\end_inset
+
+ is an increasing number in 
+\begin_inset Formula $n$
+\end_inset
+
+, and 
+\begin_inset Formula $r_{n}\to\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ (Think about the special case 
+\begin_inset Formula $r_{n}=n$
+\end_inset
+
+, which makes an exact triangle.) Suppose for each 
+\begin_inset Formula $n$
+\end_inset
+
+, the elements in 
+\begin_inset Formula $\left(x_{in}\right)_{i=1}^{r_{n}}$
+\end_inset
+
+ are independently non-identically distributed (inid).
+ (Please keep a liberal mind and take 
+\begin_inset Quotes eld
+\end_inset
+
+identically distributed
+\begin_inset Quotes erd
+\end_inset
+
+ as a special case of 
+\begin_inset Quotes eld
+\end_inset
+
+non-identically distributed
+\begin_inset Quotes erd
+\end_inset
+
+.)
+\end_layout
+
 \begin_layout Section
 Lindeberg Condition
 \end_layout
@@ -285,7 +230,7 @@ Lindeberg Condition
 Lindeberg-Lévy Central Limit Theorem
 \shape default
  is for independently and identically distributed (iid) sequences.
- In this lecture we consider independent but heterogeneous sequences.
+ In this lecture we consider independent, heterogeneous sequences.
  
 \end_layout
 
@@ -374,8 +319,8 @@ Lindeberg-Lévy
  As a result, 
 \begin_inset Formula 
 \begin{align*}
-\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{n}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & =\frac{1}{n\sigma_{1}^{2}}\times nE\left[z^{2}\mathbb{I}\left\{ z^{2}\geq n\sigma_{z}^{2}\varepsilon\right\} \right]\\
- & =const\times E\left[z^{2}\mathbb{I}\left\{ z^{2}\geq n\sigma_{z}^{2}\varepsilon\right\} \right]\to\infty
+\frac{1}{\tilde{\sigma}_{n}^{2}}\sum_{i=1}^{n}E\left[x_{in}^{2}\mathbb{I}\left\{ x_{in}^{2}\geq\varepsilon\tilde{\sigma}_{n}^{2}\right\} \right] & =\frac{1}{n\sigma_{z}^{2}}\times nE\left[z^{2}\mathbb{I}\left\{ z^{2}\geq n\sigma_{z}^{2}\varepsilon\right\} \right]\\
+ & =const\times E\left[z^{2}\mathbb{I}\left\{ z^{2}\geq n\sigma_{z}^{2}\varepsilon\right\} \right]\to0
 \end{align*}
 
 \end_inset
@@ -413,7 +358,7 @@ With iid and
 
 \end_inset
 
- retains its familiar for in CLT.
+ retains its familiar form in CLT.
  
 \end_layout
 
@@ -426,7 +371,7 @@ Lyapunov Condition
 \shape slanted
 Lindeberg condition
 \shape default
- is difficult to interpret.
+ is mathematical artifact that is difficult to interpret.
  Lyapunov condition is a more interpretable sufficient condition.
 \end_layout
 
@@ -448,7 +393,7 @@ Lyapunov Condition: There exists some
 
 \begin_layout Standard
 Lyapunov condition implies Lindeberg condition.
- To see this fact, we use the quantify in the Lindeberg condition as a starting
+ To see this fact, we use the quantity in the Lindeberg condition as a starting
  point:
 \shape italic
 
@@ -488,24 +433,19 @@ Condition1:
 .
 \end_layout
 
-\begin_layout Standard
-Let 
-\begin_inset Formula $\bar{\sigma}_{n}^{2}=\tilde{\sigma}_{n}^{2}/r_{n}$
-\end_inset
-
- be the 
-\emph on
-average variance
-\emph default
-.
- 
-\end_layout
-
 \begin_layout Itemize
 Condition2: 
 \begin_inset Formula $\liminf_{n\to\infty}\bar{\sigma}_{n}^{2}>b>0$
 \end_inset
 
+, where 
+\begin_inset Formula $\bar{\sigma}_{n}^{2}=\tilde{\sigma}_{n}^{2}/r_{n}$
+\end_inset
+
+ is the 
+\emph on
+average variance
+\emph default
 .
  
 \end_layout
@@ -594,30 +534,89 @@ This is a uniform CLT over a class of distributions in
 \end_layout
 
 \begin_layout Standard
-In a direct proof, the approximation error is controlled by 
-\emph on
-
-\begin_inset Formula $B$
-\end_inset
-
-
-\emph default
- and 
-\begin_inset Formula $b$
-\end_inset
-
-.
- The textbook uses a counter-positive argument: If the statement is false,
- then there is a sequence 
+The textbook uses a counter-positive argument.
+ Let 
 \begin_inset Formula $f_{1},f_{2},...\in\mathscr{F}$
 \end_inset
 
- that violates the convergence.
- That contradicts with Lyapunov CLT.
+ be a sequence of distributions, and each 
+\begin_inset Formula $f_{n}$
+\end_inset
+
+ forms a row in the triangular array.
+ If the statement is false, then there exists a sequence 
+\begin_inset Formula $f_{1},f_{2},..$
+\end_inset
+
+ that contradicts with the Lyapunov CLT.
+ Because the Lyapunov CLT is correct, such violation cannot be true.
 \end_layout
 
 \begin_layout Section
 Uniform Integrability
+\end_layout
+
+\begin_layout Definition
+A random variable 
+\begin_inset Formula $z$
+\end_inset
+
+ is 
+\begin_inset Formula $r$
+\end_inset
+
+th 
+\emph on
+integrable
+\emph default
+ if 
+\begin_inset Formula $E[\left|z\right|^{r}]=\int_{-\infty}^{\infty}\left|z\right|dF(z)<\infty$
+\end_inset
+
+.
+ Equivalently, 
+\begin_inset Formula 
+\[
+\lim_{M\to\infty}E[\left|z\right|^{r}\mathbb{I}\left\{ \left|z\right|^{r}>M\right\} ]=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbb{I}\left\{ \cdot\right\} $
+\end_inset
+
+ is the indicator function.
+ 
+\end_layout
+
+\begin_layout Standard
+Without referring explicitly to the 
+\begin_inset Formula $r$
+\end_inset
+
+th moment, we say 
+\begin_inset Formula $z$
+\end_inset
+
+ is 
+\emph on
+integrable
+\emph default
+ if 
+\begin_inset Formula $r=1$
+\end_inset
+
+, and 
+\emph on
+square integrable
+\emph default
+ if 
+\begin_inset Formula $r=2$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Definition
@@ -694,19 +693,6 @@ uniformity
  
 \end_layout
 
-\begin_layout Standard
-Uniform integrability requires that the triangular array 
-\begin_inset Formula $z_{n}$
-\end_inset
-
- is tight under the 
-\begin_inset Formula $r$
-\end_inset
-
-th norm.
- 
-\end_layout
-
 \begin_layout Example
 Consider a counterexample
 \begin_inset Formula 
@@ -761,7 +747,7 @@ For each fixed
 
 \end_inset
 
-As a result,  this 
+As a result,  this sequence 
 \begin_inset Formula $z_{n}$
 \end_inset
 
@@ -828,7 +814,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Proposition
-If Condition2 and the triangular array 
+If Condition2 holds and the triangular array 
 \begin_inset Formula $\left\{ \left(x_{in}\right)_{i=1}^{r_{n}}\right\} _{n\in\mathbb{N}}$
 \end_inset
 
@@ -893,13 +879,10 @@ r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|\stackrel{p}{\to}0.
 We start with the definition of convergence in probability:
 \begin_inset Formula 
 \begin{align*}
-P\left(r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|>\varepsilon\right) & =P\left(\max_{i\leq n}\left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right)\\
- & \leq\sum_{i\leq r_{n}}P\left(\left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right)\\
- & =\sum_{i\leq r_{n}}E\left[\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
- & \leq r_{n}\max_{i\leq r_{n}}E\left[\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
+P\left(r_{n}^{-1/r}\max_{i\leq r_{n}}\left|x_{in}\right|>\varepsilon\right) & =P\left(\max_{i\leq n}\left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right)\leq\sum_{i\leq r_{n}}P\left(\left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right)\\
+ & \leq r_{n}\max_{i\leq r_{n}}P\left(\left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right)=r_{n}\max_{i\leq r_{n}}E\left[\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
  & \leq r_{n}\times\frac{1}{r_{n}\varepsilon^{r}}\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}>r_{n}\varepsilon^{r}\right\} \right]\\
- & =const\times\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}\geq r_{n}\varepsilon^{r}\right\} \right]\\
- & \to0
+ & =const\times\max_{i\leq r_{n}}E\left[\left|x_{in}\right|^{r}\mathbb{I}\left\{ \left|x_{in}\right|^{r}\geq r_{n}\varepsilon^{r}\right\} \right]\to0
 \end{align*}
 
 \end_inset
@@ -940,6 +923,17 @@ th uniformly integrable.
  
 \end_layout
 
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+Inid sequence is the first step out of the restrictive iid world.
+ Uniform integrability is an important assumption in various advanced asymptotic
+ techniques, for example bootstrap and multi-index panel data.
+ 
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -956,8 +950,9 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Jan 17, 2022.
-   Transcribed by Shu Shen.}
+ 
+\backslash
+today}
 \end_layout
 
 \end_inset

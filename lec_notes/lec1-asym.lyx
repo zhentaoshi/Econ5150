@@ -346,7 +346,7 @@ name "eg:in_p_in_ms"
 \end_inset
 
  but 
-\begin_inset Formula $z_{n}\stackrel{1st.m..}{\nrightarrow}0$
+\begin_inset Formula $z_{n}\stackrel{1st.m.}{\nrightarrow}0$
 \end_inset
 
 .
@@ -1340,7 +1340,21 @@ and the conclusion follows.
 
 \family typewriter
 Zhentao Shi.
- Jan 10, 2023.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
