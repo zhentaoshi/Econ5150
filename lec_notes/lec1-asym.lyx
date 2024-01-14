@@ -98,6 +98,35 @@ theorems-ams-chap-bytype
 Asymptotic Theory I
 \end_layout
 
+\begin_layout Standard
+(to be revised)
+\end_layout
+
+\begin_layout Standard
+What we are interested is the finite sample behavior of estimators or test
+ statistics.
+ However, the finite sample exact distributions depend on the underlying
+ data generating process and are often too mathematically difficult to deduce
+ and difficult to generalize.
+ Asymptotic theory, on the other hand, uses a thought experiment to derive
+ what happens when the sample size is arbitrarily large.
+ It is a surprising fact that despite the multitude of finite sample settings,
+ under some reasonable conditions the different starting points often ends
+ up with the sample result (for example the limit distribution of the central
+ limit theorem is often a normal distribution).
+ The convenience and beauty of the large sample theory makes it the dominating
+ apparatus of modern statistical theory and econometric theory.
+ 
+\end_layout
+
+\begin_layout Standard
+However, we must keep in mind that asymptotic theory is the mathematical
+ tool for approximation, and often time is quality of approximation depend
+ on unknown implicit quantities.
+ Monte Carlo simulations and numerical experiments are useful to deepen
+ our understanding of asymptotic results in finite sample.
+\end_layout
+
 \begin_layout Section
 Modes of Convergence
 \end_layout
@@ -1346,7 +1375,6 @@ status open
 
 \begin_layout Plain Layout
 
-\family typewriter
 
 \backslash
 today
