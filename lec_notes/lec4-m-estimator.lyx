@@ -98,8 +98,26 @@ theorems-ams-chap-bytype
 M-Estimators
 \end_layout
 
-\begin_layout Section
-Motivation
+\begin_layout Standard
+Except for some Bayesian estimators that requires integration or simulation,
+ almost all frequent estimators in econometrics involve steps of minimizing
+ some criterion functions.
+ The m-estimator is a class of estimators that each individual observation
+ contributes to the overall criterion function in an additive, separable
+ manner.
+ 
+\end_layout
+
+\begin_layout Standard
+We are familiar with OLS.
+ It boasts an explicit solutions in that the estimator can be written as
+ a function of the data only.
+ This is due to the fact that the loss function of OLS is quadratic and
+ the regressors are linearly combined by the slope coefficients.
+ Not every estimator enjoys such nice and simple property.
+ For example, the logistic regression does not have a closed-form solution
+ but must use numerical optimization.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -133,7 +151,7 @@ The m-estimator minimizes the sample criterion function:
 \end_inset
 
 The m-estimator includes many examples as special cases.
- For example, OLS, MLE, NLS, and quantile regressions are all m-estimators.
+ For example, OLS, NLS, MLE, and quantile regressions are all m-estimators.
  
 \end_layout
 
@@ -170,14 +188,322 @@ We say
 \end_inset
 
  such that 
-\begin_inset Formula $\inf_{\theta\in\Theta\backslash N_{\delta}\left(\theta_{0}\right)}S\left(\theta\right)-S\left(\theta_{0}\right)>\varepsilon$
+\begin_inset Formula 
+\[
+\inf_{\theta\in\Theta\backslash N_{\delta}\left(\theta_{0}\right)}S\left(\theta\right)-S\left(\theta_{0}\right)>\varepsilon.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+In econometrics, identification has different meanings in different contexts.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Lewbel2019"
+literal "false"
+
+\end_inset
+
+ is an overview of the 
+\begin_inset Quotes eld
+\end_inset
+
+identification zoo
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The definition here is rather mechanical and has nothing to do with economics.
+ 
+\end_layout
+
+\begin_layout Example
+The most familiar example of m-estimator is the OLS.
+ Let 
+\begin_inset Formula $y_{i}=x_{i}'\theta+e_{i}$
+\end_inset
+
+.
+ The loss function is 
+\begin_inset Formula $\rho_{i}\left(\theta\right)=(y_{i}-x_{i}'\theta)^{2}$
+\end_inset
+
+, the sample criterion function is 
+\begin_inset Formula $\frac{1}{n}\sum_{i}\left(y_{i}-x_{i}'\beta\right)^{2}$
+\end_inset
+
+ and the population criterion function is 
+\begin_inset Formula $E\left[\left(y_{i}-x_{i}'\theta\right)^{2}\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Silva2006"
+literal "false"
+
+\end_inset
+
+ propose a nonlinear conditional mean model 
+\begin_inset Formula $E\left[y_{i}|x_{i}\right]=\exp\left(x_{i}'\theta\right)$
+\end_inset
+
+, where the non-negative 
+\begin_inset Formula $\exp\left(\cdot\right)$
+\end_inset
+
+ in the right-hand side is used to model the non-negative trade volume between
+ countries.
+ An NLS of the parameter can set up the loss function 
+\begin_inset Formula $\rho_{i}\left(\theta\right)=\left(y_{i}-\exp\left(x_{i}'\theta\right)\right)^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+We know that if 
+\begin_inset Formula $y\sim\mathrm{Poisson}\left(\lambda\right)$
+\end_inset
+
+, then 
+\begin_inset Formula $\Pr\left(y=k\right)=\lambda^{k}\exp\left(-\lambda\right)/k!$
+\end_inset
+
+ for 
+\begin_inset Formula $k\in\left\{ 0,1,2,\ldots\right\} $
+\end_inset
+
+.
+ An alternative way to set up the criterion is to pretend that 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is draw from a conditional Poisson model with mean 
+\begin_inset Formula $\lambda_{i}=\exp\left(x_{i}'\theta\right)$
+\end_inset
+
+ and thus 
+\begin_inset Formula 
+\[
+\rho_{i}(\theta)=-\log\Pr\left(y_{i}|x_{i}\right)=-y_{i}\left(x_{i}'\theta\right)+\exp\left(x_{i}'\theta\right)
+\]
+
+\end_inset
+
+where we drop 
+\begin_inset Formula $y_{i}!$
+\end_inset
+
+ from the above express as it is irrelevant to the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ This is the loss function of so called PPML (Pseudo Poisson Maximum Likelihood)
+ in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Silva2006"
+literal "false"
+
 \end_inset
 
 .
 \end_layout
 
+\begin_layout Standard
+Notice that the GMM, another familiar econometric estimator, is not an m-estimat
+or.
+ It is a member of the more broad minimum-distance estimator.
+ 
+\end_layout
+
 \begin_layout Section
 Consistency
+\end_layout
+
+\begin_layout Standard
+To establish the consistency of the m-estimator, identification is a necessary
+ condition.
+ In the previous lecture we have covered the consistency of a single sequence
+ of random variables.
+ In m-estimation the model is index by 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+.
+ Pointwise consistency 
+\begin_inset Formula $S_{n}\left(\theta\right)\stackrel{p}{\to}S\left(\theta\right)$
+\end_inset
+
+ is insufficient to guarantee the consistency of 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ to the true parameter 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ We need to strength it to the uniform consistency of the sample mean.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Uniform law of large numbers
+\end_layout
+
+\end_inset
+
+ For any 
+\begin_inset Formula $\delta,\varepsilon>0$
+\end_inset
+
+, there exists 
+\begin_inset Formula $N=N\left(\varepsilon,\delta\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\Pr\left\{ \sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\delta\right\} \leq\varepsilon.
+\]
+
+\end_inset
+
+More concisely, we can write 
+\begin_inset Formula $\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\stackrel{p}{\to}0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Remark
+Recall the definition of continuity and uniform continuity in undergraduate
+ calculus.
+ A function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ is 
+\series bold
+continuous
+\series default
+ in an open set 
+\begin_inset Formula $A$
+\end_inset
+
+, if for 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ and 
+\begin_inset Formula $x\in A$
+\end_inset
+
+, there exists a 
+\begin_inset Formula $\delta=\delta\left(\varepsilon,x\right)>0$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\left|x'-x\right|\leq\delta\Rightarrow\left|f\left(x'\right)-f\left(x\right)\right|<\varepsilon
+\]
+
+\end_inset
+
+ for any point.
+ The function 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ is called 
+\series bold
+uniform continuous
+\series default
+ if 
+\begin_inset Formula $\delta$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ For example, 
+\begin_inset Formula $\sin\left(x\right)$
+\end_inset
+
+ is uniform continuous in 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+; 
+\begin_inset Formula $1/x$
+\end_inset
+
+ is not uniform continuous in 
+\begin_inset Formula $(0,\infty]$
+\end_inset
+
+; 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ is not uniform continuous in 
+\begin_inset Formula $\left(-\infty,\infty\right)$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Theorem
@@ -219,7 +545,7 @@ where the second inequality follows from the definition of the m-estimator
 \begin_inset Formula $S_{n}(\hat{\theta})\leq S_{n}\left(\theta_{0}\right)$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -233,7 +559,7 @@ We go with a heuristic argument.
 \end_inset
 
 .
- Taylor expansion of 
+ A Taylor expansion of 
 \begin_inset Formula $\bar{\psi}(\hat{\theta})$
 \end_inset
 
@@ -244,7 +570,7 @@ We go with a heuristic argument.
  gives 
 \begin_inset Formula 
 \[
-0=\bar{\psi}(\hat{\theta})=\bar{\psi}\left(\theta_{0}\right)+\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\dot{\theta}\right)\left(\hat{\theta}-\theta_{0}\right)
+0=\bar{\psi}(\hat{\theta})=\bar{\psi}\left(\theta_{0}\right)+\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}(\dot{\theta})\left(\hat{\theta}-\theta_{0}\right)
 \]
 
 \end_inset
@@ -262,10 +588,14 @@ where
 \end_inset
 
 .
- Rearrange the above inequality, 
+ If 
+\begin_inset Formula $\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}(\dot{\theta})$
+\end_inset
+
+ is invertible, we can rearrange the above inequality, 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\theta}-\theta\right)=-\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\dot{\theta}\right)\right]^{-1}\sqrt{n}\bar{\psi}\left(\theta_{0}\right)
+\sqrt{n}\left(\hat{\theta}-\theta\right)=-\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}(\dot{\theta})\right]^{-1}\sqrt{n}\bar{\psi}\left(\theta_{0}\right)
 \]
 
 \end_inset
@@ -292,7 +622,21 @@ if
 \end_inset
 
  is continuous.
- In the population, 
+ (Ultimately we want to show 
+\begin_inset Formula $\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}(\dot{\theta})\stackrel{p}{\to}Q$
+\end_inset
+
+ but our heuristic argument here has a gap, because 
+\begin_inset Formula $\dot{\theta}$
+\end_inset
+
+ is moving as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ A rigorous proof needs to invoke the empirical process theory.) In the populatio
+n, 
 \begin_inset Formula $E\left[\bar{\psi}\left(\theta_{0}\right)\right]=E\left[\psi\left(\theta_{0}\right)\right]=0$
 \end_inset
 
@@ -324,6 +668,10 @@ where the asymptotic variance follows a sandwich form.
  
 \end_layout
 
+\begin_layout Example
+Use the OLS estimator as an example for demonstration.
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -340,9 +688,22 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Feb 7, 2023.
-   Transcribed by Shu Shen.}
+ 
+\backslash
+today}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "5150"
+options "chicagoa"
 
 \end_inset
 

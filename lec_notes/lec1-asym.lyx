@@ -99,29 +99,27 @@ Asymptotic Theory I
 \end_layout
 
 \begin_layout Standard
-(to be revised)
-\end_layout
-
-\begin_layout Standard
-What we are interested is the finite sample behavior of estimators or test
- statistics.
- However, the finite sample exact distributions depend on the underlying
- data generating process and are often too mathematically difficult to deduce
- and difficult to generalize.
- Asymptotic theory, on the other hand, uses a thought experiment to derive
+In practice, what we are interested is the finite sample behavior of estimators
+ or test statistics.
+ However, the finite sample exact distributions count on underlying data
+ generating processes and are often too mathematically difficult to deduce
+ and hard to generalize.
+ See Ullah's book and Phillips (1983, handbook chapter).
+ Asymptotic theory, on the other hand, uses a thought experiment to imagine
  what happens when the sample size is arbitrarily large.
  It is a surprising fact that despite the multitude of finite sample settings,
- under some reasonable conditions the different starting points often ends
- up with the sample result (for example the limit distribution of the central
- limit theorem is often a normal distribution).
- The convenience and beauty of the large sample theory makes it the dominating
- apparatus of modern statistical theory and econometric theory.
+ under some reasonable conditions the different starting points often end
+ up with the same result.
+ For example, the limit distribution of the central limit theorems is usual
+ a normal distribution).
+ The convenience of the large sample theory makes it the prevelent apparatus
+ of modern statistical theory and econometric theory.
  
 \end_layout
 
 \begin_layout Standard
-However, we must keep in mind that asymptotic theory is the mathematical
- tool for approximation, and often time is quality of approximation depend
+Though the large sample theory is popular, we must keep in mind it is a
+ mathematical tool for approximation, and the quality of approximation depend
  on unknown implicit quantities.
  Monte Carlo simulations and numerical experiments are useful to deepen
  our understanding of asymptotic results in finite sample.
