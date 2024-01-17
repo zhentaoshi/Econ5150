@@ -99,9 +99,9 @@ M-Estimators
 \end_layout
 
 \begin_layout Standard
-Except for some Bayesian estimators that requires integration or simulation,
- almost all frequent estimators in econometrics involve steps of minimizing
- some criterion functions.
+Except for some Bayesian estimators that require integration or simulation
+ to get the values, almost all frequentist estimators in econometrics involve
+ steps of minimizing some criterion functions.
  The m-estimator is a class of estimators that each individual observation
  contributes to the overall criterion function in an additive, separable
  manner.
@@ -110,14 +110,18 @@ Except for some Bayesian estimators that requires integration or simulation,
 
 \begin_layout Standard
 We are familiar with OLS.
- It boasts an explicit solutions in that the estimator can be written as
- a function of the data only.
+ The OLS estimator boasts an explicit solution in that it can be written
+ as a function of the data only.
  This is due to the fact that the loss function of OLS is quadratic and
  the regressors are linearly combined by the slope coefficients.
- Not every estimator enjoys such nice and simple property.
+ Most estimators do not enjoys such simplicity.
  For example, the logistic regression does not have a closed-form solution
- but must use numerical optimization.
+ but must be solved numerically.
  
+\end_layout
+
+\begin_layout Section
+Formulation
 \end_layout
 
 \begin_layout Standard
@@ -129,12 +133,21 @@ Let the loss function be
 \begin_inset Formula $z_{i}$
 \end_inset
 
- is a data vector.
- The sample criterion is an average of 
+ is the 
+\begin_inset Formula $i$
+\end_inset
+
+th observation.
+ It can be a scalar random variable or a multivariate one.
+ The sample criterion is the average of 
 \begin_inset Formula $\rho_{i}\left(\theta\right)$
 \end_inset
 
-: 
+ over 
+\begin_inset Formula $i=1,2,\ldots,n$
+\end_inset
+
+:
 \begin_inset Formula 
 \[
 S_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\rho_{i}\left(\theta\right)
@@ -150,74 +163,15 @@ The m-estimator minimizes the sample criterion function:
 
 \end_inset
 
-The m-estimator includes many examples as special cases.
- For example, OLS, NLS, MLE, and quantile regressions are all m-estimators.
- 
+
 \end_layout
 
 \begin_layout Standard
-For simplicity, in this lecture we work with iid data.
- Let 
-\begin_inset Formula 
-\[
-S\left(\theta\right)=E\left[S_{n}\left(\theta\right)\right]=E\left[\rho_{i}\left(\theta\right)\right]
-\]
-
-\end_inset
-
-be the population criterion function.
- 
-\end_layout
-
-\begin_layout Definition
-We say 
-\begin_inset Formula $\theta$
-\end_inset
-
- is identified if 
-\begin_inset Formula $\theta_{0}=\arg\min_{\theta\in\Theta}S\left(\theta\right)$
-\end_inset
-
- is unique.
- In other words, for any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
- there exists a 
-\begin_inset Formula $\delta=\delta\left(\varepsilon\right)$
-\end_inset
-
- such that 
-\begin_inset Formula 
-\[
-\inf_{\theta\in\Theta\backslash N_{\delta}\left(\theta_{0}\right)}S\left(\theta\right)-S\left(\theta_{0}\right)>\varepsilon.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Remark
-In econometrics, identification has different meanings in different contexts.
- 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "Lewbel2019"
-literal "false"
-
-\end_inset
-
- is an overview of the 
-\begin_inset Quotes eld
-\end_inset
-
-identification zoo
-\begin_inset Quotes erd
-\end_inset
-
-.
- The definition here is rather mechanical and has nothing to do with economics.
+The m-estimator includes many examples as special cases.
+ For example, OLS, nonlinear least squares (NLS), maximum likelihood estimation
+ (MLE), and quantile regressions are all m-estimators.
+ GMM, another familiar econometric estimator, is not an m-estimator; it
+ belongs to the broader class of minimum-distance estimators.
  
 \end_layout
 
@@ -229,15 +183,15 @@ The most familiar example of m-estimator is the OLS.
 
 .
  The loss function is 
-\begin_inset Formula $\rho_{i}\left(\theta\right)=(y_{i}-x_{i}'\theta)^{2}$
+\begin_inset Formula $\rho_{i}\left(\theta\right)=\frac{1}{2}(y_{i}-x_{i}'\theta)^{2}$
 \end_inset
 
-, the sample criterion function is 
-\begin_inset Formula $\frac{1}{n}\sum_{i}\left(y_{i}-x_{i}'\beta\right)^{2}$
+ where 
+\begin_inset Formula $z_{i}=(y_{i},x_{i}')'$
 \end_inset
 
- and the population criterion function is 
-\begin_inset Formula $E\left[\left(y_{i}-x_{i}'\theta\right)^{2}\right]$
+, and the sample criterion function is 
+\begin_inset Formula $\frac{1}{2n}\sum_{i}\left(y_{i}-x_{i}'\theta\right)^{2}$
 \end_inset
 
 .
@@ -276,9 +230,9 @@ literal "false"
 \begin_inset Formula $\exp\left(\cdot\right)$
 \end_inset
 
- in the right-hand side is used to model the non-negative trade volume between
- countries.
- An NLS of the parameter can set up the loss function 
+ in the right-hand side is used to model the non-negative trade volumes
+ between countries.
+ NLS sets up the loss function 
 \begin_inset Formula $\rho_{i}\left(\theta\right)=\left(y_{i}-\exp\left(x_{i}'\theta\right)\right)^{2}$
 \end_inset
 
@@ -303,7 +257,7 @@ medskip
 \end_layout
 
 \begin_layout Example
-We know that if 
+If 
 \begin_inset Formula $y\sim\mathrm{Poisson}\left(\lambda\right)$
 \end_inset
 
@@ -327,7 +281,7 @@ We know that if
  and thus 
 \begin_inset Formula 
 \[
-\rho_{i}(\theta)=-\log\Pr\left(y_{i}|x_{i}\right)=-y_{i}\left(x_{i}'\theta\right)+\exp\left(x_{i}'\theta\right)
+\rho_{i}(\theta)=-\log\Pr\left(y_{i}|x_{i}\right)=-y_{i}\cdot x_{i}'\theta+\exp\left(x_{i}'\theta\right)
 \]
 
 \end_inset
@@ -341,6 +295,16 @@ where we drop
 \end_inset
 
 .
+ Here we use the 
+\begin_inset Quotes eld
+\end_inset
+
+minus log-likelihood
+\begin_inset Quotes erd
+\end_inset
+
+ to be consistent with the minimization for m-estimators, instead of maximizing
+ the log-likelihood.
  This is the loss function of so called PPML (Pseudo Poisson Maximum Likelihood)
  in 
 \begin_inset CommandInset citation
@@ -354,9 +318,109 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Notice that the GMM, another familiar econometric estimator, is not an m-estimat
-or.
- It is a member of the more broad minimum-distance estimator.
+For simplicity, in this lecture we work with iid data.
+ Let 
+\begin_inset Formula 
+\[
+S\left(\theta\right)=E\left[S_{n}\left(\theta\right)\right]=E\left[\rho_{i}\left(\theta\right)\right]
+\]
+
+\end_inset
+
+be the population criterion function.
+ 
+\end_layout
+
+\begin_layout Standard
+In econometrics, identification has different meanings in different contexts.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Lewbel2019"
+literal "false"
+
+\end_inset
+
+ is an overview of the 
+\begin_inset Quotes eld
+\end_inset
+
+identification zoo
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The definition here is rather mechanical and has nothing to do with economics.
+ Let 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ be the 
+\series bold
+parameter space
+\series default
+.
+ We say 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is 
+\series bold
+identified
+\series default
+ if 
+\begin_inset Formula $\theta_{0}=\arg\min_{\theta\in\Theta}S\left(\theta\right)$
+\end_inset
+
+ is unique.
+ More formally:
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Identification
+\end_layout
+
+\end_inset
+
+ For any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ there exists a 
+\begin_inset Formula $\delta=\delta\left(\varepsilon\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\inf_{\theta\in\Theta\backslash N_{\delta}\left(\theta_{0}\right)}S\left(\theta\right)>S\left(\theta_{0}\right)+\varepsilon
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $N_{\delta}\left(\theta_{0}\right):=\left\{ \theta\in\Theta:\left\Vert \theta-\theta_{0}\right\Vert <\delta\right\} $
+\end_inset
+
+ is an open 
+\begin_inset Formula $\delta$
+\end_inset
+
+-neighborhood around 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Identification is a property of the underlying probabilistic model.
+ It has nothing to do with the data or the randomness in sampling.
  
 \end_layout
 
@@ -387,7 +451,11 @@ To establish the consistency of the m-estimator, identification is a necessary
 \end_inset
 
 .
- We need to strength it to the uniform consistency of the sample mean.
+ We need to strength it to the 
+\series bold
+uniform consistency
+\series default
+ of the sample mean.
  
 \end_layout
 
@@ -405,69 +473,93 @@ Uniform law of large numbers
 \begin_inset Formula $\delta,\varepsilon>0$
 \end_inset
 
-, there exists 
+, there exists an 
 \begin_inset Formula $N=N\left(\varepsilon,\delta\right)$
 \end_inset
 
  such that 
 \begin_inset Formula 
 \[
-\Pr\left\{ \sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\delta\right\} \leq\varepsilon.
+\Pr\left\{ \sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\delta\right\} \leq\varepsilon
 \]
 
 \end_inset
 
-More concisely, we can write 
+for all 
+\begin_inset Formula $n>N$
+\end_inset
+
+.
+ More concisely, we can write 
 \begin_inset Formula $\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\stackrel{p}{\to}0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
 \end_inset
 
 .
  
 \end_layout
 
+\begin_layout Standard
+Notice that uniform consistency is stronger than 
+\series bold
+pointwise consistency
+\series default
+: 
+\begin_inset Formula $S_{n}\left(\theta\right)\stackrel{p}{\to}S\left(\theta\right)$
+\end_inset
+
+ for every 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Remark
-Recall the definition of continuity and uniform continuity in undergraduate
- calculus.
+Recall the definition of pointwise continuity and uniform continuity in
+ undergraduate calculus.
  A function 
 \begin_inset Formula $f(x)$
 \end_inset
 
  is 
 \series bold
-continuous
+pointwisely continuous
 \series default
  in an open set 
 \begin_inset Formula $A$
 \end_inset
 
-, if for 
+, if given any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
- and 
+, for every 
 \begin_inset Formula $x\in A$
 \end_inset
 
-, there exists a 
+ there exists a 
 \begin_inset Formula $\delta=\delta\left(\varepsilon,x\right)>0$
 \end_inset
 
  such that 
 \begin_inset Formula 
 \[
-\left|x'-x\right|\leq\delta\Rightarrow\left|f\left(x'\right)-f\left(x\right)\right|<\varepsilon
+\left|x'-x\right|\leq\delta\Rightarrow\left|f\left(x'\right)-f\left(x\right)\right|<\varepsilon.
 \]
 
 \end_inset
 
- for any point.
  The function 
 \begin_inset Formula $f\left(x\right)$
 \end_inset
 
- is called 
+ is 
 \series bold
-uniform continuous
+uniformly continuous
 \series default
  if 
 \begin_inset Formula $\delta$
@@ -478,7 +570,19 @@ uniform continuous
 \end_inset
 
 .
- For example, 
+ In other words, there exists a finite bound 
+\begin_inset Formula $L$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\sup_{x,x'\in A,\,x\neq x'}\frac{\left|f\left(x'\right)-f\left(x\right)\right|}{\left\Vert x-x'\right\Vert }\leq L
+\]
+
+\end_inset
+
+For example, 
 \begin_inset Formula $\sin\left(x\right)$
 \end_inset
 
@@ -490,15 +594,16 @@ uniform continuous
 \begin_inset Formula $1/x$
 \end_inset
 
- is not uniform continuous in 
-\begin_inset Formula $(0,\infty]$
+ in 
+\begin_inset Formula $(0,\infty)$
 \end_inset
 
-; 
+ is pointwisely continuous but not uniformly continuous, and the same applies
+ to 
 \begin_inset Formula $x^{2}$
 \end_inset
 
- is not uniform continuous in 
+ in 
 \begin_inset Formula $\left(-\infty,\infty\right)$
 \end_inset
 
@@ -548,13 +653,36 @@ where the second inequality follows from the definition of the m-estimator
 .
 \end_layout
 
+\begin_layout Standard
+We have established consistent of the m-estimator 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ to the true parameter 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
 \begin_layout Section
 Asymptotic Normality
 \end_layout
 
 \begin_layout Standard
+To further characterize the uncertainty of the estimator, we seek its asymptotic
+ distribution.
+ 
+\end_layout
+
+\begin_layout Standard
 We go with a heuristic argument.
  Define 
+\begin_inset Formula $\psi_{i}\left(\theta\right)=\frac{\partial}{\partial\theta}\rho_{i}(\theta)$
+\end_inset
+
+ and 
 \begin_inset Formula $\bar{\psi}\left(\theta\right)=\frac{\partial}{\partial\theta}S_{n}\left(\theta\right)$
 \end_inset
 
@@ -595,7 +723,7 @@ where
  is invertible, we can rearrange the above inequality, 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\theta}-\theta\right)=-\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}(\dot{\theta})\right]^{-1}\sqrt{n}\bar{\psi}\left(\theta_{0}\right)
+\sqrt{n}\left(\hat{\theta}-\theta\right)=-\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}(\dot{\theta})\right]^{-1}\sqrt{n}\bar{\psi}\left(\theta_{0}\right).
 \]
 
 \end_inset
@@ -635,8 +763,8 @@ if
 \end_inset
 
 .
- A rigorous proof needs to invoke the empirical process theory.) In the populatio
-n, 
+ A rigorous proof needs to invoke the empirical process theory, which we
+ do not pursue here.) In the population, 
 \begin_inset Formula $E\left[\bar{\psi}\left(\theta_{0}\right)\right]=E\left[\psi\left(\theta_{0}\right)\right]=0$
 \end_inset
 
@@ -669,7 +797,69 @@ where the asymptotic variance follows a sandwich form.
 \end_layout
 
 \begin_layout Example
-Use the OLS estimator as an example for demonstration.
+We use the OLS estimator or demonstration.
+ Its 
+\begin_inset Formula $\psi_{i}\left(\theta\right)=-x_{i}\left(y_{i}-x_{i}'\theta\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial^{2}}{\partial\theta\partial\theta'}\rho_{i}\left(\theta\right)=x_{i}x_{i}'$
+\end_inset
+
+.
+ Evaluated at 
+\begin_inset Formula $\theta=\theta_{0}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+\psi_{i}\left(\theta_{0}\right)=-x_{i}\left(y_{i}-x_{i}'\theta_{0}\right)=-x_{i}e_{i},
+\]
+
+\end_inset
+
+and obviously the assumption that 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ are orthogonal implies 
+\begin_inset Formula $E\left[\psi_{i}(\theta_{0})\right]=0$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $E\left[x_{i}x_{i}'e_{i}^{2}\right]<\infty$
+\end_inset
+
+ is finite, the Lindeberg-Levy CLT gives
+\begin_inset Formula 
+\[
+\sqrt{n}\bar{\psi}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,E\left[x_{i}x_{i}'e_{i}^{2}\right]\right).
+\]
+
+\end_inset
+
+Moreover 
+\begin_inset Formula $\Omega=E\left[x_{i}x_{i}'\right]$
+\end_inset
+
+.
+ Therefore we conclude
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(E\left[x_{i}x_{i}'\right]\right)^{-1}E\left[x_{i}x_{i}'e_{i}^{2}\right]\left(E\left[x_{i}x_{i}'\right]\right)^{-1}\right).
+\]
+
+\end_inset
+
+This is the asymptotic distribution of the OLS estimator under conditional
+ heteroskedasticity.
+ 
 \end_layout
 
 \begin_layout Standard
