@@ -187,6 +187,95 @@ can help to identify
 
 \end_layout
 
+\begin_layout Example
+Binary response variable.
+ The classical econometric 
+\emph on
+random utility model
+\emph default
+ is 
+\begin_inset Formula $Y^{*}=X_{i}'\beta+\varepsilon$
+\end_inset
+
+, where 
+\begin_inset Formula $Y^{*}$
+\end_inset
+
+ is a latent response variable (
+\begin_inset Quotes eld
+\end_inset
+
+latent
+\begin_inset Quotes erd
+\end_inset
+
+ means unobservable by the econometrician).
+ What is observable is 
+\begin_inset Formula $Y=1\left\{ Y_{i}^{*}\geq0\right\} $
+\end_inset
+
+.
+ That is, if the latent utility is greater than a threshold (set as 0, without
+ loss of generality), then we observe 
+\begin_inset Formula $Y=1$
+\end_inset
+
+; otherwise 
+\begin_inset Formula $Y=0$
+\end_inset
+
+.
+ The conditional probability of observing 
+\begin_inset Formula $Y=1$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\Pr\left(Y=1|X\right)=\Pr\left(Y^{*}\geq0|X\right)=\Pr\left(X'\beta+\varepsilon\geq0|X\right)=\Pr\left(-\varepsilon\leq X'\beta|X\right).
+\]
+
+\end_inset
+
+Assume 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $X$
+\end_inset
+
+ and its pdf symmetric around 0, then 
+\begin_inset Formula $\Pr\left(-\varepsilon\leq X'\beta|X\right)=F_{\varepsilon}\left(X'\beta\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $F_{\varepsilon}\left(\cdot\right)$
+\end_inset
+
+ is the cdf of 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $\varepsilon\sim\mathrm{Logistic}$
+\end_inset
+
+, we call it the logistic regression; if 
+\begin_inset Formula $\varepsilon\sim N\left(0,1\right)$
+\end_inset
+
+, we call it the probit regression.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Definition
 
 \series bold
@@ -389,19 +478,36 @@ If the model is correctly specified, the support of
 \end_layout
 
 \begin_layout Proof
-By the Leibniz rule,
+By the Leibniz integral rule, 
 \begin_inset Formula 
-\[
-E\left(\psi_{0}\right)=E\left[\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta_{0}\right)\right]=0
-\]
+\begin{align*}
+E\left(\psi\left(\theta\right)\right) & =E\left[\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta\right)\right]=\int\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta\right)dF_{0}\left(x\right)\\
+ & =\frac{\partial}{\partial\theta}\int\log f\left(X_{i}\mid\theta\right)dF_{0}\left(x\right)=\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta\right)\right].
+\end{align*}
 
 \end_inset
 
-as 
+Evaluate 
+\begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta\right)\right]$
+\end_inset
+
+ as 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
- is the maximizer in an interior.
+, we have 
+\begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta_{0}\right)\right]=0$
+\end_inset
+
+ as 
+\begin_inset Formula $E\left[\log f\left(X_{i}\mid\theta_{0}\right)\right]$
+\end_inset
+
+ is maximized 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+, which is an interior.
 \end_layout
 
 \begin_layout Definition
@@ -1013,8 +1119,9 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Feb 14, 2023.
-   Transcribed by Shu Shen.}
+ 
+\backslash
+today}
 \end_layout
 
 \end_inset

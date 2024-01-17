@@ -199,16 +199,7 @@ The most familiar example of m-estimator is the OLS.
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset Separator plain
 \end_inset
 
 
@@ -241,16 +232,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-medskip
-\end_layout
-
+\begin_inset Separator plain
 \end_inset
 
 
