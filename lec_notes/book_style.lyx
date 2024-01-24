@@ -12,10 +12,10 @@
 %\lhead{Lecture Notes}
 %\rhead{Zhentao Shi}
 
-% \usepackage{pgfplots}
-% \pgfplotsset{compat=1.15}
-% \usepackage{mathrsfs}
-% \usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -72,7 +72,8 @@ theorems-ams-extended-chap-bytype
 \cite_engine natbib
 \cite_engine_type authoryear
 \biblio_style chicagoa
-\use_bibtopic false
+\multibib child
+\use_bibtopic true
 \use_indices false
 \paperorientation portrait
 \suppress_date true
@@ -147,9 +148,6 @@ LatexCommand tableofcontents
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
 filename "lec1-asym.lyx"
