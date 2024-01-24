@@ -98,6 +98,51 @@ theorems-ams-chap-bytype
 Maximum Likelihood Estimation
 \end_layout
 
+\begin_layout Standard
+The word 
+\begin_inset Quotes eld
+\end_inset
+
+estimation
+\begin_inset Quotes erd
+\end_inset
+
+ is an euphemism of 
+\begin_inset Quotes eld
+\end_inset
+
+educated guess
+\begin_inset Quotes erd
+\end_inset
+
+.
+ What is a reasonable way to make a guess? The maximum likelihood principle
+ is arguably one of the the most important ideas in the history of mathematical
+ statistics.
+ It is intuitive at the first glance, but it took centuries to formalize.
+ Milestones were set by Sir Ronald Fisher (1890–1962) and his contemporaries.
+ See the historical note by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "stigler2007epic"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In econometrics, the most familiar OLS estimator is indeed a special case
+ of MLE when the error term is normally distribution.
+ When the support of the dependence variable is not continuous, most estimators
+ are constructed by assuming an underlying conditional density model and
+ then estimated by MLE.
+ LIML (limited information maximum likelihood) is 2SLS counterpart in the
+ likelihood world.
+ 
+\end_layout
+
 \begin_layout Section
 Parametric Model
 \end_layout
@@ -111,7 +156,7 @@ A parametric model is a complete specification of the distribution.
 
 \begin_layout Example
 Semiparametric model: If we know 
-\begin_inset Formula $X\sim i.i.d.\left(\mu,\sigma^{2}\right)$
+\begin_inset Formula $Y\sim i.i.d.\left(\mu,\sigma^{2}\right)$
 \end_inset
 
 , we can estimate 
@@ -123,150 +168,19 @@ Semiparametric model: If we know
 
 \begin_layout Example
 Parametric model: If we assume 
-\begin_inset Formula $X\sim N\left(\mu,\sigma^{2}\right)$
+\begin_inset Formula $Y\sim N\left(\mu,\sigma^{2}\right)$
 \end_inset
 
-, we can estimate 
-\begin_inset Formula $\mu,\sigma^{2}$
+, the model has only two parameters 
+\begin_inset Formula $\mu$
 \end_inset
 
- by MLE.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-Conditional model: the conditioning variable can be viewed as if it is fixed
- and the randomness comes from the error term only.
-\begin_inset Formula 
-\[
-y=X'\beta+\varepsilon
-\]
-
-\end_inset
-
-
-\begin_inset Formula $x$
-\end_inset
-
- is the conditional variable.
- The condition 
-\begin_inset Formula $E\left(\varepsilon|X\right)=0$
-\end_inset
-
- together with a full rank 
-\begin_inset Formula $E\left[XX'\right]$
-\end_inset
-
-can help to identify 
-\begin_inset Formula $\beta$
+ and 
+\begin_inset Formula $\sigma^{2}$
 \end_inset
 
 .
- This is semiparametric model.
- However, if we assume 
-\begin_inset Formula $f\left(\varepsilon\mid X\right)\sim N\left(0,\sigma^{2}\right)$
-\end_inset
-
-, then conditional parametric model as it completely describes 
-\begin_inset Formula $f\left(y\mid X\right)$
-\end_inset
-
- and it becomes a conditional parametric model.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-Binary response variable.
- The classical econometric 
-\emph on
-random utility model
-\emph default
- is 
-\begin_inset Formula $Y^{*}=X_{i}'\beta+\varepsilon$
-\end_inset
-
-, where 
-\begin_inset Formula $Y^{*}$
-\end_inset
-
- is a latent response variable (
-\begin_inset Quotes eld
-\end_inset
-
-latent
-\begin_inset Quotes erd
-\end_inset
-
- means unobservable by the econometrician).
- What is observable is 
-\begin_inset Formula $Y=1\left\{ Y_{i}^{*}\geq0\right\} $
-\end_inset
-
-.
- That is, if the latent utility is greater than a threshold (set as 0, without
- loss of generality), then we observe 
-\begin_inset Formula $Y=1$
-\end_inset
-
-; otherwise 
-\begin_inset Formula $Y=0$
-\end_inset
-
-.
- The conditional probability of observing 
-\begin_inset Formula $Y=1$
-\end_inset
-
- is 
-\begin_inset Formula 
-\[
-\Pr\left(Y=1|X\right)=\Pr\left(Y^{*}\geq0|X\right)=\Pr\left(X'\beta+\varepsilon\geq0|X\right)=\Pr\left(-\varepsilon\leq X'\beta|X\right).
-\]
-
-\end_inset
-
-Assume 
-\begin_inset Formula $\varepsilon$
-\end_inset
-
- is independent of 
-\begin_inset Formula $X$
-\end_inset
-
- and its pdf symmetric around 0, then 
-\begin_inset Formula $\Pr\left(-\varepsilon\leq X'\beta|X\right)=F_{\varepsilon}\left(X'\beta\right)$
-\end_inset
-
-, where 
-\begin_inset Formula $F_{\varepsilon}\left(\cdot\right)$
-\end_inset
-
- is the cdf of 
-\begin_inset Formula $\varepsilon$
-\end_inset
-
-.
- When 
-\begin_inset Formula $\varepsilon\sim\mathrm{Logistic}$
-\end_inset
-
-, we call it the logistic regression; if 
-\begin_inset Formula $\varepsilon\sim N\left(0,1\right)$
-\end_inset
-
-, we call it the probit regression.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -283,7 +197,7 @@ Parametric model
 \series default
 .
  The distribution of the data 
-\begin_inset Formula $\left(x_{1},...,x_{n}\right)$
+\begin_inset Formula $\mathbf{Y}=\left(Y_{1},...,Y_{n}\right)$
 \end_inset
 
  is known up to a finite dimensional parameter.
@@ -304,7 +218,7 @@ A model is
 correctly specified
 \series default
 , if the true DGP is 
-\begin_inset Formula $f\left(X\mid\theta_{0}\right)$
+\begin_inset Formula $f\left(\mathbf{Y}\mid\theta_{0}\right)$
 \end_inset
 
  for some 
@@ -327,7 +241,7 @@ Likelihood
 In this chapter we will mostly talk about unconditional models.
  The results can be carried over to conditional models.
  To keep the setting simple, let 
-\begin_inset Formula $(X_{1},\ldots,X_{n})$
+\begin_inset Formula $\mathbf{Y}=(Y_{1},\ldots,Y_{n})$
 \end_inset
 
  be i.i.d.
@@ -335,19 +249,202 @@ In this chapter we will mostly talk about unconditional models.
 \series bold
 likelihood
 \series default
- of the sample is 
-\begin_inset Formula $\prod_{i=1}^{n}f\left(X_{i}\mid\theta_{0}\right)$
+ of the sample under a hypothesized value of 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+ is is 
+\begin_inset Formula 
+\[
+L\left(\theta;\mathbf{Y}\right)=f\left(\mathbf{Y};\theta\right)=\prod_{i=1}^{n}f\left(Y_{i};\theta_{0}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+In the above expression 
+\begin_inset Formula $L\left(\theta;\mathbf{Y}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $f\left(\mathbf{Y};\theta\right)$
+\end_inset
+
+ are equal, but they have different interpretations.
+ The former emphasizes that when the data 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ is provided 
+\begin_inset Formula $L$
+\end_inset
+
+ is a function of the parameter 
+\begin_inset Formula $\theta$
 \end_inset
 
 .
- The 
+ The latter is the opposite: given the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+, the joint density is a function of the realized value 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+In this note I adhere to the frequentist view where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is an unknown constant, and I thus prefer using 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $;$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ to separate the two arguments.
+ However, some textbooks (including Hansen's) write 
+\begin_inset Formula $L\left(\theta|\mathbf{Y}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $f\left(\mathbf{Y}|\theta\right)$
+\end_inset
+
+, which I don't like because 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $|$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ delivers a confusing connotation of conditional density (for example 
+\begin_inset Formula $f\left(Y|X\right)$
+\end_inset
+
+) as if 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is treated as a random variable.
+ I would adopt 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $|$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ only in the Bayesian world, where the posterior density of the random 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is updated via the Bayes Theorem
+\begin_inset Formula 
+\[
+L\left(\theta|\mathbf{Y}\right)=\frac{f\left(\mathbf{Y}|\theta\right)\pi\left(\theta\right)}{f\left(\mathbf{Y}\right)},
+\]
+
+\end_inset
+
+give the prior distribution 
+\begin_inset Formula $\pi\left(\theta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Conditional model: the conditioning variable can be viewed as if it is fixed
+ and the randomness comes from the error term only.
+\begin_inset Formula 
+\[
+Y_{i}=X_{i}'\beta+\varepsilon_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is the conditional variable.
+ The condition 
+\begin_inset Formula $E\left(\varepsilon_{i}|X_{I}\right)=0$
+\end_inset
+
+ together with a full rank 
+\begin_inset Formula $E\left[X_{i}X_{I}'\right]$
+\end_inset
+
+ can help to identify 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ This is semiparametric model.
+ However, if we assume 
+\begin_inset Formula $f\left(\varepsilon_{i}\mid X_{i}\right)\sim N\left(0,\sigma^{2}\right)$
+\end_inset
+
+, then conditional parametric model as it completely describes 
+\begin_inset Formula $f\left(Y_{i}\mid X_{i}\right)$
+\end_inset
+
+ and it becomes a conditional parametric model with likelihood 
+\begin_inset Formula $L\left(\left(\beta,\sigma^{2}\right);\mathbf{Y}|\mathbf{X}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
 \series bold
 log-likelihood
 \series default
  is 
 \begin_inset Formula 
 \[
-\ell_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\log f\left(X_{i}\mid\theta\right).
+\ell_{n}\left(\theta\right)=\frac{1}{n}\log L\left(\theta;\mathbf{Y}\right)=\frac{1}{n}\sum_{i=1}^{n}\log f\left(Y_{i};\theta\right).
 \]
 
 \end_inset
@@ -378,7 +475,7 @@ To justify the likelihood principle, consider the population version of
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\ell\left(\theta\right)=E\left[\log f\left(X\mid\theta\right)\right]
+\ell\left(\theta\right)=E\left[\log f\left(Y;\theta\right)\right]
 \]
 
 \end_inset
@@ -395,7 +492,7 @@ When model is correctly specified,
 \end_layout
 
 \begin_layout Proof
-Kullback-Leibler distence
+The Kullback-Leibler distance
 \begin_inset Formula 
 \begin{align*}
 E\left[\log p\left(\theta_{0}\right)\right]-E\left[\log p\left(\theta\right)\right] & =E\left[\log\left(p\left(\theta_{0}\right)/p\left(\theta\right)\right)\right]\\
@@ -418,44 +515,58 @@ Score, Hessian, and Information
 \end_layout
 
 \begin_layout Standard
-Score:
+Define the 
+\series bold
+score
+\series default
+ as 
 \begin_inset Formula 
 \[
-\psi_{n}\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta\right)
+\psi_{n}\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta\right)
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Hessian:
+and the 
+\series bold
+Hessian
+\series default
+ as 
 \begin_inset Formula 
 \[
-\mathscr{H}_{n}\left(\theta\right)=-\sum_{i=1}^{n}\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(X_{i}\mid\theta\right)
+\mathscr{H}_{n}\left(\theta\right)=-\sum_{i=1}^{n}\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(Y_{i};\theta\right).
 \]
 
 \end_inset
 
+Moreover, define the 
+\series bold
+efficient score
+\series default
 
-\end_layout
-
-\begin_layout Standard
-Efficient score:
 \begin_inset Formula 
 \[
-\psi_{0}=\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta_{0}\right)
+\psi_{0}=\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta_{0}\right)
 \]
 
 \end_inset
 
+as the first derivative of the log-likelihood of a representative observation
+ 
+\begin_inset Formula $Y_{i}$
+\end_inset
 
+ evaluated at 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Theorem
 If the model is correctly specified, the support of 
-\begin_inset Formula $X$
+\begin_inset Formula $Y$
 \end_inset
 
  does not depend on 
@@ -478,17 +589,40 @@ If the model is correctly specified, the support of
 \end_layout
 
 \begin_layout Proof
-By the Leibniz integral rule, 
+By the Leibniz integral rule,
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Leibniz integral rule (from undergraduate calculus): For an integral of
+ the form 
+\begin_inset Formula $\int_{a\left(t\right)}^{b\left(t\right)}g\left(t,z\right)dz$
+\end_inset
+
+, the derivative 
+\begin_inset Formula 
+\[
+\frac{d}{dt}\int_{a\left(t\right)}^{b\left(t\right)}g\left(t,z\right)dz=g\left(t,b\left(t\right)\right)\cdot\frac{d}{dt}b\left(\theta\right)-f\left(t,a\left(t\right)\right)\cdot\frac{d}{dt}a\left(t\right)+\int_{a\left(t\right)}^{b\left(t\right)}\frac{\partial}{\partial t}g\left(t,z\right)dz.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Formula 
 \begin{align*}
-E\left(\psi\left(\theta\right)\right) & =E\left[\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta\right)\right]=\int\frac{\partial}{\partial\theta}\log f\left(X_{i}\mid\theta\right)dF_{0}\left(x\right)\\
- & =\frac{\partial}{\partial\theta}\int\log f\left(X_{i}\mid\theta\right)dF_{0}\left(x\right)=\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta\right)\right].
+E\left(\psi\left(\theta\right)\right) & =E\left[\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta\right)\right]=\int\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta\right)dF_{0}\left(x\right)\\
+ & =\frac{\partial}{\partial\theta}\int\log f\left(Y_{i};\theta\right)dF_{0}\left(x\right)=\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{i};\theta\right)\right].
 \end{align*}
 
 \end_inset
 
 Evaluate 
-\begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta\right)\right]$
+\begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{i};\theta\right)\right]$
 \end_inset
 
  as 
@@ -496,11 +630,11 @@ Evaluate
 \end_inset
 
 , we have 
-\begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(X_{i}\mid\theta_{0}\right)\right]=0$
+\begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{i};\theta_{0}\right)\right]=0$
 \end_inset
 
  as 
-\begin_inset Formula $E\left[\log f\left(X_{i}\mid\theta_{0}\right)\right]$
+\begin_inset Formula $E\left[\log f\left(Y_{i};\theta_{0}\right)\right]$
 \end_inset
 
  is maximized 
@@ -510,8 +644,12 @@ Evaluate
 , which is an interior.
 \end_layout
 
-\begin_layout Definition
-Fisher information matrix:
+\begin_layout Standard
+The 
+\series bold
+Fisher information matrix
+\series default
+ 
 \begin_inset Formula 
 \[
 \mathscr{I}_{0}=E\left[\psi_{0}\psi_{0}'\right]
@@ -519,26 +657,26 @@ Fisher information matrix:
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-Expected Hessian:
+ is the variance of the efficient score.
+ The 
+\series bold
+expected Hessian
+\series default
+ is
 \begin_inset Formula 
 \[
-\mathscr{H}_{0}=-E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(X\mid\theta_{0}\right)\right]
+\mathscr{H}_{0}=-E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(Y;\theta_{0}\right)\right].
 \]
 
 \end_inset
 
+Since 
+\begin_inset Formula $E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(Y;\theta_{0}\right)\right]$
+\end_inset
 
+ is negative definite, in this definition the expected Hessian is positive-defin
+ite.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -558,15 +696,34 @@ information matrix equality
 \end_inset
 
 .
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Some textbooks may define the expected Hessian as 
+\begin_inset Formula $\mathscr{H}_{0}=E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(Y;\theta_{0}\right)\right]$
+\end_inset
+
+.
+ This is also valid if we rewrite the information matrix equality as 
+\begin_inset Formula $\mathscr{I}_{0}+\mathscr{H}_{0}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Proof
 Start with Hessian,
 \begin_inset Formula 
 \begin{align*}
-E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\right)\right] & =E\left[\frac{\partial}{\partial\theta}\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]\\
- & =E\left[\frac{\partial}{\partial\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]\\
- & =E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}\right]+E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right].
+E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\right)\right] & =E\left[\frac{\partial}{\partial\theta}\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[\frac{\partial}{\partial\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]\\
+ & =-E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]+E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right].
 \end{align*}
 
 \end_inset
@@ -574,20 +731,32 @@ E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\
 The first term:
 \begin_inset Formula 
 \[
-E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}\right]=\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta_{0}\right)}f\left(\theta_{0}\right)dx=\int\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}\int f\left(\theta\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}1=0.
+E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]=E\left[\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[\psi_{0}\psi_{0}'\right]=\mathscr{I}_{0}.
 \]
 
 \end_inset
 
-The second term:
+The second term: 
+\begin_inset Formula $E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\right]=\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}f\left(\theta_{0}\right)dx.$
+\end_inset
+
+ If the model is correctly specified, evaluated at 
+\begin_inset Formula $\theta=\theta_{0}$
+\end_inset
+
+ the 
+\begin_inset Formula $f\left(\theta_{0}\right)$
+\end_inset
+
+ cancels out, leading to 
 \begin_inset Formula 
 \[
-E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]=E\left[\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[\psi_{0}\psi_{0}'\right].
+\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta_{0}\right)}{f\left(\theta_{0}\right)}f\left(\theta_{0}\right)dx=\int\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta_{0}\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}\int f\left(\theta_{0}\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}1=0.
 \]
 
 \end_inset
 
-
+We complete the proof.
 \end_layout
 
 \begin_layout Standard
@@ -603,7 +772,7 @@ Cramér-Rao Lower Bound
 
 \begin_layout Theorem
 Suppose the model is correctly specified, the support of 
-\begin_inset Formula $X$
+\begin_inset Formula $Y$
 \end_inset
 
  does not depend on 
@@ -634,7 +803,7 @@ Suppose the model is correctly specified, the support of
 Because of unbiasedness,
 \begin_inset Formula 
 \[
-\theta=E_{\theta}\left[\widetilde{\theta}\right]=\int\widetilde{\theta}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}
+\theta=E_{\theta}\left[\widetilde{\theta}\right]=\int\widetilde{\theta}f\left(\mathbf{Y};\theta\right)d\mathbf{y}
 \]
 
 \end_inset
@@ -645,11 +814,11 @@ for any
 
 .
  
-\begin_inset Formula $\mathbf{X}$
+\begin_inset Formula $\mathbf{Y}$
 \end_inset
 
  here is for the entire sample, 
-\begin_inset Formula $f\left(\mathbf{X}\mid\theta\right)=f\left(X_{1},...,X_{n}\mid\theta\right)=\prod_{i=1}^{n}f\left(X_{i}\mid\theta\right)$
+\begin_inset Formula $f\left(\mathbf{Y};\theta\right)=f\left(Y_{1},...,Y_{n};\theta\right)=\prod_{i=1}^{n}f\left(Y_{i};\theta\right)$
 \end_inset
 
 .
@@ -666,10 +835,10 @@ for any
  The RHS:
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial}{\partial\theta'}\int\widetilde{\theta}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x} & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
- & =\int\widetilde{\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\mathbf{X}\mid\theta\right)}{f\left(\mathbf{X}\mid\theta\right)}f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
- & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}\log f\left(\mathbf{X}\mid\theta\right)f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}\\
- & =\int\widetilde{\theta}\psi_{n}\left(\theta\right)f\left(\mathbf{X}\mid\theta\right)d\mathbf{x}
+\frac{\partial}{\partial\theta'}\int\widetilde{\theta}f\left(\mathbf{Y};\theta\right)d\mathbf{y} & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}f\left(\mathbf{Y};\theta\right)d\mathbf{y}\\
+ & =\int\widetilde{\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\mathbf{Y};\theta\right)}{f\left(\mathbf{Y};\theta\right)}f\left(\mathbf{Y};\theta\right)d\mathbf{y}\\
+ & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}\log f\left(\mathbf{Y};\theta\right)f\left(\mathbf{Y};\theta\right)d\mathbf{y}\\
+ & =\int\widetilde{\theta}\psi_{n}\left(\theta\right)f\left(\mathbf{Y};\theta\right)d\mathbf{y}
 \end{align*}
 
 \end_inset
@@ -682,7 +851,7 @@ Evaluate at the true
  data
 \begin_inset Formula 
 \[
-\mathbf{I}_{p}=\int\widetilde{\theta}\psi_{n}(\theta_{0})f\left(\mathbf{X}\mid\theta_{0}\right)d\mathbf{x}=E\left[\widetilde{\theta}\psi_{n}(\theta_{0})\right]=E\left[\left(\widetilde{\theta}-\theta_{0}\right)\psi_{n}(\theta_{0})\right]
+\mathbf{I}_{p}=\int\widetilde{\theta}\psi_{n}(\theta_{0})f\left(\mathbf{Y};\theta_{0}\right)d\mathbf{y}=E\left[\widetilde{\theta}\psi_{n}(\theta_{0})\right]=E\left[\left(\widetilde{\theta}-\theta_{0}\right)\psi_{n}(\theta_{0})\right]
 \]
 
 \end_inset
@@ -755,7 +924,7 @@ Normal distribution: Let
 \begin_layout Example
 \begin_inset Formula 
 \[
-\log\ell_{n}\left(X\mid\mu,\sigma^{2}\right)=-\frac{n}{2}\log\gamma-\frac{n}{2}\log\pi-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(X_{i}-\mu\right)^{2}
+\log\ell_{n}\left(Y;\mu,\sigma^{2}\right)=-\frac{n}{2}\log\gamma-\frac{n}{2}\log\pi-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
 \]
 
 \end_inset
@@ -767,8 +936,8 @@ Normal distribution: Let
 \begin_inset Formula 
 \[
 \psi_{n}\left(\mu,\sigma^{2}\right)=\begin{cases}
-\frac{1}{\gamma}\sum_{i=1}^{n}\left(X_{i}-\mu\right)\\
--\frac{n}{2\gamma}+\frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(X_{i}-\mu\right)^{2}
+\frac{1}{\gamma}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)\\
+-\frac{n}{2\gamma}+\frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
 \end{cases}
 \]
 
@@ -781,8 +950,8 @@ Normal distribution: Let
 \begin_inset Formula 
 \[
 \mathscr{H}_{n}\left(\mu,\sigma^{2}\right)=\left[\begin{array}{cc}
-\frac{n}{\gamma} & \frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(X_{i}-\mu\right)\\
-\frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(X_{i}-\mu\right) & -\frac{n}{2\gamma^{2}}+\frac{1}{\gamma^{3}}\sum_{i=1}^{n}\left(X_{i}-\mu\right)^{2}
+\frac{n}{\gamma} & \frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)\\
+\frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right) & -\frac{n}{2\gamma^{2}}+\frac{1}{\gamma^{3}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
 \end{array}\right]
 \]
 
@@ -842,7 +1011,7 @@ the sample mean:
 \begin_layout Example
 \begin_inset Formula 
 \[
-var\left(\frac{1}{n}\sum_{i=1}^{n}X_{i}\right)=\frac{\sigma^{2}}{n}
+var\left(\frac{1}{n}\sum_{i=1}^{n}Y_{i}\right)=\frac{\sigma^{2}}{n}
 \]
 
 \end_inset
@@ -857,7 +1026,7 @@ The sample mean is Cramér-Rao efficient.
 \begin_layout Example
 \begin_inset Formula 
 \[
-s_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}=\frac{1}{n-1}X'\left(I-\frac{1}{n}1_{n}1_{n}'\right)X
+s_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(Y_{i}-\bar{Y}\right)^{2}=\frac{1}{n-1}Y'\left(I-\frac{1}{n}1_{n}1_{n}'\right)Y
 \]
 
 \end_inset
@@ -875,7 +1044,7 @@ s_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}=\frac{1}{n-1
 \begin_layout Example
 \begin_inset Formula 
 \[
-\left(n-1\right)\frac{s_{n}^{2}}{\sigma^{2}}=\left(\frac{X}{\sigma}\right)'\left(I-\frac{1}{n}1_{n}1_{n}'\right)\left(\frac{X}{\sigma}\right)\sim\chi^{2}\left(n-1\right)
+\left(n-1\right)\frac{s_{n}^{2}}{\sigma^{2}}=\left(\frac{Y}{\sigma}\right)'\left(I-\frac{1}{n}1_{n}1_{n}'\right)\left(\frac{Y}{\sigma}\right)\sim\chi^{2}\left(n-1\right)
 \]
 
 \end_inset
@@ -1030,7 +1199,7 @@ Properties:
 
 \begin_layout Standard
 If 
-\begin_inset Formula $f\left(x\right)=f\left(x\mid\theta\right)$
+\begin_inset Formula $f\left(x\right)=f\left(x;\theta\right)$
 \end_inset
 
  is a parametric family
@@ -1060,8 +1229,8 @@ which is misspecified model.
 KLIC is the distance measure of any two distributions.
 \begin_inset Formula 
 \begin{align*}
-KLIC\left(f,f_{\theta}\right) & =\int f\left(x\right)\log f\left(x\right)dx-\int f\left(x\right)\log f\left(x\mid\theta\right)dx\\
- & =\int f\left(x\right)\log f\left(x\right)dx-E\left[\log f\left(x\mid\theta\right)\right]\\
+KLIC\left(f,f_{\theta}\right) & =\int f\left(x\right)\log f\left(x\right)dx-\int f\left(x\right)\log f\left(x;\theta\right)dx\\
+ & =\int f\left(x\right)\log f\left(x\right)dx-E\left[\log f\left(x;\theta\right)\right]\\
  & =\int f\left(x\right)\log f\left(x\right)dx-\ell\left(\theta\right)
 \end{align*}
 
@@ -1123,6 +1292,18 @@ texttt{ Zhentao Shi.
 \backslash
 today}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "5150"
+options "chicagoa"
 
 \end_inset
 
