@@ -1096,46 +1096,56 @@ where and
 \begin_layout Standard
 The score function is 
 \begin_inset Formula 
-\[
-\psi_{i}\left(\theta\right)=\frac{\partial}{\partial\theta}\rho_{i}\left(\theta\right)=x_{i}\left[\frac{y_{i}}{\Lambda_{i}}\Lambda_{i}\left(1-\Lambda_{i}\right)-\frac{1-y_{i}}{1-\Lambda_{i}}\Lambda_{i}\left(1-\Lambda_{i}\right)\right]=x_{i}\left[y_{i}\left(1-\Lambda_{i}\right)-\left(1-y_{i}\right)\Lambda_{i}\right].
-\]
+\begin{align*}
+\psi_{i}\left(\theta\right) & =\frac{\partial}{\partial\theta}\rho_{i}\left(\theta\right)=x_{i}\left[\frac{y_{i}}{\Lambda_{i}}\Lambda_{i}\left(1-\Lambda_{i}\right)-\frac{1-y_{i}}{1-\Lambda_{i}}\Lambda_{i}\left(1-\Lambda_{i}\right)\right]\\
+ & =x_{i}\left[y_{i}\left(1-\Lambda_{i}\right)-\left(1-y_{i}\right)\Lambda_{i}\right]=x_{i}\left[y_{i}-\Lambda_{i}\right]
+\end{align*}
 
 \end_inset
 
- The conditional expectation of the score is 
+and the Hessian 
 \begin_inset Formula 
 \[
-E\left[\psi_{i}\left(\theta\right)|x_{i}\right]=x_{i}\left[\Lambda_{0}\left(1-\Lambda_{i}\right)-\left(1-\Lambda_{0}\right)\Lambda_{i}\right]
+\frac{\partial^{2}}{\partial\theta\partial\theta'}\rho_{i}\left(\theta\right)=\frac{\partial}{\partial\theta'}\psi_{i}\left(\theta\right)=x_{i}x_{i}'\Lambda_{i}\left(1-\Lambda_{i}\right)
 \]
 
 \end_inset
 
- and therefore 
-\begin_inset Formula $E\left[\psi_{i}\left(\theta_{0}\right)|x_{i}\right]=0$
+ is positive-definite if 
+\begin_inset Formula $\Lambda_{i}\in(0,1)$
 \end_inset
 
-.
- The Hessian is 
+ (This is correct, because we are working with the minimization problem
+ of the M-estimation, not the maximization problem of log-likelihood.
+ Don't confuse the two sides of the same coin.)
+\end_layout
+
+\begin_layout Standard
+The conditional expectation of the score at 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is obviously 
 \begin_inset Formula 
 \[
-H_{i}\left(\theta\right)=\frac{\partial}{\partial\theta'}\psi_{i}\left(\theta\right)=x_{i}x_{i}'\left[y_{i}\Lambda_{i}\left(1-\Lambda_{i}\right)-\left(1-y_{i}\right)\Lambda_{i}\left(1-\Lambda_{i}\right)\right]=x_{i}x_{i}'\Lambda_{i}\left(1-\Lambda_{i}\right)
+E\left[\psi_{i}\left(\theta\right)|x_{i}\right]=x_{i}\left[E\left[y_{i}|x_{i}\right]-\Lambda_{0}\right]=0.
 \]
 
 \end_inset
 
-is irrelevant to 
-\begin_inset Formula $y_{i}$
+The conditional variance of 
+\begin_inset Formula $\psi_{i}(\theta_{0})$
 \end_inset
 
- and it is positive definite for any bounded 
-\begin_inset Formula $\theta$
+ is 
+\begin_inset Formula 
+\[
+x_{i}x_{i}'E\left[\left(y_{i}-\Lambda_{0}\right)^{2}\right]=x_{i}x_{i}'\Lambda_{0}\left(1-\Lambda_{0}\right).
+\]
+
 \end_inset
 
-, under which 
-\begin_inset Formula $\Lambda_{i}\in\left(0,1\right)$
-\end_inset
 
-.
 \end_layout
 
 \begin_layout Standard
