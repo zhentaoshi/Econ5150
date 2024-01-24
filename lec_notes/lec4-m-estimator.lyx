@@ -102,9 +102,25 @@ M-Estimators
 Except for some Bayesian estimators that require integration or simulation
  to get the values, almost all frequentist estimators in econometrics involve
  steps of minimizing some criterion functions.
- The m-estimator is a class of estimators that each individual observation
+ The M-estimator is a class of estimators that each individual observation
  contributes to the overall criterion function in an additive, separable
  manner.
+ The name M-estimator was coined by Peter J.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Huber as 
+\emph on
+Maximum likelihood-type
+\emph default
+ estimator.
  
 \end_layout
 
@@ -155,7 +171,7 @@ S_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\rho_{i}\left(\theta\right)
 
 \end_inset
 
-The m-estimator minimizes the sample criterion function: 
+The M-estimator minimizes the sample criterion function: 
 \begin_inset Formula 
 \[
 \hat{\theta}_{n}=\arg\min_{\theta\in\Theta}S_{n}\left(\theta\right).
@@ -167,16 +183,16 @@ The m-estimator minimizes the sample criterion function:
 \end_layout
 
 \begin_layout Standard
-The m-estimator includes many examples as special cases.
+The M-estimator includes many examples as special cases.
  For example, OLS, nonlinear least squares (NLS), maximum likelihood estimation
- (MLE), and quantile regressions are all m-estimators.
- GMM, another familiar econometric estimator, is not an m-estimator; it
- belongs to the broader class of minimum-distance estimators.
+ (MLE), and quantile regressions are all M-estimators.
+ GMM, another familiar econometric estimator, is not an M-estimator; it
+ belongs to the broader class of minimuM-distance estimators.
  
 \end_layout
 
 \begin_layout Example
-The most familiar example of m-estimator is the OLS.
+The most familiar example of M-estimator is the OLS.
  Let 
 \begin_inset Formula $y_{i}=x_{i}'\theta+e_{i}$
 \end_inset
@@ -285,7 +301,7 @@ minus log-likelihood
 \begin_inset Quotes erd
 \end_inset
 
- to be consistent with the minimization for m-estimators, instead of maximizing
+ to be consistent with the minimization for M-estimators, instead of maximizing
  the log-likelihood.
  This is the loss function of so called PPML (Pseudo Poisson Maximum Likelihood)
  in 
@@ -411,11 +427,11 @@ Consistency
 \end_layout
 
 \begin_layout Standard
-To establish the consistency of the m-estimator, identification is a necessary
+To establish the consistency of the M-estimator, identification is a necessary
  condition.
  In the previous lecture we have covered the consistency of a single sequence
  of random variables.
- In m-estimation the model is index by 
+ In M-estimation the model is index by 
 \begin_inset Formula $\theta\in\Theta$
 \end_inset
 
@@ -452,17 +468,17 @@ Uniform law of large numbers
 \end_inset
 
  For any 
-\begin_inset Formula $\delta,\varepsilon>0$
+\begin_inset Formula $\eta,\varepsilon>0$
 \end_inset
 
 , there exists an 
-\begin_inset Formula $N=N\left(\varepsilon,\delta\right)$
+\begin_inset Formula $N=N\left(\varepsilon,\eta\right)$
 \end_inset
 
  such that 
 \begin_inset Formula 
 \[
-\Pr\left\{ \sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\delta\right\} \leq\varepsilon
+\Pr\left\{ \sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\varepsilon\right\} \leq\eta
 \]
 
 \end_inset
@@ -627,7 +643,7 @@ We start from the condition of identification.
 
 \end_inset
 
-where the second inequality follows from the definition of the m-estimator
+where the second inequality follows from the definition of the M-estimator
  that 
 \begin_inset Formula $S_{n}(\hat{\theta})\leq S_{n}\left(\theta_{0}\right)$
 \end_inset
@@ -636,7 +652,7 @@ where the second inequality follows from the definition of the m-estimator
 \end_layout
 
 \begin_layout Standard
-We have established consistent of the m-estimator 
+We have established consistent of the M-estimator 
 \begin_inset Formula $\widehat{\theta}$
 \end_inset
 
@@ -745,8 +761,8 @@ if
 \end_inset
 
 .
- A rigorous proof needs to invoke the empirical process theory, which we
- do not pursue here.) In the population, 
+ The textbook provides a rigorous proof invoking the empirical process theory.)
+ In the population, 
 \begin_inset Formula $E\left[\bar{\psi}\left(\theta_{0}\right)\right]=E\left[\psi\left(\theta_{0}\right)\right]=0$
 \end_inset
 
@@ -763,10 +779,7 @@ where
 \end_inset
 
 .
- As a result, 
-\end_layout
-
-\begin_layout Standard
+ As a result,
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,Q^{-1}\Omega Q^{-1}\right)
@@ -778,9 +791,42 @@ where the asymptotic variance follows a sandwich form.
  
 \end_layout
 
-\begin_layout Example
-We use the OLS estimator or demonstration.
- Its 
+\begin_layout Section
+Examples
+\end_layout
+
+\begin_layout Subsection
+OLS
+\end_layout
+
+\begin_layout Standard
+For OLS, the population criterion function is 
+\begin_inset Formula 
+\begin{align*}
+S\left(\theta\right) & =E\left[\left(y_{i}-x_{k}'\theta\right)^{2}\right]=E\left[\left(y-x_{i}'\theta_{0}+x'\theta_{0}-x_{i}'\theta\right)^{2}\right]=E\left[\left(e_{i}+x_{i}'\left(\theta_{0}-\theta\right)\right)^{2}\right]\\
+ & =E\left[e_{i}^{2}\right]+E\left[\left(x_{i}'\left(\theta_{0}-\theta\right)\right)^{2}\right]=E\left[e_{i}^{2}\right]+\left(\theta_{0}-\theta\right)E\left[x_{i}x_{i}'\right]\left(\theta_{0}-\theta\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Verify that 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is identified if 
+\begin_inset Formula $E\left[x_{i}x_{i}'\right]$
+\end_inset
+
+ is of full rank.
+ 
+\end_layout
+
+\begin_layout Standard
+Given the sample, we have 
 \begin_inset Formula $\psi_{i}\left(\theta\right)=-x_{i}\left(y_{i}-x_{i}'\theta\right)$
 \end_inset
 
@@ -842,6 +888,254 @@ Moreover
 This is the asymptotic distribution of the OLS estimator under conditional
  heteroskedasticity.
  
+\end_layout
+
+\begin_layout Subsection
+Logistic Regression
+\end_layout
+
+\begin_layout Standard
+The classical econometric 
+\emph on
+random utility model
+\emph default
+ is 
+\begin_inset Formula 
+\[
+y_{i}^{*}=x_{i}'\theta+\varepsilon_{i}
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $y_{i}^{*}$
+\end_inset
+
+ is a latent response variable (
+\begin_inset Quotes eld
+\end_inset
+
+latent
+\begin_inset Quotes erd
+\end_inset
+
+ means unobservable by the econometrician).
+ What is observable is 
+\begin_inset Formula $y_{i}=1\left\{ y_{i}^{*}\geq0\right\} $
+\end_inset
+
+.
+ That is, if the latent utility is greater than a threshold (set as 0, without
+ loss of generality), then we observe 
+\begin_inset Formula $y_{i}=1$
+\end_inset
+
+; otherwise 
+\begin_inset Formula $y_{i}=0$
+\end_inset
+
+.
+ While 
+\begin_inset Formula $y_{i}^{*}$
+\end_inset
+
+ is a continuous random variable, 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is a binary random variable.
+ 
+\end_layout
+
+\begin_layout Standard
+The conditional probability of observing 
+\begin_inset Formula $y_{i}=1$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\Pr\left(y_{i}=1|x_{i}\right)=\Pr\left(y_{i}^{*}\geq0|x_{i}\right)=\Pr\left(x_{i}'\theta+\varepsilon_{i}\geq0|X\right)=\Pr\left(-\varepsilon_{i}\leq x_{i}'\theta|x_{i}\right).
+\]
+
+\end_inset
+
+Assume 
+\begin_inset Formula $\varepsilon_{i}$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ and its PDF symmetric around 0, then 
+\begin_inset Formula $\Pr\left(-\varepsilon_{i}\leq x_{i}'\theta|x_{i}\right)=F_{\varepsilon}\left(x_{i}'\theta\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $F_{\varepsilon}\left(\cdot\right)$
+\end_inset
+
+ is the CDF of 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $\varepsilon\sim\mathrm{Logistic}$
+\end_inset
+
+, we call it the 
+\emph on
+Logit regression
+\emph default
+ or 
+\emph on
+Logistic regression
+\emph default
+; if 
+\begin_inset Formula $\varepsilon\sim N\left(0,1\right)$
+\end_inset
+
+, we call it the 
+\emph on
+Probit regression
+\emph default
+.
+\end_layout
+
+\begin_layout Exercise
+Let 
+\begin_inset Formula $\Lambda\left(z\right)=\frac{1}{1+\exp\left(-z\right)}.$
+\end_inset
+
+ Verify 
+\begin_inset Formula 
+\[
+\frac{d}{dz}\Lambda\left(z\right)=\Lambda\left(z\right)\left(1-\left(z\right)\right).
+\]
+
+\end_inset
+
+ This is a useful property for the Logistic regression.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Logistic regression
+\series default
+.
+ Given 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, the conditional probability 
+\begin_inset Formula 
+\[
+\Pr\left(y_{i}=1|x_{i}\right)=\Lambda\left(x_{i}'\theta\right).
+\]
+
+\end_inset
+
+For simplicity we denote 
+\begin_inset Formula $\Lambda_{i}=\Lambda\left(x_{i}'\theta\right)$
+\end_inset
+
+.
+ The probability of observing 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is 
+\begin_inset Formula $f\left(y_{i}|x_{i}\right)=\Lambda_{i}^{y_{i}}\left(1-\Lambda_{i}\right)^{(1-y_{i})}$
+\end_inset
+
+, and thus the 
+\emph on
+negative
+\emph default
+ 
+\emph on
+conditional 
+\emph default
+log-likelihood for 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\rho_{i}\left(\theta\right)=-y_{i}\log\Lambda_{i}-(1-y_{i})\log\left(1-\Lambda_{i}\right)
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{align*}
+E\left[\rho_{i}\left(\theta\right)|x_{i}\right] & =-E\left[y_{i}|x_{i}\right]\log\Lambda_{i}-(1-E\left[y_{i}|x_{i}\right])\log\left(1-\Lambda_{i}\right)\\
+ & =-\Lambda_{i0}\log\Lambda_{i}-(1-\Lambda_{i0})\log\left(1-\Lambda_{i}\right)
+\end{align*}
+
+\end_inset
+
+where and 
+\begin_inset Formula $\Lambda_{i0}=\Lambda\left(x_{i}'\theta_{0}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The score function is 
+\begin_inset Formula 
+\[
+\psi_{i}\left(\theta\right)=\frac{\partial}{\partial\theta}\rho_{i}\left(\theta\right)=x_{i}\left[\frac{y_{i}}{\Lambda_{i}}\Lambda_{i}\left(1-\Lambda_{i}\right)-\frac{1-y_{i}}{1-\Lambda_{i}}\Lambda_{i}\left(1-\Lambda_{i}\right)\right]=x_{i}\left[y_{i}\left(1-\Lambda_{i}\right)-\left(1-y_{i}\right)\Lambda_{i}\right].
+\]
+
+\end_inset
+
+ The conditional expectation of the score is 
+\begin_inset Formula 
+\[
+E\left[\psi_{i}\left(\theta\right)|x_{i}\right]=x_{i}\left[\Lambda_{0}\left(1-\Lambda_{i}\right)-\left(1-\Lambda_{0}\right)\Lambda_{i}\right]
+\]
+
+\end_inset
+
+ and therefore 
+\begin_inset Formula $E\left[\psi_{i}\left(\theta_{0}\right)|x_{i}\right]=0$
+\end_inset
+
+.
+ The Hessian is 
+\begin_inset Formula 
+\[
+H_{i}\left(\theta\right)=\frac{\partial}{\partial\theta'}\psi_{i}\left(\theta\right)=x_{i}x_{i}'\left[y_{i}\Lambda_{i}\left(1-\Lambda_{i}\right)-\left(1-y_{i}\right)\Lambda_{i}\left(1-\Lambda_{i}\right)\right]=x_{i}x_{i}'\Lambda_{i}\left(1-\Lambda_{i}\right)
+\]
+
+\end_inset
+
+is irrelevant to 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ and it is positive definite for any bounded 
+\begin_inset Formula $\theta$
+\end_inset
+
+, under which 
+\begin_inset Formula $\Lambda_{i}\in\left(0,1\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
