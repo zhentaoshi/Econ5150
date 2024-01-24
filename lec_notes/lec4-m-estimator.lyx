@@ -1076,24 +1076,6 @@ log-likelihood for
 
 \end_inset
 
-and 
-\begin_inset Formula 
-\begin{align*}
-E\left[\rho_{i}\left(\theta\right)|x_{i}\right] & =-E\left[y_{i}|x_{i}\right]\log\Lambda_{i}-(1-E\left[y_{i}|x_{i}\right])\log\left(1-\Lambda_{i}\right)\\
- & =-\Lambda_{i0}\log\Lambda_{i}-(1-\Lambda_{i0})\log\left(1-\Lambda_{i}\right)
-\end{align*}
-
-\end_inset
-
-where and 
-\begin_inset Formula $\Lambda_{i0}=\Lambda\left(x_{i}'\theta_{0}\right)$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
 The score function is 
 \begin_inset Formula 
 \begin{align*}
@@ -1121,31 +1103,59 @@ and the Hessian
 \end_layout
 
 \begin_layout Standard
-The conditional expectation of the score at 
+The population counterparts are 
+\begin_inset Formula 
+\begin{align*}
+E\left[\rho_{i}\left(\theta\right)|x_{i}\right] & =-E\left[y_{i}|x_{i}\right]\log\Lambda_{i}-(1-E\left[y_{i}|x_{i}\right])\log\left(1-\Lambda_{i}\right)\\
+ & =-\Lambda_{i0}\log\Lambda_{i}-(1-\Lambda_{i0})\log\left(1-\Lambda_{i}\right),
+\end{align*}
+
+\end_inset
+
+where and 
+\begin_inset Formula $\Lambda_{i0}=\Lambda\left(x_{i}'\theta_{0}\right)$
+\end_inset
+
+.
+ The conditional expectation of the score at 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
  is obviously 
 \begin_inset Formula 
 \[
-E\left[\psi_{i}\left(\theta\right)|x_{i}\right]=x_{i}\left[E\left[y_{i}|x_{i}\right]-\Lambda_{0}\right]=0.
+E\left[\psi_{i}\left(\theta\right)|x_{i}\right]=x_{i}\left[E\left[y_{i}|x_{i}\right]-\Lambda_{i}\right]=x_{i}\left[\Lambda_{i0}-\Lambda_{i}\right].
 \]
 
 \end_inset
 
-The conditional variance of 
+Evaluate at 
+\begin_inset Formula $\theta=\theta_{0}$
+\end_inset
+
+, it is obvious that 
+\begin_inset Formula $E\left[\psi_{i}\left(\theta_{0}\right)|x_{i}\right]=0$
+\end_inset
+
+.
+ Another important feature is that 
 \begin_inset Formula $\psi_{i}(\theta_{0})$
 \end_inset
 
- is 
+'s conditional variance 
 \begin_inset Formula 
 \[
-x_{i}x_{i}'E\left[\left(y_{i}-\Lambda_{0}\right)^{2}\right]=x_{i}x_{i}'\Lambda_{0}\left(1-\Lambda_{0}\right).
+E\left[\psi_{i}\left(\theta_{0}\right)\psi_{i}\left(\theta_{0}\right)'|x_{i}\right]=x_{i}x_{i}'E\left[\left(y_{i}-\Lambda_{i0}\right)^{2}\right]=x_{i}x_{i}'\Lambda_{i0}\left(1-\Lambda_{i0}\right)
 \]
 
 \end_inset
 
+coincides with the Hessian 
+\begin_inset Formula $\frac{\partial^{2}}{\partial\theta\partial\theta'}\rho_{i}\left(\theta_{0}\right)$
+\end_inset
 
+.
+ 
 \end_layout
 
 \begin_layout Standard
