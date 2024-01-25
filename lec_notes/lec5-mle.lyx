@@ -411,7 +411,7 @@ Y_{i}=X_{i}'\beta+\varepsilon_{i}
 \end_inset
 
  together with a full rank 
-\begin_inset Formula $E\left[X_{i}X_{I}'\right]$
+\begin_inset Formula $E\left[X_{i}X_{i}'\right]$
 \end_inset
 
  can help to identify 
@@ -582,7 +582,7 @@ If the model is correctly specified, the support of
 \end_inset
 
 , then 
-\begin_inset Formula $E\left(\psi_{0}\right)=0$
+\begin_inset Formula $E\left[\psi_{0}\right]=0$
 \end_inset
 
 .

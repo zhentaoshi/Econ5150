@@ -1012,7 +1012,7 @@ Let
  Verify 
 \begin_inset Formula 
 \[
-\frac{d}{dz}\Lambda\left(z\right)=\Lambda\left(z\right)\left(1-\left(z\right)\right).
+\frac{d}{dz}\Lambda\left(z\right)=\Lambda\left(z\right)\left(1-\Lambda\left(z\right)\right).
 \]
 
 \end_inset
