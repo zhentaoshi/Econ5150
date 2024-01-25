@@ -437,7 +437,8 @@ Y_{i}=X_{i}'\beta+\varepsilon_{i}
 \end_layout
 
 \begin_layout Standard
-The 
+In practice, we work with the log-likelihood, which is more convenient.
+ The 
 \series bold
 log-likelihood
 \series default
@@ -455,12 +456,7 @@ Here, we put
 
  to average the log-likelihood.
  This scaling factor does not change the estimation at all.
- 
-\end_layout
-
-\begin_layout Standard
-In practice, we work with the log-likelihood, which is more convenient.
- the MLE estimator is defined as 
+ The MLE estimator is then defined as 
 \begin_inset Formula 
 \[
 \hat{\theta}=\arg\max_{\theta\in\varTheta}\ell_{n}\left(\theta\right).
@@ -495,9 +491,8 @@ When model is correctly specified,
 The Kullback-Leibler distance
 \begin_inset Formula 
 \begin{align*}
-E\left[\log p\left(\theta_{0}\right)\right]-E\left[\log p\left(\theta\right)\right] & =E\left[\log\left(p\left(\theta_{0}\right)/p\left(\theta\right)\right)\right]\\
- & =-E\left[\log\left(p\left(\theta\right)/p\left(\theta_{0}\right)\right)\right]\\
- & \geq-\log E\left[p\left(\theta\right)/p\left(\theta_{0}\right)\right]=0
+E\left[\log f\left(Y;\theta_{0}\right)\right]-E\left[\log f\left(Y;\theta\right)\right] & =E\left[\log\left(f\left(Y;\theta_{0}\right)/f\left(Y;\theta\right)\right)\right]=-E\left[\log\left(f\left(Y;\theta\right)/f\left(Y;\theta_{0}\right)\right)\right]\\
+ & \geq-\log E\left[f\left(Y;\theta\right)/f\left(Y;\theta_{0}\right)\right]=0
 \end{align*}
 
 \end_inset
@@ -687,14 +682,14 @@ ite.
 \end_layout
 
 \begin_layout Theorem
-If the model is correctly specified, we have the 
-\series bold
-information matrix equality
-\series default
-: 
+If the model is correctly specified, we have 
 \begin_inset Formula $\mathscr{I}_{0}=\mathscr{H}_{0}$
 \end_inset
 
+, the 
+\series bold
+information matrix equality
+\series default
 .
 \begin_inset Foot
 status open
