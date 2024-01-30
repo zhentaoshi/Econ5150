@@ -50,3 +50,9 @@ As a sequel to ECON5120, this course will cover advanced theoretical topics in e
   />
 </a>
 
+
+### Quotations
+
+孙子兵法·始计篇:夫未战而庙算胜者，得算多也；未战而庙算不胜者，得算少也。多算胜，少算不胜，而况于无算乎？吾以此观之，胜负见矣。
+
+
