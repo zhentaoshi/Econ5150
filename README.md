@@ -22,6 +22,7 @@ As a sequel to ECON5120, this course will cover advanced theoretical topics in e
   * Asymptotic theory II ([PS] ch.9, 18)
   * Extremum estimator ([E] ch.22)
   * Maximum likelihood ([PS] ch.10)
+  * Generalized method of moments ([E] ch.13)
   * Quantile regressions ([E] ch.24)
   * Numerical optimization ([PS] ch.12)
 
