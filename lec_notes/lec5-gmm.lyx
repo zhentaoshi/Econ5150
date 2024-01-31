@@ -1070,6 +1070,75 @@ status open
 bigskip
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\emph on
+Self Promotion.
+ 
+\series default
+\emph default
+Estimating equation is the first topic in which I published research papers
+ after my doctorate study.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Shi2016ER"
+literal "false"
+
+\end_inset
+
+ investigates Lasso shrinkage in a high-dimensional linear IV model via
+ the GMM-Lasso.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Shi2016"
+literal "false"
+
+\end_inset
+
+ finds that the quadratic form of (nonlinear) GMM fails to be consistent
+ in a high-dimensional model where the number of moments 
+\begin_inset Formula $m$
+\end_inset
+
+ is much larger than the sample size 
+\begin_inset Formula $n$
+\end_inset
+
+, and proposes a relaxed empirical likelihood to fix the problem.
+ The empirical likelihood is an alternative method to GMM; both estimate
+ the parameters defined by estimating equations.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Shi2018"
+literal "false"
+
+\end_inset
+
+ takes a structural approach by writing down a behavioral asset pricing
+ model, deducing the estimating equations, and identifying and estimating
+ the parameters of economic interest.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
 \begin_layout Plain Layout
 
 
@@ -1086,20 +1155,11 @@ today}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "5150"
 options "chicagoa"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 

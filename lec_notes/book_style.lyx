@@ -44,7 +44,7 @@ theorems-ams-extended-chap-bytype
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 11
+\paperfontsize 12
 \spacing single
 \use_hyperref true
 \pdf_author "Zhentao Shi"
@@ -191,6 +191,16 @@ filename "lec4-m-estimator.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "lec5-mle.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lec5-gmm.lyx"
 
 \end_inset
 
