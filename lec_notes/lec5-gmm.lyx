@@ -125,20 +125,19 @@ Generalized Method of Moments
 
 \begin_layout Standard
 
-\emph on
+\series bold
 Generalized method of moments
-\emph default
+\series default
  (GMM) is an estimation principle that extends 
-\emph on
+\series bold
 method of moments
-\emph default
+\series default
 .
- It seeks the parameter value that minimizes a quadratic form of the moments.
+ It seeks the parameter value that minimizes a quadratic form of the sample
+ moments.
  It is particularly useful in estimating structural models in which moment
- conditions can be derived from economic theory.
- GMM emerges as one of the most popular estimators in modern econometrics,
- and it includes conventional methods like the two-stage least squares (2SLS)
- as a special case.
+ conditions can be (hopefully) derived from economic theory.
+ GMM emerges as one of the most popular estimators in modern econometrics.
  
 \begin_inset FormulaMacro
 \newcommand{\E}{\mathbb{E}}
@@ -165,60 +164,99 @@ We are interested in a moment function
 \end_inset
 
 -dimensional parameter.
- Motivated by some economic theory, there is a true value 
+ Motivated by some economic theory, we look for the true value 
 \begin_inset Formula $\theta_{0}\in\Theta$
 \end_inset
 
- such that 
+ as the solution to the following 
+\begin_inset Formula $m$
+\end_inset
+
+ moment equations 
 \begin_inset Formula 
 \[
-\E\left[g_{i}(\theta_{0})\right]=0.
+\E\left[g_{i}(\theta)\right]=\boldsymbol{0}_{m}.
 \]
 
 \end_inset
 
-Loosely speaking, 
+These are the 
+\series bold
+estimating equations
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The true value 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
- is identified if 
-\begin_inset Formula $\theta\neq\theta_{0}$
-\end_inset
-
- implies 
-\begin_inset Formula $\E\left[g_{i}(\theta)\right]\neq0$
+ is identified if it uniquely satisfies 
+\begin_inset Formula $\E\left[g_{i}(\theta_{0})\right]=0$
 \end_inset
 
 .
- To formalize the concept of deviation from 0, given a symmetric positive-defini
-te 
-\begin_inset Formula $L\times L$
+ To measure the distance of 
+\begin_inset Formula $\E\left[g_{i}(\theta)\right]$
 \end_inset
 
- matrix 
-\begin_inset Formula $W$
+ from 
+\begin_inset Formula $\boldsymbol{0}_{m}$
 \end_inset
 
- we define 
+, define 
 \begin_inset Formula 
 \[
-S\left(\theta;W\right)=\E\left[g_{i}\left(\theta\right)\right]'W\E\left[g_{i}\left(\theta\right)\right].
+S\left(\theta;W\right)=\E\left[g_{i}\left(\theta\right)\right]'W\E\left[g_{i}\left(\theta\right)\right],
 \]
 
 \end_inset
 
-Identification means that for any 
+where 
+\begin_inset Formula $W$
+\end_inset
+
+ an 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ symmetric positive-definite matrix 
+\begin_inset Formula $W$
+\end_inset
+
+, which is called the 
+\series bold
+weighting matrix
+\series default
+.
+ The choice of 
+\begin_inset Formula $W$
+\end_inset
+
+ is arbitrary, and one of the valid candidates is just the identity matrix
+ 
+\begin_inset Formula $I_{m}$
+\end_inset
+
+.
+ Formally, 
+\series bold
+identification
+\series default
+ means that for any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
-, there exists an 
+, there exists a 
 \begin_inset Formula $\delta>0$
 \end_inset
 
  such that 
 \begin_inset Formula 
 \[
-\inf_{\theta\in\mathcal{N}_{\delta}(\theta_{0})}S\left(\theta;W\right)>S\left(\theta_{0};W\right)+\varepsilon.
+\inf_{\theta\in\Theta\backslash\mathcal{N}_{\delta}(\theta_{0})}S\left(\theta;W\right)>S\left(\theta_{0};W\right)+\varepsilon.
 \]
 
 \end_inset
@@ -227,7 +265,8 @@ Identification means that for any
 \end_layout
 
 \begin_layout Standard
-Suppose 
+Next, we provide more conditions under which we can verify identification.
+ Suppose 
 \begin_inset Formula $g\left(\cdot,\theta\right)$
 \end_inset
 
@@ -245,40 +284,32 @@ Suppose
 \end_inset
 
  matrix 
-\begin_inset Formula $\frac{\partial}{\partial\theta'}g_{i}\left(\theta\right)$
-\end_inset
-
- as 
-\begin_inset Formula $D_{i}\left(\theta\right)$
+\begin_inset Formula $D_{i}\left(\theta\right)=\frac{\partial}{\partial\theta'}g_{i}\left(\theta\right)$
 \end_inset
 
 , and 
-\begin_inset Formula $\E\left[D_{i}\left(\theta_{0}\right)\right]$
-\end_inset
-
- as 
-\begin_inset Formula $D_{0}$
+\begin_inset Formula $D_{0}=\E\left[D_{i}\left(\theta_{0}\right)\right]$
 \end_inset
 
 .
  Define 
 \begin_inset Formula 
 \begin{align*}
-\psi\left(\theta;W\right) & =\frac{\partial}{\partial\theta}S\left(\theta;W\right)=2\E\left[D_{i}'\left(\theta\right)\right]W\E\left[g_{i}\left(\theta\right)\right]\\
-H\left(\theta;W\right) & =\frac{\partial}{\partial\theta\partial\theta}S\left(\theta;W\right)=2\left\{ \E\left[\frac{\partial D_{i}'\left(\theta\right)}{\partial\theta_{j}}\right]W\E\left[g_{i}\left(\theta\right)\right]\right\} _{j=1}^{m}+2\E\left[D_{i}'\left(\theta\right)\right]W\E\left[D_{i}\left(\theta\right)\right].
+\underset{(p\times1)}{\psi\left(\theta;W\right)} & =\frac{\partial}{\partial\theta}S\left(\theta;W\right)=2\E\left[D_{i}'\left(\theta\right)\right]W\E\left[g_{i}\left(\theta\right)\right]\\
+\underset{(p\times p)}{H\left(\theta;W\right)} & =\frac{\partial^{2}}{\partial\theta\partial\theta'}S\left(\theta;W\right)=2\sum_{k=1}^{m}\left(W\E\left[g_{i}\left(\theta\right)\right]\right)_{k}\E\left[\frac{\partial^{2}g_{k}\left(z_{i},\theta\right)}{\partial\theta\partial\theta'}\right]+2\E\left[D_{i}'\left(\theta\right)\right]W\E\left[D_{i}\left(\theta\right)\right].
 \end{align*}
 
 \end_inset
 
-To see a sufficient condition for identification, suppose that 
+Take a Taylor expansion of 
 \begin_inset Formula $S\left(\theta;W\right)$
 \end_inset
 
- is twice differentiable and can be expanded around 
+ around 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
- in that
+: 
 \begin_inset Formula 
 \begin{align*}
 S\left(\theta;W\right) & =S\left(\theta_{0};W\right)+\psi\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)+\frac{1}{2}\left(\theta-\theta_{0}\right)H\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)+h.o.t,
@@ -286,7 +317,7 @@ S\left(\theta;W\right) & =S\left(\theta_{0};W\right)+\psi\left(\theta_{0};W\righ
 
 \end_inset
 
-where the higher order term (h.o.t.) is 
+where the higher-order term (h.o.t.) is 
 \begin_inset Formula $o\left(\left\Vert \theta-\theta_{0}\right\Vert ^{2}\right)$
 \end_inset
 
@@ -303,13 +334,13 @@ where the higher order term (h.o.t.) is
 \begin_inset Formula 
 \begin{align*}
 S\left(\theta_{0};W\right) & =0\\
-\psi\left(\theta_{0};W\right) & =\boldsymbol{0}_{L}\\
+\psi\left(\theta_{0};W\right) & =\boldsymbol{0}_{m}\\
 H\left(\theta_{0};W\right) & =2D_{0}'WD_{0}.
 \end{align*}
 
 \end_inset
 
-Therefore for any 
+If we take a heuristic approach by ignoring the h.o.t, for any 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -317,39 +348,149 @@ Therefore for any
 \begin_inset Formula $\left\Vert \theta-\theta_{0}\right\Vert >\delta$
 \end_inset
 
-, if we take a heuristic approach by ignoring the higher-order term, we
- obtain 
+, we obtain 
 \begin_inset Formula 
 \begin{align*}
-S\left(\theta;W\right) & =\frac{1}{2}\left(\theta-\theta_{0}\right)H\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)\geq\lambda_{\min}\left(D_{0}'WD_{0}\right)\\
- & \geq\lambda_{\min}\left(W\right)\times\lambda_{\min}\left(D_{0}'D_{0}\right).
+S\left(\theta;W\right) & =\frac{1}{2}\left(\theta-\theta_{0}\right)'H\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)=\left(\theta-\theta_{0}\right)'D_{0}'WD_{0}\left(\theta-\theta_{0}\right).
 \end{align*}
 
 \end_inset
 
-We therefore need 
+It entails a full rank 
 \begin_inset Formula $D_{0}$
 \end_inset
 
- of full rank to guarantee that there exists a constant 
+ to guarantee that there exists a constant 
 \begin_inset Formula $c$
 \end_inset
 
  such that 
-\begin_inset Formula $S\left(\theta;W\right)>c\cdot\lambda_{\min}\left(W\right)$
+\begin_inset Formula 
+\[
+S\left(\theta;W\right)>\left\Vert \theta-\theta_{0}\right\Vert ^{2}c\cdot\lambda_{\min}\left(W\right)\geq\delta^{2}c\cdot\lambda_{\min}\left(W\right).
+\]
+
 \end_inset
 
-.
+ Otherwise, there exists a 
+\begin_inset Formula $\theta^{\dagger}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\theta^{\dagger}\neq\theta_{0}$
+\end_inset
+
+ but 
+\begin_inset Formula $D_{0}\left(\theta-\theta_{0}\right)=\boldsymbol{0}_{m}$
+\end_inset
+
+; we cannot identify 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ because 
+\begin_inset Formula $S\left(\theta^{\dagger};W\right)=0$
+\end_inset
+
+ as well.
 \end_layout
 
 \begin_layout Exercise
-Show a necessary condition for identification is 
+Argue that a necessary condition for identification is 
 \begin_inset Formula $p\leq m$
 \end_inset
 
 .
- In other words, the number of moment conditions much be no smaller than
+ In other words, the number of moment conditions must be no smaller than
  the number of parameters.
+\end_layout
+
+\begin_layout Example
+Consider the linear IV model 
+\begin_inset Formula $y_{i}=x_{i}'\theta+\varepsilon_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is a 
+\begin_inset Formula $p$
+\end_inset
+
+-dimensional endogenous variable and 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ is an 
+\begin_inset Formula $m$
+\end_inset
+
+-dimensional instrumental variable.
+ The moment function 
+\begin_inset Formula $g_{i}\left(\theta\right)=w_{i}\left(y_{i}-x_{i}'\theta\right)$
+\end_inset
+
+.
+ The orthogonality between 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon_{i}$
+\end_inset
+
+ ensures 
+\begin_inset Formula 
+\[
+\E\left[g_{i}\left(\theta_{0}\right)\right]=\E\left[w_{i}\left(y_{i}-x_{i}'\theta_{0}\right)\right]=\E\left[w_{i}\varepsilon_{i}\right]=\boldsymbol{0}_{m}.
+\]
+
+\end_inset
+
+The necessary condition for identification is a full rank 
+\begin_inset Formula $D_{0}=-\E\left[w_{i}x_{i}'\right]$
+\end_inset
+
+ , which is the relevant condition between 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The above heuristic argument for identification only ensures 
+\series bold
+local identification
+\series default
+, because we neglect the h.o.t.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+in a small neighborhood around 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ Sufficient conditions for 
+\series bold
+global identification
+\series default
+ is challenging and under active research.
+ 
 \end_layout
 
 \begin_layout Section
@@ -357,7 +498,7 @@ GMM Estimator
 \end_layout
 
 \begin_layout Standard
-Given a sample 
+Given an iid sample 
 \begin_inset Formula $z_{i}$
 \end_inset
 
@@ -365,33 +506,150 @@ Given a sample
 \begin_inset Formula $i=1,\ldots,n$
 \end_inset
 
-, we use the sample moments to mimic the population moments.
- The sample criterion function can be defined as
+, we expect the sample moments 
 \begin_inset Formula 
 \[
-S_{n}\left(\theta\right)=\bar{g}_{n}\left(\theta\right)'W\bar{g}_{n}\left(\theta\right)
+\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\theta_{0}\right)\approx\boldsymbol{0}_{m}.
 \]
 
 \end_inset
 
-where 
-\begin_inset Formula $\bar{g}_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\theta\right)$
+Therefore, it is reasonable to estimate 
+\begin_inset Formula $\theta$
+\end_inset
+
+ by finding some value in 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ to set 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\theta\right)$
+\end_inset
+
+ close to 
+\begin_inset Formula $\boldsymbol{0}_{m}$
 \end_inset
 
 .
- The GMM estimator 
-\begin_inset Formula $\widehat{\theta}=\arg\min_{\theta\in\Theta}S_{n}\left(\theta\right)$
+ 
+\end_layout
+
+\begin_layout Example
+Consider again the linear IV model.
+ If 
+\begin_inset Formula $p=m$
 \end_inset
 
- is the minimizer of the above sample criterion function.
+ (just identified), then we can solve 
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}w_{i}\left(y_{i}-x_{i}'\theta\right)=\frac{1}{n}\sum_{i=1}^{n}w_{i}y_{i}-\left(\frac{1}{n}\sum_{i=1}^{n}w_{i}x_{i}'\right)\theta=\boldsymbol{0}_{m}
+\]
+
+\end_inset
+
+ with 
+\begin_inset Formula $\widehat{\theta}=\left(\frac{1}{n}\sum_{i=1}^{n}w_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}w_{i}y_{i}=\left(W'X\right)^{-1}W'Y.$
+\end_inset
+
+ If 
+\begin_inset Formula $m>p$
+\end_inset
+
+ (over-identified), the 
+\begin_inset Formula $m$
+\end_inset
+
+-equation system 
+\begin_inset Formula 
+\[
+\left(\frac{1}{n}\sum_{i=1}^{n}w_{i}x_{i}'\right)\theta=\frac{1}{n}\sum_{i=1}^{n}w_{i}y_{i}
+\]
+
+\end_inset
+
+has no solution because there are few than 
+\begin_inset Formula $m$
+\end_inset
+
+ free parameters in 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+To work with just identified cases and the over-identified cases in a unified
+ framework, we use the sample moment 
+\begin_inset Formula $\bar{g}_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\theta\right)$
+\end_inset
+
+ to mimic the population moment 
+\begin_inset Formula $\E\left[g_{i}\left(\theta\right)\right]$
+\end_inset
+
+, and define the sample criterion function 
+\begin_inset Formula 
+\[
+S_{n}\left(\theta\right)=\bar{g}_{n}'\left(\theta\right)W\bar{g}_{n}\left(\theta\right)
+\]
+
+\end_inset
+
+as the counterpart of the population distance 
+\begin_inset Formula $S\left(\theta;W\right)$
+\end_inset
+
+.
+ The 
+\series bold
+GMM estimator
+\series default
+ 
+\begin_inset Formula 
+\[
+\widehat{\theta}=\arg\min_{\theta\in\Theta}S_{n}\left(\theta\right)
+\]
+
+\end_inset
+
+ is the minimizer of the sample criterion function 
+\begin_inset Formula $S_{n}\left(\theta\right)$
+\end_inset
+
+.
  Notice that GMM is not an M-function as it is not a sample average of the
  loss function of each individual observation.
  Instead, it is a quadratic form of a sample average of the moment function
  
-\begin_inset Formula $g\left(\cdot,\theta\right)$
+\begin_inset Formula $g_{i}\left(\theta\right)$
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The proof of consistency of the GMM under identification and ULLN is identical
+ to that of the M-estimator.
+ We leave it as an exercise.
  
 \end_layout
 
@@ -409,17 +667,16 @@ Show that
 \end_inset
 
 .
- (The proof is almost identical to the proof of consistency of the M-estimator
- under identification and ULLN).
  
 \end_layout
 
 \begin_layout Standard
-To check the asymptotic distribution, notice that the GMM estimator satisfies
- the first order condition 
+Next, given consistency we further check the asymptotic distribution of
+ the GMM estimator under conditions of differentiability.
+ The first-order condition of the optimality of GMM yields
 \begin_inset Formula 
 \begin{align*}
-0 & =\frac{\partial}{\partial\theta}S_{n}\left(\widehat{\theta};W\right)=2\bar{D}_{n}'\left(\widehat{\theta}\right)W\bar{g}_{n}\left(\widehat{\theta}\right)=:\bar{\psi}_{n}\left(\widehat{\theta};W\right)
+\boldsymbol{0}_{m} & =\frac{\partial}{\partial\theta}S_{n}\left(\widehat{\theta};W\right)=2\bar{D}_{n}'\left(\theta\right)W\bar{g}_{n}\left(\theta\right),
 \end{align*}
 
 \end_inset
@@ -429,6 +686,14 @@ where
 \end_inset
 
 .
+ Denote 
+\begin_inset Formula 
+\[
+\bar{\psi}_{n}\left(\theta;W\right)=2\bar{D}_{n}'\left(\theta\right)W\bar{g}_{n}\left(\theta\right).
+\]
+
+\end_inset
+
  Take a Taylor expansion of 
 \begin_inset Formula $\bar{\psi}_{n}\left(\widehat{\theta};W\right)$
 \end_inset
@@ -440,7 +705,7 @@ where
 :
 \begin_inset Formula 
 \[
-0=\bar{\psi}_{n}\left(\widehat{\theta};W\right)=\bar{\psi}_{n}\left(\theta_{0};W\right)+\bar{H}_{n}\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)+h.o.t,
+\boldsymbol{0}_{m}=\bar{\psi}_{n}\left(\widehat{\theta};W\right)=\bar{\psi}_{n}\left(\theta_{0};W\right)+\bar{H}_{n}\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)+h.o.t,
 \]
 
 \end_inset
@@ -448,20 +713,24 @@ where
 where 
 \begin_inset Formula 
 \[
-\bar{H}_{n}\left(\theta;W\right)=2\left\{ \frac{\partial\bar{D}_{n}'\left(\theta\right)}{\partial\theta_{j}}W\bar{g}_{n}\left(\theta\right)\right\} _{j=1}^{m}+2\bar{D}_{n}'\left(\theta\right)W\bar{D}_{n}\left(\theta\right).
+\bar{H}_{n}\left(\theta;W\right)=2\sum_{k=1}^{m}\left(W\bar{g}_{n}\left(\theta\right)\right)_{k}\frac{\partial^{2}\bar{g}_{n,k}\left(z_{i},\theta\right)}{\partial\theta\partial\theta'}+2\bar{D}_{n}'\left(\theta\right)W\bar{D}_{n}\left(\theta\right).
 \]
 
 \end_inset
 
-We again ignore the higher order term and rearrange:
+We again ignore the higher-order term and rearrange:
 \begin_inset Formula 
-\[
-\sqrt{n}\left(\theta-\theta_{0}\right)=-H_{n}^{-1}\left(\theta_{0};W\right)\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right).
-\]
+\begin{equation}
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)=-\bar{H}_{n}^{-1}\left(\theta_{0};W\right)\times\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right).\label{eq:theta_closed}
+\end{equation}
 
 \end_inset
 
-Given that 
+
+\end_layout
+
+\begin_layout Standard
+We analyze the numerator 
 \begin_inset Formula $\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right)=2\bar{D}_{n}'\left(\theta_{0}\right)W\frac{1}{\sqrt{n}}g_{i}\left(\theta_{0}\right)$
 \end_inset
 
@@ -470,58 +739,70 @@ Given that
 \begin_inset Formula $\E\left[g_{i}\left(\theta_{0}\right)\right]=0$
 \end_inset
 
-, if we denote 
+, if the variance is finite we can apply an CLT: 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{n}}g_{i}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega_{0}\right)
+\]
+
+\end_inset
+
+where 
 \begin_inset Formula $\Omega_{0}=\mathrm{var}\left[g_{i}\left(\theta_{0}\right)\right]=\E\left[g_{i}\left(\theta_{0}\right)g_{i}'\left(\theta_{0}\right)\right]$
 \end_inset
 
-, we apply an CLT to have 
-\begin_inset Formula 
-\[
-\frac{1}{\sqrt{n}}g_{i}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)
-\]
-
-\end_inset
-
- and thus if in addition 
+.
+ If in addition 
 \begin_inset Formula $\bar{D}_{n}\left(\theta_{0}\right)\stackrel{p}{\to}D_{0}$
 \end_inset
 
- by some LLN we have 
+ by some LLN, we have 
 \begin_inset Formula 
 \[
-\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right)\stackrel{d}{\to}N\left(0,4D_{0}'W\Omega WD_{0}\right).
+\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right)\stackrel{d}{\to}N\left(0,4D_{0}'W\Omega_{0}WD_{0}\right).
 \]
 
 \end_inset
 
-Notice 
+The denominator 
 \begin_inset Formula 
 \begin{align*}
-\bar{H}_{n}\left(\theta_{0};W\right) & =2\left\{ \frac{\partial\bar{D}_{n}'\left(\theta_{0}\right)}{\partial\theta_{j}}W\bar{g}_{n}\left(\theta_{0}\right)\right\} _{j=1}^{m}+2\bar{D}_{n}'\left(\theta_{0}\right)W\bar{D}_{n}\left(\theta_{0}\right)\stackrel{p}{\to}2D_{0}WD_{0}
+\bar{H}_{n}\left(\theta_{0};W\right) & =2\sum_{k=1}^{m}\left(W\bar{g}_{n}\left(\theta_{0}\right)\right)_{k}\frac{\partial^{2}\bar{g}_{n,k}\left(z_{i},\theta_{0}\right)}{\partial\theta\partial\theta'}+2\bar{D}_{n}'\left(\theta_{0}\right)W\bar{D}_{n}\left(\theta_{0}\right)\stackrel{p}{\to}2D_{0}WD_{0},
 \end{align*}
 
 \end_inset
 
-as 
-\begin_inset Formula $\bar{g}_{n}\left(\theta_{0}\right)\stackrel{p}{\to}\boldsymbol{0}_{L}$
+where the first term vanishes as 
+\begin_inset Formula $\bar{g}_{n}\left(\theta_{0}\right)\stackrel{p}{\to}\boldsymbol{0}_{m}$
 \end_inset
 
-, we conclude
+.
+ Put the numerator and the denominator together, we conclude
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\theta-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(D_{0}WD_{0}\right)^{-1}D_{0}'W\Omega_{0}WD_{0}\left(D_{0}WD_{0}\right)^{-1}\right).
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(D_{0}'WD_{0}\right)^{-1}D_{0}'W\Omega_{0}WD_{0}\left(D_{0}'WD_{0}\right)^{-1}\right).
 \]
 
 \end_inset
 
-If we choose 
+
+\end_layout
+
+\begin_layout Standard
+It is obvious that the asymptotic variance of the GMM estimator depends
+ on the choice of the weight matrix 
+\begin_inset Formula $W$
+\end_inset
+
+.
+ If we choose 
 \begin_inset Formula $W=\Omega_{0}^{-1}$
 \end_inset
 
 , the asymptotic variance is simplified as 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\theta-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(D_{0}\Omega_{0}^{-1}D_{0}\right)^{-1}\right).
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}\right).
 \]
 
 \end_inset
@@ -531,23 +812,53 @@ In turns out that this choice of
 \end_inset
 
  achieves semiparametric efficiency.
+ 
 \end_layout
 
 \begin_layout Section
-Overidentification Test
+Over-identification Test
 \end_layout
 
 \begin_layout Standard
-Notice that 
-\begin_inset Formula $S_{n}\left(\theta_{0};W\right)\stackrel{p}{\to}0$
+The definition of 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ entails that 
+\begin_inset Formula $S_{n}\left(\widehat{\theta};W\right)$
+\end_inset
+
+ is the minimum of 
+\begin_inset Formula $S_{n}\left(\theta;W\right)$
 \end_inset
 
 .
- If we scale it by 
+ It turns out that the scaled (by 
 \begin_inset Formula $n$
 \end_inset
 
-, then 
+) criterion function 
+\begin_inset Formula $nS_{n}\left(\theta;\Omega_{0}^{-1}\right)$
+\end_inset
+
+ can serve as a test statistic for model specification.
+ 
+\end_layout
+
+\begin_layout Standard
+The scaling factor 
+\begin_inset Formula $n$
+\end_inset
+
+ is essential because 
+\begin_inset Formula $S_{n}\left(\widehat{\theta};W\right)\leq S_{n}\left(\theta_{0};W\right)\stackrel{p}{\to}0$
+\end_inset
+
+ due to 
+\begin_inset Formula $\bar{g}_{n}\left(\theta_{0}\right)\stackrel{p}{\to}\boldsymbol{0}_{m}$
+\end_inset
+
+, whereas 
 \begin_inset Formula 
 \[
 nS_{n}\left(\theta_{0};W\right)=\left(\sqrt{n}\bar{g}_{n}'\left(\theta_{0}\right)\right)W\left(\sqrt{n}\bar{g}_{n}\left(\theta_{0}\right)\right)
@@ -555,54 +866,196 @@ nS_{n}\left(\theta_{0};W\right)=\left(\sqrt{n}\bar{g}_{n}'\left(\theta_{0}\right
 
 \end_inset
 
-is a quadratic form of a normal random vector.
- If 
+is a quadratic form of an asymptotically normal random vector 
+\begin_inset Formula $\sqrt{n}\bar{g}_{n}'\left(\theta_{0}\right)$
+\end_inset
+
+.
+ In particular, the choice 
 \begin_inset Formula $W=\Omega_{0}^{-1}$
 \end_inset
 
-, then 
+ gives 
 \begin_inset Formula 
-\[
-nS_{n}\left(\theta_{0};\Omega_{0}^{-1}\right)\stackrel{d}{\to}\chi^{2}\left(p\right).
-\]
+\begin{equation}
+nS_{n}\left(\theta_{0};\Omega_{0}^{-1}\right)\stackrel{d}{\to}\chi^{2}\left(p\right),\label{eq:J_nut}
+\end{equation}
 
 \end_inset
 
-In practice, we don't know 
+but this is different from the asymptotic distribution of 
+\begin_inset Formula 
+\begin{equation}
+nS_{n}\left(\widehat{\theta};\Omega_{0}^{-1}\right)=n\bar{g}_{n}'\left(\widehat{\theta}\right)\Omega_{0}^{-1}\bar{g}_{n}\left(\widehat{\theta}\right)=\left\Vert \Omega_{0}^{-1/2}\sqrt{n}\bar{g}_{n}\left(\widehat{\theta}\right)\right\Vert .\label{eq:J_0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Decompose 
+\begin_inset Formula 
+\begin{align}
+\sqrt{n}\bar{g}_{n}\left(\widehat{\theta}\right) & =\sqrt{n}\bar{g}_{n}\left(\theta_{0}\right)+\sqrt{n}\left(\bar{g}_{n}\left(\widehat{\theta}\right)-\bar{g}_{n}\left(\theta_{0}\right)\right)\label{eq:J_1}
+\end{align}
+
+\end_inset
+
+The second term, by a Taylor expansion around 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
- and it is only feasible to evaluate 
+ and putting the h.o.t.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+into 
+\begin_inset Formula $o_{p}(1)$
+\end_inset
+
+, becomes
+\begin_inset Formula 
+\begin{align}
+\sqrt{n}\left(\bar{g}_{n}\left(\widehat{\theta}\right)-\bar{g}_{n}\left(\theta_{0}\right)\right) & =\sqrt{n}\bar{D}_{n}'\left(\theta_{0}\right)\times\left(\widehat{\theta}-\theta_{0}\right)+o_{p}(1)\nonumber \\
+ & =-\bar{D}_{n}'\left(\theta_{0}\right)\times\bar{H}_{n}^{-1}\left(\theta_{0};\Omega_{0}^{-1}\right)\times\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};\Omega_{0}^{-1}\right)+o_{p}(1)\nonumber \\
+ & =-\bar{D}_{n}'\left(\theta_{0}\right)\bar{H}_{n}^{-1}\left(\theta_{0};\Omega_{0}^{-1}\right)2\bar{D}_{n}'\left(\theta_{0}\right)\Omega_{0}^{-1}\sqrt{n}\bar{g}_{n}\left(\theta_{0}\right)+o_{p}(1)\nonumber \\
+ & =-D_{0}\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}D_{0}'\Omega_{0}^{-1}\sqrt{n}\bar{g}_{n}\left(\theta_{0}\right)+o_{p}(1).\label{eq:J_2}
+\end{align}
+
+\end_inset
+
+where the second line follows by (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:theta_closed"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), the third line by the definition of 
+\begin_inset Formula $\bar{\psi}_{n}$
+\end_inset
+
+, and the last line by citing the probabilistic limit of the matrices 
+\begin_inset Formula $\bar{H}_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{D}_{n}$
+\end_inset
+
+.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:J_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:J_2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) imply 
+\begin_inset Formula 
+\begin{eqnarray*}
+\Omega_{0}^{-1/2}\sqrt{n}\bar{g}_{n}\left(\widehat{\theta}\right) & = & \Omega_{0}^{-1/2}\left(I_{m}-D_{0}\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}D_{0}'\Omega_{0}^{-1}\right)\sqrt{n}\bar{g}_{n}\left(\theta_{0}\right)+o_{p}(1)\\
+ & \stackrel{d}{\to} & \Omega_{0}^{-1/2}\left(I_{m}-D_{0}\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}D_{0}'\Omega_{0}^{-1}\right)\times N\left(0,\Omega_{0}\right)\\
+ & \sim & \Omega_{0}^{-1/2}\left(I_{m}-D_{0}\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}D_{0}'\Omega_{0}^{-1}\right)\Omega^{1/2}\times N\left(0,I_{m}\right)\\
+ & \sim & \left(I_{m}-\Omega_{0}^{-1/2}D_{0}\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}D_{0}'\Omega_{0}^{-1/2}\right)\times N\left(0,I_{m}\right).
+\end{eqnarray*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\left(I_{m}-\Omega^{-1/2}D_{0}\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}D_{0}'\Omega^{-1/2}\right)$
+\end_inset
+
+ is idempotent with rank 
+\begin_inset Formula $\left(p-m\right)$
+\end_inset
+
+, we have 
 \begin_inset Formula 
 \[
-nS_{n}\left(\widehat{\theta};\widehat{\Omega}^{-1}\right)=n\bar{g}_{n}'\left(\widehat{\theta}\right)\widehat{\Omega}^{-1}\bar{g}_{n}\left(\widehat{\theta}\right)
+nS_{n}\left(\widehat{\theta};\Omega_{0}^{-1}\right)=\left\Vert \Omega_{0}^{-1/2}\sqrt{n}\bar{g}_{n}\left(\widehat{\theta}\right)\right\Vert \stackrel{d}{\to}\chi^{2}\left(m-p\right).
 \]
 
 \end_inset
 
-where 
-\begin_inset Formula $\widehat{\Omega}$
+Compared with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:J_nut"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
- is any consistent estimator of 
-\begin_inset Formula $\Omega_{0}$
+), the estimated 
+\begin_inset Formula $p$
 \end_inset
 
-.
- This is the so-called J-statistic.
- It turns about 
-\begin_inset Formula $nS_{n}\left(\widehat{\theta};\widehat{\Omega}^{-1}\right)\stackrel{d}{\to}\chi^{2}\left(p-m\right)$
-\end_inset
-
- as a loss 
-\begin_inset Formula $m$
-\end_inset
-
- degrees of freedom is incurred in the estimation of 
+-dimensional parameter 
 \begin_inset Formula $\widehat{\theta}$
 \end_inset
 
-.
+ deducts 
+\begin_inset Formula $p$
+\end_inset
+
+ degrees of freedom.
+ 
+\end_layout
+
+\begin_layout Standard
+To make the test statistic feasible, we can use any consistent estimator
+ 
+\begin_inset Formula $\widehat{\Omega}$
+\end_inset
+
+ for 
+\begin_inset Formula $\Omega_{0}$
+\end_inset
+
+, for example, 
+\begin_inset Formula 
+\[
+\widehat{\Omega}=\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\theta}\right)g_{i}'\left(\widehat{\theta}\right)-\bar{g}_{n}\left(\widehat{\theta}\right)\bar{g}_{n}'\left(\widehat{\theta}\right).
+\]
+
+\end_inset
+
+The feasible statistic 
+\begin_inset Formula $nS_{n}\left(\widehat{\theta};\widehat{\Omega}^{-1}\right)$
+\end_inset
+
+ is called the 
+\begin_inset Formula $J$
+\end_inset
+
+-statistic.
  
 \end_layout
 
