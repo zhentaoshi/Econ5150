@@ -1092,7 +1092,7 @@ MLE is a special case of m-estimator.
 
 \end_inset
 
-When the information equality hods, the asymptotic variance is simplified
+When the information equality holds, the asymptotic variance is simplified
  as 
 \begin_inset Formula $\mathscr{\mathscr{I}}_{0}^{-1}\mathscr{I}_{0}\mathscr{\mathscr{I}}_{0}^{-1}=\mathscr{\mathscr{I}}_{0}^{-1}$
 \end_inset
@@ -1105,158 +1105,186 @@ When the information equality hods, the asymptotic variance is simplified
 
 \end_inset
 
-In other words, it achieves asymptotic efficiency.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-For any variable,
-\begin_inset Formula 
-\[
-\sqrt{n}\left(\tilde{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Sigma\right)
-\]
-
+This is a nice result, because not only 
+\begin_inset Formula $\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
-We say it is asymptotically unbiased.
-\end_layout
-
-\begin_layout Plain Layout
-Then 
+ is asymptotically unbiased (the limiting normal distribution is centered
+ at 0), but also it asymptotically achieves the Cramér-Rao efficiency bound
+ with 
 \begin_inset Formula $\mathscr{I}_{0}^{-1}$
 \end_inset
 
- is the asymptotic Cramér-Rao efficiency bound.
-\end_layout
-
-\end_inset
-
-
+.
+ 
 \end_layout
 
 \begin_layout Standard
-Caveat:
-\end_layout
-
-\begin_layout Enumerate
-need correct specification
-\end_layout
-
-\begin_layout Enumerate
-the comparison is restricted to asymptotically unbiased estimator.
- There are biased estimators with better overall performance.
+This beautiful result holds if and only if the model is correctly specified.
+ The next section discusses the asymptotic behavior of the MLE estimator
+ when the model is misspecified.
+ 
 \end_layout
 
 \begin_layout Section
-Kullback-Leibler Divergence
+Misspecified Model
 \end_layout
 
 \begin_layout Standard
+Kullback-Leibler information criterion (KLIC) is defined as 
 \begin_inset Formula 
 \[
-KLIC\left(f,g\right)=\int f\left(x\right)\log\frac{f\left(x\right)}{g\left(x\right)}dx
+KLIC\left(f,g\right)=\int f\left(z\right)\log\frac{f\left(z\right)}{g\left(z\right)}dz.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Properties:
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $KLIC\left(f,f\right)=0$
+It is a scalar measure of the difference between two probability measures.
+ Because 
+\begin_inset Formula $-\log\left(\cdot\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Enumerate
+ is a convex function, we can use the Jensen's inequality to show 
 \begin_inset Formula $KLIC\left(f,g\right)\geq0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $f=\arg\min_{g}KLIC\left(f,g\right)$
+.
+ Obviously 
+\begin_inset Formula $KLIC\left(f,f\right)=0$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-If 
-\begin_inset Formula $f\left(x\right)=f\left(x;\theta\right)$
-\end_inset
-
- is a parametric family
-\begin_inset Formula 
-\[
-\theta_{0}=\arg\min_{\theta\in\varTheta}KLIC\left(f,f_{\theta}\right)
-\]
-
-\end_inset
-
-which is correctly specified model.
+.
+ 
 \end_layout
 
 \begin_layout Standard
-Pseudo-true parameter:
-\begin_inset Formula 
-\[
-\theta_{0}=\arg\min_{\theta\in\varTheta}KLIC\left(f,f_{\theta}\right)
-\]
-
+We narrow down our discussion to parametric models.
+ Suppose the data 
+\begin_inset Formula $z$
 \end_inset
 
-which is misspecified model.
-\end_layout
+ is drawn from a parameter model 
+\begin_inset Formula $f$
+\end_inset
 
-\begin_layout Standard
-KLIC is the distance measure of any two distributions.
+; this is the data generating process (DGP).
+ The researcher specifies a family of models 
+\begin_inset Formula $g\left(z;\theta\right)$
+\end_inset
+
+ and a parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+; thus such a specification covers a model space 
+\begin_inset Formula $G\left(\Theta\right)=\left\{ g\left(z;\theta\right):\theta\in\Theta\right\} $
+\end_inset
+
+.
+ If 
+\begin_inset Formula $f\in G\left(\Theta\right)$
+\end_inset
+
+, the model is 
+\series bold
+correctly specified
+\series default
+; otherwise it is misspecified.
+ Notice that 
 \begin_inset Formula 
 \begin{align*}
-KLIC\left(f,f_{\theta}\right) & =\int f\left(x\right)\log f\left(x\right)dx-\int f\left(x\right)\log f\left(x;\theta\right)dx\\
- & =\int f\left(x\right)\log f\left(x\right)dx-E\left[\log f\left(x;\theta\right)\right]\\
- & =\int f\left(x\right)\log f\left(x\right)dx-\ell\left(\theta\right)
+KLIC\left(f,g\left(z;\theta\right)\right) & =\int f\left(z\right)\log f\left(z\right)dz-\int f\left(z\right)\log g\left(z;\theta\right)dz\\
+ & =E\left[\log f\left(z\right)\right]-E\left[\log g\left(z;\theta\right)\right]\\
+ & =E\left[\log f\left(z\right)\right]-\ell\left(\theta\right).
 \end{align*}
 
 \end_inset
 
-the pseudo-true value
+Notice that the first term is irrelevant to the choice of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ If the model is correctly specified, then the true value 
 \begin_inset Formula 
 \[
-\theta^{*}=\arg\max_{\theta\in\varTheta}\ell\left(\theta\right)
+\theta_{0}=\arg\max_{\theta\in\Theta}\ell\left(\theta\right)
 \]
 
 \end_inset
 
-The information equality was proved under correct specification.
- When the model is misspecified,
+ and 
+\begin_inset Formula $KLIC\left(f,g\left(z;\theta_{0}\right)\right)=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+If the model is misspecified, 
+\begin_inset Formula $\min_{\theta\in\Theta}KLIC\left(f,g\left(z;\theta\right)\right)>0$
+\end_inset
+
+.
+ In this case, we can define 
 \begin_inset Formula 
 \[
-E\left[S\left(\theta^{*}\right)S\left(\theta^{*}\right)'\right]\neq E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta^{*}\right)\right].
+\theta^{*}=\arg\max_{\theta\in\Theta}\ell\left(\theta\right)
 \]
 
 \end_inset
 
-As a result, we will have a sandwich-form asymptotic variance in 
+as the 
+\series bold
+pseudo-true
+\series default
+ parameter value.
+ In other words, 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+ is the minimizer of 
+\begin_inset Formula $KLIC\left(f,g\left(z;\theta\right)\right)$
+\end_inset
+
+ in the parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ This provides meaningful interpretation of MLE even if the model is misspecifie
+d: although in reality the researcher may not know the true family of distributi
+ons where the data is drawn, she can run MLE to look for the value 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+ that minimizes the gap between 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g\left(z;\theta\right)$
+\end_inset
+
+ in terms of KLIC.
+ 
+\end_layout
+
+\begin_layout Standard
+Under standard assumption, the MLE estimator 
+\begin_inset Formula $\widehat{\theta}\stackrel{p}{\to}\theta^{*}$
+\end_inset
+
+ despite model misspecification, and the asymptotic distribution is 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\hat{\theta}-\theta^{*}\right)\stackrel{d}{\to}N\left(0,\mathscr{H}_{*}^{-1}\mathscr{I}_{*}\mathscr{H}_{*}^{-1}\right)
+\sqrt{n}\left(\hat{\theta}-\theta^{*}\right)\stackrel{d}{\to}N\left(0,\mathscr{H}_{*}^{-1}\mathscr{I}_{*}\mathscr{H}_{*}^{-1}\right),
 \]
 
 \end_inset
 
-understand that 
+where 
 \begin_inset Formula $\mathscr{I}_{*}$
 \end_inset
 
@@ -1264,7 +1292,19 @@ understand that
 \begin_inset Formula $\mathscr{H}_{*}$
 \end_inset
 
- are evaluated at the pseudo-true value.
+ are evaluated at the pseudo-true value 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+.
+ Attention should be paid to the sandwich-form asymptotic variance, since
+ the information equality does not hold under misspecification and as a
+ result, 
+\begin_inset Formula $\mathscr{I}_{*}\neq\mathscr{H}_{*}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
