@@ -19,7 +19,7 @@ mu_base = mu0 + seq(-3, 3, by = 0.01)
 
 
 # draw sample log-likelihood graph
-n = 4
+n = 10
 lnz = matrix(0, length(mu_base), 3)
 for (rr in 1:3){
   z <- rnorm(n, mu0, sqrt(gamma0) )
