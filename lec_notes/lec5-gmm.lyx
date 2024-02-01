@@ -180,7 +180,7 @@ We are interested in a moment function
 
 \end_inset
 
-These are the 
+These are the population 
 \series bold
 estimating equations
 \series default
@@ -301,7 +301,11 @@ Next, we provide more conditions under which we can verify identification.
 
 \end_inset
 
-Take a Taylor expansion of 
+(Be careful about the way to stack the second derivative of 
+\begin_inset Formula $g$
+\end_inset
+
+.) Take a Taylor expansion of 
 \begin_inset Formula $S\left(\theta;W\right)$
 \end_inset
 
@@ -742,7 +746,7 @@ We analyze the numerator
 , if the variance is finite we can apply an CLT: 
 \begin_inset Formula 
 \[
-\frac{1}{\sqrt{n}}g_{i}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega_{0}\right)
+\frac{1}{\sqrt{n}}\sum_{i}g_{i}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega_{0}\right)
 \]
 
 \end_inset
@@ -1083,8 +1087,8 @@ Self Promotion.
  
 \series default
 \emph default
-Estimating equation is the first topic in which I published research papers
- after my doctorate study.
+Estimating equation is the first topic on which I published research papers
+ after I got my Ph.D..
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -1093,8 +1097,8 @@ literal "false"
 
 \end_inset
 
- investigates Lasso shrinkage in a high-dimensional linear IV model via
- the GMM-Lasso.
+ estimates a high-dimensional linear IV model via the GMM-Lasso under the
+ assumption of sparsity.
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -1113,8 +1117,8 @@ literal "false"
 \end_inset
 
 , and proposes a relaxed empirical likelihood to fix the problem.
- The empirical likelihood is an alternative method to GMM; both estimate
- the parameters defined by estimating equations.
+ The empirical likelihood is an alternative method to GMM; they both estimate
+ the parameters defined by the population estimating equations.
  
 \begin_inset CommandInset citation
 LatexCommand citet
