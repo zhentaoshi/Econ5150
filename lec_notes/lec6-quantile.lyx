@@ -217,7 +217,7 @@ check function
 
 \begin_inset Formula 
 \[
-\rho\left(z\right)=z\left(\tau-\mathbb{I}\left\{ z\leq0\right\} \right).
+\rho_{\tau}\left(z\right)=z\left(\tau-\mathbb{I}\left\{ z\leq0\right\} \right).
 \]
 
 \end_inset
@@ -229,13 +229,13 @@ The check function is continuous everywhere, and differentiable everywhere
 
 .
  The subgradient of 
-\begin_inset Formula $\rho\left(z\right)$
+\begin_inset Formula $\rho_{\tau}\left(z\right)$
 \end_inset
 
  is 
 \begin_inset Formula 
 \[
-\psi\left(z\right)=\begin{cases}
+\psi_{\tau}\left(z\right)=\begin{cases}
 \tau-\mathbb{I}\left\{ z<0\right\} , & z\neq0\\
 \text{any value in \left[1-\tau,\tau\right]}, & z=0
 \end{cases}
@@ -244,7 +244,7 @@ The check function is continuous everywhere, and differentiable everywhere
 \end_inset
 
 Notice that 
-\begin_inset Formula $\psi\left(z\right)$
+\begin_inset Formula $\psi_{\tau}\left(z\right)$
 \end_inset
 
  is discontinuous at 
@@ -259,13 +259,13 @@ Notice that
 The population criterion function is 
 \begin_inset Formula 
 \begin{align*}
-S(q) & =E\left[\rho\left(y_{i}-q\right)\right]=E\left[\rho\left(e_{i}-\left(q-q_{\tau}^{0}\right)\right)\right].
+S(q) & =E\left[\rho_{\tau}\left(y_{i}-q\right)\right]=E\left[\rho_{\tau}\left(e_{i}-\left(q-q_{\tau}^{0}\right)\right)\right].
 \end{align*}
 
 \end_inset
 
 Because 
-\begin_inset Formula $\rho\left(\cdot\right)$
+\begin_inset Formula $\rho_{\tau}\left(\cdot\right)$
 \end_inset
 
  is convex, we can focus on a small neighborhood around 
@@ -280,13 +280,13 @@ Because
 ; by a change of variable 
 \begin_inset Formula 
 \begin{align*}
-S(q_{\tau}^{0}+\delta) & =E\left[\rho\left(e_{i}-\delta\right)\right]
+S(q_{\tau}^{0}+\delta) & =E\left[\rho_{\tau}\left(e_{i}-\delta\right)\right]
 \end{align*}
 
 \end_inset
 
 Since 
-\begin_inset Formula $\rho\left(\cdot\right)$
+\begin_inset Formula $\rho_{\tau}\left(\cdot\right)$
 \end_inset
 
  is differentiable, so is its mathematical expectation 
@@ -297,7 +297,7 @@ Since
  The first derivative is 
 \begin_inset Formula 
 \begin{align*}
-\frac{d}{d\delta}S(q_{\tau}^{0}+\delta) & =\frac{d}{d\delta}E\left[\rho\left(e_{i}-\delta\right)\right]=-E\left[\psi\left(e_{i}-\delta\right)\right]\\
+\frac{d}{d\delta}S(q_{\tau}^{0}+\delta) & =\frac{d}{d\delta}E\left[\rho_{\tau}\left(e_{i}-\delta\right)\right]=-E\left[\psi_{\tau}\left(e_{i}-\delta\right)\right]\\
  & =E\left[\mathbb{I}\left\{ e_{i}-\delta<0\right\} \right]-\tau=F_{e}\left(\delta\right)-\tau
 \end{align*}
 
@@ -309,7 +309,7 @@ where the second equality holds by the exchange of expectation and integral
 \end_inset
 
  the point 
-\begin_inset Formula $\psi\left(0\right)$
+\begin_inset Formula $\psi_{\tau}\left(0\right)$
 \end_inset
 
  takes as 
@@ -352,7 +352,7 @@ If
 
  is locally identified.
  Because 
-\begin_inset Formula $\rho\left(y_{i}-q\right)$
+\begin_inset Formula $\rho_{\tau}\left(y_{i}-q\right)$
 \end_inset
 
  is convex in 
@@ -375,7 +375,7 @@ globally identified
 Given the data, the sample criterion function is 
 \begin_inset Formula 
 \[
-S_{n}\left(q\right)=\frac{1}{n}\sum\rho\left(y_{i}-q\right)=\frac{1}{n}\sum\left(y_{i}-q\right)\left(\tau-\mathbb{I}\left\{ y_{i}-q\leq0\right\} \right).
+S_{n}\left(q\right)=\frac{1}{n}\sum\rho_{\tau}\left(y_{i}-q\right)=\frac{1}{n}\sum\left(y_{i}-q\right)\left(\tau-\mathbb{I}\left\{ y_{i}-q\leq0\right\} \right).
 \]
 
 \end_inset
@@ -411,7 +411,7 @@ Regarding asymptotic normality, evaluated at the true value
 \end_inset
 
 , the binary random variable 
-\begin_inset Formula $\psi\left(y_{i}-q_{\tau}^{0}\right)=\mathbb{I}\left\{ y_{i}\leq q_{\tau}^{0}\right\} -\tau$
+\begin_inset Formula $\psi_{\tau}\left(y_{i}-q_{\tau}^{0}\right)=\mathbb{I}\left\{ y_{i}\leq q_{\tau}^{0}\right\} -\tau$
 \end_inset
 
  has mean 0 and variance 
@@ -539,11 +539,11 @@ S_{n}\left(\beta\right)=\frac{1}{n}\sum\rho_{\tau}\left(y_{i}-X_{i}'\beta\right)
 The first order condition
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial}{\partial\beta}S_{n}\left(\beta\right) & =-\frac{1}{n}\sum X_{i}\psi\left(y_{i}-X_{i}'\beta\right)\\
- & =-\frac{1}{n}\sum X_{i}\psi\left(y_{i}-X_{i}'\beta_{\tau}^{0}+X_{i}'\beta_{\tau}^{0}-X_{i}'\beta\right)\\
- & =-\frac{1}{n}\sum X_{i}\psi\left(e_{i}+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)\\
- & \stackrel{p}{\to}-E\left[X_{i}\psi\left(e+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)\right]\\
- & =-E\left[X_{i}E\left[\psi\left(e_{i}+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)|X_{i}\right]\right]\\
+\frac{\partial}{\partial\beta}S_{n}\left(\beta\right) & =-\frac{1}{n}\sum X_{i}\psi_{\tau}\left(y_{i}-X_{i}'\beta\right)\\
+ & =-\frac{1}{n}\sum X_{i}\psi_{\tau}\left(y_{i}-X_{i}'\beta_{\tau}^{0}+X_{i}'\beta_{\tau}^{0}-X_{i}'\beta\right)\\
+ & =-\frac{1}{n}\sum X_{i}\psi_{\tau}\left(e_{i}+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)\\
+ & \stackrel{p}{\to}-E\left[X_{i}\psi_{\tau}\left(e+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)\right]\\
+ & =-E\left[X_{i}E\left[\psi_{\tau}\left(e_{i}+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)|X_{i}\right]\right]\\
  & =-E\left[X_{i}E\left[\tau-\mathbb{I}\left\{ e\leq X_{i}'\left(\beta-\beta_{\tau}^{0}\right)\right\} |X_{i}\right]\right]\\
  & =E\left[X_{i}\left(F_{e\mid X}\left(X'\left(\beta-\beta_{\tau}^{0}\right)\right)-\tau\right)\right]
 \end{align*}
