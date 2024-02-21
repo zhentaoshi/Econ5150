@@ -502,7 +502,7 @@ It is differentiable, with first derivative around
  as
 \begin_inset Formula 
 \[
-\frac{\partial S\left(\beta\right)}{\partial\beta}\big|_{\beta=\beta_{\tau}^{0}}=E\left[\left(F_{e|X}\left(0\right)-\tau\right)X\right]
+\frac{\partial S\left(\beta\right)}{\partial\beta}\big|_{\beta=\beta_{\tau}^{0}}=E\left[\left(F_{e|X}\left(0\right)-\tau\right)X_{i}\right]
 \]
 
 \end_inset
@@ -510,13 +510,13 @@ It is differentiable, with first derivative around
 by the chain rule, and the second derivative 
 \begin_inset Formula 
 \[
-\frac{\partial^{2}S\left(\beta\right)}{\partial\beta\partial\beta'}\big|_{\beta=\beta_{\tau}^{0}}=E\left[XX'f_{e\mid X}\left(0\right)\right]
+\frac{\partial^{2}S\left(\beta\right)}{\partial\beta\partial\beta'}\big|_{\beta=\beta_{\tau}^{0}}=E\left[X_{i}X_{i}'f_{e\mid X}\left(0\right)\right]
 \]
 
 \end_inset
 
 As a result, a positive-definite 
-\begin_inset Formula $Q_{\tau}=E\left[XX'f_{e\mid X}\left(0\right)\right]$
+\begin_inset Formula $Q_{\tau}=E\left[X_{i}X_{i}'f_{e\mid X}\left(0\right)\right]$
 \end_inset
 
  is necessary and sufficient for the identification of 
@@ -536,6 +536,10 @@ S_{n}\left(\beta\right)=\frac{1}{n}\sum\rho_{\tau}\left(y_{i}-X_{i}'\beta\right)
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The first order condition
 \begin_inset Formula 
 \begin{align*}
@@ -544,7 +548,8 @@ The first order condition
  & =-\frac{1}{n}\sum X_{i}\psi_{\tau}\left(e_{i}+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)\\
  & \stackrel{p}{\to}-E\left[X_{i}\psi_{\tau}\left(e+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)\right]\\
  & =-E\left[X_{i}E\left[\psi_{\tau}\left(e_{i}+X_{i}'\left(\beta_{\tau}^{0}-\beta\right)\right)|X_{i}\right]\right]\\
- & =-E\left[X_{i}E\left[\tau-\mathbb{I}\left\{ e\leq X_{i}'\left(\beta-\beta_{\tau}^{0}\right)\right\} |X_{i}\right]\right]\\
+ & =-E\left[X_{i}E\left[\left(\tau-\mathbb{I}\left\{ e\leq X_{i}'\left(\beta-\beta_{\tau}^{0}\right)\right\} \right)|X_{i}\right]\right]\\
+ & =E\left[X_{i}\left(E\left[\mathbb{I}\left\{ e\leq X_{i}'\left(\beta-\beta_{\tau}^{0}\right)\right\} |X_{i}\right]-\tau\right)\right]\\
  & =E\left[X_{i}\left(F_{e\mid X}\left(X'\left(\beta-\beta_{\tau}^{0}\right)\right)-\tau\right)\right]
 \end{align*}
 
@@ -559,7 +564,7 @@ The second-order condition with respect to
 \end_inset
 
  in the population version is 
-\begin_inset Formula $E\left[X_{i}X_{I}'f_{e\mid X}\left(X'\left(\beta-\beta_{\tau}^{0}\right)\right)\right]$
+\begin_inset Formula $E\left[X_{i}X_{i}'f_{e\mid X}\left(X'\left(\beta-\beta_{\tau}^{0}\right)\right)\right]$
 \end_inset
 
 .
@@ -572,7 +577,11 @@ The second-order condition with respect to
 \end_inset
 
 .
- Similarly, (global) identification and ULLN ensure consistency: 
+ 
+\end_layout
+
+\begin_layout Standard
+Similarly, (global) identification and ULLN ensure consistency: 
 \begin_inset Formula 
 \[
 \hat{\beta}\stackrel{p}{\to}\beta_{\tau}^{0}.
@@ -637,7 +646,7 @@ This condition simplifies the expression of the variance of the score function
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\Omega_{\tau}=E\left[X_{i}X_{i}'E\left[\left(\mathbb{I}\left\{ y\leq X'\beta_{\tau}^{0}\right\} -\tau\right)^{2}\mid X\right]\right]=\tau\left(1-\tau\right)E\left[X_{i}X_{i}'\right].
+\Omega_{\tau}=E\left[X_{i}X_{i}'E\left[\left(\mathbb{I}\left\{ y\leq X'\beta_{\tau}^{0}\right\} -\tau\right)^{2}\mid X_{i}\right]\right]=\tau\left(1-\tau\right)E\left[X_{i}X_{i}'\right].
 \]
 
 \end_inset
@@ -664,7 +673,7 @@ If we further assume
 \end_inset
 
 , then the Hessian is simplified as 
-\begin_inset Formula $Q_{\tau}=E\left[XX'\right]f_{e}\left(0\right)$
+\begin_inset Formula $Q_{\tau}=E\left[X_{i}X_{i}'\right]f_{e|X}\left(0\right)=E\left[X_{i}X_{i}'\right]f_{e}\left(0\right)$
 \end_inset
 
 , and we end up with 
