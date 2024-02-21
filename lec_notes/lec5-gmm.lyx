@@ -677,10 +677,10 @@ Show that
 \begin_layout Standard
 Next, given consistency we further check the asymptotic distribution of
  the GMM estimator under conditions of differentiability.
- The first-order condition of the optimality of GMM yields
+ Denote 
 \begin_inset Formula 
 \begin{align*}
-\boldsymbol{0}_{m} & =\frac{\partial}{\partial\theta}S_{n}\left(\widehat{\theta};W\right)=2\bar{D}_{n}'\left(\theta\right)W\bar{g}_{n}\left(\theta\right),
+\bar{\psi}_{n}\left(\theta;W\right) & =\frac{\partial}{\partial\theta}S_{n}\left(\theta;W\right)=2\bar{D}_{n}'\left(\theta\right)W\bar{g}_{n}\left(\theta\right),
 \end{align*}
 
 \end_inset
@@ -689,16 +689,27 @@ where
 \begin_inset Formula $\bar{D}_{n}\left(\theta\right)=\frac{1}{n}\sum D_{i}\left(\theta\right)$
 \end_inset
 
-.
- Denote 
+, and 
 \begin_inset Formula 
 \[
-\bar{\psi}_{n}\left(\theta;W\right)=2\bar{D}_{n}'\left(\theta\right)W\bar{g}_{n}\left(\theta\right).
+\bar{H}_{n}\left(\theta;W\right)=\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\theta;W\right)=2\sum_{k=1}^{m}\left(W\bar{g}_{n}\left(\theta\right)\right)_{k}\frac{\partial^{2}\bar{g}_{n,k}\left(z_{i},\theta\right)}{\partial\theta\partial\theta'}+2\bar{D}_{n}'\left(\theta\right)W\bar{D}_{n}\left(\theta\right).
 \]
 
 \end_inset
 
- Take a Taylor expansion of 
+
+\end_layout
+
+\begin_layout Standard
+The first-order condition of the optimality of GMM yields
+\begin_inset Formula 
+\[
+\boldsymbol{0}_{m}=\bar{\psi}_{n}\left(\widehat{\theta};W\right)=\bar{\psi}_{n}\left(\theta_{0};W\right)+\bar{H}_{n}\left(\theta_{0};W\right)\left(\widehat{\theta}-\theta_{0}\right)+h.o.t,
+\]
+
+\end_inset
+
+where the right-hand side comes from a Taylor expansion of 
 \begin_inset Formula $\bar{\psi}_{n}\left(\widehat{\theta};W\right)$
 \end_inset
 
@@ -706,23 +717,8 @@ where
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
-:
-\begin_inset Formula 
-\[
-\boldsymbol{0}_{m}=\bar{\psi}_{n}\left(\widehat{\theta};W\right)=\bar{\psi}_{n}\left(\theta_{0};W\right)+\bar{H}_{n}\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)+h.o.t,
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula 
-\[
-\bar{H}_{n}\left(\theta;W\right)=2\sum_{k=1}^{m}\left(W\bar{g}_{n}\left(\theta\right)\right)_{k}\frac{\partial^{2}\bar{g}_{n,k}\left(z_{i},\theta\right)}{\partial\theta\partial\theta'}+2\bar{D}_{n}'\left(\theta\right)W\bar{D}_{n}\left(\theta\right).
-\]
-
-\end_inset
-
-We again ignore the higher-order term and rearrange:
+.
+ We again ignore the higher-order term and rearrange:
 \begin_inset Formula 
 \begin{equation}
 \sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)=-\bar{H}_{n}^{-1}\left(\theta_{0};W\right)\times\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right).\label{eq:theta_closed}
@@ -735,7 +731,7 @@ We again ignore the higher-order term and rearrange:
 
 \begin_layout Standard
 We analyze the numerator 
-\begin_inset Formula $\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right)=2\bar{D}_{n}'\left(\theta_{0}\right)W\frac{1}{\sqrt{n}}g_{i}\left(\theta_{0}\right)$
+\begin_inset Formula $\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right)=2\bar{D}_{n}'\left(\theta_{0}\right)W\frac{1}{\sqrt{n}}\sum_{i}g_{i}\left(\theta_{0}\right)$
 \end_inset
 
 .
@@ -743,7 +739,7 @@ We analyze the numerator
 \begin_inset Formula $\E\left[g_{i}\left(\theta_{0}\right)\right]=0$
 \end_inset
 
-, if the variance is finite we can apply an CLT: 
+, if the variance is finite we can apply CLT: 
 \begin_inset Formula 
 \[
 \frac{1}{\sqrt{n}}\sum_{i}g_{i}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega_{0}\right)
@@ -781,7 +777,7 @@ where the first term vanishes as
 \end_inset
 
 .
- Put the numerator and the denominator together, we conclude
+ Putting the numerator and the denominator together, we conclude
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(D_{0}'WD_{0}\right)^{-1}D_{0}'W\Omega_{0}WD_{0}\left(D_{0}'WD_{0}\right)^{-1}\right).
@@ -815,7 +811,7 @@ In turns out that this choice of
 \begin_inset Formula $W$
 \end_inset
 
- achieves semiparametric efficiency.
+ achieves efficiency.
  
 \end_layout
 
@@ -1061,6 +1057,123 @@ The feasible statistic
 
 -statistic.
  
+\end_layout
+
+\begin_layout Section
+Simulated Moment of Moments
+\end_layout
+
+\begin_layout Standard
+(to be completed)
+\end_layout
+
+\begin_layout Standard
+In some models the 
+\begin_inset Formula $g$
+\end_inset
+
+ function may be too complicated to write in explicit form, but if a hypothesize
+d value of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is provided it is relatively easy to simulate the model.
+ 
+\end_layout
+
+\begin_layout Example
+The multinominal probit model (McFadden, 1989) involves multivariate integration
+ of nonlinear functions.
+ These integral can be approximated by stochastic simulation.
+ 
+\end_layout
+
+\begin_layout Standard
+Another example is an even more complicated international trade model by
+ Eaton, Kortum and Kramarz (2011).
+ 
+\end_layout
+
+\begin_layout Section
+Indirect Inference
+\end_layout
+
+\begin_layout Standard
+(to be completed)
+\end_layout
+
+\begin_layout Standard
+Example: Dynamic panel data model (Gourieroux, Phillips and Yu, 2011).
+ The model is 
+\begin_inset Formula 
+\[
+y_{it}=\alpha_{i}+\phi_{1}y_{it-1}+\cdots+\phi_{p}y_{it-p}+\epsilon_{it}=\alpha_{i}+\phi x_{t}+\epsilon_{it},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\phi=\left(\phi_{1},\ldots,\phi_{p}\right)'$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{it}=\left(y_{it-1},\ldots,y_{it-p}\right)'$
+\end_inset
+
+.
+ The reduced-form estimator is the familiar FE estimator 
+\begin_inset Formula $\widehat{\phi}^{FE}$
+\end_inset
+
+.
+ Under a hypothesized value 
+\begin_inset Formula $\phi$
+\end_inset
+
+, we simulate an artificial sample 
+\begin_inset Formula $\left(\tilde{y}_{it}\right)_{i\leq N,\,t\leq T}$
+\end_inset
+
+ and produce an artificial estimate 
+\begin_inset Formula $\tilde{\phi}^{FE}\left(\phi\right)$
+\end_inset
+
+.
+ The indirect inference estimator minimizes
+\begin_inset Formula 
+\[
+\min_{\phi}\left\Vert \widehat{\phi}^{FE}-E\left[\tilde{\phi}^{FE}\left(\phi\right)\right]\right\Vert .
+\]
+
+\end_inset
+
+Notice that the criterion function is different from SMM since 
+\begin_inset Formula $\widehat{\phi}^{FE}$
+\end_inset
+
+ is not a sample moment.
+ 
+\end_layout
+
+\begin_layout Standard
+Usually the expectation is difficult to write down in explicit form.
+ We can run many simulations, indexed by 
+\begin_inset Formula $h=1,2,\ldots,H$
+\end_inset
+
+ and obtain 
+\begin_inset Formula $H$
+\end_inset
+
+ estimates 
+\begin_inset Formula $\tilde{\phi}^{*(h)FE}$
+\end_inset
+
+ and replace the expectation by average as 
+\begin_inset Formula $\frac{1}{H}\sum_{h=1}^{H}\tilde{\phi}^{(h)FE}\left(\phi\right)$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
