@@ -414,6 +414,19 @@ covering number
 
 .
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Remark
@@ -450,6 +463,19 @@ It is straightforward to generalize from pointwise convergence to uniform
 \end_inset
 
 .
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -514,7 +540,7 @@ bracketing number
 \begin_inset Formula $l_{\ell}$
 \end_inset
 
- does not have to in 
+ does not have to belong to 
 \begin_inset Formula $\mathcal{G}$
 \end_inset
 
@@ -666,7 +692,8 @@ ULLN
  If
 \end_layout
 
-\begin_layout Theorem
+\begin_deeper
+\begin_layout Standard
 1.
  
 \begin_inset Formula $X_{i}$
@@ -675,7 +702,7 @@ ULLN
  are i.i.d.
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Standard
 2.
  
 \begin_inset Formula $E\left[G\left(X\right)\right]<\infty$
@@ -684,12 +711,12 @@ ULLN
 .
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Standard
 3.
  One of the following holds:
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Standard
 (i) 
 \begin_inset Formula $N_{\left[\;\right]}\left(\varepsilon,L_{1}\left(Q\right)\right)<\infty$
 \end_inset
@@ -701,7 +728,7 @@ ULLN
 .
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Standard
 (ii) 
 \begin_inset Formula $N_{1}\left(\varepsilon,Q\right)<\infty$
 \end_inset
@@ -713,17 +740,13 @@ ULLN
 .
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Standard
 (iii) 
 \begin_inset Formula $\Theta$
 \end_inset
 
  is compact and 
-\begin_inset Formula 
-\[
-P\left\{ \omega\in\Omega:g\left(X\left(\omega\right),\theta\right)\ \text{is continuous in }\theta\right\} =1
-\]
-
+\begin_inset Formula $P\left\{ \omega\in\Omega:g\left(X\left(\omega\right),\theta\right)\ \text{is continuous in }\theta\right\} =1$
 \end_inset
 
 at every 
@@ -731,6 +754,11 @@ at every
 \end_inset
 
 .
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+then ULLN holds.
 \end_layout
 
 \begin_layout Standard
@@ -862,8 +890,8 @@ noprefix "false"
 \begin_inset Formula $L_{1}$
 \end_inset
 
- bracket, and any 
-\begin_inset Formula $\mathbb{I}\left(x\leq\theta\right)$
+ bracket, and 
+\begin_inset Formula $g\left(x,\theta\right)=\mathbb{I}\left(x\leq\theta\right)$
 \end_inset
 
  must fall into one of the brackets.
@@ -1067,7 +1095,7 @@ stochastic equicontinuous
  such that 
 \begin_inset Formula 
 \[
-\limsup_{n\to\infty}P_{r}\left(\sup_{\theta\in\Theta}\sup_{\theta'\in N_{\delta}\left(\theta\right)}\left\Vert S_{n}\left(\theta\right)-S_{n}\left(\theta'\right)\right\Vert >\eta\right)\leq\varepsilon
+\limsup_{n\to\infty}\Pr\left(\sup_{\theta\in\Theta}\sup_{\theta'\in N_{\delta}\left(\theta\right)}\left\Vert S_{n}\left(\theta\right)-S_{n}\left(\theta'\right)\right\Vert >\eta\right)\leq\varepsilon
 \]
 
 \end_inset
@@ -1076,7 +1104,7 @@ where
 \begin_inset Formula $N_{\delta}\left(\theta\right)=\left\{ \theta'\in\Theta:\left\Vert \theta-\theta'\right\Vert \leq\delta\right\} $
 \end_inset
 
-is a neighbor of 
+ is a neighbor of 
 \begin_inset Formula $\theta\in\Theta$
 \end_inset
 
@@ -1093,7 +1121,7 @@ is a neighbor of
 \end_layout
 
 \begin_layout Standard
-If allows paths with jumps, as long as the probability associated with the
+It allows paths with jumps, as long as the probability associated with the
  jumps are small enough.
  It's an asymptotic and probabilistic generalization of uniform continuity.
 \end_layout
@@ -1167,11 +1195,7 @@ If
 \begin_inset Formula $\rho>0$
 \end_inset
 
-,
-\end_layout
-
-\begin_layout Example
-then 
+, then 
 \begin_inset Formula $\sqrt{\log N_{\left[\;\right]}\left(\varepsilon,L_{2}\left(Q\right)\right)}=\rho^{1/2}\left(\log\frac{1}{\varepsilon}\right)^{1/2}$
 \end_inset
 
@@ -1342,8 +1366,9 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Jan 31, 2023.
-   Transcribed by Shu Shen.}
+ 
+\backslash
+today}
 \end_layout
 
 \end_inset
