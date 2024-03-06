@@ -789,11 +789,12 @@ noprefix "false"
 \end_inset
 
 .
- For 
+ Notice that 
 \begin_inset Formula $g\left(x,\theta\right)=\mathbb{I}\left(x\leq\theta\right)$
 \end_inset
 
-, an envelop function is 
+.
+ Its envelop function is 
 \begin_inset Formula $G\left(x\right)=1$
 \end_inset
 
@@ -806,7 +807,8 @@ noprefix "false"
 \end_inset
 
 .
- Next, we construct an 
+ However, the indicator function is not continuous.
+ We will verify the bracket number by construct an 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
@@ -1077,7 +1079,7 @@ where
 
 \begin_layout Definition
 A random function 
-\begin_inset Formula $S_{n}\left(\theta\right)$
+\begin_inset Formula $\nu_{n}\left(\theta\right)$
 \end_inset
 
  is 
@@ -1095,29 +1097,16 @@ stochastic equicontinuous
  such that 
 \begin_inset Formula 
 \[
-\limsup_{n\to\infty}\Pr\left(\sup_{\theta\in\Theta}\sup_{\theta'\in N_{\delta}\left(\theta\right)}\left\Vert S_{n}\left(\theta\right)-S_{n}\left(\theta'\right)\right\Vert >\eta\right)\leq\varepsilon
+\limsup_{n\to\infty}\Pr\left(\omega\in\Omega:\sup_{\theta,\theta'\in\Theta:\left\Vert \theta-\theta'\right\Vert \leq\delta}\left\Vert \nu_{n}\left(\omega,\theta\right)-\nu_{n}\left(\omega,\theta'\right)\right\Vert >\eta\right)\leq\varepsilon.
 \]
 
 \end_inset
 
-where 
-\begin_inset Formula $N_{\delta}\left(\theta\right)=\left\{ \theta'\in\Theta:\left\Vert \theta-\theta'\right\Vert \leq\delta\right\} $
-\end_inset
 
- is a neighbor of 
-\begin_inset Formula $\theta\in\Theta$
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
-[diagram]
-\end_layout
-
-\begin_layout Standard
-[diagram]
+[diagram] 
 \end_layout
 
 \begin_layout Standard
@@ -1244,7 +1233,7 @@ We characterize the distribution of the empirical CDF.
  Let 
 \begin_inset Formula 
 \[
-g\left(X,\theta\right)=\mathbb{I}\left(X\leq\theta\right)=\begin{cases}
+g\left(X\left(\omega\right),\theta\right)=\mathbb{I}\left(X\left(\omega\right)\leq\theta\right)=\begin{cases}
 1, & with\text{\ensuremath{\enskip probability\ F\left(\theta\right)}}\\
 0, & with\text{\ensuremath{\enskip probability\ 1-F\left(\theta\right)}}
 \end{cases}
@@ -1306,11 +1295,21 @@ The joint normal distribution can be extended to for any finite
 \end_inset
 
 .
+ The stochastic equicontinuity can be verified by compute 
+\begin_inset Formula $N_{2}\left(\varepsilon,Q\right)$
+\end_inset
+
+ for any 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
 In the special case of 
-\begin_inset Formula $X\sim Uniform\left(0,1\right)$
+\begin_inset Formula $X\sim\text{Uniform}\left(0,1\right)$
 \end_inset
 
 , the above limit distribution becomes 
