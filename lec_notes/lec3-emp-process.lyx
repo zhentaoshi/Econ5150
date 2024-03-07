@@ -185,7 +185,17 @@ noprefix "false"
 \begin_inset Formula $g\left(X_{i}\left(\omega\right),\theta\right)=-\log f\left(X_{i}\left(\omega\right),\theta\right)$
 \end_inset
 
-.
+ is a scalar function.
+ (We used 
+\begin_inset Formula $\rho\left(X_{i};\theta\right)$
+\end_inset
+
+ for the summand of the M-estimators in previous lectures.
+ Here 
+\begin_inset Formula $g\left(x,\theta\right)$
+\end_inset
+
+ can be a vector-valued function in general.)
 \end_layout
 
 \begin_layout Standard
