@@ -1,6 +1,6 @@
 # Todo List
 
 
-- [ ] GMM
+- [x] GMM
 - [ ] Causality
 - [ ] Machine learning
