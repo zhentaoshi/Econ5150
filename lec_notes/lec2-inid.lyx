@@ -549,7 +549,7 @@ The textbook uses a counter-positive argument.
 \end_inset
 
  that contradicts with the Lyapunov CLT.
- Because the Lyapunov CLT is correct, such violation cannot be true.
+ 
 \end_layout
 
 \begin_layout Section
@@ -570,7 +570,7 @@ th
 integrable
 \emph default
  if 
-\begin_inset Formula $E[\left|z\right|^{r}]=\int_{-\infty}^{\infty}\left|z\right|dF(z)<\infty$
+\begin_inset Formula $E[\left|z\right|^{r}]=\int_{-\infty}^{\infty}\left|z\right|^{r}dF(z)<\infty$
 \end_inset
 
 .
@@ -646,15 +646,15 @@ uniformly integrable
 \end_layout
 
 \begin_layout Standard
-The textbook uses 
-\begin_inset Formula $\limsup_{n\to\infty}$
-\end_inset
-
- instead of 
+I prefer the above definition (with 
 \begin_inset Formula $\sup_{n\geq1}$
 \end_inset
 
- in the definition.
+) to that of the textbook (with 
+\begin_inset Formula $\limsup_{n\to\infty}$
+\end_inset
+
+).
  These two notations are equivalent in our context here, as 
 \begin_inset Formula $E\left[\left|z_{n}\right|\mathbb{I}\left\{ \left|z_{n}\right|>M\right\} \right]\searrow0$
 \end_inset
@@ -820,9 +820,9 @@ If Condition2 holds and the triangular array
 
  is 
 \shape slanted
-uniform square integrab
+uniformly square integrab
 \shape default
-le, then Lindeberg condition holds.
+le, then the Lindeberg condition holds.
 \end_layout
 
 \begin_layout Proof

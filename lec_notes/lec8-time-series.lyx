@@ -247,14 +247,14 @@ autocorrelation
 \end_inset
 
  is 
-\emph on
+\series bold
 strictly stationarity
-\emph default
+\series default
 , if for every 
 \begin_inset Formula $\ell\in\mathbb{Z}^{+}$
 \end_inset
 
-, joint distribution of 
+, the joint distribution of 
 \begin_inset Formula $\left(y_{t},y_{t+1},\ldots,y_{t+\ell}\right)$
 \end_inset
 
@@ -266,7 +266,7 @@ strictly stationarity
 \end_layout
 
 \begin_layout Standard
-When mentioning 
+When one mentions 
 \begin_inset Quotes eld
 \end_inset
 
@@ -274,15 +274,8 @@ stationarity
 \begin_inset Quotes erd
 \end_inset
 
-, the default is 
-\begin_inset Quotes eld
-\end_inset
-
-strictly stationarity
-\begin_inset Quotes erd
-\end_inset
-
-.
+ without referring to a quantifier, in econometrics it means strictly stationari
+ty by default.
 \end_layout
 
 \begin_layout Itemize
@@ -290,7 +283,7 @@ If
 \begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
- is i.i.d, then it is strictly stationarity.
+ is i.i.d, it is a special case of strict stationarity.
 \end_layout
 
 \begin_layout Itemize
@@ -298,28 +291,25 @@ If
 \begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
- is strictly stationarity, its transformation 
+ is strictly stationary, its transformation 
 \begin_inset Formula $x_{t}\in\phi\left(y_{t},y_{t-1},...\right)\in\mathbb{R}^{q}$
 \end_inset
 
- is also strictly stationarity.
- In other words, strictly stationarity is preserved by transformation.
+ is also strictly stationary.
+ In other words, strict stationarity is preserved by transformation.
+ 
 \end_layout
 
 \begin_layout Standard
-Series: 
-\begin_inset Formula $x_{t}=\sum_{j=0}^{\infty}a_{j}y_{t-j}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
 The infinite series 
 \begin_inset Formula $x_{t}$
 \end_inset
 
- is convergent if the partial sum 
+ is 
+\series bold
+convergent
+\series default
+ if the partial sum 
 \begin_inset Formula $\sum_{j=1}^{N}a_{j}y_{t-j}$
 \end_inset
 
@@ -327,7 +317,12 @@ The infinite series
 \begin_inset Formula $N\to\infty$
 \end_inset
 
- almost surely.
+ 
+\emph on
+almost surely
+\emph default
+.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -356,52 +351,81 @@ Ergodicity
 
 \begin_layout Standard
 A time series 
-\begin_inset Formula $\left\{ y_{t}\right\} $
+\begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
  is 
-\emph on
+\series bold
 ergodic
-\emph default
+\series default
  if all invariant events are trivial.
- Any event unaffected by time shift is of probability 0 or 1.
  
-\begin_inset Quotes eld
+\end_layout
+
+\begin_layout Definition
+Formal definitions
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\widetilde{y}_{t}=\left(...,y_{t-1},y_{t},y_{t+1,}...\right)$
 \end_inset
 
-invariant
-\begin_inset Quotes erd
+, and the 
+\begin_inset Formula $\ell$
 \end_inset
 
- means the sequence of a random variable gets stuck somewhere.
+-th time shift is 
+\begin_inset Formula $\widetilde{y}_{t+\ell}=\left(...,y_{t-1+\ell},y_{t+\ell},y_{t+\ell+1,}...\right)$
+\end_inset
+
+.
  
-\begin_inset Note Note
-status open
+\end_layout
 
-\begin_layout Plain Layout
-Such invariant can not happen if 
-\begin_inset Formula $P\left(A\right)=0$
+\begin_layout Definition
+Let an event 
+\begin_inset Formula $D\in\left\{ \widetilde{y}_{t}\in G\right\} $
 \end_inset
 
-, and in the meantime 
-\begin_inset Formula $P\left(A^{c}\right)=1$
+ for some 
+\begin_inset Formula $G\subseteq\mathbb{R}^{m\times\infty}$
+\end_inset
+
+, and a time shift of the event is 
+\begin_inset Formula $D_{\ell}\in\left\{ \widetilde{y}_{t+\ell}\in G\right\} $
 \end_inset
 
 .
 \end_layout
 
+\begin_layout Definition
+An event is 
+\series bold
+invariant
+\series default
+ if 
+\begin_inset Formula $D_{\ell}=D$
 \end_inset
 
- Ergodicty is preserved by transformation.
- If 
-\begin_inset Formula $\left\{ y_{t}\right\} $
+ for all 
+\begin_inset Formula $\ell\in\mathbb{Z}$
 \end_inset
 
- is stationarity and erdogic, the same is for 
-\begin_inset Formula $x_{t}\in\phi\left(y_{t},y_{t-1},...\right)$
+.
+ An event is 
+\series bold
+trivial
+\series default
+ if 
+\begin_inset Formula $P\left(D\right)=0$
 \end_inset
 
- (function with infinite terms).
+ or 
+\begin_inset Formula $P\left(D\right)=1$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Example
@@ -421,7 +445,29 @@ If
 \end_layout
 
 \begin_layout Standard
-(Cesaro means) If 
+Ergodicty is preserved by transformation.
+ If 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is stationarity and erdogic, the same is for 
+\begin_inset Formula $x_{t}\in\phi\left(y_{t},y_{t-1},...\right)$
+\end_inset
+
+ (function with infinite terms).
+\end_layout
+
+\begin_layout Fact
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Cesaro mean
+\end_layout
+
+\end_inset
+
+ If 
 \begin_inset Formula $a_{j}\to a$
 \end_inset
 
@@ -470,73 +516,9 @@ need to revise
 
 \end_layout
 
-\begin_layout Definition
-Formal definitions
-\end_layout
-
-\begin_layout Definition
-Let 
-\begin_inset Formula $\widetilde{y}_{t}=\left(...,y_{t-1},y_{t},y_{t+1,}...\right)$
-\end_inset
-
- an event 
-\begin_inset Formula $A\in\left\{ \widetilde{y}_{t}\in G\right\} $
-\end_inset
-
- for some 
-\begin_inset Formula $G\subseteq\mathbb{R}^{m\times\infty}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Definition
-The 
-\begin_inset Formula $\ell$
-\end_inset
-
--th time shift is 
-\begin_inset Formula $\widetilde{y}_{t+\ell}=\left(...,y_{t-1+\ell},y_{t+\ell},y_{t+\ell+1,}...\right)$
-\end_inset
-
- and a time shift of the event is 
-\begin_inset Formula $A_{\ell}\in\left\{ \widetilde{y}_{t+\ell}\in G\right\} $
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Definition
-An event is 
-\series bold
-invariant
-\series default
- if 
-\begin_inset Formula $A_{\ell}=A$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-An event is 
-\series bold
-trivial
-\series default
- if 
-\begin_inset Formula $P\left(A\right)=0$
-\end_inset
-
- or 
-\begin_inset Formula $P\left(A\right)=1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Theorem
+\begin_layout Standard
 A stationarity 
-\begin_inset Formula $\left\{ y_{t}\right\} $
+\begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
  is erdogic if for all events A and B,
@@ -550,7 +532,7 @@ A stationarity
 
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Standard
 Let 
 \begin_inset Formula $B=A$
 \end_inset
@@ -566,7 +548,7 @@ Let
 .
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Standard
 A 
 \begin_inset Quotes eld
 \end_inset
@@ -597,12 +579,19 @@ mixing
 \end_layout
 
 \begin_layout Itemize
-Mixing says that separate events (any A and B) are asymptotically independent
- when 
+Mixing says that separate events (any 
 \begin_inset Formula $A$
 \end_inset
 
- is shifted to 
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+) are asymptotically independent when one of the event, say 
+\begin_inset Formula $A$
+\end_inset
+
+, is shifted to 
 \begin_inset Formula $A_{\ell}$
 \end_inset
 
@@ -631,14 +620,20 @@ on average
 \end_layout
 
 \begin_layout Theorem
-Ergodic Theorem:
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Ergodic Theorem
 \end_layout
 
-\begin_layout Theorem
+\end_inset
+
+ If 
 \begin_inset Formula $y_{t}\in\mathbb{R}^{m}$
 \end_inset
 
- is stationarity and erdogic, and 
+ is stationarity, erdogic, and 
 \begin_inset Formula $E\left\Vert y\right\Vert <\infty$
 \end_inset
 
@@ -653,12 +648,8 @@ Ergodic Theorem:
 .
 \end_layout
 
-\begin_layout Theorem
-Interpretation: Convergence in the 1st mean implies 
-\begin_inset Formula $\overset{p}{\to}$
-\end_inset
-
-.
+\begin_layout Standard
+This is a version of LLN for time series.
 \end_layout
 
 \begin_layout Section
@@ -686,7 +677,7 @@ More generally, we write
 \begin_inset Formula $\mathscr{F}_{t}$
 \end_inset
 
- as the smallest 
+ as the 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -699,35 +690,43 @@ More generally, we write
 \begin_inset Formula $\mathscr{F}_{t}$
 \end_inset
 
- is called an “information set”.
-\begin_inset Formula 
-\[
-E\left[y_{t}\mid\mathscr{F}_{t-1}\right]=E_{t-1}\left[y_{t}\right]
-\]
+ is called an 
+\series bold
+information set
+\series default
+.
+ We can write 
+\begin_inset Formula $E_{t-1}\left[y_{t}\right]=E\left[y_{t}\mid\mathscr{F}_{t-1}\right]$
+\end_inset
 
+.
+\end_layout
+
+\begin_layout Itemize
+Information sets are nested: 
+\begin_inset Formula $\cdots\subseteq\mathscr{F}_{t-1}\subseteq\mathscr{F}_{t}\subseteq\mathscr{F}_{t+1}\subseteq...$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-Information sets are nested 
-\begin_inset Formula $\mathscr{F}_{t-1}\subseteq\mathscr{F}_{t}\subseteq\mathscr{F}_{t+1},...$
+Information sets associate with the generating variables may differ.
+ For example, in general 
+\begin_inset Formula $\sigma\left(y_{t},y_{t-1},...\right)\neq\sigma\left(y_{t},x_{t},y_{t-1},x_{t-1},...\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Depends on the definition, when multiple random variables are involved 
-\begin_inset Formula 
-\[
-\sigma\left(y_{t},y_{t-1},...\right)\neq\sigma\left(y_{t},x_{t},y_{t-1},x_{t-1},...\right)
-\]
-
+.
+ The former is the information set for 
+\begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
+, whereas the latter is the information set for 
+\begin_inset Formula $\left(y_{t},x_{t}\right)$
+\end_inset
 
+.
+ 
 \end_layout
 
 \begin_layout Section
@@ -736,15 +735,16 @@ Martingale Difference Sequence (MDS)
 
 \begin_layout Itemize
 Let 
-\begin_inset Formula $\left\{ e_{t}\right\} $
+\begin_inset Formula $\left(e_{t}\right)$
 \end_inset
 
  be a time series, and 
 \begin_inset Formula $\mathscr{F}_{t}$
 \end_inset
 
- be an information set, 
-\begin_inset Formula $\left\{ e_{t}\right\} $
+ be an information set.
+ We say 
+\begin_inset Formula $\left(e_{t}\right)$
 \end_inset
 
  is 
@@ -759,7 +759,8 @@ adapted
 \begin_inset Formula $E\left[e_{t}\mid\mathscr{F}_{t}\right]=e_{t}$
 \end_inset
 
- (
+.
+ It means that 
 \begin_inset Formula $\mathscr{F}_{t}$
 \end_inset
 
@@ -776,17 +777,32 @@ natural filtration
 \begin_inset Formula $\mathscr{F}_{t}=\sigma\left(e_{t},e_{t-1},...\right)$
 \end_inset
 
-.)
+; it is the smallest information set to which 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ is adapted.
+ 
 \end_layout
 
-\begin_layout Itemize
-MDS: a process 
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+MDS
+\end_layout
+
+\end_inset
+
+ A process 
 \begin_inset Formula $\left\{ e_{t},\mathscr{F}_{t}\right\} $
 \end_inset
 
  is MDS if 
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 \begin_inset Formula $e_{t}$
 \end_inset
@@ -812,48 +828,51 @@ MDS: a process
 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
-Interpretation: unforeseeable.
-\end_layout
-
-\begin_layout Standard
-Mean independence.
- But it does not rule our predictability in other moments.
-\end_layout
-
-\begin_layout Example
-\begin_inset Formula $e_{t}=u_{t}u_{t-1}$
-\end_inset
-
-, 
-\begin_inset Formula $u_{t}\sim i.i.d.\,N\left(0,1\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
+Interpretation: 
 \begin_inset Formula $e_{t}$
 \end_inset
 
- is MDS, but not i.i.d.
+ is unforeseeable given the information 
+\begin_inset Formula $\mathscr{F}_{t-1}$
+\end_inset
+
+.
+ The definition of mds is about the mean independence.
+ It does not rule our predictability in other moments.
  
 \end_layout
 
-\begin_layout Example
-The covariance of 
-\begin_inset Formula $e_{t}^{2}$
+\begin_layout Standard
+MDS implies that the series is a white noise (zero autocovariance at all
+ orders), because 
+\begin_inset Formula 
+\[
+cov\left(e_{t},e_{t-\ell}\right)=E\left[e_{t}e_{t-\ell}\right]=E\left[E\left[e_{t}e_{t-\ell}\mid\mathscr{F}_{t-1}\right]\right]=E\left[e_{t-\ell}E\left[e_{t}\mid\mathscr{F}_{t-1}\right]\right]=0.
+\]
+
 \end_inset
 
- and 
-\begin_inset Formula $e_{t-1}^{2}$
-\end_inset
 
- is not 0.
 \end_layout
 
 \begin_layout Example
-The filtration here is 
+Suppose 
+\begin_inset Formula $e_{t}=u_{t}u_{t-1}$
+\end_inset
+
+, where 
+\begin_inset Formula $u_{t}\sim i.i.d.\,N\left(0,1\right)$
+\end_inset
+
+.
+ In this case, 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ is MDS.
+ Consider the filtration 
 \begin_inset Formula $\mathscr{F}_{t}=\sigma\left(u_{t},u_{t-1},...\right)$
 \end_inset
 
@@ -861,58 +880,126 @@ The filtration here is
 \begin_inset Formula $\sigma\left(e_{t},e_{t-1},...\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
+.
+ 
 \begin_inset Formula 
-\begin{align*}
-cov\left(e_{t},e_{t-k}\right) & =E\left[e_{t}e_{t-k}\right]=E\left[E\left[e_{t}e_{t-k}\mid\mathscr{F}_{t-1}\right]\right]\\
- & =E\left[e_{t-k}E\left[e_{t}\mid\mathscr{F}_{t-1}\right]\right]=0
-\end{align*}
+\[
+E\left[e_{t}|\mathscr{F}_{t-1}\right]=E\left[u_{t}u_{t-1}|\mathscr{F}_{t-1}\right]=u_{t-1}E\left[u_{t}|\mathscr{F}_{t-1}\right]=u_{t-1}\cdot0=0.
+\]
 
 \end_inset
 
+On the other hand, the covariance of 
+\begin_inset Formula $e_{t}^{2}$
+\end_inset
 
+ and 
+\begin_inset Formula $e_{t-1}^{2}$
+\end_inset
+
+ is not 0 as 
+\begin_inset Formula 
+\[
+cov\left(e_{t}^{2},e_{t-1}^{2}\right)=E\left[u_{t}^{2}u_{t-2}^{2}u_{t-1}^{4}\right]-E\left[u_{t}^{2}u_{t-1}^{2}\right]E\left[u_{t-1}^{2}u_{t-2}^{2}\right]=3\times1\times1-\left(1\times1\right)^{2}=2
+\]
+
+\end_inset
+
+as the kurtosis of 
+\begin_inset Formula $N\left(0,1\right)$
+\end_inset
+
+ is 3.
+ Therefore, 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ is an mds but not iid.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 A MDS 
 \begin_inset Formula $\left(e_{t},\mathscr{F}_{t}\right)$
 \end_inset
 
- is a homoskedastic martingale difference sequence if 
+ is a 
+\series bold
+conditional homoskedastic
+\series default
+ if 
 \begin_inset Formula $E\left[e_{t}^{2}\mid\mathscr{F}_{t-1}\right]=\sigma^{2}$
 \end_inset
 
 .
- 
+ In the above example, 
 \begin_inset Formula $e_{t}=u_{t}u_{t-1}$
 \end_inset
 
- is MDS, but not homoskedastic.
+ is MDS, but conditional heteroskedastic because 
+\begin_inset Formula 
+\[
+E\left[e_{t}^{2}|\mathscr{F}_{t-1}\right]=E\left[u_{t}^{2}u_{t-1}^{2}|\mathscr{F}_{t-1}\right]=u_{t-1}^{2}E\left[u_{t}^{2}|\mathscr{F}_{t-1}\right]=\sigma^{2}u_{t-1}^{2}
+\]
+
+\end_inset
+
+ varies over time.
+\end_layout
+
+\begin_layout Standard
+In the real world, mds is a good model for the stock return.
+ Indeed, mds is implied by the efficient market hypothesis.
+ On the other hand, empirical evidence shows that the conditional variance
+ of stock return is very predictable.
+ There are many models about conditional volatility, for example the well-known
+ ARCH and GARCH models.
 \end_layout
 
 \begin_layout Theorem
-CLT for MDS: If 
-\begin_inset Formula $\left\{ u_{t}\right\} $
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+CLT for MDS
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $\left(e_{t}\right)$
 \end_inset
 
  is strictly stationary, ergodic and MDS, then 
 \begin_inset Formula 
 \[
-S_{n}=\frac{1}{\sqrt{n}}\sum_{t=1}^{n}u_{t}\overset{d}{\to}N\left(0,\sum\right)
+S_{n}=\frac{1}{\sqrt{n}}\sum_{t=1}^{n}e_{t}\overset{d}{\to}N\left(0,\Sigma\right)
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\sum=E\left[u_{t}u_{t}'\right]$
+\begin_inset Formula $\Sigma=E\left[e_{t}e_{t}'\right]$
 \end_inset
 
 .
- There is the t.s.
- counterpart of the Lindeberg-Lévy CLT.
+ There is the time series counterpart of the Lindeberg-Lévy CLT.
+\end_layout
+
+\begin_layout Standard
+In the above theorem, because 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ is strict stationary, its variance 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ must be a constant matrix.
+ It does not rule out 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ being conditional heteroskedastic.
 \end_layout
 
 \begin_layout Section
@@ -920,19 +1007,26 @@ Mixing
 \end_layout
 
 \begin_layout Standard
-we will loose the restriction of MDS.
- The price are stronger assumptions on the dependence than ergodicity.
+MDS is useful, but too restrictive.
+ For large sample results without MDS, we will been to impose stronger assumptio
+n on the dependence than ergodicity.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+The 
+\series bold
+alpha-coefficient
+\series default
+ for two events is defined as 
 \begin_inset Formula $\alpha\left(A,B\right)=\left|P\left(AB\right)-P\left(A\right)P\left(B\right)\right|$
 \end_inset
 
-
+.
+ 
 \end_layout
 
-\begin_layout Itemize
-Let two 
+\begin_layout Standard
+Denote two 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -944,11 +1038,12 @@ Let two
 \begin_inset Formula $\mathscr{F}_{t}^{\infty}=\sigma\left(y_{t},y_{t+1},...\right)$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
-Strong mixing coefficients 
+.
+ The 
+\series bold
+strong mixing coefficient
+\series default
+ (alpha-coefficient) is defined as 
 \begin_inset Formula 
 \[
 \alpha\left(\ell\right)=\sup_{A\in\mathscr{F}_{-\infty}^{t-\ell},B\in\mathscr{F}_{t}^{\infty}}\alpha\left(A,B\right)
@@ -956,11 +1051,15 @@ Strong mixing coefficients
 
 \end_inset
 
-
-\begin_inset Formula $y_{t}$
+We say 
+\begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
- is strong mixing if 
+ is 
+\series bold
+strong mixing
+\series default
+ (alpha mixing) if 
 \begin_inset Formula $\alpha\left(\ell\right)\to0$
 \end_inset
 
@@ -969,6 +1068,7 @@ Strong mixing coefficients
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -1481,8 +1581,9 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Mar 14, 2023.
-   Transcribed by Shu Shen.}
+ 
+\backslash
+today}
 \end_layout
 
 \end_inset
