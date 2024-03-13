@@ -1174,7 +1174,11 @@ FCLT
 
 \begin_layout Standard
 Stochastic equicontinuity if difficult to verify, a sufficient condition
- is related to bracket integral
+ is related to 
+\series bold
+bracket integral
+\series default
+
 \begin_inset Formula 
 \[
 J_{\left[\;\right]}\left(\delta,L_{2}\left(Q\right)\right)=\int_{0}^{\delta}\sqrt{\log N_{\left[\;\right]}\left(\varepsilon,L_{2}\left(Q\right)\right)}{\rm d}\varepsilon
@@ -1219,11 +1223,11 @@ If
 \begin_inset Formula $\nu_{n}\left(\theta\right)$
 \end_inset
 
- is stochastic equicontinuous if 
+ is stochastic equicontinuous if bracket integral 
 \begin_inset Formula $J_{\left[\;\right]}\left(1,L_{2}\left(Q\right)\right)<\infty$
 \end_inset
 
-, or 
+, or the covering integral 
 \begin_inset Formula $J_{2}\left(1\right)=\int_{0}^{1}\sqrt{\log N_{2}\left(\varepsilon,Q\right)}{\rm d}\varepsilon<\infty$
 \end_inset
 
@@ -1280,28 +1284,41 @@ Since
 \begin_inset Formula $U_{i}\left(\theta\right)$
 \end_inset
 
- is i.i.d, 
+ is i.i.d, for any 
+\begin_inset Formula $\theta_{1},\theta_{2}\in\mathbb{R}$
+\end_inset
+
+, by the Lindeberg-Levy CLT:
 \begin_inset Formula 
-\[
+\begin{eqnarray*}
 \left(\begin{array}{c}
 \nu_{n}\left(\theta_{1}\right)\\
 \nu_{n}\left(\theta_{2}\right)
-\end{array}\right)=\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left(\begin{array}{c}
+\end{array}\right) & = & \frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left(\begin{array}{c}
 U_{i}\left(\theta_{1}\right)\\
 U_{i}\left(\theta_{2}\right)
-\end{array}\right)\stackrel{d}{\to}N\left(\left(\begin{array}{c}
+\end{array}\right)\\
+ & \stackrel{d}{\to} & N\left(\left(\begin{array}{c}
 0\\
 0
 \end{array}\right),\left(\begin{array}{cc}
 F\left(\theta_{1}\right)\left(1-F\left(\theta_{1}\right)\right) & F\left(\theta_{1}\wedge\theta_{2}\right)-F\left(\theta_{1}\right)F\left(\theta_{2}\right)\\
 F\left(\theta_{1}\wedge\theta_{2}\right)-F\left(\theta_{1}\right)F\left(\theta_{2}\right) & F\left(\theta_{2}\right)\left(1-F\left(\theta_{2}\right)\right)
-\end{array}\right)\right)
-\]
+\end{array}\right)\right).
+\end{eqnarray*}
 
 \end_inset
 
-The joint normal distribution can be extended to for any finite 
+The joint normal distribution can be extended to any finite 
 \begin_inset Formula $\theta_{1},\theta_{2},...,\theta_{m}$
+\end_inset
+
+, with the asymptotic variance 
+\begin_inset Formula $F\left(\theta_{j}\right)\left(1-F\left(\theta_{j}\right)\right)$
+\end_inset
+
+ and covariance 
+\begin_inset Formula $F\left(\theta_{j}\wedge\theta_{j'}\right)-F\left(\theta_{j}\right)F\left(\theta_{j'}\right)$
 \end_inset
 
 .
@@ -1314,7 +1331,11 @@ The joint normal distribution can be extended to for any finite
 \end_inset
 
 .
- 
+ (The 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+-norm covering number is also easy to compute).
 \end_layout
 
 \begin_layout Standard
