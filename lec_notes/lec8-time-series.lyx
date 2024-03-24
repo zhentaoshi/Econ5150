@@ -1007,26 +1007,28 @@ Mixing
 \end_layout
 
 \begin_layout Standard
-MDS is useful, but too restrictive.
- For large sample results without MDS, we will been to impose stronger assumptio
-n on the dependence than ergodicity.
-\end_layout
-
-\begin_layout Standard
-The 
-\series bold
-alpha-coefficient
-\series default
- for two events is defined as 
-\begin_inset Formula $\alpha\left(A,B\right)=\left|P\left(AB\right)-P\left(A\right)P\left(B\right)\right|$
-\end_inset
-
-.
+MDS is useful, but too restrictive in that it rules out serial correlation.
+ If we are reluctant to impose MDS, we will need stronger assumption on
+ the dependence than ergodicity to establish large sample results.
  
 \end_layout
 
 \begin_layout Standard
-Denote two 
+We introduce some more definitions.
+ The 
+\series bold
+alpha-coefficient
+\series default
+ 
+\series bold
+for two events
+\series default
+ is defined as 
+\begin_inset Formula $\alpha\left(A,B\right)=\left|P\left(AB\right)-P\left(A\right)P\left(B\right)\right|$
+\end_inset
+
+.
+ Denote two 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -1046,7 +1048,7 @@ strong mixing coefficient
  (alpha-coefficient) is defined as 
 \begin_inset Formula 
 \[
-\alpha\left(\ell\right)=\sup_{A\in\mathscr{F}_{-\infty}^{t-\ell},B\in\mathscr{F}_{t}^{\infty}}\alpha\left(A,B\right)
+\alpha\left(\ell\right)=\sup_{t}\sup_{A\in\mathscr{F}_{-\infty}^{t-\ell},B\in\mathscr{F}_{t}^{\infty}}\alpha\left(A,B\right)
 \]
 
 \end_inset
@@ -1071,39 +1073,98 @@ strong mixing
  
 \end_layout
 
-\begin_layout Itemize
-In general, the 
+\begin_layout Standard
+If the time series is strictly stationary, the definition of the alpha-coefficie
+nt can be simplified as 
+\begin_inset Formula $\alpha\left(\ell\right)=\sup_{A\in\mathscr{F}_{-\infty}^{t-\ell},B\in\mathscr{F}_{t}^{\infty}}\alpha\left(A,B\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Fact
+An 
 \begin_inset Formula $\alpha$
 \end_inset
 
--coefficients should have a sup over 
-\begin_inset Formula $t$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\alpha\left(\ell\right)=\sup_{t}\sup_{A\in\mathscr{F}_{-\infty}^{t-\ell},B\in\mathscr{F}_{t}^{\infty}}\alpha\left(A,B\right)
-\]
-
-\end_inset
-
-
+-mixing process is ergodic.
 \end_layout
 
-\begin_layout Itemize
-A mixing process is ergodic.
-\end_layout
-
-\begin_layout Itemize
-Absolute regularity (
-\begin_inset Formula $\beta$
+\begin_layout Standard
+To use the 
+\begin_inset Formula $\alpha$
 \end_inset
 
--mixing)
+-mixing process, we usually need 
+\series bold
+rate conditions
+\series default
+ (for example 
+\begin_inset Formula $\alpha\left(\ell\right)=O\left(\ell^{-r}\right)$
+\end_inset
+
+ gives the speed of decay) or 
+\series bold
+summation restriction
+\series default
+ (for example 
+\begin_inset Formula $\sum_{\ell=0}^{\infty}\left[\alpha\left(\ell\right)\right]^{r}<\infty$
+\end_inset
+
+ or 
+\begin_inset Formula $\sum_{\ell=0}^{\infty}\ell^{s}\alpha\left(\ell\right)^{r}<\infty$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Standard
+Strong mixing is preserved by finite transformation.
+\end_layout
+
+\begin_layout Fact
+Suppose 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ has mixing coefficients 
+\begin_inset Formula $\alpha_{y}\left(\ell\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $x_{t}=\phi\left(y_{t},y_{t-1},...,y_{t-q}\right)$
+\end_inset
+
+ is a finite transformation of 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+.
+ Then Then 
+\begin_inset Formula $\alpha_{x}\left(\ell\right)<\alpha_{y}\left(\ell-q\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\ell\geq q$
+\end_inset
+
+.The 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-coefficients satisfy the same rate and summation properties.
+\end_layout
+
+\begin_layout Standard
+Another widely used measurement of dependence is 
+\series bold
+absolute regularity
+\series default
+ (beta-coefficient)
 \begin_inset Formula 
 \[
-\beta\left(\ell\right)=\sup_{A\in\mathscr{F}_{t}^{\infty}}\left|P\left(A\mid\mathscr{F}_{-\infty}^{t-\ell}\right)-P\left(A\right)\right|
+\beta\left(\ell\right)=\sup_{t}\sup_{A\in\mathscr{F}_{t}^{\infty}}\left|P\left(A\mid\mathscr{F}_{-\infty}^{t-\ell}\right)-P\left(A\right)\right|.
 \]
 
 \end_inset
@@ -1116,72 +1177,16 @@ Absolute regularity (
 \begin_inset Formula $\alpha$
 \end_inset
 
- mixing.
-\end_layout
-
-\begin_layout Itemize
-Strong mixing is preserved by finite transformation.
-\end_layout
-
-\begin_layout Theorem
-\begin_inset Formula $y_{t}$
+ mixing in that 
+\begin_inset Formula $\beta\left(\ell\right)\to0$
 \end_inset
 
- has mxing coefficients 
-\begin_inset Formula $\alpha_{y}\left(\ell\right)$
+ implies 
+\begin_inset Formula $\alpha\left(\ell\right)\to0$
 \end_inset
 
 .
  
-\begin_inset Formula $x_{t}=\sigma\left(y_{t},y_{t-1},...,y_{t-q}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Theorem
-Then 
-\begin_inset Formula $\alpha_{x}\left(\ell\right)<\alpha_{y}\left(\ell-q\right)$
-\end_inset
-
- for 
-\begin_inset Formula $\ell\geq q$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Theorem
-The 
-\begin_inset Formula $\alpha$
-\end_inset
-
--coefficients satisfy the same rate and summation properties.
-\end_layout
-
-\begin_layout Itemize
-Rate conditions 
-\begin_inset Formula $\alpha\left(\ell\right)=O\left(e^{-r}\right)$
-\end_inset
-
-.
- Summation restriction 
-\begin_inset Formula $\sum_{\ell=0}^{\infty}\alpha\left(e\right)^{r}<\infty$
-\end_inset
-
- or 
-\begin_inset Formula $\sum_{\ell=0}^{\infty}e^{s}\alpha\left(e\right)^{r}<\infty$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Thm 14.13 bounds covariances with functions of 
-\begin_inset Formula $\alpha$
-\end_inset
-
--coefficients.
 \end_layout
 
 \begin_layout Section
@@ -1189,40 +1194,42 @@ CLT for Correlated Variables
 \end_layout
 
 \begin_layout Standard
+The scaled partial sum of a scalar time series 
+\begin_inset Formula $\left(y_{t}\right)_{t=1}^{n}$
+\end_inset
+
+ has variance 
 \begin_inset Formula 
 \begin{align*}
 var\left(S_{n}\right) & =var\left(\frac{1}{\sqrt{n}}\sum_{t=1}^{n}y_{t}\right)\\
- & =\frac{1}{n}\mathbf{I}_{N}'E\left[YY'\right]\mathbf{I}_{N}\\
- & =\frac{1}{n}\mathbf{I}_{N}'\left[\begin{array}{ccccc}
-\sigma^{2} & \gamma\left(1\right) & \gamma\left(2\right)\\
+ & =\frac{1}{n}\mathbf{I}_{n}'E\left[YY'\right]\mathbf{I}_{n}\\
+ & =\frac{1}{n}\mathbf{I}_{n}'\left[\begin{array}{ccccc}
+\sigma^{2} & \gamma\left(1\right) & \gamma\left(2\right) &  & \gamma\left(n-1\right)\\
 \gamma\left(1\right) & \sigma^{2} & \gamma\left(1\right)\\
 \gamma\left(2\right) & \gamma\left(1\right) & \sigma^{2}\\
- &  &  & \ddots\\
- &  &  &  & \sigma^{2}
-\end{array}\right]\mathbf{I}_{N}\\
+\vdots &  &  & \ddots & \vdots\\
+\gamma\left(n-1\right) &  &  &  & \sigma^{2}
+\end{array}\right]\mathbf{I}_{n}\\
  & =\frac{1}{n}\left(n\sigma^{2}+2\left(n-1\right)\gamma\left(1\right)+2\left(n-2\right)\gamma\left(2\right)+...+2\gamma\left(n-1\right)+2\times0\times\gamma\left(n\right)\right)\\
  & =\sigma^{2}+2\sum_{\ell=1}^{n}\left(1-\frac{\ell}{n}\right)\gamma\left(\ell\right)
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-As 
+Since 
 \begin_inset Formula $\gamma\left(-\ell\right)=\gamma\left(\ell\right)$
 \end_inset
 
-, 
+, it is equivalent to write 
 \begin_inset Formula $var\left(S_{n}\right)=\sum_{\ell=-n}^{n}\left(1-\frac{\left|\ell\right|}{n}\right)\gamma\left(\ell\right)$
 \end_inset
 
+.
+ If 
+\begin_inset Formula $y_{t}$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-In vector case, similarly we have 
+ is a vector time series, similarly 
 \begin_inset Formula 
 \[
 var\left(S_{n}\right)=\varGamma\left(0\right)+\sum_{\ell=1}^{n}\left(1-\frac{\ell}{n}\right)\left(\gamma\left(\ell\right)+\gamma\left(\ell\right)'\right)=\sum_{\ell=-n}^{n}\left(1-\frac{\left|\ell\right|}{n}\right)\gamma\left(\ell\right)
@@ -1233,17 +1240,17 @@ var\left(S_{n}\right)=\varGamma\left(0\right)+\sum_{\ell=1}^{n}\left(1-\frac{\el
 
 \end_layout
 
-\begin_layout Itemize
-For CLT to work, 
+\begin_layout Standard
+For any CLT to work, 
 \begin_inset Formula $var\left(S_{n}\right)$
 \end_inset
 
- must be convergent in the limit
+ must be convergent in the limit.
+ The sum of the autocovariances is
 \begin_inset Formula 
 \begin{align*}
 \sum_{\ell=1}^{n}\left(1-\frac{\ell}{n}\right)\gamma\left(\ell\right) & =\frac{1}{n}\sum_{\ell=1}^{n}\left(n-\ell\right)\gamma\left(\ell\right)\\
- & =\frac{1}{n}\sum_{\ell=1}^{n-1}\sum_{j=1}^{\ell}\gamma\left(j\right)\\
- & \to\sum_{j=1}^{\infty}\gamma\left(j\right)=\sum_{\ell=1}^{\infty}\gamma\left(\ell\right)
+ & =\frac{1}{n}\sum_{\ell=1}^{n-1}\sum_{j=1}^{\ell}\gamma\left(j\right)\to\sum_{j=1}^{\infty}\gamma\left(j\right)
 \end{align*}
 
 \end_inset
@@ -1256,7 +1263,11 @@ by the Theorem of Cesaro means if
 \end_layout
 
 \begin_layout Standard
-Necessary condition: 
+A necessary condition for 
+\begin_inset Formula $\sum_{\ell=1}^{\infty}\gamma\left(\ell\right)$
+\end_inset
+
+ to be convergent is that 
 \begin_inset Formula $\gamma\left(\ell\right)\to0$
 \end_inset
 
@@ -1264,48 +1275,29 @@ Necessary condition:
 \begin_inset Formula $\ell\to\infty$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-Sufficient: 
+; and a sufficient condition is Sufficient: 
 \begin_inset Formula $\sum_{\ell=1}^{\infty}\left|\gamma\left(\ell\right)\right|<\infty$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-It can be show if 
-\begin_inset Formula $E\left\Vert u_{t}\right\Vert ^{r}<\infty$
-\end_inset
-
- and 
-\begin_inset Formula $\sum_{\ell=0}^{\infty}\alpha\left(\ell\right)^{1-2/\gamma}<\infty$
-\end_inset
-
- for some 
-\begin_inset Formula $\gamma>2$
-\end_inset
-
-, then 
-\begin_inset Formula $\sum_{\ell=1}^{\infty}\left|\varGamma\left(\gamma\right)\right|<\infty$
-\end_inset
-
- is absolutely convergent.
+.
+ 
 \end_layout
 
 \begin_layout Theorem
-(CLT) If 
-\begin_inset Formula $y_{t}$
+(CLT) Suppose 
+\begin_inset Formula $u_{t}$
 \end_inset
 
  is strictly stationarity with 
+\begin_inset Formula $E\left[u_{t}\right]=0$
+\end_inset
+
+, and its 
 \begin_inset Formula $\alpha$
 \end_inset
 
--mixing coefficients 
-\begin_inset Formula $\sum_{\ell=0}^{\infty}\alpha\left(\ell\right)^{1-2/\gamma}<\infty$
+-mixing coefficient satisfies 
+\begin_inset Formula $\sum_{\ell=0}^{\infty}\alpha\left(\ell\right)^{1-2/r}<\infty$
 \end_inset
 
  and 
@@ -1316,16 +1308,13 @@ It can be show if
 \begin_inset Formula $\gamma>2$
 \end_inset
 
-, 
-\begin_inset Formula $E\left[u_{t}\right]=0$
-\end_inset
-
-, then 
+.
+ Then 
 \begin_inset Formula $S_{n}\overset{d}{\to}N\left(0,\varOmega\right)$
 \end_inset
 
  where 
-\begin_inset Formula $\varOmega=\sum_{\ell=-\infty}^{\infty}\varGamma\left(\gamma\right)$
+\begin_inset Formula $\varOmega=\sum_{\ell=-\infty}^{\infty}\varGamma\left(\ell\right)$
 \end_inset
 
  is the long-run variance.
