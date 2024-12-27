@@ -1,5 +1,8 @@
 # Econ5150 @ CUHK
 
+* Time: Thursday 9:30am – 12:15pm
+* Venue: Room 501, Hui Yeung Shing Building
+
 **2025 Spring**
 
 This repository hosts lecture notes and code. They will be updated as the course progresses.
