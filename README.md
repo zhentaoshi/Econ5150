@@ -11,7 +11,7 @@ This repository hosts lecture notes and code. They will be updated as the course
 
 ### Textbooks
 
-* Chernozhukov, Hansen, Kallus, Spindler, and Syrgkanis (2024): Applied Causal Inference Powered by ML and AI [[link](CausalML-book.org)]
+* Chernozhukov, Hansen, Kallus, Spindler, and Syrgkanis (2024): Applied Causal Inference Powered by ML and AI [[link](https://CausalML-book.org)]
 <!-- * Hansen (2021): Probability and Statistics for Economists -->
 * Hansen (2021): Econometrics
 
