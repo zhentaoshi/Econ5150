@@ -1,3 +1,5 @@
+
+
 # Econ5150 @ CUHK
 
 * Time: Thursday 9:30am – 12:15pm
@@ -6,7 +8,6 @@
 **2025 Spring**
 
 This repository hosts lecture notes and code. They will be updated as the course progresses.
-
 
 
 ### Textbooks
@@ -30,6 +31,7 @@ As a sequel to ECON5120, this course will cover advanced topics in applied econo
 * Numerical optimization
 * High dimensional linear regressions: shrinkage estimation
 * High dimensional nonlinear regressions: machine learning
+* Time series
 * Panel data
 
 
