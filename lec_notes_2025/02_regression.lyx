@@ -49,7 +49,7 @@ theorems-ams-chap-bytype
 \pdf_pdfusetitle false
 \pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -246,7 +246,6 @@ under-identified
  If in such a thought experiment we still cannot unique distinguish the true parameter of the data generating process,
  then identification fails.
  We cannot determine what is the true model no matter how large the sample is.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -330,22 +329,7 @@ where the continuous differentiability of
 \end_layout
 
 \begin_layout Standard
-In the previous sections,
- we focused on the CEF 
-\begin_inset Formula $m\left(d,x\right)$
-\end_inset
-
-,
- where 
-\begin_inset Formula $d$
-\end_inset
-
- is added to 
-\begin_inset Formula $x$
-\end_inset
-
- as an additional variable of interest.
- If we do not intend to model the underlying economic mechanism 
+If we do not intend to model the underlying economic mechanism 
 \begin_inset Formula $h\left(D,x,u\right)$
 \end_inset
 
@@ -354,17 +338,23 @@ In the previous sections,
 \begin_inset Formula $ATE\left(d,x\right)$
 \end_inset
 
- which bears the structural causal interpretation from the mechanical 
-\begin_inset Formula $m\left(d,x\right)$
+ which bears the structural causal interpretation from the 
+\emph on
+conditional mean function
+\emph default
+ (CEF) 
+\begin_inset Formula $m\left(d,x\right)=E\left[y|d,x\right]=\int yf\left(y|d,x\right)\mathrm{d}y$
 \end_inset
 
- which merely cares about best prediction?
+,
+ which is a mechanical statistical object?
  The answer is positive under CIA:
  
 \begin_inset Formula $\left(u\perp D\right)|x$
 \end_inset
 
 .
+ Notice
 \begin_inset Formula 
 \begin{align*}
 \frac{\partial}{\partial d}m\left(d,x\right) & =\frac{\partial}{\partial d}E\left[y|d,x\right]=\frac{\partial}{\partial d}E\left[h\left(d,x,u\right)|d,x\right]=\frac{\partial}{\partial d}\int h\left(d,x,u\right)f\left(u|d,x\right)du\\
@@ -399,19 +389,15 @@ This is an important result.
 \begin_inset Formula $y$
 \end_inset
 
- by the partial derivative of CEF conditional on 
-\begin_inset Formula $x$
-\end_inset
-
-.
+ by the partial derivative of conditional expectation function (CEF).
  In particular,
  if we further assume a linear CEF 
-\begin_inset Formula $m\left(d,x\right)=\beta_{d}d+\beta_{x}'x$
+\begin_inset Formula $m\left(d,x\right)=\mu+\Delta d+\beta_{x}'x$
 \end_inset
 
 ,
  then the causal effect is the coefficient 
-\begin_inset Formula $\beta_{d}$
+\begin_inset Formula $\Delta$
 \end_inset
 
 .
@@ -422,9 +408,10 @@ CIA is the key condition that links the CEF and the causal effect.
  CIA is not an innocuous assumption.
  In applications,
  our causal results are credible only when we can convincingly defend CIA.
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Exercise
+\begin_layout Plain Layout
 Let factories' output be a Cobb-Douglas function 
 \begin_inset Formula $Y=AK^{\alpha}L^{\beta}$
 \end_inset
@@ -513,7 +500,6 @@ l
  because factories of larger scale can afford robots to facilitate automation.
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 What is the partial derivative of CEF when we use 
 \begin_inset Formula $k$
@@ -528,6 +514,7 @@ What is the partial derivative of CEF when we use
  the CEF is a linear function thanks to the joint normality.)
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 Does it coincide with 
 \begin_inset Formula $\alpha=1/2$
@@ -552,6 +539,11 @@ nolink "false"
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Exercise
 Sometimes applied researchers assume by brute force that 
 \begin_inset Formula $y=m\left(d,x\right)+u$
@@ -602,7 +594,7 @@ where the second equality holds if
 
  here.
  However,
- such slight weakening is achieved by a strong assumption that the DGP 
+ such slight weakening is achieved by at the cost of assuming 
 \begin_inset Formula $h\left(d,x,u\right)$
 \end_inset
 
@@ -622,7 +614,7 @@ structural approach
  here models the economic mechanism,
  hopefully guided by economic theory.
  In recent years,
- the pride about this econometric tradition is encroached by the more intuitive and straightforward 
+ the belief in this econometric tradition is encroached by the more intuitive and straightforward 
 \emph on
 reduced-form
 \emph default
@@ -680,21 +672,14 @@ status open
 
 Phillips about the negative correlation between inflation and unemployment,
  is a stylized fact learned from the reduced-form approach.
- The Lucas critique 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "lucas1976econometric"
-literal "false"
-
-\end_inset
-
- exposed its lack of microfoundation and advocated modeling deep parameters that are invariant to policy changes.
+ The Lucas critique (Lucas,
+ 1976) exposed its lack of microfoundation and advocated modeling deep parameters that are invariant to policy changes.
  The latter is a structural approach.
  Ironically,
- more than 40 years has passed since the Lucas critique,
+ more than forty years has passed since the Lucas critique,
  equations with little microfoundation still dominate the analytical apparatus of central bankers.
  For the structural approach,
- the belief in the existence of a true DGP is comparable to a religious zeal that is devoted to a God that no one has ever seen.
+ the devotion to a DGP that no one has ever seen is hardly justifiable.
  For the reduced-form approach,
  
 \emph on
@@ -702,8 +687,8 @@ ad hoc
 \emph default
  regressions are likely falling short of external validity;
  what is worse those most crucial economic issues are not to be experimented with.
- You can go to poor South Asia villages to randomly distribute deworming pills,
- but how about you try to persuade the PBOC to experiment with China's interest rates?
+ You can go to poor villages in a forgotten concern of the world to randomly distribute deworming pills,
+ but how about you try to persuade the PBOC to experiment with interest rates?
  
 \end_layout
 
@@ -892,8 +877,8 @@ name "prop:CEF"
 
 \end_inset
 
- The conditional mean function (CEF) 
-\begin_inset Formula $m\left(x\right)=E\left[y|x\right]=\int yf\left(y|x\right)\mathrm{d}y$
+ The CEF 
+\begin_inset Formula $m\left(x\right)$
 \end_inset
 
  minimizes MSE.
@@ -1675,7 +1660,7 @@ In this lecture,
 
  drawn from some joint distribution,
  the CEF is the best predictor.
- When we go further into the structural causality about some treatment 
+ When we care about the structural causality concerning some treatment 
 \begin_inset Formula $d$
 \end_inset
 
@@ -1719,36 +1704,7 @@ status open
 
 \end_inset
 
-Rubin (1943– ),
- Professor of Statistics at Tsinghua University.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Further reading
-\series default
-:
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "lewbel2019identification"
-literal "false"
-
-\end_inset
-
- offers a comprehensive summary of identification in econometrics.
- Accounting is an applied field with many claimed causal inference drawn from simple regressions;
- it is encouraging to hear 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "gow2016causal"
-literal "false"
-
-\end_inset
-
- to reflect causality in their practices.
- 
+Rubin (1943– ).
 \end_layout
 
 \begin_layout Standard
@@ -1771,18 +1727,6 @@ texttt{ Zhentao Shi.
 \backslash
 today}
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-btprint "btPrintCited"
-bibfiles "ref_teaching"
-options "chicagoa"
 
 \end_inset
 
