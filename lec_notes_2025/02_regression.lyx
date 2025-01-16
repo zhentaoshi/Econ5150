@@ -374,7 +374,7 @@ where the second line implicitly assumes interchangeability between the integral
  Thus 
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial d}m\left(d,x\right)=\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]=ATE\left(d,x\right).
+\frac{\partial}{\partial d}m\left(d,x\right)=\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)|d,x\right]=ATE\left(d,x\right).
 \]
 
 \end_inset

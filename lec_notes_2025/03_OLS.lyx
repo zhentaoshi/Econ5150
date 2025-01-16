@@ -494,7 +494,7 @@ Subvector
 \end_layout
 
 \begin_layout Standard
-The Frish-Waugh-Lovell (FWL) theorem is an algebraic fact about the formula of a subvector of the OLS estimator.
+The Frisch-Waugh-Lovell (FWL) theorem is an algebraic fact about the formula of a subvector of the OLS estimator.
  To derive the FWL theorem we need to use the inverse of partitioned matrix.
  For a positive definite symmetric matrix 
 \begin_inset Formula $A=\begin{pmatrix}A_{11} & A_{12}\\
