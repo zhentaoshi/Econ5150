@@ -112,13 +112,12 @@ In practice,
  what we are interested is the finite sample behavior of estimators or test statistics.
  However,
  the finite sample exact distributions count on underlying data generating processes and are often too mathematically difficult to deduce and hard to generalize.
- See Phillips (1983,
- handbook chapter).
  Asymptotic theory,
  on the other hand,
  uses a thought experiment to imagine what happens when the sample size is arbitrarily large.
  It is a surprising fact that despite the multitude of finite sample settings,
- under some reasonable conditions the different starting points often end up with the same result.
+ under some reasonable conditions,
+ the different starting points often end up with the same result.
  For example,
  the limit distribution of the central limit theorems is usual a normal distribution.
  The convenience of the large sample theory makes it the prevalent apparatus of modern statistical theory and econometric theory.
@@ -127,7 +126,7 @@ In practice,
 
 \begin_layout Standard
 Though the large sample theory is popular,
- we must keep in mind it is a mathematical tool for approximation,
+ we must keep in mind that it is a mathematical tool for approximation,
  and the quality of approximation depend on unknown implicit quantities.
  Monte Carlo simulations and numerical experiments are useful to deepen our understanding of asymptotic results in finite sample.
 \end_layout
@@ -1187,7 +1186,11 @@ Slutsky's theorem consists of special cases of the continuous mapping theorem 2.
 \end_layout
 
 \begin_layout Itemize
-Delta method:
+
+\emph on
+Delta method
+\emph default
+:
  if 
 \begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
 \end_inset
@@ -1221,8 +1224,9 @@ Delta method:
 
 \end_layout
 
-\begin_layout Proof
-Take a Taylor expansion of 
+\begin_layout Standard
+To see why the Delta method works,
+ take a Taylor expansion of 
 \begin_inset Formula $f\left(\widehat{\theta}\right)$
 \end_inset
 
@@ -1302,11 +1306,493 @@ Because
 and the conclusion follows.
 \end_layout
 
-\begin_layout Proof
+\begin_layout Section
+OLS
+\end_layout
 
-\family typewriter
-Zhentao Shi.
+\begin_layout Standard
+We apply these results to study asymptotic properties of the OLS estimator.
+ We will show (i) 
+\begin_inset Formula $\widehat{\beta}=\left(X'X\right)^{-1}X'Y$
+\end_inset
+
+ is a consistent estimator of the linear projection coefficient 
+\begin_inset Formula $\beta$
+\end_inset
+
+;
+ (ii) 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is asymptotically normal;
+ (iii) the asymptotic normality allows asymptotic inference of 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Consistency
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Consistency
+\emph default
+ is a basic requirement for estimators in large sample.
+ Intuitively,
+ it says that when the sample size is arbitrarily large,
+ a desirable estimator should be arbitrarily close (in the sense of convergence in probability) to the population quantity of interest.
+ Otherwise,
+ if an estimator still deviates from the object of interest under infinite sample size,
+ it is hard to persuade other researchers to use such an estimator unless compelling justification is provided.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Consistency
+\end_layout
+
+\end_inset
+
+ For a generic estimator 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+,
+ we say 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ is 
+\emph on
+consistent
+\emph default
+ for 
+\begin_inset Formula $\theta$
+\end_inset
+
+ if 
+\begin_inset Formula $\widehat{\theta}\stackrel{p}{\to}\theta$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is some non-random object.
+\end_layout
+
+\begin_layout Standard
+In OLS,
+ we say 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is 
+\emph on
+consistent
+\emph default
+ if 
+\begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is the linear projection coefficient of the population model 
+\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $E\left[x_{i}e_{i}\right]=0$
+\end_inset
+
+.
+ To verify consistency,
+ we write 
+\begin_inset Formula 
+\begin{equation}
+\widehat{\beta}-\beta=\left(X'X\right)^{-1}X'e=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}.\label{eq:ols_d}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For simplicity,
+ in this chapter we discuss the iid setting only.
+ The first term,
+ by LLN,
  
+\begin_inset Formula 
+\[
+\widehat{Q}:=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q:=E\left[x_{i}x_{i}'\right].
+\]
+
+\end_inset
+
+Here 
+\begin_inset Formula $\widehat{Q}$
+\end_inset
+
+ is the sample mean of 
+\begin_inset Formula $x_{i}x_{i}'$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the population mean of 
+\begin_inset Formula $x_{i}x_{i}'$
+\end_inset
+
+.
+ The second term,
+ again by LLN,
+ 
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{p}{\to}0.
+\]
+
+\end_inset
+
+The continuous mapping theorem immediately implies 
+\begin_inset Formula 
+\[
+\widehat{\beta}-\beta\stackrel{p}{\to}Q^{-1}\times0=0.
+\]
+
+\end_inset
+
+ The OLS estimator 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+No matter whether 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is an iid,
+ or inid,
+ or dependent sample,
+ consistency holds as long as the convergence in probability holds for the above two expressions and 
+\begin_inset Formula $Q$
+\end_inset
+
+ is an invertible matrix.
+\end_layout
+
+\begin_layout Subsection
+Asymptotic Distribution
+\end_layout
+
+\begin_layout Standard
+In finite sample,
+ 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is a random variable.
+ We have shown the distribution of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ under normality before.
+ Without restrictive distribtional assumptions,
+ how can we characterize the randomness of the OLS estimator?
+ We know from the previous section that 
+\begin_inset Formula $\hat{\beta}-\beta\stackrel{p}{\to}0$
+\end_inset
+
+ degenerates to a constant.
+ To study its distribution,
+ we must scale it up by a proper multiplier so that in the limit it neither degenerates nor explodes.
+ The suitable scaling factor is 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+,
+ as in a CLT.
+ 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\beta}-\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}.
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $E\left[x_{i}e_{i}\right]=0$
+\end_inset
+
+,
+ we apply a CLT to obtain 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
+\end_inset
+
+.
+ By the continuous mapping theorem,
+ 
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\Sigma\right)\sim N\left(0,\Omega\right)\label{eq:asym_norm}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}$
+\end_inset
+
+ is called the 
+\emph on
+asymptotic variance
+\emph default
+.
+ This result is the 
+\emph on
+asymptotic normality
+\emph default
+ of the OLS estimator.
+\end_layout
+
+\begin_layout Standard
+The asymptotic variance 
+\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}$
+\end_inset
+
+ is called of the 
+\emph on
+sandwich form
+\emph default
+.
+ It can be simplified under conditional homoskedasticity 
+\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma^{2}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+,
+ which gives 
+\begin_inset Formula 
+\[
+\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]=E\left[x_{i}x_{i}'E\left[e_{i}^{2}|X\right]\right]=\sigma^{2}E\left[x_{i}x_{i}'\right]=\sigma^{2}Q.
+\]
+
+\end_inset
+
+In this case,
+ 
+\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}=\sigma^{2}Q^{-1}$
+\end_inset
+
+,
+ and thus 
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\sigma^{2}Q^{-1}\right).\label{eq:asym_norm_homo}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If we are interested in the 
+\begin_inset Formula $k$
+\end_inset
+
+-th parameter 
+\begin_inset Formula $\beta_{k}$
+\end_inset
+
+,
+ then the joint distribution in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ implies 
+\begin_inset Formula 
+\begin{align}
+\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right) & =\sqrt{n}\eta_{k}'\left(\widehat{\beta}-\beta\right)\nonumber \\
+ & \stackrel{d}{\to}N\left(0,\sigma^{2}\eta_{k}'Q^{-1}\eta_{k}\right)\sim N\left(0,\sigma^{2}[Q^{-1}]_{kk}\right),\label{eq:asym_norm_homok}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{k}=\left(0,\ldots,0,1,0\ldots,0\right)'$
+\end_inset
+
+ is the selector of the 
+\begin_inset Formula $k$
+\end_inset
+
+-th element.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If 
+\begin_inset Formula $\Omega^{-1/2}$
+\end_inset
+
+ is multiplied on both sides of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ we have 
+\begin_inset Formula 
+\begin{equation}
+\Omega^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right).\label{eq:asym_norm-pivot}
+\end{equation}
+
+\end_inset
+
+We say the asymptotic distribution in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm-pivot"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset Formula $N\left(0,I_{K}\right)$
+\end_inset
+
+,
+ is 
+\emph on
+pivotal
+\emph default
+ because it does not involve any unknown parameter.
+ In contrast,
+ the asymptotic distribution in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ is not pivotal because 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is unknown in 
+\begin_inset Formula $N\left(0,\Omega\right)$
+\end_inset
+
+.
+ If we are interested in the 
+\begin_inset Formula $k$
+\end_inset
+
+-th parameter 
+\begin_inset Formula $\beta_{k}$
+\end_inset
+
+,
+ we can write 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm-pivot"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ into the pivotal form as 
+\begin_inset Formula 
+\begin{equation}
+\frac{\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right)}{\sqrt{\sigma^{2}[Q^{-1}]_{kk}}}\stackrel{d}{\to}N\left(0,1\right).\label{eq:asym_norm_homok_pivot}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+In reality the variance is unknown.
+ We can use a plug-in estimator to approximate it.
+ Under regularization conditions,
+ the plug-in estimator will deliver feasible and asymptotically valid inference.
+\begin_inset VSpace medskip
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1314,12 +1800,22 @@ status open
 
 
 \backslash
-today
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
 \end_layout
 
 \end_inset
 
-
+ 
 \end_layout
 
 \end_body
