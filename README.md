@@ -24,6 +24,7 @@ As a sequel to ECON5120, this course will cover advanced topics in applied econo
 
 * Review of linear regressions
 * Causal inference
+* Large sample theory
 * Maximum likelihood
 * Limited dependent variables
 * Generalized method of moments

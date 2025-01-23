@@ -1,0 +1,1342 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Maximum Likelihood Estimation
+\end_layout
+
+\begin_layout Standard
+The word 
+\begin_inset Quotes eld
+\end_inset
+
+estimation
+\begin_inset Quotes erd
+\end_inset
+
+ is an euphemism of 
+\begin_inset Quotes eld
+\end_inset
+
+educated guess
+\begin_inset Quotes erd
+\end_inset
+
+.
+ What is a reasonable way to make a guess?
+ The maximum likelihood principle is arguably one of the the most important ideas in the history of mathematical statistics.
+ It is intuitive at the first glance,
+ but it took centuries to formalize.
+ Milestones were set by Sir Ronald Fisher (1890–1962) and his contemporaries.
+ 
+\end_layout
+
+\begin_layout Standard
+In econometrics,
+ the most familiar OLS estimator is indeed a special case of MLE when the error term is normally distribution.
+ When the support of the dependence variable is not continuous,
+ most estimators are constructed by assuming an underlying conditional density model and then estimated by MLE.
+ LIML (limited information maximum likelihood) is 2SLS counterpart in the likelihood world.
+ 
+\end_layout
+
+\begin_layout Section
+Parametric Model
+\end_layout
+
+\begin_layout Standard
+A parametric model is a complete specification of the distribution.
+ Once the parameter is given,
+ the distribution function is determined.
+ Instead,
+ a semiparametric model only gives a few features rather than a complete description of the distribution.
+\end_layout
+
+\begin_layout Example
+Semiparametric model:
+ If we know 
+\begin_inset Formula $Y\sim i.i.d.\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+,
+ we can estimate 
+\begin_inset Formula $\mu,\sigma^{2}$
+\end_inset
+
+ by method of moments.
+\end_layout
+
+\begin_layout Example
+Parametric model:
+ If we assume 
+\begin_inset Formula $Y\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+,
+ the model has only two parameters 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\series bold
+Parametric model
+\series default
+.
+ The distribution of the data 
+\begin_inset Formula $\mathbf{Y}=\left(Y_{1},...,Y_{n}\right)$
+\end_inset
+
+ is known up to a finite dimensional parameter.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ be the parameter space a researcher specifies.
+ 
+\end_layout
+
+\begin_layout Definition
+A model is 
+\series bold
+correctly specified
+\series default
+,
+ if the true DGP is 
+\begin_inset Formula $f\left(\mathbf{Y}\mid\theta_{0}\right)$
+\end_inset
+
+ for some 
+\begin_inset Formula $\theta_{0}\in\Theta$
+\end_inset
+
+.
+ Otherwise,
+ the model is 
+\series bold
+misspecified
+\series default
+.
+\end_layout
+
+\begin_layout Section
+Likelihood
+\end_layout
+
+\begin_layout Standard
+In this chapter we will mostly talk about unconditional models.
+ The results can be carried over to conditional models.
+ To keep the setting simple,
+ let 
+\begin_inset Formula $\mathbf{Y}=(Y_{1},\ldots,Y_{n})$
+\end_inset
+
+ be i.i.d.
+ The 
+\series bold
+likelihood
+\series default
+ of the sample under a hypothesized value of 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+ is is 
+\begin_inset Formula 
+\[
+L\left(\theta;\mathbf{Y}\right)=f\left(\mathbf{Y};\theta\right)=\prod_{i=1}^{n}f\left(Y_{i};\theta_{0}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+In the above expression 
+\begin_inset Formula $L\left(\theta;\mathbf{Y}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $f\left(\mathbf{Y};\theta\right)$
+\end_inset
+
+ are equal,
+ but they have different interpretations.
+ The former emphasizes that when the data 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ is provided 
+\begin_inset Formula $L$
+\end_inset
+
+ is a function of the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ The latter is the opposite:
+ given the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
+ the joint density is a function of the realized value 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+In this note I adhere to the frequentist view where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is an unknown constant,
+ and I thus prefer using 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $;$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ to separate the two arguments.
+ However,
+ some textbooks (including Hansen's) write 
+\begin_inset Formula $L\left(\theta|\mathbf{Y}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $f\left(\mathbf{Y}|\theta\right)$
+\end_inset
+
+,
+ which I don't like because 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $|$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ delivers a confusing connotation of conditional density (for example 
+\begin_inset Formula $f\left(Y|X\right)$
+\end_inset
+
+) as if 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is treated as a random variable.
+ I would adopt 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $|$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ only in the Bayesian world,
+ where the posterior density of the random 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is updated via the Bayes Theorem
+\begin_inset Formula 
+\[
+L\left(\theta|\mathbf{Y}\right)=\frac{f\left(\mathbf{Y}|\theta\right)\pi\left(\theta\right)}{f\left(\mathbf{Y}\right)},
+\]
+
+\end_inset
+
+give the prior distribution 
+\begin_inset Formula $\pi\left(\theta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Conditional model:
+ the conditioning variable can be viewed as if it is fixed and the randomness comes from the error term only.
+\begin_inset Formula 
+\[
+Y_{i}=X_{i}'\beta+\varepsilon_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ is the conditional variable.
+ The condition 
+\begin_inset Formula $E\left(\varepsilon_{i}|X_{I}\right)=0$
+\end_inset
+
+ together with a full rank 
+\begin_inset Formula $E\left[X_{i}X_{i}'\right]$
+\end_inset
+
+ can help to identify 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ This is semiparametric model.
+ However,
+ if we assume 
+\begin_inset Formula $f\left(\varepsilon_{i}\mid X_{i}\right)\sim N\left(0,\sigma^{2}\right)$
+\end_inset
+
+,
+ then conditional parametric model as it completely describes 
+\begin_inset Formula $f\left(Y_{i}\mid X_{i}\right)$
+\end_inset
+
+ and it becomes a conditional parametric model with likelihood 
+\begin_inset Formula $L\left(\left(\beta,\sigma^{2}\right);\mathbf{Y}|\mathbf{X}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In practice,
+ we work with the log-likelihood,
+ which is more convenient.
+ The 
+\series bold
+log-likelihood
+\series default
+ is 
+\begin_inset Formula 
+\[
+\ell_{n}\left(\theta\right)=\frac{1}{n}\log L\left(\theta;\mathbf{Y}\right)=\frac{1}{n}\sum_{i=1}^{n}\log f\left(Y_{i};\theta\right).
+\]
+
+\end_inset
+
+Here,
+ we put 
+\begin_inset Formula $1/n$
+\end_inset
+
+ to average the log-likelihood.
+ This scaling factor does not change the estimation at all.
+ The MLE estimator is then defined as 
+\begin_inset Formula 
+\[
+\hat{\theta}=\arg\max_{\theta\in\varTheta}\ell_{n}\left(\theta\right).
+\]
+
+\end_inset
+
+To justify the likelihood principle,
+ consider the population version of the 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\ell\left(\theta\right)=E\left[\log f\left(Y;\theta\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+When model is correctly specified,
+ 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is the maximizer.
+\end_layout
+
+\begin_layout Proof
+The Kullback-Leibler distance
+\begin_inset Formula 
+\begin{align*}
+E\left[\log f\left(Y;\theta_{0}\right)\right]-E\left[\log f\left(Y;\theta\right)\right] & =E\left[\log\left(f\left(Y;\theta_{0}\right)/f\left(Y;\theta\right)\right)\right]=-E\left[\log\left(f\left(Y;\theta\right)/f\left(Y;\theta_{0}\right)\right)\right]\\
+ & \geq-\log E\left[f\left(Y;\theta\right)/f\left(Y;\theta_{0}\right)\right]=0
+\end{align*}
+
+\end_inset
+
+where the inequality holds by Jensen's inequality for the convex function 
+\begin_inset Formula $-\log(\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Score,
+ Hessian,
+ and Information
+\end_layout
+
+\begin_layout Standard
+Define the 
+\series bold
+score
+\series default
+ as 
+\begin_inset Formula 
+\[
+\psi_{n}\left(\theta\right)=\sum_{i=1}^{n}\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta\right)
+\]
+
+\end_inset
+
+and the 
+\series bold
+Hessian
+\series default
+ as 
+\begin_inset Formula 
+\[
+\mathscr{H}_{n}\left(\theta\right)=-\sum_{i=1}^{n}\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(Y_{i};\theta\right).
+\]
+
+\end_inset
+
+Moreover,
+ define the 
+\series bold
+efficient score
+\series default
+
+\begin_inset Formula 
+\[
+\psi_{0}=\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta_{0}\right)
+\]
+
+\end_inset
+
+as the first derivative of the log-likelihood of a representative observation 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ evaluated at 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+If the model is correctly specified,
+ the support of 
+\begin_inset Formula $Y$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is in the interior of 
+\begin_inset Formula $\Theta$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $E\left[\psi_{0}\right]=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+By the Leibniz integral rule,
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Leibniz integral rule (from undergraduate calculus):
+ For an integral of the form 
+\begin_inset Formula $\int_{a\left(t\right)}^{b\left(t\right)}g\left(t,z\right)dz$
+\end_inset
+
+,
+ the derivative 
+\begin_inset Formula 
+\[
+\frac{d}{dt}\int_{a\left(t\right)}^{b\left(t\right)}g\left(t,z\right)dz=g\left(t,b\left(t\right)\right)\cdot\frac{d}{dt}b\left(\theta\right)-f\left(t,a\left(t\right)\right)\cdot\frac{d}{dt}a\left(t\right)+\int_{a\left(t\right)}^{b\left(t\right)}\frac{\partial}{\partial t}g\left(t,z\right)dz.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+E\left(\psi\left(\theta\right)\right) & =E\left[\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta\right)\right]=\int\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta\right)dF_{0}\left(x\right)\\
+ & =\frac{\partial}{\partial\theta}\int\log f\left(Y_{i};\theta\right)dF_{0}\left(x\right)=\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{i};\theta\right)\right].
+\end{align*}
+
+\end_inset
+
+Evaluate 
+\begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{i};\theta\right)\right]$
+\end_inset
+
+ as 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+,
+ we have 
+\begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{i};\theta_{0}\right)\right]=0$
+\end_inset
+
+ as 
+\begin_inset Formula $E\left[\log f\left(Y_{i};\theta_{0}\right)\right]$
+\end_inset
+
+ is maximized 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+,
+ which is an interior.
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+Fisher information matrix
+\series default
+ 
+\begin_inset Formula 
+\[
+\mathscr{I}_{0}=E\left[\psi_{0}\psi_{0}'\right]
+\]
+
+\end_inset
+
+ is the variance of the efficient score.
+ The 
+\series bold
+expected Hessian
+\series default
+ is
+\begin_inset Formula 
+\[
+\mathscr{H}_{0}=-E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(Y;\theta_{0}\right)\right].
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(Y;\theta_{0}\right)\right]$
+\end_inset
+
+ is negative definite,
+ in this definition the expected Hessian is positive-definite.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+If the model is correctly specified,
+ we have 
+\begin_inset Formula $\mathscr{I}_{0}=\mathscr{H}_{0}$
+\end_inset
+
+,
+ the 
+\series bold
+information matrix equality
+\series default
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Some textbooks may define the expected Hessian as 
+\begin_inset Formula $\mathscr{H}_{0}=E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(Y;\theta_{0}\right)\right]$
+\end_inset
+
+.
+ This is also valid if we rewrite the information matrix equality as 
+\begin_inset Formula $\mathscr{I}_{0}+\mathscr{H}_{0}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Proof
+Start with Hessian,
+\begin_inset Formula 
+\begin{align*}
+E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\right)\right] & =E\left[\frac{\partial}{\partial\theta}\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[\frac{\partial}{\partial\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]\\
+ & =-E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]+E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right].
+\end{align*}
+
+\end_inset
+
+The first term:
+\begin_inset Formula 
+\[
+E\left[\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f^{2}\left(\theta_{0}\right)}\right]=E\left[\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[\psi_{0}\psi_{0}'\right]=\mathscr{I}_{0}.
+\]
+
+\end_inset
+
+The second term:
+ 
+\begin_inset Formula $E\left[\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\right]=\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}f\left(\theta_{0}\right)dx.$
+\end_inset
+
+ If the model is correctly specified,
+ evaluated at 
+\begin_inset Formula $\theta=\theta_{0}$
+\end_inset
+
+ the 
+\begin_inset Formula $f\left(\theta_{0}\right)$
+\end_inset
+
+ cancels out,
+ leading to 
+\begin_inset Formula 
+\[
+\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta_{0}\right)}{f\left(\theta_{0}\right)}f\left(\theta_{0}\right)dx=\int\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta_{0}\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}\int f\left(\theta_{0}\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}1=0.
+\]
+
+\end_inset
+
+We complete the proof.
+\end_layout
+
+\begin_layout Standard
+Notice that the information matrix equality holds only when the model is correctly specified.
+ It fails when the model is misspecified.
+ 
+\end_layout
+
+\begin_layout Section
+Cramér-Rao Lower Bound
+\end_layout
+
+\begin_layout Theorem
+Suppose the model is correctly specified,
+ the support of 
+\begin_inset Formula $Y$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is in the interior of 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\widetilde{\theta}$
+\end_inset
+
+ is unbiased estimator,
+ then 
+\begin_inset Formula $var\left(\widetilde{\theta}\right)\geq\left(n\mathscr{I}_{0}\right)^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+Because of unbiasedness,
+\begin_inset Formula 
+\[
+\theta=E_{\theta}\left[\widetilde{\theta}\right]=\int\widetilde{\theta}f\left(\mathbf{Y};\theta\right)d\mathbf{y}
+\]
+
+\end_inset
+
+for any 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ here is for the entire sample,
+ 
+\begin_inset Formula $f\left(\mathbf{Y};\theta\right)=f\left(Y_{1},...,Y_{n};\theta\right)=\prod_{i=1}^{n}f\left(Y_{i};\theta\right)$
+\end_inset
+
+.
+ Take derivative at the two sides.
+ The LHS is 
+\begin_inset Formula 
+\[
+\frac{\partial\theta}{\partial\theta'}=\mathbf{I}_{p}.
+\]
+
+\end_inset
+
+ The RHS:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial\theta'}\int\widetilde{\theta}f\left(\mathbf{Y};\theta\right)d\mathbf{y} & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}f\left(\mathbf{Y};\theta\right)d\mathbf{y}\\
+ & =\int\widetilde{\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\mathbf{Y};\theta\right)}{f\left(\mathbf{Y};\theta\right)}f\left(\mathbf{Y};\theta\right)d\mathbf{y}\\
+ & =\int\widetilde{\theta}\frac{\partial}{\partial\theta'}\log f\left(\mathbf{Y};\theta\right)f\left(\mathbf{Y};\theta\right)d\mathbf{y}\\
+ & =\int\widetilde{\theta}\psi_{n}\left(\theta\right)f\left(\mathbf{Y};\theta\right)d\mathbf{y}
+\end{align*}
+
+\end_inset
+
+Evaluate at the true 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+,
+ and due to i.i.d.
+ data
+\begin_inset Formula 
+\[
+\mathbf{I}_{p}=\int\widetilde{\theta}\psi_{n}(\theta_{0})f\left(\mathbf{Y};\theta_{0}\right)d\mathbf{y}=E\left[\widetilde{\theta}\psi_{n}(\theta_{0})\right]=E\left[\left(\widetilde{\theta}-\theta_{0}\right)\psi_{n}(\theta_{0})\right]
+\]
+
+\end_inset
+
+where the last equality holds by 
+\begin_inset Formula $E\left[\theta_{0}\psi_{n}(\theta_{0})\right]=\theta_{0}E\left[\psi_{n}(\theta_{0})\right]=\theta_{0}E\left[n\psi_{0}\right]=0$
+\end_inset
+
+.
+ We thus have
+\begin_inset Formula 
+\[
+var\left(\begin{array}{c}
+\widetilde{\theta}-\theta_{0}\\
+\psi_{n}(\theta_{0})
+\end{array}\right)=\left[\begin{array}{cc}
+\boldsymbol{V} & \mathbf{I}_{p}\\
+\mathbf{I}_{p} & n\mathscr{I}_{0}
+\end{array}\right].
+\]
+
+\end_inset
+
+Pre- and post-multiply 
+\begin_inset Formula $\left[\begin{array}{cc}
+\boldsymbol{I}_{p} & -\left(n\mathscr{I}_{0}\right)^{-1}\end{array}\right]$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\[
+\left[\begin{array}{cc}
+\boldsymbol{I}_{p} & -\left(n\mathscr{I}_{0}\right)^{-1}\end{array}\right]\left[\begin{array}{cc}
+\boldsymbol{V} & \boldsymbol{I}_{p}\\
+\boldsymbol{I}_{p} & n\mathscr{I}_{0}
+\end{array}\right]\left[\begin{array}{c}
+\boldsymbol{I}_{p}\\
+-\left(n\mathscr{I}_{0}\right)^{-1}
+\end{array}\right]=\boldsymbol{V}-\left(n\mathscr{I}_{0}\right)^{-1}\geq0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Cramér-Rao Lower Bound is a lower bound.
+ It may not reachable.
+ When it is reached,
+ an estimator is 
+\series bold
+Cramér-Rao efficient
+\series default
+ if it is unbiased and the variance is 
+\begin_inset Formula $\left(n\mathscr{I}_{0}\right)^{-1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Example
+Normal distribution:
+ Let 
+\begin_inset Formula $\gamma=\sigma^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula 
+\[
+\log\ell_{n}\left(Y;\mu,\sigma^{2}\right)=-\frac{n}{2}\log\gamma-\frac{n}{2}\log\pi-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula 
+\[
+\psi_{n}\left(\mu,\sigma^{2}\right)=\begin{cases}
+\frac{1}{\gamma}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)\\
+-\frac{n}{2\gamma}+\frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula 
+\[
+\mathscr{H}_{n}\left(\mu,\sigma^{2}\right)=\left[\begin{array}{cc}
+\frac{n}{\gamma} & \frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)\\
+\frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right) & -\frac{n}{2\gamma^{2}}+\frac{1}{\gamma^{3}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Expected Hessian:
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula 
+\[
+E\left[\mathscr{H}_{n}\left(\mu,\sigma^{2}\right)\right]=\left[\begin{array}{cc}
+\frac{n}{\gamma} & 0\\
+0 & \frac{n}{2\gamma^{2}}
+\end{array}\right].
+\]
+
+\end_inset
+
+The inverse 
+\begin_inset Formula $\left[\begin{array}{cc}
+\frac{\gamma}{n} & 0\\
+0 & 2\frac{\gamma^{2}}{n}
+\end{array}\right]$
+\end_inset
+
+ is the lower bound.
+\end_layout
+
+\begin_layout Example
+Check:
+ the variance of the sample mean:
+\begin_inset Formula $var\left(\frac{1}{n}\sum_{i=1}^{n}Y_{i}\right)=\frac{\sigma^{2}}{n}$
+\end_inset
+
+.
+ The sample mean is Cramér-Rao efficient.
+\end_layout
+
+\begin_layout Example
+Regarding the variance estimator,
+ notice 
+\begin_inset Formula 
+\[
+s_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(Y_{i}-\bar{Y}\right)^{2}=\frac{1}{n-1}Y'\left(I-\frac{1}{n}1_{n}1_{n}'\right)Y
+\]
+
+\end_inset
+
+ is the unbiased estimator as 
+\begin_inset Formula $E\left(S_{n}^{2}\right)=\sigma^{2}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula 
+\[
+\left(n-1\right)\frac{s_{n}^{2}}{\sigma^{2}}=\left(\frac{Y}{\sigma}\right)'\left(I-\frac{1}{n}1_{n}1_{n}'\right)\left(\frac{Y}{\sigma}\right)\sim\chi^{2}\left(n-1\right),
+\]
+
+\end_inset
+
+we have 
+\begin_inset Formula $s_{n}^{2}=\frac{\chi^{2}\left(n-1\right)}{n-1}\sigma^{2}$
+\end_inset
+
+ and thus
+\begin_inset Formula 
+\[
+var\left(s_{n}^{2}\right)=\frac{\sigma^{4}}{\left(n-1\right)^{2}}2\left(n-1\right)=\frac{2\sigma^{4}}{n-1}>\frac{2\sigma^{4}}{n}
+\]
+
+\end_inset
+
+does not satisfy Cramér-Rao efficient.
+\end_layout
+
+\begin_layout Section
+Asymptotic Normality
+\end_layout
+
+\begin_layout Standard
+MLE is a special case of m-estimator.
+ Under regularity conditions,
+ 
+\begin_inset Formula $\hat{\theta}\stackrel{p}{\to}\theta_{0}$
+\end_inset
+
+,
+ and asymptotically normal:
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathscr{H}_{0}^{-1}\mathscr{I}_{0}\mathscr{H}_{0}^{-1}\right)
+\]
+
+\end_inset
+
+When the information equality holds,
+ the asymptotic variance is simplified as 
+\begin_inset Formula $\mathscr{\mathscr{I}}_{0}^{-1}\mathscr{I}_{0}\mathscr{\mathscr{I}}_{0}^{-1}=\mathscr{\mathscr{I}}_{0}^{-1}$
+\end_inset
+
+,
+ and thus 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathscr{I}_{0}^{-1}\right).
+\]
+
+\end_inset
+
+This is a nice result,
+ because not only 
+\begin_inset Formula $\sqrt{n}\left(\hat{\theta}-\theta_{0}\right)$
+\end_inset
+
+ is asymptotically unbiased (the limiting normal distribution is centered at 0),
+ but also it asymptotically achieves the Cramér-Rao efficiency bound with 
+\begin_inset Formula $\mathscr{I}_{0}^{-1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+This beautiful result holds if and only if the model is correctly specified.
+ The next section discusses the asymptotic behavior of the MLE estimator when the model is misspecified.
+ 
+\end_layout
+
+\begin_layout Section
+Misspecified Model
+\end_layout
+
+\begin_layout Standard
+Kullback-Leibler information criterion (KLIC) is defined as 
+\begin_inset Formula 
+\[
+KLIC\left(f,g\right)=\int f\left(z\right)\log\frac{f\left(z\right)}{g\left(z\right)}dz.
+\]
+
+\end_inset
+
+It is a scalar measure of the difference between two probability measures.
+ Because 
+\begin_inset Formula $-\log\left(\cdot\right)$
+\end_inset
+
+ is a convex function,
+ we can use the Jensen's inequality to show 
+\begin_inset Formula $KLIC\left(f,g\right)\geq0$
+\end_inset
+
+.
+ Obviously 
+\begin_inset Formula $KLIC\left(f,f\right)=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We narrow down our discussion to parametric models.
+ Suppose the data 
+\begin_inset Formula $z$
+\end_inset
+
+ is drawn from a parameter model 
+\begin_inset Formula $f$
+\end_inset
+
+;
+ this is the data generating process (DGP).
+ The researcher specifies a family of models 
+\begin_inset Formula $g\left(z;\theta\right)$
+\end_inset
+
+ and a parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+;
+ thus such a specification covers a model space 
+\begin_inset Formula $G\left(\Theta\right)=\left\{ g\left(z;\theta\right):\theta\in\Theta\right\} $
+\end_inset
+
+.
+ If 
+\begin_inset Formula $f\in G\left(\Theta\right)$
+\end_inset
+
+,
+ the model is 
+\series bold
+correctly specified
+\series default
+;
+ otherwise it is misspecified.
+ Notice that 
+\begin_inset Formula 
+\begin{align*}
+KLIC\left(f,g\left(z;\theta\right)\right) & =\int f\left(z\right)\log f\left(z\right)dz-\int f\left(z\right)\log g\left(z;\theta\right)dz\\
+ & =E\left[\log f\left(z\right)\right]-E\left[\log g\left(z;\theta\right)\right]\\
+ & =E\left[\log f\left(z\right)\right]-\ell\left(\theta\right).
+\end{align*}
+
+\end_inset
+
+Notice that the first term is irrelevant to the choice of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ If the model is correctly specified,
+ then the true value 
+\begin_inset Formula 
+\[
+\theta_{0}=\arg\max_{\theta\in\Theta}\ell\left(\theta\right)
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula $KLIC\left(f,g\left(z;\theta_{0}\right)\right)=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+If the model is misspecified,
+ 
+\begin_inset Formula $\min_{\theta\in\Theta}KLIC\left(f,g\left(z;\theta\right)\right)>0$
+\end_inset
+
+.
+ In this case,
+ we can define 
+\begin_inset Formula 
+\[
+\theta^{*}=\arg\max_{\theta\in\Theta}\ell\left(\theta\right)
+\]
+
+\end_inset
+
+as the 
+\series bold
+pseudo-true
+\series default
+ parameter value.
+ In other words,
+ 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+ is the minimizer of 
+\begin_inset Formula $KLIC\left(f,g\left(z;\theta\right)\right)$
+\end_inset
+
+ in the parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ This provides meaningful interpretation of MLE even if the model is misspecified:
+ although in reality the researcher may not know the true family of distributions where the data is drawn,
+ she can run MLE to look for the value 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+ that minimizes the gap between 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g\left(z;\theta\right)$
+\end_inset
+
+ in terms of KLIC.
+ 
+\end_layout
+
+\begin_layout Standard
+Under standard assumption,
+ the MLE estimator 
+\begin_inset Formula $\widehat{\theta}\stackrel{p}{\to}\theta^{*}$
+\end_inset
+
+ despite model misspecification,
+ and the asymptotic distribution is 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\theta}-\theta^{*}\right)\stackrel{d}{\to}N\left(0,\mathscr{H}_{*}^{-1}\mathscr{I}_{*}\mathscr{H}_{*}^{-1}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathscr{I}_{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathscr{H}_{*}$
+\end_inset
+
+ are evaluated at the pseudo-true value 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+.
+ Attention should be paid to the sandwich-form asymptotic variance,
+ since the information equality does not hold under misspecification and as a result,
+ 
+\begin_inset Formula $\mathscr{I}_{*}\neq\mathscr{H}_{*}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
