@@ -135,7 +135,7 @@ educated guess
 
 \begin_layout Standard
 In econometrics,
- the most familiar OLS estimator is indeed a special case of MLE when the error term is normally distribution.
+ the most familiar OLS estimator is indeed a special case of MLE when the error term is normally distributed.
  When the support of the dependence variable is not continuous,
  most estimators are constructed by assuming an underlying conditional density model and then estimated by MLE.
  LIML (limited information maximum likelihood) is 2SLS counterpart in the likelihood world.
@@ -260,7 +260,7 @@ likelihood
 \begin_inset Formula $\theta\in\Theta$
 \end_inset
 
- is is 
+ is
 \begin_inset Formula 
 \[
 L\left(\theta;\mathbf{Y}\right)=f\left(\mathbf{Y};\theta\right)=\prod_{i=1}^{n}f\left(Y_{i};\theta_{0}\right).
@@ -408,20 +408,18 @@ give the prior distribution
 \begin_layout Example
 Conditional model:
  the conditioning variable can be viewed as if it is fixed and the randomness comes from the error term only.
-\begin_inset Formula 
-\[
-Y_{i}=X_{i}'\beta+\varepsilon_{i}
-\]
-
+ In the linear regression model 
+\begin_inset Formula $Y_{i}=X_{i}'\beta+\varepsilon_{i}$
 \end_inset
 
-
+,
+ the conditioning variable is 
 \begin_inset Formula $X_{i}$
 \end_inset
 
- is the conditional variable.
+.
  The condition 
-\begin_inset Formula $E\left(\varepsilon_{i}|X_{I}\right)=0$
+\begin_inset Formula $E\left[\varepsilon_{i}|X_{I}\right]=0$
 \end_inset
 
  together with a full rank 
@@ -440,11 +438,11 @@ Y_{i}=X_{i}'\beta+\varepsilon_{i}
 \end_inset
 
 ,
- then conditional parametric model as it completely describes 
+ then this is a conditional parametric model as it completely describes 
 \begin_inset Formula $f\left(Y_{i}\mid X_{i}\right)$
 \end_inset
 
- and it becomes a conditional parametric model with likelihood 
+ with the likelihood 
 \begin_inset Formula $L\left(\left(\beta,\sigma^{2}\right);\mathbf{Y}|\mathbf{X}\right)$
 \end_inset
 
@@ -512,7 +510,7 @@ The Kullback-Leibler distance
 \begin_inset Formula 
 \begin{align*}
 E\left[\log f\left(Y;\theta_{0}\right)\right]-E\left[\log f\left(Y;\theta\right)\right] & =E\left[\log\left(f\left(Y;\theta_{0}\right)/f\left(Y;\theta\right)\right)\right]=-E\left[\log\left(f\left(Y;\theta\right)/f\left(Y;\theta_{0}\right)\right)\right]\\
- & \geq-\log E\left[f\left(Y;\theta\right)/f\left(Y;\theta_{0}\right)\right]=0
+ & \geq-\log E\left[f\left(Y;\theta\right)/f\left(Y;\theta_{0}\right)\right]=0,
 \end{align*}
 
 \end_inset
@@ -622,7 +620,7 @@ Leibniz integral rule (from undergraduate calculus):
  the derivative 
 \begin_inset Formula 
 \[
-\frac{d}{dt}\int_{a\left(t\right)}^{b\left(t\right)}g\left(t,z\right)dz=g\left(t,b\left(t\right)\right)\cdot\frac{d}{dt}b\left(\theta\right)-f\left(t,a\left(t\right)\right)\cdot\frac{d}{dt}a\left(t\right)+\int_{a\left(t\right)}^{b\left(t\right)}\frac{\partial}{\partial t}g\left(t,z\right)dz.
+\frac{d}{dt}\int_{a\left(t\right)}^{b\left(t\right)}g\left(t,z\right)dz=g\left(t,b\left(t\right)\right)\cdot\frac{d}{dt}b\left(t\right)-g\left(t,a\left(t\right)\right)\cdot\frac{d}{dt}a\left(t\right)+\int_{a\left(t\right)}^{b\left(t\right)}\frac{\partial}{\partial t}g\left(t,z\right)dz.
 \]
 
 \end_inset
@@ -635,8 +633,8 @@ Leibniz integral rule (from undergraduate calculus):
  
 \begin_inset Formula 
 \begin{align*}
-E\left(\psi\left(\theta\right)\right) & =E\left[\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta\right)\right]=\int\frac{\partial}{\partial\theta}\log f\left(Y_{i};\theta\right)dF_{0}\left(x\right)\\
- & =\frac{\partial}{\partial\theta}\int\log f\left(Y_{i};\theta\right)dF_{0}\left(x\right)=\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{i};\theta\right)\right].
+E\left(\psi\left(\theta\right)\right) & =E\left[\frac{\partial}{\partial\theta}\log f\left(Y_{};\theta\right)\right]=\int\frac{\partial}{\partial\theta}\log f\left(Y_{};\theta\right)dF\left(Y;\theta_{0}\right)\\
+ & =\frac{\partial}{\partial\theta}\int\log f\left(Y_{};\theta\right)dF\left(Y;\theta_{0}\right)=\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{};\theta\right)\right].
 \end{align*}
 
 \end_inset
@@ -645,7 +643,7 @@ Evaluate
 \begin_inset Formula $\frac{\partial}{\partial\theta}E\left[\log f\left(Y_{i};\theta\right)\right]$
 \end_inset
 
- as 
+ at 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
@@ -743,7 +741,7 @@ Some textbooks may define the expected Hessian as
 \end_layout
 
 \begin_layout Proof
-Start with Hessian,
+Start with the Hessian:
 \begin_inset Formula 
 \begin{align*}
 E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\right)\right] & =E\left[\frac{\partial}{\partial\theta}\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[\frac{\partial}{\partial\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]\\
@@ -778,7 +776,7 @@ The second term:
  leading to 
 \begin_inset Formula 
 \[
-\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta_{0}\right)}{f\left(\theta_{0}\right)}f\left(\theta_{0}\right)dx=\int\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta_{0}\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}\int f\left(\theta_{0}\right)dx=\frac{\partial^{2}}{\partial\theta\partial\theta'}1=0.
+\int\frac{\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta_{0}\right)}{f\left(\theta_{0}\right)}f\left(\theta_{0}\right)dy=\int\frac{\partial^{2}}{\partial\theta\partial\theta'}f\left(\theta_{0}\right)dy=\frac{\partial^{2}}{\partial\theta\partial\theta'}\int f\left(\theta_{0}\right)dy=\frac{\partial^{2}}{\partial\theta\partial\theta'}1=0.
 \]
 
 \end_inset
@@ -822,7 +820,7 @@ Suppose the model is correctly specified,
 
  is unbiased estimator,
  then 
-\begin_inset Formula $var\left(\widetilde{\theta}\right)\geq\left(n\mathscr{I}_{0}\right)^{-1}$
+\begin_inset Formula $var(\widetilde{\theta})\geq\left(n\mathscr{I}_{0}\right)^{-1}$
 \end_inset
 
 .
@@ -951,24 +949,19 @@ Normal distribution:
 \begin_inset Formula $\gamma=\sigma^{2}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
+.
+ Then the log-likelihood is 
 \begin_inset Formula 
 \[
-\log\ell_{n}\left(Y;\mu,\sigma^{2}\right)=-\frac{n}{2}\log\gamma-\frac{n}{2}\log\pi-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
+\log\ell_{n}\left(Y;\mu,\gamma\right)=-\frac{n}{2}\log\gamma-\frac{n}{2}\log\pi-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
+The score and Hessian are
 \begin_inset Formula 
 \[
-\psi_{n}\left(\mu,\sigma^{2}\right)=\begin{cases}
+\psi_{n}\left(\mu,\gamma\right)=\begin{cases}
 \frac{1}{\gamma}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)\\
 -\frac{n}{2\gamma}+\frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
 \end{cases}
@@ -982,25 +975,18 @@ Normal distribution:
 \begin_layout Example
 \begin_inset Formula 
 \[
-\mathscr{H}_{n}\left(\mu,\sigma^{2}\right)=\left[\begin{array}{cc}
+\mathscr{H}_{n}\left(\mu,\gamma\right)=\left[\begin{array}{cc}
 \frac{n}{\gamma} & \frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)\\
 \frac{1}{2\gamma^{2}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right) & -\frac{n}{2\gamma^{2}}+\frac{1}{\gamma^{3}}\sum_{i=1}^{n}\left(Y_{i}-\mu\right)^{2}
-\end{array}\right]
+\end{array}\right].
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
-Expected Hessian:
-\end_layout
-
-\begin_layout Example
+The expected Hessian is 
 \begin_inset Formula 
 \[
-E\left[\mathscr{H}_{n}\left(\mu,\sigma^{2}\right)\right]=\left[\begin{array}{cc}
+E\left[\mathscr{H}_{n}\left(\mu,\gamma\right)\right]=\left[\begin{array}{cc}
 \frac{n}{\gamma} & 0\\
 0 & \frac{n}{2\gamma^{2}}
 \end{array}\right].
@@ -1021,7 +1007,7 @@ The inverse
 \begin_layout Example
 Check:
  the variance of the sample mean:
-\begin_inset Formula $var\left(\frac{1}{n}\sum_{i=1}^{n}Y_{i}\right)=\frac{\sigma^{2}}{n}$
+\begin_inset Formula $var\left(\frac{1}{n}\sum_{i=1}^{n}Y_{i}\right)=\frac{\gamma}{n}$
 \end_inset
 
 .
@@ -1039,26 +1025,26 @@ s_{n}^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(Y_{i}-\bar{Y}\right)^{2}=\frac{1}{n-1
 \end_inset
 
  is the unbiased estimator as 
-\begin_inset Formula $E\left(S_{n}^{2}\right)=\sigma^{2}$
+\begin_inset Formula $E\left(S_{n}^{2}\right)=\gamma$
 \end_inset
 
 .
  Since 
 \begin_inset Formula 
 \[
-\left(n-1\right)\frac{s_{n}^{2}}{\sigma^{2}}=\left(\frac{Y}{\sigma}\right)'\left(I-\frac{1}{n}1_{n}1_{n}'\right)\left(\frac{Y}{\sigma}\right)\sim\chi^{2}\left(n-1\right),
+\left(n-1\right)\frac{s_{n}^{2}}{\gamma}=\left(\frac{Y}{\sigma}\right)'\left(I-\frac{1}{n}1_{n}1_{n}'\right)\left(\frac{Y}{\sigma}\right)\sim\chi^{2}\left(n-1\right),
 \]
 
 \end_inset
 
 we have 
-\begin_inset Formula $s_{n}^{2}=\frac{\chi^{2}\left(n-1\right)}{n-1}\sigma^{2}$
+\begin_inset Formula $s_{n}^{2}=\frac{\chi^{2}\left(n-1\right)}{n-1}\gamma$
 \end_inset
 
  and thus
 \begin_inset Formula 
 \[
-var\left(s_{n}^{2}\right)=\frac{\sigma^{4}}{\left(n-1\right)^{2}}2\left(n-1\right)=\frac{2\sigma^{4}}{n-1}>\frac{2\sigma^{4}}{n}
+var\left(s_{n}^{2}\right)=\frac{\gamma^{2}}{\left(n-1\right)^{2}}2\left(n-1\right)=\frac{2\gamma^{2}}{n-1}>\frac{2\gamma^{2}}{n}
 \]
 
 \end_inset
@@ -1071,8 +1057,7 @@ Asymptotic Normality
 \end_layout
 
 \begin_layout Standard
-MLE is a special case of m-estimator.
- Under regularity conditions,
+Under regularity conditions,
  
 \begin_inset Formula $\hat{\theta}\stackrel{p}{\to}\theta_{0}$
 \end_inset
