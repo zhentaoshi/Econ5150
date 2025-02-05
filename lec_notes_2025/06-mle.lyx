@@ -1113,7 +1113,7 @@ Misspecified Model
 Kullback-Leibler information criterion (KLIC) is defined as 
 \begin_inset Formula 
 \[
-KLIC\left(f,g\right)=\int f\left(z\right)\log\frac{f\left(z\right)}{g\left(z\right)}dz.
+KLIC\left(f,g\right)=\int f\left(y\right)\log\frac{f\left(y\right)}{g\left(y\right)}dy.
 \]
 
 \end_inset
@@ -1139,18 +1139,14 @@ It is a scalar measure of the difference between two probability measures.
 
 \begin_layout Standard
 We narrow down our discussion to parametric models.
- Suppose the data 
-\begin_inset Formula $z$
-\end_inset
-
- is drawn from a parameter model 
+ Suppose the data is drawn from a parameter model 
 \begin_inset Formula $f$
 \end_inset
 
 ;
  this is the data generating process (DGP).
  The researcher specifies a family of models 
-\begin_inset Formula $g\left(z;\theta\right)$
+\begin_inset Formula $g\left(y;\theta\right)$
 \end_inset
 
  and a parameter space 
@@ -1159,7 +1155,7 @@ We narrow down our discussion to parametric models.
 
 ;
  thus such a specification covers a model space 
-\begin_inset Formula $G\left(\Theta\right)=\left\{ g\left(z;\theta\right):\theta\in\Theta\right\} $
+\begin_inset Formula $G\left(\Theta\right)=\left\{ g\left(y;\theta\right):\theta\in\Theta\right\} $
 \end_inset
 
 .
@@ -1177,9 +1173,9 @@ correctly specified
  Notice that 
 \begin_inset Formula 
 \begin{align*}
-KLIC\left(f,g\left(z;\theta\right)\right) & =\int f\left(z\right)\log f\left(z\right)dz-\int f\left(z\right)\log g\left(z;\theta\right)dz\\
- & =E\left[\log f\left(z\right)\right]-E\left[\log g\left(z;\theta\right)\right]\\
- & =E\left[\log f\left(z\right)\right]-\ell\left(\theta\right).
+KLIC\left(f,g\left(y;\theta\right)\right) & =\int f\left(y\right)\log f\left(y\right)dy-\int f\left(y\right)\log g\left(y;\theta\right)dy\\
+ & =E\left[\log f\left(y\right)\right]-E\left[\log g\left(y;\theta\right)\right]\\
+ & =E\left[\log f\left(y\right)\right]-\ell\left(\theta\right).
 \end{align*}
 
 \end_inset
@@ -1199,7 +1195,7 @@ Notice that the first term is irrelevant to the choice of
 \end_inset
 
  and 
-\begin_inset Formula $KLIC\left(f,g\left(z;\theta_{0}\right)\right)=0$
+\begin_inset Formula $KLIC\left(f,g\left(y;\theta_{0}\right)\right)=0$
 \end_inset
 
 .
@@ -1209,7 +1205,7 @@ Notice that the first term is irrelevant to the choice of
 \begin_layout Standard
 If the model is misspecified,
  
-\begin_inset Formula $\min_{\theta\in\Theta}KLIC\left(f,g\left(z;\theta\right)\right)>0$
+\begin_inset Formula $\min_{\theta\in\Theta}KLIC\left(f,g\left(y;\theta\right)\right)>0$
 \end_inset
 
 .
@@ -1233,7 +1229,7 @@ pseudo-true
 \end_inset
 
  is the minimizer of 
-\begin_inset Formula $KLIC\left(f,g\left(z;\theta\right)\right)$
+\begin_inset Formula $KLIC\left(f,g\left(y;\theta\right)\right)$
 \end_inset
 
  in the parameter space 
@@ -1252,7 +1248,7 @@ pseudo-true
 \end_inset
 
  and 
-\begin_inset Formula $g\left(z;\theta\right)$
+\begin_inset Formula $g\left(y;\theta\right)$
 \end_inset
 
  in terms of KLIC.
