@@ -419,7 +419,7 @@ Conditional model:
 
 .
  The condition 
-\begin_inset Formula $E\left[\varepsilon_{i}|X_{I}\right]=0$
+\begin_inset Formula $E\left[\varepsilon_{i}|X_{i}\right]=0$
 \end_inset
 
  together with a full rank 
@@ -741,7 +741,12 @@ Some textbooks may define the expected Hessian as
 \end_layout
 
 \begin_layout Proof
-Start with the Hessian:
+This proof will use the fact 
+\begin_inset Formula $\frac{\partial}{\partial\theta}\log f\left(\theta\right)=\frac{\frac{\partial}{\partial\theta}f\left(\theta\right)}{f\left(\theta\right)}$
+\end_inset
+
+ multiple times.
+ We start with the Hessian
 \begin_inset Formula 
 \begin{align*}
 E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(\theta_{0}\right)\right] & =E\left[\frac{\partial}{\partial\theta}\frac{\partial}{\partial\theta'}\log f\left(\theta_{0}\right)\right]=E\left[\frac{\partial}{\partial\theta}\frac{\frac{\partial}{\partial\theta'}f\left(\theta\right)}{f\left(\theta\right)}\big|_{\theta=\theta_{0}}\right]\\
