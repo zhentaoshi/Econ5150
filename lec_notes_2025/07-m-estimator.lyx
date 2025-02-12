@@ -108,8 +108,7 @@ M-Estimators
 \end_layout
 
 \begin_layout Standard
-Except for some Bayesian estimators that require integration or simulation to get the values,
- almost all frequentist estimators in econometrics involve steps of minimizing some criterion functions.
+Most econometrics estimators involve steps of minimizing some criterion functions.
  The M-estimator is a class of estimators that each individual observation contributes to the overall criterion function in an additive,
  separable manner.
  The name M-estimator was coined by Peter J.
@@ -594,7 +593,7 @@ uniformly continuous
  such that 
 \begin_inset Formula 
 \[
-\sup_{x,x'\in A,\,x\neq x'}\frac{\left|f\left(x'\right)-f\left(x\right)\right|}{\left\Vert x-x'\right\Vert }\leq L
+\sup_{x,x'\in A,\,x\neq x'}\frac{\left|f\left(x\right)-f\left(x'\right)\right|}{\left\Vert x-x'\right\Vert }\leq L
 \]
 
 \end_inset
