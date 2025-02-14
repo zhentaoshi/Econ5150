@@ -409,17 +409,17 @@ Identification
  such that 
 \begin_inset Formula 
 \[
-\inf_{\theta\in\Theta\backslash N_{\delta}\left(\theta_{0}\right)}S\left(\theta\right)>S\left(\theta_{0}\right)+\varepsilon
+\inf_{\theta\in\Theta\backslash N_{\varepsilon}\left(\theta_{0}\right)}S\left(\theta\right)>S\left(\theta_{0}\right)+\delta
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $N_{\delta}\left(\theta_{0}\right):=\left\{ \theta\in\Theta:\left\Vert \theta-\theta_{0}\right\Vert <\delta\right\} $
+\begin_inset Formula $N_{\varepsilon}\left(\theta_{0}\right):=\left\{ \theta\in\Theta:\left\Vert \theta-\theta_{0}\right\Vert <\varepsilon\right\} $
 \end_inset
 
  is an open 
-\begin_inset Formula $\delta$
+\begin_inset Formula $\varepsilon$
 \end_inset
 
 -neighborhood around 
@@ -657,11 +657,11 @@ We start from the condition of identification.
  
 \begin_inset Formula 
 \begin{align*}
-\Pr\left(|\hat{\theta}-\theta|>\delta\right) & \leq\Pr\left(S(\hat{\theta})-S\left(\theta_{0}\right)>\varepsilon\right)\\
- & =\Pr\left(S(\hat{\theta})-S_{n}(\hat{\theta})+S_{n}(\hat{\theta})-S_{n}\left(\theta_{0}\right)+S_{n}\left(\theta_{0}\right)-S\left(\theta_{0}\right)>\varepsilon\right)\\
- & \leq\Pr\left(S(\hat{\theta})-S_{n}(\hat{\theta})+S_{n}\left(\theta_{0}\right)-S\left(\theta_{0}\right)>\varepsilon\right)\\
- & \leq\Pr\left(\left|S_{n}(\hat{\theta})-S(\hat{\theta})\right|+\left|S\left(\theta_{0}\right)-S_{n}\left(\theta_{0}\right)\right|>\varepsilon\right)\\
- & \leq\Pr\left(\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\frac{\varepsilon}{2}\right)\to0
+\Pr\left(|\hat{\theta}-\theta|>\varepsilon\right) & \leq\Pr\left(S(\hat{\theta})-S\left(\theta_{0}\right)>\delta\right)\\
+ & =\Pr\left(S(\hat{\theta})-S_{n}(\hat{\theta})+S_{n}(\hat{\theta})-S_{n}\left(\theta_{0}\right)+S_{n}\left(\theta_{0}\right)-S\left(\theta_{0}\right)>\delta\right)\\
+ & \leq\Pr\left(S(\hat{\theta})-S_{n}(\hat{\theta})+S_{n}\left(\theta_{0}\right)-S\left(\theta_{0}\right)>\delta\right)\\
+ & \leq\Pr\left(\left|S_{n}(\hat{\theta})-S(\hat{\theta})\right|+\left|S\left(\theta_{0}\right)-S_{n}\left(\theta_{0}\right)\right|>\delta\right)\\
+ & \leq\Pr\left(2\sup_{\theta\in\Theta}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\geq\delta\right)\to0
 \end{align*}
 
 \end_inset
@@ -670,7 +670,8 @@ where the second inequality follows from the definition of the M-estimator that
 \begin_inset Formula $S_{n}(\hat{\theta})\leq S_{n}\left(\theta_{0}\right)$
 \end_inset
 
-.
+,
+ and the last inequality follows from ULLN.
 \end_layout
 
 \begin_layout Standard
