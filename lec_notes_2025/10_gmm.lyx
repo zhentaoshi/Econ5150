@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9,7 +9,7 @@
 \begin_modules
 theorems-ams-chap-bytype
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
 \inputencoding utf8x
@@ -21,7 +21,9 @@ theorems-ams-chap-bytype
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -64,7 +66,9 @@ theorems-ams-chap-bytype
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -84,12 +88,17 @@ theorems-ams-chap-bytype
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \bullet 1 0 9 -1
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -133,10 +142,8 @@ Generalized method of moments
 method of moments
 \series default
 .
- It seeks the parameter value that minimizes a quadratic form of the sample
- moments.
- It is particularly useful in estimating structural models in which moment
- conditions can be (hopefully) derived from economic theory.
+ It seeks the parameter value that minimizes a quadratic form of the sample moments.
+ It is particularly useful in estimating structural models in which moment conditions can be (hopefully) derived from economic theory.
  GMM emerges as one of the most popular estimators in modern econometrics.
  
 \begin_inset FormulaMacro
@@ -155,7 +162,8 @@ We are interested in a moment function
 \begin_inset Formula $g_{i}\left(\theta\right)=g\left(z_{i},\theta\right)\in\mathbb{R}^{m}$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -164,7 +172,8 @@ We are interested in a moment function
 \end_inset
 
 -dimensional parameter.
- Motivated by some economic theory, we look for the true value 
+ Motivated by some economic theory,
+ we look for the true value 
 \begin_inset Formula $\theta_{0}\in\Theta$
 \end_inset
 
@@ -206,7 +215,8 @@ The true value
 \begin_inset Formula $\boldsymbol{0}_{m}$
 \end_inset
 
-, define 
+,
+ define 
 \begin_inset Formula 
 \[
 S\left(\theta;W\right)=\E\left[g_{i}\left(\theta\right)\right]'W\E\left[g_{i}\left(\theta\right)\right],
@@ -218,7 +228,7 @@ where
 \begin_inset Formula $W$
 \end_inset
 
- an 
+ is an 
 \begin_inset Formula $m\times m$
 \end_inset
 
@@ -226,22 +236,25 @@ where
 \begin_inset Formula $W$
 \end_inset
 
-, which is called the 
+,
+ which is called the 
 \series bold
 weighting matrix
 \series default
 .
- The choice of 
+ For identification and consistent estimation,
+ the choice of 
 \begin_inset Formula $W$
 \end_inset
 
- is arbitrary, and one of the valid candidates is just the identity matrix
- 
+ is arbitrary,
+ and one valid candidate is the identity matrix 
 \begin_inset Formula $I_{m}$
 \end_inset
 
 .
- Formally, 
+ Formally,
+ 
 \series bold
 identification
 \series default
@@ -249,14 +262,15 @@ identification
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
-, there exists a 
-\begin_inset Formula $\delta>0$
+,
+ there exists a 
+\begin_inset Formula $\delta=\delta\left(\varepsilon\right)>0$
 \end_inset
 
  such that 
 \begin_inset Formula 
 \[
-\inf_{\theta\in\Theta\backslash\mathcal{N}_{\delta}(\theta_{0})}S\left(\theta;W\right)>S\left(\theta_{0};W\right)+\varepsilon.
+\inf_{\theta\in\Theta\backslash\mathcal{N}_{\varepsilon}(\theta_{0})}S\left(\theta;W\right)>S\left(\theta_{0};W\right)+\delta.
 \]
 
 \end_inset
@@ -265,7 +279,8 @@ identification
 \end_layout
 
 \begin_layout Standard
-Next, we provide more conditions under which we can verify identification.
+Next,
+ we provide more conditions under which we can verify identification.
  Suppose 
 \begin_inset Formula $g\left(\cdot,\theta\right)$
 \end_inset
@@ -278,7 +293,8 @@ Next, we provide more conditions under which we can verify identification.
 \begin_inset Formula $z_{i}$
 \end_inset
 
-, and the differentiation and expectation is exchangeable.
+,
+ and the differentiation and expectation is exchangeable.
  Denote the 
 \begin_inset Formula $m\times p$
 \end_inset
@@ -287,7 +303,8 @@ Next, we provide more conditions under which we can verify identification.
 \begin_inset Formula $D_{i}\left(\theta\right)=\frac{\partial}{\partial\theta'}g_{i}\left(\theta\right)$
 \end_inset
 
-, and 
+,
+ and 
 \begin_inset Formula $D_{0}=\E\left[D_{i}\left(\theta_{0}\right)\right]$
 \end_inset
 
@@ -313,7 +330,8 @@ Next, we provide more conditions under which we can verify identification.
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
-: 
+:
+ 
 \begin_inset Formula 
 \begin{align*}
 S\left(\theta;W\right) & =S\left(\theta_{0};W\right)+\psi\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)+\frac{1}{2}\left(\theta-\theta_{0}\right)H\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)+h.o.t,
@@ -322,7 +340,7 @@ S\left(\theta;W\right) & =S\left(\theta_{0};W\right)+\psi\left(\theta_{0};W\righ
 \end_inset
 
 where the higher-order term (h.o.t.) is 
-\begin_inset Formula $o\left(\left\Vert \theta-\theta_{0}\right\Vert ^{2}\right)$
+\begin_inset Formula $o(\left\Vert \theta-\theta_{0}\right\Vert ^{2})$
 \end_inset
 
 .
@@ -330,7 +348,8 @@ where the higher-order term (h.o.t.) is
 \begin_inset Formula $\theta=\theta_{0}$
 \end_inset
 
-, since 
+,
+ since 
 \begin_inset Formula $\E\left[g_{i}\left(\theta_{0}\right)\right]=0$
 \end_inset
 
@@ -344,7 +363,8 @@ H\left(\theta_{0};W\right) & =2D_{0}'WD_{0}.
 
 \end_inset
 
-If we take a heuristic approach by ignoring the h.o.t, for any 
+If we take a heuristic approach by ignoring the h.o.t,
+ for any 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -352,7 +372,8 @@ If we take a heuristic approach by ignoring the h.o.t, for any
 \begin_inset Formula $\left\Vert \theta-\theta_{0}\right\Vert >\delta$
 \end_inset
 
-, we obtain 
+,
+ we obtain 
 \begin_inset Formula 
 \begin{align*}
 S\left(\theta;W\right) & =\frac{1}{2}\left(\theta-\theta_{0}\right)'H\left(\theta_{0};W\right)\left(\theta-\theta_{0}\right)=\left(\theta-\theta_{0}\right)'D_{0}'WD_{0}\left(\theta-\theta_{0}\right).
@@ -360,7 +381,7 @@ S\left(\theta;W\right) & =\frac{1}{2}\left(\theta-\theta_{0}\right)'H\left(\thet
 
 \end_inset
 
-It entails a full rank 
+We need a full rank 
 \begin_inset Formula $D_{0}$
 \end_inset
 
@@ -376,7 +397,8 @@ S\left(\theta;W\right)>\left\Vert \theta-\theta_{0}\right\Vert ^{2}c\cdot\lambda
 
 \end_inset
 
- Otherwise, there exists a 
+ Otherwise,
+ there exists a 
 \begin_inset Formula $\theta^{\dagger}$
 \end_inset
 
@@ -388,7 +410,8 @@ S\left(\theta;W\right)>\left\Vert \theta-\theta_{0}\right\Vert ^{2}c\cdot\lambda
 \begin_inset Formula $D_{0}\left(\theta-\theta_{0}\right)=\boldsymbol{0}_{m}$
 \end_inset
 
-; we cannot identify 
+;
+ we cannot identify 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
@@ -405,8 +428,8 @@ Argue that a necessary condition for identification is
 \end_inset
 
 .
- In other words, the number of moment conditions must be no smaller than
- the number of parameters.
+ In other words,
+ the number of moment conditions must be no smaller than the number of parameters.
 \end_layout
 
 \begin_layout Example
@@ -414,7 +437,8 @@ Consider the linear IV model
 \begin_inset Formula $y_{i}=x_{i}'\theta+\varepsilon_{i}$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $x_{i}$
 \end_inset
 
@@ -456,7 +480,8 @@ The necessary condition for identification is a full rank
 \begin_inset Formula $D_{0}=-\E\left[w_{i}x_{i}'\right]$
 \end_inset
 
- , which is the relevant condition between 
+ ,
+ which is the relevant condition between 
 \begin_inset Formula $w_{i}$
 \end_inset
 
@@ -473,7 +498,8 @@ The above heuristic argument for identification only ensures
 \series bold
 local identification
 \series default
-, because we neglect the h.o.t.
+,
+ because we neglect the h.o.t.
 \begin_inset ERT
 status open
 
@@ -506,11 +532,13 @@ Given an iid sample
 \begin_inset Formula $z_{i}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $i=1,\ldots,n$
 \end_inset
 
-, we expect the sample moments 
+,
+ we expect the sample moments 
 \begin_inset Formula 
 \[
 \frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\theta_{0}\right)\approx\boldsymbol{0}_{m}.
@@ -518,7 +546,8 @@ Given an iid sample
 
 \end_inset
 
-Therefore, it is reasonable to estimate 
+Therefore,
+ it is reasonable to estimate 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -544,7 +573,8 @@ Consider again the linear IV model.
 \begin_inset Formula $p=m$
 \end_inset
 
- (just identified), then we can solve 
+ (just identified),
+ then we can solve 
 \begin_inset Formula 
 \[
 \frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}w_{i}\left(y_{i}-x_{i}'\theta\right)=\frac{1}{n}\sum_{i=1}^{n}w_{i}y_{i}-\left(\frac{1}{n}\sum_{i=1}^{n}w_{i}x_{i}'\right)\theta=\boldsymbol{0}_{m}
@@ -560,7 +590,8 @@ Consider again the linear IV model.
 \begin_inset Formula $m>p$
 \end_inset
 
- (over-identified), the 
+ (over-identified),
+ the 
 \begin_inset Formula $m$
 \end_inset
 
@@ -585,8 +616,8 @@ has no solution because there are few than
 \end_layout
 
 \begin_layout Standard
-To work with just identified cases and the over-identified cases in a unified
- framework, we use the sample moment 
+To work with just identified cases and the over-identified cases in a unified framework,
+ we use the sample moment 
 \begin_inset Formula $\bar{g}_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\theta\right)$
 \end_inset
 
@@ -594,7 +625,8 @@ To work with just identified cases and the over-identified cases in a unified
 \begin_inset Formula $\E\left[g_{i}\left(\theta\right)\right]$
 \end_inset
 
-, and define the sample criterion function 
+,
+ and define the sample criterion function 
 \begin_inset Formula 
 \[
 S_{n}\left(\theta\right)=\bar{g}_{n}'\left(\theta\right)W\bar{g}_{n}\left(\theta\right)
@@ -624,10 +656,9 @@ GMM estimator
 \end_inset
 
 .
- Notice that GMM is not an M-function as it is not a sample average of the
- loss function of each individual observation.
- Instead, it is a quadratic form of a sample average of the moment function
- 
+ Notice that GMM is not an M-function as it is not a sample average of the loss function of each individual observation.
+ Instead,
+ it is a quadratic form of a sample average of the moment function 
 \begin_inset Formula $g_{i}\left(\theta\right)$
 \end_inset
 
@@ -651,8 +682,7 @@ bigskip
 \end_layout
 
 \begin_layout Standard
-The proof of consistency of the GMM under identification and ULLN is identical
- to that of the M-estimator.
+The proof of consistency of the GMM under identification and ULLN is identical to that of the M-estimator.
  We leave it as an exercise.
  
 \end_layout
@@ -666,7 +696,8 @@ Show that
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
- is identified, (ii) 
+ is identified,
+ (ii) 
 \begin_inset Formula $\sup_{\theta\in\Theta_{0}}\left|S_{n}\left(\theta\right)-S\left(\theta\right)\right|\stackrel{p}{\to}0$
 \end_inset
 
@@ -675,8 +706,8 @@ Show that
 \end_layout
 
 \begin_layout Standard
-Next, given consistency we further check the asymptotic distribution of
- the GMM estimator under conditions of differentiability.
+Next,
+ given consistency we further check the asymptotic distribution of the GMM estimator under conditions of differentiability.
  Denote 
 \begin_inset Formula 
 \begin{align*}
@@ -689,7 +720,8 @@ where
 \begin_inset Formula $\bar{D}_{n}\left(\theta\right)=\frac{1}{n}\sum D_{i}\left(\theta\right)$
 \end_inset
 
-, and 
+,
+ and 
 \begin_inset Formula 
 \[
 \bar{H}_{n}\left(\theta;W\right)=\frac{\partial^{2}}{\partial\theta\partial\theta'}S_{n}\left(\theta;W\right)=2\sum_{k=1}^{m}\left(W\bar{g}_{n}\left(\theta\right)\right)_{k}\frac{\partial^{2}\bar{g}_{n,k}\left(z_{i},\theta\right)}{\partial\theta\partial\theta'}+2\bar{D}_{n}'\left(\theta\right)W\bar{D}_{n}\left(\theta\right).
@@ -704,13 +736,13 @@ where
 The first-order condition of the optimality of GMM yields
 \begin_inset Formula 
 \[
-\boldsymbol{0}_{m}=\bar{\psi}_{n}\left(\widehat{\theta};W\right)=\bar{\psi}_{n}\left(\theta_{0};W\right)+\bar{H}_{n}\left(\theta_{0};W\right)\left(\widehat{\theta}-\theta_{0}\right)+h.o.t,
+\boldsymbol{0}_{m}=\bar{\psi}_{n}(\widehat{\theta};W)=\bar{\psi}_{n}\left(\theta_{0};W\right)+\bar{H}_{n}\left(\theta_{0};W\right)\left(\widehat{\theta}-\theta_{0}\right)+h.o.t,
 \]
 
 \end_inset
 
 where the right-hand side comes from a Taylor expansion of 
-\begin_inset Formula $\bar{\psi}_{n}\left(\widehat{\theta};W\right)$
+\begin_inset Formula $\bar{\psi}_{n}(\widehat{\theta};W)$
 \end_inset
 
  around 
@@ -721,7 +753,7 @@ where the right-hand side comes from a Taylor expansion of
  We again ignore the higher-order term and rearrange:
 \begin_inset Formula 
 \begin{equation}
-\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)=-\bar{H}_{n}^{-1}\left(\theta_{0};W\right)\times\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right).\label{eq:theta_closed}
+\sqrt{n}(\widehat{\theta}-\theta_{0})=-\bar{H}_{n}^{-1}\left(\theta_{0};W\right)\times\sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right).\label{eq:theta_closed}
 \end{equation}
 
 \end_inset
@@ -739,7 +771,9 @@ We analyze the numerator
 \begin_inset Formula $\E\left[g_{i}\left(\theta_{0}\right)\right]=0$
 \end_inset
 
-, if the variance is finite we can apply CLT: 
+,
+ if the variance is finite we can apply CLT:
+ 
 \begin_inset Formula 
 \[
 \frac{1}{\sqrt{n}}\sum_{i}g_{i}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega_{0}\right)
@@ -756,7 +790,8 @@ where
 \begin_inset Formula $\bar{D}_{n}\left(\theta_{0}\right)\stackrel{p}{\to}D_{0}$
 \end_inset
 
- by some LLN, we have 
+ by some LLN,
+ we have 
 \begin_inset Formula 
 \[
 \sqrt{n}\bar{\psi}_{n}\left(\theta_{0};W\right)\stackrel{d}{\to}N\left(0,4D_{0}'W\Omega_{0}WD_{0}\right).
@@ -777,10 +812,11 @@ where the first term vanishes as
 \end_inset
 
 .
- Putting the numerator and the denominator together, we conclude
+ Putting the numerator and the denominator together,
+ we conclude
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(D_{0}'WD_{0}\right)^{-1}D_{0}'W\Omega_{0}WD_{0}\left(D_{0}'WD_{0}\right)^{-1}\right).
+\sqrt{n}(\widehat{\theta}-\theta_{0})\stackrel{d}{\to}N\left(0,\left(D_{0}'WD_{0}\right)^{-1}D_{0}'W\Omega_{0}WD_{0}\left(D_{0}'WD_{0}\right)^{-1}\right).
 \]
 
 \end_inset
@@ -789,8 +825,7 @@ where the first term vanishes as
 \end_layout
 
 \begin_layout Standard
-It is obvious that the asymptotic variance of the GMM estimator depends
- on the choice of the weight matrix 
+It is obvious that the asymptotic variance of the GMM estimator depends on the choice of the weight matrix 
 \begin_inset Formula $W$
 \end_inset
 
@@ -799,10 +834,11 @@ It is obvious that the asymptotic variance of the GMM estimator depends
 \begin_inset Formula $W=\Omega_{0}^{-1}$
 \end_inset
 
-, the asymptotic variance is simplified as 
+,
+ the asymptotic variance is simplified as 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}\right).
+\sqrt{n}(\widehat{\theta}-\theta_{0})\stackrel{d}{\to}N\left(0,\left(D_{0}'\Omega_{0}^{-1}D_{0}\right)^{-1}\right).
 \]
 
 \end_inset
@@ -825,7 +861,7 @@ The definition of
 \end_inset
 
  entails that 
-\begin_inset Formula $S_{n}\left(\widehat{\theta};W\right)$
+\begin_inset Formula $S_{n}(\widehat{\theta};W)$
 \end_inset
 
  is the minimum of 
@@ -851,14 +887,15 @@ The scaling factor
 \end_inset
 
  is essential because 
-\begin_inset Formula $S_{n}\left(\widehat{\theta};W\right)\leq S_{n}\left(\theta_{0};W\right)\stackrel{p}{\to}0$
+\begin_inset Formula $S_{n}(\widehat{\theta};W)\leq S_{n}\left(\theta_{0};W\right)\stackrel{p}{\to}0$
 \end_inset
 
  due to 
 \begin_inset Formula $\bar{g}_{n}\left(\theta_{0}\right)\stackrel{p}{\to}\boldsymbol{0}_{m}$
 \end_inset
 
-, whereas 
+,
+ whereas 
 \begin_inset Formula 
 \[
 nS_{n}\left(\theta_{0};W\right)=\left(\sqrt{n}\bar{g}_{n}'\left(\theta_{0}\right)\right)W\left(\sqrt{n}\bar{g}_{n}\left(\theta_{0}\right)\right)
@@ -871,7 +908,8 @@ is a quadratic form of an asymptotically normal random vector
 \end_inset
 
 .
- In particular, the choice 
+ In particular,
+ the choice 
 \begin_inset Formula $W=\Omega_{0}^{-1}$
 \end_inset
 
@@ -903,7 +941,8 @@ Decompose
 
 \end_inset
 
-The second term, by a Taylor expansion around 
+The second term,
+ by a Taylor expansion around 
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
@@ -922,7 +961,8 @@ into
 \begin_inset Formula $o_{p}(1)$
 \end_inset
 
-, becomes
+,
+ becomes
 \begin_inset Formula 
 \begin{align}
 \sqrt{n}\left(\bar{g}_{n}\left(\widehat{\theta}\right)-\bar{g}_{n}\left(\theta_{0}\right)\right) & =\sqrt{n}\bar{D}_{n}'\left(\theta_{0}\right)\times\left(\widehat{\theta}-\theta_{0}\right)+o_{p}(1)\nonumber \\
@@ -940,14 +980,17 @@ reference "eq:theta_closed"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-), the third line by the definition of 
+),
+ the third line by the definition of 
 \begin_inset Formula $\bar{\psi}_{n}$
 \end_inset
 
-, and the last line by citing the probabilistic limit of the matrices 
+,
+ and the last line by citing the probabilistic limit of the matrices 
 \begin_inset Formula $\bar{H}_{n}$
 \end_inset
 
@@ -963,6 +1006,7 @@ reference "eq:J_1"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -973,6 +1017,7 @@ reference "eq:J_2"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -995,7 +1040,8 @@ Since
 \begin_inset Formula $\left(p-m\right)$
 \end_inset
 
-, we have 
+,
+ we have 
 \begin_inset Formula 
 \[
 nS_{n}\left(\widehat{\theta};\Omega_{0}^{-1}\right)=\left\Vert \Omega_{0}^{-1/2}\sqrt{n}\bar{g}_{n}\left(\widehat{\theta}\right)\right\Vert \stackrel{d}{\to}\chi^{2}\left(m-p\right).
@@ -1010,10 +1056,12 @@ reference "eq:J_nut"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-), the estimated 
+),
+ the estimated 
 \begin_inset Formula $p$
 \end_inset
 
@@ -1030,8 +1078,8 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-To make the test statistic feasible, we can use any consistent estimator
- 
+To make the test statistic feasible,
+ we can use any consistent estimator 
 \begin_inset Formula $\widehat{\Omega}$
 \end_inset
 
@@ -1039,7 +1087,9 @@ To make the test statistic feasible, we can use any consistent estimator
 \begin_inset Formula $\Omega_{0}$
 \end_inset
 
-, for example, 
+,
+ for example,
+ 
 \begin_inset Formula 
 \[
 \widehat{\Omega}=\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\theta}\right)g_{i}'\left(\widehat{\theta}\right)-\bar{g}_{n}\left(\widehat{\theta}\right)\bar{g}_{n}'\left(\widehat{\theta}\right).
@@ -1057,23 +1107,24 @@ The feasible statistic
 
 -statistic.
  
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Section
+\begin_layout Plain Layout
 Simulated Moment of Moments
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 (to be completed)
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 In some models the 
 \begin_inset Formula $g$
 \end_inset
 
- function may be too complicated to write in explicit form, but if a hypothesize
-d value of 
+ function may be too complicated to write in explicit form,
+ but if a hypothesized value of 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -1082,15 +1133,15 @@ d value of
 \end_layout
 
 \begin_layout Example
-The multinominal probit model (McFadden, 1989) involves multivariate integration
- of nonlinear functions.
+The multinominal probit model (McFadden,
+ 1989) involves multivariate integration of nonlinear functions.
  These integral can be approximated by stochastic simulation.
  
 \end_layout
 
-\begin_layout Standard
-Another example is an even more complicated international trade model by
- Eaton, Kortum and Kramarz (2011).
+\begin_layout Plain Layout
+Another example is an even more complicated international trade model by Eaton,
+ Kortum and Kramarz (2011).
  
 \end_layout
 
@@ -1098,12 +1149,15 @@ Another example is an even more complicated international trade model by
 Indirect Inference
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 (to be completed)
 \end_layout
 
-\begin_layout Standard
-Example: Dynamic panel data model (Gourieroux, Phillips and Yu, 2011).
+\begin_layout Plain Layout
+Example:
+ Dynamic panel data model (Gourieroux,
+ Phillips and Yu,
+ 2011).
  The model is 
 \begin_inset Formula 
 \[
@@ -1130,7 +1184,8 @@ where
 \begin_inset Formula $\phi$
 \end_inset
 
-, we simulate an artificial sample 
+,
+ we simulate an artificial sample 
 \begin_inset Formula $\left(\tilde{y}_{it}\right)_{i\leq N,\,t\leq T}$
 \end_inset
 
@@ -1155,9 +1210,10 @@ Notice that the criterion function is different from SMM since
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Usually the expectation is difficult to write down in explicit form.
- We can run many simulations, indexed by 
+ We can run many simulations,
+ indexed by 
 \begin_inset Formula $h=1,2,\ldots,H$
 \end_inset
 
@@ -1176,7 +1232,7 @@ Usually the expectation is difficult to write down in explicit form.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -1192,7 +1248,7 @@ bigskip
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 \emph on
@@ -1200,8 +1256,7 @@ Self Promotion.
  
 \series default
 \emph default
-Estimating equation is the first topic on which I published research papers
- after I got my Ph.D..
+Estimating equation is the first topic on which I published research papers after I got my Ph.D..
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -1210,8 +1265,7 @@ literal "false"
 
 \end_inset
 
- estimates a high-dimensional linear IV model via the GMM-Lasso under the
- assumption of sparsity.
+ estimates a high-dimensional linear IV model via the GMM-Lasso under the assumption of sparsity.
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -1220,8 +1274,7 @@ literal "false"
 
 \end_inset
 
- finds that the quadratic form of (nonlinear) GMM fails to be consistent
- in a high-dimensional model where the number of moments 
+ finds that the quadratic form of (nonlinear) GMM fails to be consistent in a high-dimensional model where the number of moments 
 \begin_inset Formula $m$
 \end_inset
 
@@ -1229,9 +1282,10 @@ literal "false"
 \begin_inset Formula $n$
 \end_inset
 
-, and proposes a relaxed empirical likelihood to fix the problem.
- The empirical likelihood is an alternative method to GMM; they both estimate
- the parameters defined by the population estimating equations.
+,
+ and proposes a relaxed empirical likelihood to fix the problem.
+ The empirical likelihood is an alternative method to GMM;
+ they both estimate the parameters defined by the population estimating equations.
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -1240,12 +1294,12 @@ literal "false"
 
 \end_inset
 
- takes a structural approach by writing down a behavioral asset pricing
- model, deducing the estimating equations, and identifying and estimating
- the parameters of economic interest.
+ takes a structural approach by writing down a behavioral asset pricing model,
+ deducing the estimating equations,
+ and identifying and estimating the parameters of economic interest.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -1271,12 +1325,17 @@ today}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintCited"
 bibfiles "5150"
 options "chicagoa"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
