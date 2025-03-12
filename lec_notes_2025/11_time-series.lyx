@@ -1,0 +1,1791 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Time Series
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+A random variable is a 
+\begin_inset Formula $\left(\Omega,\mathscr{F}\right)\backslash\left(\mathbb{R}^{m},\mathscr{B}\right)$
+\end_inset
+
+ measure function.
+ A time series is a sequence of random variables 
+\begin_inset Formula $\left(y_{1}\left(\omega\right),y_{2}\left(\omega\right),\ldots,y_{n}\left(\omega\right)\right)\in\mathbb{R}^{m\times n}$
+\end_inset
+
+,
+ and it can be extended to a doubly infinite sequence 
+\begin_inset Formula $\left(...,y_{t-1},y_{t},y_{t+1,}...\right)\in\mathbb{R}^{m\times\infty}$
+\end_inset
+
+.
+ We consider discrete time series (instead of the continuous time series).
+ 
+\end_layout
+
+\begin_layout Example
+For simplicity,
+ consider 
+\begin_inset Formula $m=1$
+\end_inset
+
+ and 
+\begin_inset Formula $t=1,2,\ldots,n$
+\end_inset
+
+.
+ For each fixed 
+\begin_inset Formula $\omega$
+\end_inset
+
+,
+ the sequence is a deterministic vector 
+\begin_inset Formula $(y_{t}(\omega))_{i=1}^{n}\in\mathbb{R}^{n}$
+\end_inset
+
+;
+ for each fixed 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ the scalar 
+\begin_inset Formula $y_{t}\left(\omega\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+ is a plain random variable.
+\end_layout
+
+\begin_layout Section
+Stationarity
+\end_layout
+
+\begin_layout Standard
+In reality,
+ we have only one realized sequence,
+ but statistics needs repeated observations.
+ We introduce the concept 
+\emph on
+stationarity
+\emph default
+ to produce 
+\begin_inset Quotes eld
+\end_inset
+
+repeated
+\begin_inset Quotes erd
+\end_inset
+
+ observations.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is 
+\series bold
+covariance stationarity
+\series default
+ or 
+\series bold
+weakly stationarity
+\series default
+ if the mean 
+\begin_inset Formula $\mu=E\left[y_{t}\right]$
+\end_inset
+
+,
+ covariance 
+\begin_inset Formula $\Sigma=E\left[\left(y_{t}-\mu\right)\left(y_{t}-\mu\right)'\right]$
+\end_inset
+
+ and autocovariance 
+\begin_inset Formula $\Gamma\left(\ell\right)=E\left[\left(y_{t}-\mu\right)\left(y_{t-\ell}-\mu\right)'\right]$
+\end_inset
+
+ are independent of 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+For a vector-valued weakly stationarity time series,
+ 
+\begin_inset Formula $\Sigma=\Gamma\left(0\right)$
+\end_inset
+
+ is a positive-definite symmetric matrix.
+ The autovariance 
+\begin_inset Formula $\Gamma\left(\ell\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\ell\neq0$
+\end_inset
+
+ is not symmetric in general,
+ and 
+\begin_inset Formula 
+\[
+\Gamma\left(-\ell\right)=E\left[\left(y_{t}-\mu\right)\left(y_{t+\ell}-\mu\right)'\right]=E\left[\left(y_{t-\ell}-\mu\right)\left(y_{t}-\mu\right)'\right]=\Gamma\left(\ell\right)'.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $m=1$
+\end_inset
+
+,
+ we use 
+\begin_inset Formula $\gamma\left(0\right),\gamma\left(1\right),...$
+\end_inset
+
+,
+ for the autocovariance,
+ and we define 
+\emph on
+autocorrelation
+\emph default
+ as 
+\begin_inset Formula $\rho\left(\ell\right)=\gamma\left(\ell\right)/\gamma\left(0\right)$
+\end_inset
+
+.
+ By the Cauchy-Schwarz inequality 
+\begin_inset Formula $\rho(\ell)\in[-1,1]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is 
+\series bold
+strictly stationarity
+\series default
+,
+ if for every 
+\begin_inset Formula $\ell\in\mathbb{N}$
+\end_inset
+
+,
+ the joint distribution of 
+\begin_inset Formula $\left(y_{t},y_{t+1},\ldots,y_{t+\ell}\right)$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When one mentions 
+\begin_inset Quotes eld
+\end_inset
+
+stationarity
+\begin_inset Quotes erd
+\end_inset
+
+ without referring to a quantifier,
+ in econometrics it means strictly stationarity by default.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is i.i.d,
+ it is a special case of strict stationarity.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is strictly stationary,
+ its transformation 
+\begin_inset Formula $x_{t}\in\phi\left(y_{t},y_{t-1},...\right)\in\mathbb{R}^{q}$
+\end_inset
+
+ is also strictly stationary.
+ In other words,
+ strict stationarity is preserved by transformation.
+ 
+\end_layout
+
+\begin_layout Standard
+The infinite series 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ is 
+\series bold
+convergent
+\series default
+ if the partial sum 
+\begin_inset Formula $\sum_{j=1}^{N}a_{j}y_{t-j}$
+\end_inset
+
+ has a finite limit as 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+ 
+\emph on
+almost surely
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is strictly stationarity,
+ 
+\begin_inset Formula $E\left\Vert y\right\Vert <\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{j=0}^{N}\left|a_{j}\right|<\infty$
+\end_inset
+
+ (absolutely summable),
+ then 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ is convergent and strictly stationarity.
+\end_layout
+
+\begin_layout Section
+Ergodicity
+\end_layout
+
+\begin_layout Standard
+A time series 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is 
+\series bold
+ergodic
+\series default
+ if all invariant events are trivial.
+ 
+\end_layout
+
+\begin_layout Definition
+Formal definitions
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\widetilde{y}_{t}=\left(...,y_{t-1},y_{t},y_{t+1,}...\right)$
+\end_inset
+
+,
+ and the 
+\begin_inset Formula $\ell$
+\end_inset
+
+-th time shift is 
+\begin_inset Formula $\widetilde{y}_{t+\ell}=\left(...,y_{t-1+\ell},y_{t+\ell},y_{t+\ell+1,}...\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+Let an event 
+\begin_inset Formula $D\in\left\{ \widetilde{y}_{t}\in G\right\} $
+\end_inset
+
+ for some 
+\begin_inset Formula $G\subseteq\mathbb{R}^{m\times\infty}$
+\end_inset
+
+,
+ and a time shift of the event is 
+\begin_inset Formula $D_{\ell}\in\left\{ \widetilde{y}_{t+\ell}\in G\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+An event is 
+\series bold
+invariant
+\series default
+ if 
+\begin_inset Formula $D_{\ell}=D$
+\end_inset
+
+ for all 
+\begin_inset Formula $\ell\in\mathbb{Z}$
+\end_inset
+
+.
+ An event is 
+\series bold
+trivial
+\series default
+ if 
+\begin_inset Formula $P\left(D\right)=0$
+\end_inset
+
+ or 
+\begin_inset Formula $P\left(D\right)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ergodicty is preserved by transformation.
+ If 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is stationarity and erdogic,
+ the same is for 
+\begin_inset Formula $x_{t}\in\phi\left(y_{t},y_{t-1},...\right)$
+\end_inset
+
+ (function with infinite terms).
+ 
+\end_layout
+
+\begin_layout Example
+If 
+\begin_inset Formula $x_{t}=\sum_{j=0}^{\infty}a_{j}y_{t-j}$
+\end_inset
+
+ is convergent and 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is erdogic,
+ then 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ is also erdogic.
+\end_layout
+
+\begin_layout Fact
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Cesaro mean
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $a_{j}\to a$
+\end_inset
+
+ as 
+\begin_inset Formula $j\to\infty$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $\frac{1}{n}\sum_{j=1}^{\infty}a_{j}\to a$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $y_{t}\in\mathbb{R}^{m}$
+\end_inset
+
+ is stationarity and erdogic,
+ and 
+\begin_inset Formula $var\left(y_{t}\right)<\infty$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $\frac{1}{n}\sum_{\ell=1}^{n}cov\left(y_{t},y_{t+\ell}\right)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+need to revise
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A stationarity 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is erdogic if for all events 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\frac{1}{n}\sum_{\ell=1}^{n}P\left(A_{\ell}\cap B\right)=P\left(A\right)P\left(B\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $B=A$
+\end_inset
+
+,
+ and then we solve 
+\begin_inset Formula $P\left(A\right)=\left[P\left(A\right)\right]^{2}\Rightarrow P\left(A\right)=0$
+\end_inset
+
+ or 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset Quotes eld
+\end_inset
+
+sufficient
+\begin_inset Quotes erd
+\end_inset
+
+ condition for ergodicity is 
+\begin_inset Formula $P\left(A_{\ell}\cap B\right)\to P\left(A\right)P\left(B\right)$
+\end_inset
+
+ as 
+\begin_inset Formula $\ell\to\infty$
+\end_inset
+
+,
+ according to Cesaro means.
+ This sufficient condition is called 
+\begin_inset Quotes eld
+\end_inset
+
+mixing
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Mixing says that separate events (any 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+) are asymptotically independent when one of the event,
+ say 
+\begin_inset Formula $A$
+\end_inset
+
+,
+ is shifted to 
+\begin_inset Formula $A_{\ell}$
+\end_inset
+
+ as 
+\begin_inset Formula $\ell\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Ergodicity is slightly weaker than mixing (weak dependence),
+ in the sense that the independence is 
+\begin_inset Quotes eld
+\end_inset
+
+on average
+\begin_inset Quotes erd
+\end_inset
+
+ in the form of 
+\begin_inset Formula $\frac{1}{n}\sum_{\ell=1}^{n}P\left(A_{\ell}\cap B\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Ergodic Theorem
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $y_{t}\in\mathbb{R}^{m}$
+\end_inset
+
+ is stationarity,
+ erdogic,
+ and 
+\begin_inset Formula $E\left\Vert y\right\Vert <\infty$
+\end_inset
+
+,
+ then 
+\begin_inset Formula $E\left\Vert \bar{y}-\mu\right\Vert \to0$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{y}\overset{p}{\to}\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This is a version of LLN for time series.
+\end_layout
+
+\begin_layout Section
+Information Set
+\end_layout
+
+\begin_layout Itemize
+For a univariate time series,
+ definite 
+\begin_inset Formula $E_{t-1}\left[y_{t}\right]=E\left[y_{t}\mid y_{t-1},y_{t-2},...\right]$
+\end_inset
+
+ as the condition expectation of 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ given the past history 
+\begin_inset Formula $\left(y_{t-1},y_{t-2},...\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+More generally,
+ we write 
+\begin_inset Formula $\mathscr{F}_{t}$
+\end_inset
+
+ as the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field generated by some random variables (specified by the user) up to time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathscr{F}_{t}$
+\end_inset
+
+ is called an 
+\series bold
+information set
+\series default
+.
+ We can write 
+\begin_inset Formula $E_{t-1}\left[y_{t}\right]=E\left[y_{t}\mid\mathscr{F}_{t-1}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Information sets are nested:
+ 
+\begin_inset Formula $\cdots\subseteq\mathscr{F}_{t-1}\subseteq\mathscr{F}_{t}\subseteq\mathscr{F}_{t+1}\subseteq...$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Information sets associate with the different generating variables are different.
+ For example,
+ in general 
+\begin_inset Formula $\sigma\left(y_{t},y_{t-1},...\right)\neq\sigma\left(y_{t},x_{t},y_{t-1},x_{t-1},...\right)$
+\end_inset
+
+.
+ The former is the information set for 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+,
+ whereas the latter is the information set for 
+\begin_inset Formula $\left(y_{t},x_{t}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Martingale Difference Sequence (MDS)
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ be a time series,
+ and 
+\begin_inset Formula $\mathscr{F}_{t}$
+\end_inset
+
+ be an information set.
+ We say 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ is 
+\series bold
+adapted
+\series default
+ to 
+\begin_inset Formula $\mathscr{F}_{t}$
+\end_inset
+
+ if 
+\begin_inset Formula $E\left[e_{t}\mid\mathscr{F}_{t}\right]=e_{t}$
+\end_inset
+
+.
+ It means that 
+\begin_inset Formula $\mathscr{F}_{t}$
+\end_inset
+
+ contains the complete information of 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+.
+ A 
+\series bold
+natural filtration
+\series default
+ is 
+\begin_inset Formula $\mathscr{F}_{t}=\sigma\left(e_{t},e_{t-1},...\right)$
+\end_inset
+
+;
+ it is the smallest information set to which 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ is adapted.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+MDS
+\end_layout
+
+\end_inset
+
+ A process 
+\begin_inset Formula $\left\{ e_{t},\mathscr{F}_{t}\right\} $
+\end_inset
+
+ is MDS if 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ is adapted to 
+\begin_inset Formula $\mathscr{F}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E\left|e_{t}\right|<\infty$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E\left[e_{t}\mid\mathscr{F}_{t-1}\right]=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Interpretation:
+ 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ is unforeseeable given the information 
+\begin_inset Formula $\mathscr{F}_{t-1}$
+\end_inset
+
+.
+ The definition of mds is about the mean independence.
+ It does not rule our predictability in other moments.
+ 
+\end_layout
+
+\begin_layout Definition
+A time series is a white noise if it is covariance stationarity with 0 autocovariance.
+\end_layout
+
+\begin_layout Standard
+MDS implies that the series is a 
+\series bold
+white noise
+\series default
+,
+ because 
+\begin_inset Formula 
+\[
+cov\left(e_{t},e_{t-\ell}\right)=E\left[e_{t}e_{t-\ell}\right]=E\left[E\left[e_{t}e_{t-\ell}\mid\mathscr{F}_{t-1}\right]\right]=E\left[e_{t-\ell}E\left[e_{t}\mid\mathscr{F}_{t-1}\right]\right]=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "eg:mds"
+
+\end_inset
+
+ Suppose 
+\begin_inset Formula $e_{t}=u_{t}u_{t-1}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $u_{t}\sim i.i.d.\,N\left(0,1\right)$
+\end_inset
+
+.
+ In this case,
+ 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ is MDS.
+ Consider the filtration 
+\begin_inset Formula $\mathscr{F}_{t}=\sigma\left(u_{t},u_{t-1},...\right)$
+\end_inset
+
+,
+ which subsumes 
+\begin_inset Formula $\sigma\left(e_{t},e_{t-1},...\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+E\left[e_{t}|\mathscr{F}_{t-1}\right]=E\left[u_{t}u_{t-1}|\mathscr{F}_{t-1}\right]=u_{t-1}E\left[u_{t}|\mathscr{F}_{t-1}\right]=u_{t-1}\cdot0=0.
+\]
+
+\end_inset
+
+On the other hand,
+ the covariance of 
+\begin_inset Formula $e_{t}^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{t-1}^{2}$
+\end_inset
+
+ is not 0:
+\begin_inset Formula 
+\begin{align*}
+cov\left(e_{t}^{2},e_{t-1}^{2}\right) & =E\left[u_{t}^{2}u_{t-2}^{2}u_{t-1}^{4}\right]-E\left[u_{t}^{2}u_{t-1}^{2}\right]E\left[u_{t-1}^{2}u_{t-2}^{2}\right]\\
+ & =1\times1\times3-\left(1\times1\right)^{2}=2
+\end{align*}
+
+\end_inset
+
+as the kurtosis of 
+\begin_inset Formula $N\left(0,1\right)$
+\end_inset
+
+ is 3.
+ Therefore,
+ 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ is an mds but not iid.
+\end_layout
+
+\begin_layout Standard
+An MDS 
+\begin_inset Formula $\left(e_{t},\mathscr{F}_{t}\right)$
+\end_inset
+
+ is  
+\series bold
+conditional homoskedastic
+\series default
+ if 
+\begin_inset Formula $E\left[e_{t}^{2}\mid\mathscr{F}_{t-1}\right]=\sigma^{2}$
+\end_inset
+
+.
+ In the above example,
+ 
+\begin_inset Formula $e_{t}=u_{t}u_{t-1}$
+\end_inset
+
+ is MDS and stationary,
+ but conditional heteroskedastic because 
+\begin_inset Formula 
+\[
+E\left[e_{t}^{2}|\mathscr{F}_{t-1}\right]=E\left[u_{t}^{2}u_{t-1}^{2}|\mathscr{F}_{t-1}\right]=u_{t-1}^{2}E\left[u_{t}^{2}|\mathscr{F}_{t-1}\right]=\sigma^{2}u_{t-1}^{2}
+\]
+
+\end_inset
+
+ varies over time.
+\end_layout
+
+\begin_layout Standard
+In the real world,
+ MDS is a benchmark model for the stock return.
+ Indeed,
+ mds is implied by the so-called 
+\emph on
+efficient market hypothesis
+\emph default
+.
+ On the other hand,
+ empirical evidence shows that the conditional variance of stock return is much easier to predict.
+ There are many models about conditional volatility,
+ for example the well-known ARCH and GARCH models.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+CLT for MDS
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ is strictly stationary,
+ ergodic and MDS,
+ then 
+\begin_inset Formula 
+\[
+S_{n}=\frac{1}{\sqrt{n}}\sum_{t=1}^{n}e_{t}\overset{d}{\to}N\left(0,\Sigma\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Sigma=E\left[e_{t}e_{t}'\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+There is the time series counterpart of the Lindeberg-Lévy CLT.
+ Because 
+\begin_inset Formula $\left(e_{t}\right)$
+\end_inset
+
+ is strict stationary,
+ its variance 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ must be a constant matrix.
+ It does not rule out 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ being conditional heteroskedastic.
+\end_layout
+
+\begin_layout Section
+Mixing
+\end_layout
+
+\begin_layout Standard
+MDS is useful,
+ but too restrictive in that it rules out serial correlation.
+ If we are reluctant to impose MDS,
+ we will need stronger assumption on the dependence than ergodicity to establish large sample results.
+ 
+\end_layout
+
+\begin_layout Standard
+We introduce some more definitions.
+ The 
+\series bold
+alpha-coefficient
+\series default
+ 
+\series bold
+for two events
+\series default
+ is defined as 
+\begin_inset Formula 
+\[
+\alpha\left(A,B\right)=\left|P\left(AB\right)-P\left(A\right)P\left(B\right)\right|.
+\]
+
+\end_inset
+
+ Denote two 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-fields be 
+\begin_inset Formula $\mathscr{F}_{-\infty}^{t}=\sigma\left(...,y_{t-1},y_{t}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathscr{F}_{t}^{\infty}=\sigma\left(y_{t},y_{t+1},...\right)$
+\end_inset
+
+.
+ The 
+\series bold
+strong mixing coefficient
+\series default
+ (alpha-coefficient) is defined as 
+\begin_inset Formula 
+\[
+\alpha\left(\ell\right)=\sup_{t}\sup_{A\in\mathscr{F}_{-\infty}^{t-\ell},B\in\mathscr{F}_{t}^{\infty}}\alpha\left(A,B\right)
+\]
+
+\end_inset
+
+We say 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+ is 
+\series bold
+strong mixing
+\series default
+ (alpha mixing) if 
+\begin_inset Formula $\alpha\left(\ell\right)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $\ell\to\infty$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+If the time series is strictly stationary,
+ the definition of the alpha-coefficient can be simplified as 
+\begin_inset Formula $\alpha\left(\ell\right)=\sup_{A\in\mathscr{F}_{-\infty}^{t-\ell},B\in\mathscr{F}_{t}^{\infty}}\alpha\left(A,B\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Fact
+An 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-mixing process is ergodic.
+\end_layout
+
+\begin_layout Standard
+To use the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-mixing process,
+ we usually need 
+\series bold
+rate conditions
+\series default
+ (for example 
+\begin_inset Formula $\alpha\left(\ell\right)=O\left(\ell^{-r}\right)$
+\end_inset
+
+ gives the speed of decay) or 
+\series bold
+summation restriction
+\series default
+ (for example 
+\begin_inset Formula $\sum_{\ell=0}^{\infty}\left[\alpha\left(\ell\right)\right]^{r}<\infty$
+\end_inset
+
+ or 
+\begin_inset Formula $\sum_{\ell=0}^{\infty}\ell^{s}\alpha\left(\ell\right)^{r}<\infty$
+\end_inset
+
+ for some positive constants 
+\begin_inset Formula $s$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Standard
+Strong mixing is preserved by finite transformation.
+\end_layout
+
+\begin_layout Fact
+Suppose 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ has mixing coefficients 
+\begin_inset Formula $\alpha_{y}\left(\ell\right)$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $x_{t}=\phi\left(y_{t},y_{t-1},...,y_{t-q}\right)$
+\end_inset
+
+ is a finite transformation of 
+\begin_inset Formula $\left(y_{t}\right)$
+\end_inset
+
+.
+ Then Then 
+\begin_inset Formula $\alpha_{x}\left(\ell\right)<\alpha_{y}\left(\ell-q\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\ell\geq q$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-coefficients satisfy the same rate and summation properties.
+\end_layout
+
+\begin_layout Standard
+Another widely used measurement of dependence is 
+\series bold
+absolute regularity
+\series default
+ (beta-coefficient)
+\begin_inset Formula 
+\[
+\beta\left(\ell\right)=\sup_{t}\sup_{A\in\mathscr{F}_{t}^{\infty}}\left|P\left(A\mid\mathscr{F}_{-\infty}^{t-\ell}\right)-P\left(A\right)\right|.
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\beta$
+\end_inset
+
+-mixing is stronger than 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-mixing in that 
+\begin_inset Formula $\beta\left(\ell\right)\to0$
+\end_inset
+
+ implies 
+\begin_inset Formula $\alpha\left(\ell\right)\to0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+CLT for Correlated Variables
+\end_layout
+
+\begin_layout Standard
+The scaled partial sum of a scalar zero-mean time series 
+\begin_inset Formula $\left(y_{t}\right)_{t=1}^{n}$
+\end_inset
+
+ has variance 
+\begin_inset Formula 
+\begin{align*}
+var\left(S_{n}\right) & =var\left(\frac{1}{\sqrt{n}}\sum_{t=1}^{n}y_{t}\right)\\
+ & =\frac{1}{n}\boldsymbol{1}_{n}'E\left[YY'\right]\boldsymbol{1}_{n}\\
+ & =\frac{1}{n}\boldsymbol{1}_{n}'\left[\begin{array}{ccccc}
+\sigma^{2} & \gamma\left(1\right) & \gamma\left(2\right) & \cdots & \gamma\left(n-1\right)\\
+\gamma\left(1\right) & \sigma^{2} & \gamma\left(1\right) & \cdots & \gamma(n-2)\\
+\gamma\left(2\right) & \gamma\left(1\right) & \sigma^{2} & \cdots & \gamma(n-3)\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+\gamma\left(n-1\right) & \gamma(n-2) & \gamma(n-3) & \cdots & \sigma^{2}
+\end{array}\right]\boldsymbol{1}_{n}\\
+ & =\frac{1}{n}\left(n\sigma^{2}+2\left(n-1\right)\gamma\left(1\right)+2\left(n-2\right)\gamma\left(2\right)+...+2\gamma\left(n-1\right)+2\times0\times\gamma\left(n\right)\right)\\
+ & =\sigma^{2}+2\sum_{\ell=1}^{n}\left(1-\frac{\ell}{n}\right)\gamma\left(\ell\right)
+\end{align*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\gamma\left(-\ell\right)=\gamma\left(\ell\right)$
+\end_inset
+
+,
+ it is equivalent to write 
+\begin_inset Formula 
+\[
+var\left(S_{n}\right)=\sum_{\ell=-n}^{n}\left(1-\frac{\left|\ell\right|}{n}\right)\gamma\left(\ell\right).
+\]
+
+\end_inset
+
+ If 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is a vector time series,
+ similarly 
+\begin_inset Formula 
+\[
+var\left(S_{n}\right)=\Gamma\left(0\right)+\sum_{\ell=1}^{n}\left(1-\frac{\ell}{n}\right)\left(\Gamma\left(\ell\right)+\Gamma\left(\ell\right)'\right)=\sum_{\ell=-n}^{n}\left(1-\frac{\left|\ell\right|}{n}\right)\Gamma\left(\ell\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For any CLT to work,
+ 
+\begin_inset Formula $var\left(S_{n}\right)$
+\end_inset
+
+ must be convergent in the limit.
+ Suppose 
+\begin_inset Formula $\sum_{\ell=1}^{\infty}\Gamma\left(\ell\right)$
+\end_inset
+
+ is convergent,
+ and then by the Cesaro mean the sum of the autocovariances is
+\begin_inset Formula 
+\[
+\sum_{\ell=1}^{n}\left(1-\frac{\ell}{n}\right)\Gamma\left(\ell\right)=\frac{1}{n}\sum_{\ell=1}^{n}\left(n-\ell\right)\Gamma\left(\ell\right)=\frac{1}{n}\sum_{\ell=1}^{n-1}\sum_{j=1}^{\ell}\Gamma\left(j\right)\to\sum_{j=1}^{\infty}\Gamma\left(j\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A necessary condition for 
+\begin_inset Formula $\sum_{\ell=1}^{\infty}\Gamma\left(\ell\right)$
+\end_inset
+
+ to be convergent is that 
+\begin_inset Formula $\Gamma\left(\ell\right)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $\ell\to\infty$
+\end_inset
+
+;
+ and a sufficient condition is 
+\begin_inset Formula $\sum_{\ell=1}^{\infty}\left|\Gamma\left(\ell\right)\right|<\infty$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+(CLT) Suppose 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ is strictly stationarity with 
+\begin_inset Formula $E\left[u_{t}\right]=0$
+\end_inset
+
+,
+ and its 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-mixing coefficient satisfies 
+\begin_inset Formula $\sum_{\ell=0}^{\infty}\alpha\left(\ell\right)^{1-2/r}<\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left\Vert u_{t}\right\Vert ^{r}<\infty$
+\end_inset
+
+ for some 
+\begin_inset Formula $r>2$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $S_{n}\overset{d}{\to}N\left(0,\Omega\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\Omega=\sum_{\ell=-\infty}^{\infty}\Gamma\left(\ell\right)$
+\end_inset
+
+ is the long-run variance.
+\end_layout
+
+\begin_layout Standard
+The most important difference from the iid CLT or the MDS CLT lies in the fact that if the summands have serial correlation (
+\begin_inset Formula $\Gamma(\ell)\neq0$
+\end_inset
+
+ for some 
+\begin_inset Formula $\ell\neq0$
+\end_inset
+
+),
+ here the asymptotic variance is no longer the variance of the individual variable 
+\begin_inset Formula $\Gamma(0)$
+\end_inset
+
+,
+ but the 
+\series bold
+long-run variance
+\series default
+ 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ defined above.
+\end_layout
+
+\begin_layout Section
+Linear Projection
+\end_layout
+
+\begin_layout Standard
+We have learned that in linear regression models 
+\begin_inset Formula 
+\[
+\mathscr{P}\left(y\mid X\right)=X\beta^{*}=X'\left(E\left[XX'\right]\right)^{-1}E\left[Xy\right].
+\]
+
+\end_inset
+
+ Here 
+\begin_inset Formula $\mathscr{P}\left(\cdot|\cdot\right)$
+\end_inset
+
+ is the linear projection operator (by default,
+ an intercept is included in 
+\begin_inset Formula $X$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Such a linear projection to a finite number of random variables can be extended to infinitely many variables.
+ In our time series context,
+ we are particularly interested in projecting 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ to the past history 
+\begin_inset Formula 
+\[
+\mathscr{P}_{t-1}\left(y_{t}\right)=\mathscr{P}\left(y_{t}\mid\tilde{y}_{t-1}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{y}_{t-1}:=\left(y_{t-1},y_{t-2},...\right)$
+\end_inset
+
+.
+ Define the projection error as 
+\begin_inset Formula $e_{t}:=y_{t}-\mathscr{P}_{t-1}\left(y_{t}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Projection Theorem
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $y_{t}\in\mathbb{R}$
+\end_inset
+
+ is covariance stationarity,
+ then the projection error satisfies:
+ 
+\end_layout
+
+\begin_layout Theorem
+(1) 
+\begin_inset Formula $E\left[e_{t}\right]=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+(2) 
+\begin_inset Formula $\sigma^{2}=E\left[e_{t}^{2}\right]\leq E\left[y_{t}^{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+(3) 
+\begin_inset Formula $E\left[e_{t}e_{t-j}\right]=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $j\geq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Obviously,
+ the covariance stationary 
+\begin_inset Formula $\left\{ y_{t}\right\} $
+\end_inset
+
+ produces covariance stationary 
+\begin_inset Formula $\left\{ e_{t}\right\} $
+\end_inset
+
+,
+ and the latter is indeed a white noise.
+ Furthermore,
+ if 
+\begin_inset Formula $\left\{ y_{t}\right\} $
+\end_inset
+
+ is strictly stationarity,
+ then 
+\begin_inset Formula $\left\{ e_{t}\right\} $
+\end_inset
+
+ is strictly stationarity.
+ But recall that strictly stationary white noise does not implies temporal independence,
+ as shown in Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eg:mds"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+To better understand the zero autocovariance of the residuals,
+ it is helpful to imagine the projection as a linear combination
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{0}+\alpha_{1}y_{t-1}+\alpha_{2}y_{t-2}+...+e_{t}=\alpha_{0}+\sum_{k=1}^{\infty}\alpha_{k}y_{k-j}+e_{t}.
+\]
+
+\end_inset
+
+The nature of linear projection ensures 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ is uncorrelated with all regressions 
+\begin_inset Formula $\left(1,y_{t-1},y_{t-2},\ldots\right)$
+\end_inset
+
+.
+ On the other hand,
+ after pushing back for 
+\begin_inset Formula $j\in\mathbb{N}$
+\end_inset
+
+ lags,
+ we have 
+\begin_inset Formula $e_{t-j}=y_{t-j}-\alpha_{0}-\sum_{k=1}^{\infty}\alpha_{k}y_{t-j-k}$
+\end_inset
+
+ is a linear combination of 
+\begin_inset Formula $(1,y_{t-j},y_{t-j-1},y_{t-j-2},\ldots)$
+\end_inset
+
+,
+ which is a a subset of 
+\begin_inset Formula $\left(1,y_{t-1},y_{t-2},\ldots\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Wold Decomposition
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is covariance stationarity,
+ and the linear projection error has 
+\begin_inset Formula $\sigma^{2}>0$
+\end_inset
+
+,
+ then we can write 
+\begin_inset Formula 
+\[
+y_{t}=u_{t}+\sum_{j=0}^{\infty}b_{j}e_{t-j}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $b_{0}=1$
+\end_inset
+
+,
+ and 
+\begin_inset Formula $u_{t}=\lim_{m\to\infty}\mathscr{P}_{t-m}\left(y_{t}\right)$
+\end_inset
+
+.
+ (For simplicity,
+ we can consider the case 
+\begin_inset Formula $\mu_{t}=\mu$
+\end_inset
+
+.) The Wold decomposition projects 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ onto the orthogonal basis spanned by 
+\begin_inset Formula $(e_{t},e_{t-1,}e_{t-2},...)$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lag operator:
+ 
+\begin_inset Formula ${\rm L}y_{t}=y_{t-1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula ${\rm L}^{2}y_{t}={\rm L}\left({\rm L}y_{t}\right)={\rm L}y_{t-1}=y_{t-2}$
+\end_inset
+
+,
+ and so on.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Formula 
+\[
+y_{t}=\mu+\sum_{j=0}^{\infty}b_{j}e_{t-j}=\mu+\left(b_{0}+b_{1}{\rm L}+b_{2}{\rm L}^{2}+...\right)e_{t}=\mu+b\left({\rm L}\right)e_{t}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $b\left({\rm L}\right)$
+\end_inset
+
+ is an infinite-order polynomial.
+\end_layout
+
+\begin_layout Itemize
+Autoregressive Wold Representation:
+ If 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is covariance stationarity with 
+\begin_inset Formula $y_{t}=u_{t}+b\left({\rm L}\right)e_{t}$
+\end_inset
+
+,
+ then with some additional technical restrictions,
+ 
+\begin_inset Formula $y_{t}=\mu+\sum_{j=1}^{\infty}a_{j}y_{t-j}+e_{j}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
