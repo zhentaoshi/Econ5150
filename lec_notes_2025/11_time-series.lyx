@@ -116,7 +116,7 @@ A random variable is a
 \begin_inset Formula $\left(\Omega,\mathscr{F}\right)\backslash\left(\mathbb{R}^{m},\mathscr{B}\right)$
 \end_inset
 
- measure function.
+ measurable function.
  A time series is a sequence of random variables 
 \begin_inset Formula $\left(y_{1}\left(\omega\right),y_{2}\left(\omega\right),\ldots,y_{n}\left(\omega\right)\right)\in\mathbb{R}^{m\times n}$
 \end_inset
@@ -285,9 +285,9 @@ autocorrelation
 
  is 
 \series bold
-strictly stationarity
+strictly stationar
 \series default
-,
+y,
  if for every 
 \begin_inset Formula $\ell\in\mathbb{N}$
 \end_inset
@@ -372,7 +372,7 @@ If
 \begin_inset Formula $y_{t}$
 \end_inset
 
- is strictly stationarity,
+ is strictly stationary,
  
 \begin_inset Formula $E\left\Vert y\right\Vert <\infty$
 \end_inset
@@ -407,10 +407,6 @@ ergodic
 \end_layout
 
 \begin_layout Definition
-Formal definitions
-\end_layout
-
-\begin_layout Definition
 Let 
 \begin_inset Formula $\widetilde{y}_{t}=\left(...,y_{t-1},y_{t},y_{t+1,}...\right)$
 \end_inset
@@ -421,15 +417,11 @@ Let
 \end_inset
 
 -th time shift is 
-\begin_inset Formula $\widetilde{y}_{t+\ell}=\left(...,y_{t-1+\ell},y_{t+\ell},y_{t+\ell+1,}...\right)$
+\begin_inset Formula $\widetilde{y}_{t+\ell}=\left(...,y_{t+\ell-1},y_{t+\ell},y_{t+\ell+1,}...\right)$
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Definition
-Let an event 
+ Let an event 
 \begin_inset Formula $D\in\left\{ \widetilde{y}_{t}\in G\right\} $
 \end_inset
 
@@ -443,10 +435,7 @@ Let an event
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Definition
-An event is 
+ An event is 
 \series bold
 invariant
 \series default
@@ -480,7 +469,7 @@ Ergodicty is preserved by transformation.
 \begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
- is stationarity and erdogic,
+ is stationarity and ergodic,
  the same is for 
 \begin_inset Formula $x_{t}\in\phi\left(y_{t},y_{t-1},...\right)$
 \end_inset
@@ -498,12 +487,12 @@ If
 \begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
- is erdogic,
+ is ergodic,
  then 
 \begin_inset Formula $x_{t}$
 \end_inset
 
- is also erdogic.
+ is also ergodic.
 \end_layout
 
 \begin_layout Fact
@@ -526,7 +515,7 @@ Cesaro mean
 
 ,
  then 
-\begin_inset Formula $\frac{1}{n}\sum_{j=1}^{\infty}a_{j}\to a$
+\begin_inset Formula $\frac{1}{n}\sum_{j=1}^{n}a_{j}\to a$
 \end_inset
 
  as 
@@ -541,7 +530,7 @@ If
 \begin_inset Formula $y_{t}\in\mathbb{R}^{m}$
 \end_inset
 
- is stationarity and erdogic,
+ is stationarity and ergodic,
  and 
 \begin_inset Formula $var\left(y_{t}\right)<\infty$
 \end_inset
@@ -555,17 +544,7 @@ If
 \begin_inset Formula $n\to\infty$
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-need to revise
-\end_layout
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -573,7 +552,7 @@ A stationarity
 \begin_inset Formula $\left(y_{t}\right)$
 \end_inset
 
- is erdogic if for all events 
+ is ergodic if for all events 
 \begin_inset Formula $A$
 \end_inset
 
@@ -698,7 +677,7 @@ Ergodic Theorem
 \end_inset
 
  is stationarity,
- erdogic,
+ ergodic,
  and 
 \begin_inset Formula $E\left\Vert y\right\Vert <\infty$
 \end_inset
@@ -774,7 +753,7 @@ information set
 \begin_layout Itemize
 Information sets are nested:
  
-\begin_inset Formula $\cdots\subseteq\mathscr{F}_{t-1}\subseteq\mathscr{F}_{t}\subseteq\mathscr{F}_{t+1}\subseteq...$
+\begin_inset Formula $\cdots\subseteq\mathscr{F}_{t-1}\subseteq\mathscr{F}_{t}\subseteq\mathscr{F}_{t+1}\subseteq\cdots$
 \end_inset
 
 
@@ -805,7 +784,7 @@ Information sets associate with the different generating variables are different
 Martingale Difference Sequence (MDS)
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 Let 
 \begin_inset Formula $\left(e_{t}\right)$
 \end_inset
@@ -856,7 +835,6 @@ natural filtration
 \end_inset
 
  is adapted.
- 
 \end_layout
 
 \begin_layout Definition
@@ -885,21 +863,21 @@ MDS
 \begin_inset Formula $\mathscr{F}_{t}$
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Enumerate
 \begin_inset Formula $E\left|e_{t}\right|<\infty$
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Enumerate
 \begin_inset Formula $E\left[e_{t}\mid\mathscr{F}_{t-1}\right]=0$
 \end_inset
 
-
+.
 \end_layout
 
 \end_deeper
@@ -920,16 +898,15 @@ Interpretation:
 \end_layout
 
 \begin_layout Definition
-A time series is a white noise if it is covariance stationarity with 0 autocovariance.
-\end_layout
-
-\begin_layout Standard
-MDS implies that the series is a 
+A time series is a 
 \series bold
 white noise
 \series default
-,
- because 
+ if it is covariance stationarity with 0 autocovariance.
+\end_layout
+
+\begin_layout Standard
+MDS implies that the series is a white noise because 
 \begin_inset Formula 
 \[
 cov\left(e_{t},e_{t-\ell}\right)=E\left[e_{t}e_{t-\ell}\right]=E\left[E\left[e_{t}e_{t-\ell}\mid\mathscr{F}_{t-1}\right]\right]=E\left[e_{t-\ell}E\left[e_{t}\mid\mathscr{F}_{t-1}\right]\right]=0.
