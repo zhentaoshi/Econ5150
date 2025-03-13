@@ -422,7 +422,7 @@ Let
 
 .
  Let an event 
-\begin_inset Formula $D\in\left\{ \widetilde{y}_{t}\in G\right\} $
+\begin_inset Formula $A=\left\{ \widetilde{y}_{t}\in G\right\} $
 \end_inset
 
  for some 
@@ -431,7 +431,7 @@ Let
 
 ,
  and a time shift of the event is 
-\begin_inset Formula $D_{\ell}\in\left\{ \widetilde{y}_{t+\ell}\in G\right\} $
+\begin_inset Formula $A_{\ell}=\left\{ \widetilde{y}_{t+\ell}\in G\right\} $
 \end_inset
 
 .
@@ -440,7 +440,7 @@ Let
 invariant
 \series default
  if 
-\begin_inset Formula $D_{\ell}=D$
+\begin_inset Formula $A_{\ell}=A$
 \end_inset
 
  for all 
@@ -453,11 +453,11 @@ invariant
 trivial
 \series default
  if 
-\begin_inset Formula $P\left(D\right)=0$
+\begin_inset Formula $P\left(A\right)=0$
 \end_inset
 
  or 
-\begin_inset Formula $P\left(D\right)=1$
+\begin_inset Formula $P\left(A\right)=1$
 \end_inset
 
 .
@@ -568,16 +568,12 @@ A stationarity
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Let 
+In the special case 
 \begin_inset Formula $B=A$
 \end_inset
 
 ,
- and then we solve 
+ we solve 
 \begin_inset Formula $P\left(A\right)=\left[P\left(A\right)\right]^{2}\Rightarrow P\left(A\right)=0$
 \end_inset
 
@@ -589,15 +585,7 @@ Let
 \end_layout
 
 \begin_layout Standard
-A 
-\begin_inset Quotes eld
-\end_inset
-
-sufficient
-\begin_inset Quotes erd
-\end_inset
-
- condition for ergodicity is 
+A sufficient condition for ergodicity is 
 \begin_inset Formula $P\left(A_{\ell}\cap B\right)\to P\left(A\right)P\left(B\right)$
 \end_inset
 
