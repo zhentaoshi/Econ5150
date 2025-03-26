@@ -604,11 +604,7 @@ mixing
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Itemize
-Mixing says that separate events (any 
+ Mixing says that separate events (any 
 \begin_inset Formula $A$
 \end_inset
 
@@ -631,10 +627,7 @@ Mixing says that separate events (any
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Itemize
-Ergodicity is slightly weaker than mixing (weak dependence),
+ Ergodicity is slightly weaker than mixing (weak dependence),
  in the sense that the independence is 
 \begin_inset Quotes eld
 \end_inset
@@ -672,11 +665,11 @@ Ergodic Theorem
 
 ,
  then 
-\begin_inset Formula $E\left\Vert \bar{y}-\mu\right\Vert \to0$
+\begin_inset Formula $E\left\Vert \bar{y}_{n}-\mu\right\Vert \to0$
 \end_inset
 
  and 
-\begin_inset Formula $\bar{y}\overset{p}{\to}\mu$
+\begin_inset Formula $\bar{y}_{n}\overset{p}{\to}\mu$
 \end_inset
 
 .
@@ -684,6 +677,55 @@ Ergodic Theorem
 
 \begin_layout Standard
 This is a version of LLN for time series.
+ 
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $y_{t}=U+V_{t}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $U\sim N(0,1)$
+\end_inset
+
+ and it is independent from any 
+\begin_inset Formula $V_{t}\sim iid\:N(0,1)$
+\end_inset
+
+.
+ It is easy to check that 
+\begin_inset Formula $(y_{t})$
+\end_inset
+
+ is strictly stationary according to the definition.
+ But 
+\begin_inset Formula $(y_{t})$
+\end_inset
+
+ is not erdogic,
+ and therefore does not enjoy the LLN.
+ That is,
+ in this particular case 
+\begin_inset Formula 
+\[
+n^{-1}\sum_{t=1}^{n}y_{t}\overset{p}{\nrightarrow}E\left[y_{t}\right]=0.
+\]
+
+\end_inset
+
+Instead,
+ since 
+\begin_inset Formula $n^{-1}\sum_{t=1}^{n}V_{t}\overset{p}{\to}0$
+\end_inset
+
+ by Kolmogorov LLN,
+ it follows 
+\begin_inset Formula $n^{-1}\sum_{t=1}^{n}y_{t}\overset{p}{\to}U$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
