@@ -700,7 +700,7 @@ In software packages,
  the regressors are mostly mean-scale normalized,
  that is,
  setting 
-\begin_inset Formula $w_{j}=\hat{\mathrm{var}}(X_{j})$
+\begin_inset Formula $w_{j}=\hat{\mathrm{sd}}(X_{j})$
 \end_inset
 
  as the sample variance of the 
@@ -750,7 +750,7 @@ plain Lasso (Plasso)
 \series default
 ,
  and the one under 
-\begin_inset Formula $w_{j}=\hat{\mathrm{var}}(X_{j})$
+\begin_inset Formula $w_{j}=\hat{\mathrm{std}}(X_{j})$
 \end_inset
 
  the 
@@ -932,7 +932,7 @@ We have shown in the first lecture that
  and it can be decomposed as 
 \begin_inset Formula 
 \[
-\mathbb{E}\left[\left(y-f(x)\right)^{2}\right]=m\left(x\right)+\sigma^{2},
+\mathbb{E}\left[\left(y-f(x)\right)^{2}\right]=\mathbb{E}\left[(m(x)-\widehat{f}(x))^{2}\right]+\sigma^{2},
 \]
 
 \end_inset
@@ -950,7 +950,8 @@ where
  we can further decompose 
 \begin_inset Formula 
 \begin{align*}
-\mathbb{E}\left[(m(x)-\widehat{f}(x))^{2}\right] & =\mathbb{E}\left[(m(x)-\mathbb{E}[\hat{f}(x)]+\mathbb{E}[\hat{f}(x)]-\widehat{f}(x))^{2}\right]=bias^{2}+var
+\mathbb{E}\left[(m(x)-\widehat{f}(x))^{2}\right] & =\mathbb{E}\left[\left(m(x)-\mathbb{E}[\hat{f}(x)]+\mathbb{E}[\hat{f}(x)]-\widehat{f}(x)\right)^{2}\right]\\
+ & =\mathbb{E}\left[\left(\mathbb{E}[\hat{f}(x)]-\widehat{f}(x)-bias\right)^{2}\right]=bias^{2}+var
 \end{align*}
 
 \end_inset
@@ -958,7 +959,7 @@ where
 where 
 \begin_inset Formula 
 \begin{align*}
-bias & :=\mathbb{E}\left[m(x)-\mathbb{E}[\hat{f}(x)\right]\\
+bias & :=\mathbb{E}[\hat{f}(x)]-m(x)\\
 var & :=\mathbb{E}\left[\left(\widehat{f}(x)-\mathbb{E}[\hat{f}(x)]\right)^{2}\right]
 \end{align*}
 
@@ -967,7 +968,7 @@ var & :=\mathbb{E}\left[\left(\widehat{f}(x)-\mathbb{E}[\hat{f}(x)]\right)^{2}\r
 and because 
 \begin_inset Formula 
 \[
-\mathbb{E}\left[\left(m(x)-\mathbb{E}[\hat{f}(x)]\right)\left(\mathbb{E}[\hat{f}(x)]-\widehat{f}(x)\right)\right]=\left(m(x)-\mathbb{E}[\hat{f}(x)]\right)\mathbb{E}\left[\left(\mathbb{E}[\hat{f}(x)]-\widehat{f}(x)\right)\right]=0.
+\mathbb{E}\left[bias\left(\mathbb{E}[\hat{f}(x)]-\widehat{f}(x)\right)\right]=bias\cdot\mathbb{E}\left[\left(\mathbb{E}[\hat{f}(x)]-\widehat{f}(x)\right)\right]=0.
 \]
 
 \end_inset
@@ -1302,7 +1303,7 @@ Machine Learning
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y=x^{\top}\beta+e$
+\begin_inset Formula $y=x'\beta+e$
 \end_inset
 
 
@@ -1356,7 +1357,7 @@ learn
 \begin_inset Text
 
 \begin_layout Plain Layout
-no tuning parameter (due to assumptions)
+no tuning parameter
 \end_layout
 
 \end_inset
