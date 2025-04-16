@@ -126,8 +126,9 @@ black-box
  methods.
  In real applications,
  when the machines are carefully tuned,
- they can achieve excellent performance.
- Caution must be exercised when we implement these methods in empirical economic analysis.
+ they can achieve excellent performance in many examples.
+ Of course,
+ caution must be exercised when we implement these methods in empirical economic analysis.
 \end_layout
 
 \begin_layout Section
@@ -138,14 +139,14 @@ Series Estimation
 Statisticians have long been working on nonparametric estimation.
  These nonparametric estimation methods pioneered modern machine learning.
  Suppose we are interested in the conditional mean 
-\begin_inset Formula $E[y|x]$
+\begin_inset Formula $m(x)=E[y|x]$
 \end_inset
 
 .
  We solve the minimization problem 
 \begin_inset Formula 
 \[
-\min_{m}E[(y-m(x))^{2}].
+\min_{f}E[(y-f(x))^{2}].
 \]
 
 \end_inset
@@ -177,7 +178,7 @@ Given a finite sample of
  the sample minimization problem is 
 \begin_inset Formula 
 \[
-\min_{m}\frac{1}{n}\sum_{i=1}^{n}(y_{i}-m(x_{i}))^{2}.
+\min_{f}\frac{1}{n}\sum_{i=1}^{n}(y_{i}-f(x_{i}))^{2}.
 \]
 
 \end_inset
@@ -194,7 +195,7 @@ We must restrict the class of functions that we search for the minimizer.
  any bounded,
  continuous,
  and differentiable function has a series representation 
-\begin_inset Formula $m(x)=\sum_{k=0}^{\infty}\beta_{k}\cos(\frac{k}{2}\pi x)$
+\begin_inset Formula $f(x)=\sum_{k=0}^{\infty}\beta_{k}\cos(\frac{k}{2}\pi x)$
 \end_inset
 
 .
@@ -221,7 +222,7 @@ We must restrict the class of functions that we search for the minimizer.
  so that 
 \begin_inset Formula 
 \[
-m_{K}(x)=\sum_{k=0}^{K}\beta_{k}\cos\left(\frac{k}{2}\pi x\right)\to m(x).
+f_{K}(x)=\sum_{k=0}^{K}\beta_{k}\cos\left(\frac{k}{2}\pi x\right)\to f(x).
 \]
 
 \end_inset
@@ -240,25 +241,24 @@ Bias-variance tradeoff appears in this nonparametric regression.
 \begin_inset Formula $m_{K}(x)$
 \end_inset
 
- will be too flexible and it can achieve even 
-\begin_inset Formula $100\%$
+ will be too flexible and it can achieve 
+\begin_inset Formula $100$
 \end_inset
 
- of in-sample R-squared (when 
-\begin_inset Formula $K=n$
+ percent of in-sample R-squared (when 
+\begin_inset Formula $K\geq n$
 \end_inset
 
 ).
- This is not useful for out-of-sample prediction.
- Such prediction will have large variance,
- but small bias.
+ This is not a good idea for out-of-sample prediction:
+ such prediction will have very large variance despite small bias.
  On the other extreme,
  a very small 
 \begin_inset Formula $K$
 \end_inset
 
  will make 
-\begin_inset Formula $m_{K}(x)$
+\begin_inset Formula $f_{K}(x)$
 \end_inset
 
  too rigid to approximate general nonlinear functions.
@@ -276,6 +276,16 @@ Another way of regularization is to specify a sufficiently large
  Either ridge or Lasso can be used as a penalty.
 \end_layout
 
+\begin_layout Standard
+If we want to allow interaction across variables,
+ we will manually code up the interactive terms based on the multivariate 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ The next sections will describe methods that automatically generate interactions.
+\end_layout
+
 \begin_layout Section
 Tree-based methods
 \end_layout
@@ -287,9 +297,9 @@ regression trees
 \series default
 .
  A regression tree recursively partitions the space of regressors.
- The algorithm is easy to describe:
- each time a covariate is split into two dummies,
- and the splitting criterion is the most aggressive reduction of the SSR.
+ The algorithm is as the following.
+ Each time a covariate is split into two dummies,
+ and the splitting point is the one that reduces the SSR most aggressively.
  In the formulation of the SSR,
  the fitted value is computed as the average of the 
 \begin_inset Formula $y_{i}$
@@ -316,8 +326,8 @@ The tuning parameter here is the depth of the tree,
 
 \begin_layout Standard
 A major drawback of the regression tree is its instability.
- For independent datasets drawn from the same data generating process (DGP),
- the covariate chosen to be split and the splitting point can vary wildly and they heavily influence the path of the partition.
+ For two independent datasets drawn from the same data generating process (DGP),
+ the covariates chosen to be split and the splitting points can vary wildly and they heavily influence the shapes of the trees.
 \end_layout
 
 \begin_layout Standard
@@ -412,7 +422,7 @@ Random forest
 \begin_inset Formula $p$
 \end_inset
 
- covarites before each split of a tree during the process of bagging.
+ covarites before each split of a tree.
  Compared to bagging,
  random forest adds a third tuning parameter 
 \begin_inset Formula $s$
@@ -459,7 +469,7 @@ ensemble learning
 gradient boosting
 \series default
  takes a distinctive scheme to determine the ensemble weights.
- It is a deterministic approach that does not resample the original data.
+ It is a deterministic approach that does not incur any randomness.
 \end_layout
 
 \begin_layout Standard
@@ -581,7 +591,7 @@ Neural Network
 Neural networks
 \series default
  are the workhorses of AI.
- Statisticians view them as particular types of nonlinear models.
+ Statisticians view them as particular types of nonlinear fitting method.
  The simplest architecture is a one-layer 
 \series bold
 feedforward neural network
@@ -667,7 +677,7 @@ universal approximator
 \end_layout
 
 \begin_layout Standard
-A user has multiple tuning parameters to choose from when fitting a neural network:
+A user has multiple tuning parameters to choose when fitting a neural network:
  besides the activation function,
  one must decide the number of hidden layers and the number of nodes in each layer.
  Many (plain) parameters are induced by the multiple layers and multiple nodes,
@@ -684,10 +694,13 @@ A user has multiple tuning parameters to choose from when fitting a neural netwo
 \end_layout
 
 \begin_layout Standard
-The nonlinear complex structure makes the optimization very challenging and the global optimizer is beyond guarantee.
- In particular,
- when the sample size is big,
- the de facto optimization algorithm is the stochastic gradient descent.
+The nonlinear complex structure makes the optimization challenging and the global optimizer is far beyond guarantee.
+ When the sample size is big,
+ the 
+\emph on
+de facto
+\emph default
+ optimization algorithm is the stochastic gradient descent.
 \end_layout
 
 \begin_layout Section
@@ -760,22 +773,10 @@ Newton's method corresponds to
 \end_inset
 
  
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-%The linear search is a one-dimensional problem and it can be handled by either exact minimization or backtracking.
- Details of the descent method is referred to Chapter 9.2--9.5 of @boyd2004convex.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-When the sample size is huge and the number of parameters is also big,
+When the sample size is huge and the number of parameters is also large,
  the evaluation of the gradient on the full dataset can be prohibitively expensive.
  
 \series bold
@@ -783,24 +784,30 @@ Stochastic gradient descent
 \series default
  (SGD) uses a small batch of the sample to evaluate the gradient in each iteration.
  It can significantly save computational time.
- It is the 
-\emph on
-de facto
-\emph default
- optimization procedure in complex optimization problems such as training a neural network.
+ 
 \end_layout
 
 \begin_layout Standard
 However,
  SGD involves tuning parameters (say,
- the batch size and the learning rate;
+ the number of epochs,
+ the batch size,
+ and the learning rate;
  learning rate replaces the step length 
 \begin_inset Formula $a_{k}$
 \end_inset
 
- and becomes a regularization parameter) that can dramatically affect the outcome,
- in particular in nonlinear problems.
+ and becomes a regularization parameter) that can affect the outcome.
  Careful experiments must be carried out before serious implementation.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+The methods introduced in this lecture are fairly different from the conventional econometrics models.
+ I will provide multiple code examples to demonstrate these machine learning procedures.
 \end_layout
 
 \begin_layout Standard
