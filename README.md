@@ -5,7 +5,7 @@
 * Time: Thursday 9:30am – 12:15pm
 * Venue: Room 501, Hui Yeung Shing Building
 
-**2025 Spring**
+**2026 Spring**
 
 This repository hosts lecture notes and code. They will be updated as the course progresses.
 
@@ -24,7 +24,7 @@ As a sequel to ECON5120, this course will cover advanced topics in applied econo
 
 * Review of linear regressions
 * Causal inference
-* Large sample theory
+* Large sample theory: I
 * Maximum likelihood
 * Limited dependent variables
 * Generalized method of moments
@@ -32,6 +32,7 @@ As a sequel to ECON5120, this course will cover advanced topics in applied econo
 * Numerical optimization
 * High dimensional linear regressions: shrinkage estimation
 * High dimensional nonlinear regressions: machine learning
+* Large sample theory: II
 * Time series
 * Panel data
 
@@ -45,19 +46,6 @@ As a sequel to ECON5120, this course will cover advanced topics in applied econo
 * Midterm: 50%
 * Final: 50%
 
-
-
-<!-- ### Environment
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/zhentaoshi/Econ5150/HEAD) provides an interactive environment for Jupyter notebooks.
-
-
-<a href="https://gitpod.io/#https://github.com/zhentaoshi/Econ5150">
-  <img
-    src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod"
-    alt="Contribute with Gitpod"
-  />
-</a> -->
 
 
 <!-- ### Quotations

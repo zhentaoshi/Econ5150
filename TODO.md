@@ -2,5 +2,5 @@
 
 
 - [x] GMM
-- [ ] Causality
-- [ ] Machine learning
+- [x] Causality
+- [x] Machine learning
