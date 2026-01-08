@@ -106,15 +106,7 @@ theorems-ams
 \begin_body
 
 \begin_layout Chapter
-Regression and Projection
-\end_layout
-
-\begin_layout Section
-Causality
-\end_layout
-
-\begin_layout Subsection
-Structure and Identification
+Causality 
 \end_layout
 
 \begin_layout Standard
@@ -140,6 +132,288 @@ Unlike physical laws such as Einstein's mass–energy equivalence
  The signal-to-noise ratios in economic laws are often significantly lower than those of physical laws,
  mainly due to the lack of laboratory setting and the heterogeneous nature of the subjects.
  
+\end_layout
+
+\begin_layout Section
+Means
+\end_layout
+
+\begin_layout Standard
+We have data 
+\begin_inset Formula $\left(y_{1},\ldots,y_{n}\right)$
+\end_inset
+
+.
+ We want to understand the randomness of the data.
+ You have never learn statistics.
+ You have no idea about parametric distribution.
+\end_layout
+
+\begin_layout Standard
+Nonparametric way.
+ One number:
+ average.
+ Exam scores in class (95%).
+ Two number:
+ spread,
+ variance (40%).
+ Density is a function.
+\end_layout
+
+\begin_layout Standard
+In the out of sample world,
+ we want to do prediction.
+ Prediction need to consider the error.
+ If MSE,
+ then E[y] is the best estimator.
+\end_layout
+
+\begin_layout Section
+Potential Outcome Framework
+\end_layout
+
+\begin_layout Standard
+Treatment effect.
+ 
+\begin_inset Formula $\Delta_{i}=y_{i}^{(1)}-y_{i}^{(0)}.$
+\end_inset
+
+ The best prediction of a new person is 
+\begin_inset Formula $E\left[\Delta_{i}\right]$
+\end_inset
+
+.
+ The problem is that we can only observe
+\begin_inset Formula 
+\[
+y_{i}=D_{i}y_{i}^{(1)}+(1-D_{i})y_{i}^{(0)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+How to compute 
+\begin_inset Formula $E\left[y_{i}^{(1)}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[y_{i}^{(0)}\right]$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+If the assignment is random,
+ 
+\begin_inset Formula 
+\[
+\begin{pmatrix}y_{i}^{(1)}\\
+y_{i}^{(0)}
+\end{pmatrix}\perp D_{i}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Look at 
+\begin_inset Formula 
+\[
+E\left[y_{i}|D_{i}=1\right]=E\left[D_{i}y_{i}^{(1)}+(1-D_{i})y_{i}^{(0)}|D_{i}=1\right]=E\left[y_{i}^{(1)}|D_{i}=1\right]\stackrel{\mathrm{idp}}{=}E\left[y_{i}^{(1)}\right].
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula $\left(y_{i},D_{i}\right)$
+\end_inset
+
+ are observable,
+ the LHS is feasible.
+ Although 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is dependent of 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+.
+ if the conditioning variable 
+\begin_inset Formula $y_{i}^{(1)}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ are independent.
+ Similarly,
+ 
+\begin_inset Formula 
+\[
+E\left[y_{i}|D_{i}=0\right]=E\left[D_{i}y_{i}^{(1)}+(1-D_{i})y_{i}^{(0)}|D_{i}=0\right]=E\left[y_{i}^{(0)}|D_{i}=0\right]\stackrel{\mathrm{idp}}{=}E\left[y_{i}^{(0)}\right].
+\]
+
+\end_inset
+
+We have 
+\begin_inset Formula 
+\[
+\mathrm{ATE}=E\left[y_{i}|D_{i}=1\right]-E\left[y_{i}|D_{i}=0\right].
+\]
+
+\end_inset
+
+This is one way.
+\end_layout
+
+\begin_layout Standard
+Another way is 
+\begin_inset Formula 
+\[
+D_{i}y_{i}=D_{i}^{2}y_{i}^{(1)}+D_{i}(1-D_{i})y_{i}^{(0)}=D_{i}y_{i}^{(1)}
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula $D_{i}^{2}=D_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{i}(1-D_{i})=0$
+\end_inset
+
+.
+ Its expectation
+\begin_inset Formula 
+\[
+E\left[D_{i}y_{i}\right]=E\left[D_{i}y_{i}^{(1)}\right]\stackrel{\mathrm{idp}}{=}E\left[D_{i}\right]E\left[y_{i}^{(1)}\right]=\Pr\left[D_{i}=1\right]E\left[y_{i}^{(1)}\right]
+\]
+
+\end_inset
+
+and therefore
+\begin_inset Formula 
+\[
+E\left[y_{i}^{(1)}\right]=\frac{E\left[D_{i}y_{i}\right]}{\Pr\left[D_{i}=1\right]}
+\]
+
+\end_inset
+
+Similarly,
+\begin_inset Formula 
+\[
+E\left[y_{i}^{(0)}\right]=\frac{E\left[(1-D_{i})y_{i}\right]}{\Pr\left[D_{i}=0\right]}.
+\]
+
+\end_inset
+
+ We have 
+\begin_inset Formula 
+\[
+\mathrm{ATE}=\frac{E\left[D_{i}y_{i}\right]}{\Pr\left[D_{i}=1\right]}-\frac{E\left[(1-D_{i})y_{i}\right]}{\Pr\left[D_{i}=0\right]}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Confounding Factors
+\end_layout
+
+\begin_layout Standard
+In observational study,
+ 
+\begin_inset Formula 
+\[
+E\left[y_{i}|D_{i}=1\right]\neq E\left[y_{i}^{(1)}\right]
+\]
+
+\end_inset
+
+ is 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ is not randomly assigned.
+ Need unconfoundedness condition:
+ 
+\begin_inset Formula 
+\[
+\begin{pmatrix}y_{i}^{(1)}\\
+y_{i}^{(0)}
+\end{pmatrix}\perp D_{i}\bigg|X
+\]
+
+\end_inset
+
+If this is the case,
+ then CATE:
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathrm{ATE}(x) & = & E\left[y_{i}^{(1)}|X_{i}=x\right]-E\left[y_{i}^{(0)}|X_{i}=x\right]\\
+ & \stackrel{\mathrm{cia}}{=} & E\left[y_{i}^{(1)}|D_{i}=1,X_{i}=x\right]-E\left[y_{i}^{(0)}|D_{i}=0,X_{i}=x\right]\\
+ & = & E\left[y_{i}|D_{i}=1,X_{i}=x\right]-E\left[y_{i}|D_{i}=0,X_{i}=x\right]
+\end{eqnarray*}
+
+\end_inset
+
+However,
+ we cannot simplify integrate out 
+\begin_inset Formula $x$
+\end_inset
+
+ to have ATE,
+ because 
+\begin_inset Formula 
+\begin{align*}
+\mathrm{ATE} & =\int E\left[y_{i}|D_{i}=1,X_{i}=x\right]\mathrm{d}F_{x}-\int E\left[y_{i}|D_{i}=0,X_{i}=x\right]\mathrm{d}F_{x}\\
+ & \neq E\left[y_{i}|D_{i}=1\right]-E\left[y_{i}|D_{i}=0\right].
+\end{align*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ depends on 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ when you integrate out 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ it also affects 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ However,
+ under different 
+\begin_inset Formula $x$
+\end_inset
+
+,
+ the prob of 1 and 0 are different.
+ 
+\end_layout
+
+\begin_layout Subsection
+Structure and Identification
 \end_layout
 
 \begin_layout Standard
