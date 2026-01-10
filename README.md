@@ -12,7 +12,7 @@ This repository hosts lecture notes and code. They will be updated as the course
 
 ### Textbooks
 
-* Chernozhukov, Hansen, Kallus, Spindler, and Syrgkanis (2024): Applied Causal Inference Powered by ML and AI [[link](https://CausalML-book.org)]
+* Chernozhukov, Hansen, Kallus, Spindler, and Syrgkanis (2025): Applied Causal Inference Powered by ML and AI [[link](https://CausalML-book.org)]
 <!-- * Hansen (2021): Probability and Statistics for Economists -->
 * Hansen (2021): Econometrics
 
@@ -55,3 +55,6 @@ In the era of AI, econometrics must evolve. The course contents will be substant
 * Midterm: 50%
 * Final: 50%
 
+### Reading
+
+* Week 1: CHKSS Ch.2, Ch.5; Hansen Ch.2.1-8, 2.30
