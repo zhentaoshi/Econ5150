@@ -172,6 +172,26 @@ and monitor the the difference in the outcomes.
  
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Notations
+\series default
+.
+ For a generic object,
+ we use an uppercase 
+\begin_inset Formula $Y$
+\end_inset
+
+ to denote the random variable (measurable function),
+ and an lowercase 
+\begin_inset Formula $y$
+\end_inset
+
+ to denote its realization (a point in the sample space).
+ 
+\end_layout
+
 \begin_layout Section
 Potential Outcome Framework
 \end_layout
