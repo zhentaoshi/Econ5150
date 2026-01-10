@@ -1,6 +1,8 @@
 
 
-# Econ5150 @ CUHK
+# Econ5150: Applied Econometrics
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
 * Time: Thursday 9:30am – 12:15pm
 * Venue: ELB 304
@@ -55,6 +57,20 @@ In the era of AI, econometrics must evolve. The course contents will be substant
 * Midterm: 50%
 * Final: 50%
 
+
+
 ### Reading
 
 * Week 1: CHKSS Ch.2, Ch.5; Hansen Ch.2.1-8, 2.30
+
+
+## License
+
+This work is licensed under
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
