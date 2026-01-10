@@ -61,8 +61,10 @@ In the era of AI, econometrics must evolve. The course contents will be substant
 
 ### Reading
 
-* Week 1: CHKSS Ch.2, Ch.5; Hansen Ch.2.1-8, 2.30
+* Week 1: potential outcome framework, average treatment effect, conditional ATE, propensity score, conditional independence assumptions, continuous treatment
+  * CHKSS Ch.2, Ch.5; Hansen Ch.2.1-8, 2.30
 
+* Week 2: causal inference based on regressions, conditional mean, linear projection, omitted variable bias, FWL theorem
 
 ## License
 
