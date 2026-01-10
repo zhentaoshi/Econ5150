@@ -12,7 +12,7 @@ theorems-ams-chap-bytype
 \maintain_unincluded_children no
 \language english
 \language_package none
-\inputencoding utf8x
+\inputencoding auto-legacy
 \fontencoding T1
 \font_roman "default" "default"
 \font_sans "default" "default"

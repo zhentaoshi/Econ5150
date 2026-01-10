@@ -37,7 +37,7 @@ theorems-ams
 \float_alignment class
 \paperfontsize 12
 \spacing single
-\use_hyperref true
+\use_hyperref false
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
@@ -132,288 +132,11 @@ Unlike physical laws such as Einstein's mass–energy equivalence
  The signal-to-noise ratios in economic laws are often significantly lower than those of physical laws,
  mainly due to the lack of laboratory setting and the heterogeneous nature of the subjects.
  
-\end_layout
-
-\begin_layout Section
-Means
-\end_layout
-
-\begin_layout Standard
-We have data 
-\begin_inset Formula $\left(y_{1},\ldots,y_{n}\right)$
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
 \end_inset
 
-.
- We want to understand the randomness of the data.
- You have never learn statistics.
- You have no idea about parametric distribution.
-\end_layout
-
-\begin_layout Standard
-Nonparametric way.
- One number:
- average.
- Exam scores in class (95%).
- Two number:
- spread,
- variance (40%).
- Density is a function.
-\end_layout
-
-\begin_layout Standard
-In the out of sample world,
- we want to do prediction.
- Prediction need to consider the error.
- If MSE,
- then E[y] is the best estimator.
-\end_layout
-
-\begin_layout Section
-Potential Outcome Framework
-\end_layout
-
-\begin_layout Standard
-Treatment effect.
  
-\begin_inset Formula $\Delta_{i}=y_{i}^{(1)}-y_{i}^{(0)}.$
-\end_inset
-
- The best prediction of a new person is 
-\begin_inset Formula $E\left[\Delta_{i}\right]$
-\end_inset
-
-.
- The problem is that we can only observe
-\begin_inset Formula 
-\[
-y_{i}=D_{i}y_{i}^{(1)}+(1-D_{i})y_{i}^{(0)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-How to compute 
-\begin_inset Formula $E\left[y_{i}^{(1)}\right]$
-\end_inset
-
- and 
-\begin_inset Formula $E\left[y_{i}^{(0)}\right]$
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Standard
-If the assignment is random,
- 
-\begin_inset Formula 
-\[
-\begin{pmatrix}y_{i}^{(1)}\\
-y_{i}^{(0)}
-\end{pmatrix}\perp D_{i}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Look at 
-\begin_inset Formula 
-\[
-E\left[y_{i}|D_{i}=1\right]=E\left[D_{i}y_{i}^{(1)}+(1-D_{i})y_{i}^{(0)}|D_{i}=1\right]=E\left[y_{i}^{(1)}|D_{i}=1\right]\stackrel{\mathrm{idp}}{=}E\left[y_{i}^{(1)}\right].
-\]
-
-\end_inset
-
-since 
-\begin_inset Formula $\left(y_{i},D_{i}\right)$
-\end_inset
-
- are observable,
- the LHS is feasible.
- Although 
-\begin_inset Formula $y_{i}$
-\end_inset
-
- is dependent of 
-\begin_inset Formula $D_{i}$
-\end_inset
-
-.
- if the conditioning variable 
-\begin_inset Formula $y_{i}^{(1)}$
-\end_inset
-
- and 
-\begin_inset Formula $D_{i}$
-\end_inset
-
- are independent.
- Similarly,
- 
-\begin_inset Formula 
-\[
-E\left[y_{i}|D_{i}=0\right]=E\left[D_{i}y_{i}^{(1)}+(1-D_{i})y_{i}^{(0)}|D_{i}=0\right]=E\left[y_{i}^{(0)}|D_{i}=0\right]\stackrel{\mathrm{idp}}{=}E\left[y_{i}^{(0)}\right].
-\]
-
-\end_inset
-
-We have 
-\begin_inset Formula 
-\[
-\mathrm{ATE}=E\left[y_{i}|D_{i}=1\right]-E\left[y_{i}|D_{i}=0\right].
-\]
-
-\end_inset
-
-This is one way.
-\end_layout
-
-\begin_layout Standard
-Another way is 
-\begin_inset Formula 
-\[
-D_{i}y_{i}=D_{i}^{2}y_{i}^{(1)}+D_{i}(1-D_{i})y_{i}^{(0)}=D_{i}y_{i}^{(1)}
-\]
-
-\end_inset
-
-since 
-\begin_inset Formula $D_{i}^{2}=D_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $D_{i}(1-D_{i})=0$
-\end_inset
-
-.
- Its expectation
-\begin_inset Formula 
-\[
-E\left[D_{i}y_{i}\right]=E\left[D_{i}y_{i}^{(1)}\right]\stackrel{\mathrm{idp}}{=}E\left[D_{i}\right]E\left[y_{i}^{(1)}\right]=\Pr\left[D_{i}=1\right]E\left[y_{i}^{(1)}\right]
-\]
-
-\end_inset
-
-and therefore
-\begin_inset Formula 
-\[
-E\left[y_{i}^{(1)}\right]=\frac{E\left[D_{i}y_{i}\right]}{\Pr\left[D_{i}=1\right]}
-\]
-
-\end_inset
-
-Similarly,
-\begin_inset Formula 
-\[
-E\left[y_{i}^{(0)}\right]=\frac{E\left[(1-D_{i})y_{i}\right]}{\Pr\left[D_{i}=0\right]}.
-\]
-
-\end_inset
-
- We have 
-\begin_inset Formula 
-\[
-\mathrm{ATE}=\frac{E\left[D_{i}y_{i}\right]}{\Pr\left[D_{i}=1\right]}-\frac{E\left[(1-D_{i})y_{i}\right]}{\Pr\left[D_{i}=0\right]}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Confounding Factors
-\end_layout
-
-\begin_layout Standard
-In observational study,
- 
-\begin_inset Formula 
-\[
-E\left[y_{i}|D_{i}=1\right]\neq E\left[y_{i}^{(1)}\right]
-\]
-
-\end_inset
-
- is 
-\begin_inset Formula $D_{i}$
-\end_inset
-
- is not randomly assigned.
- Need unconfoundedness condition:
- 
-\begin_inset Formula 
-\[
-\begin{pmatrix}y_{i}^{(1)}\\
-y_{i}^{(0)}
-\end{pmatrix}\perp D_{i}\bigg|X
-\]
-
-\end_inset
-
-If this is the case,
- then CATE:
-\begin_inset Formula 
-\begin{eqnarray*}
-\mathrm{ATE}(x) & = & E\left[y_{i}^{(1)}|X_{i}=x\right]-E\left[y_{i}^{(0)}|X_{i}=x\right]\\
- & \stackrel{\mathrm{cia}}{=} & E\left[y_{i}^{(1)}|D_{i}=1,X_{i}=x\right]-E\left[y_{i}^{(0)}|D_{i}=0,X_{i}=x\right]\\
- & = & E\left[y_{i}|D_{i}=1,X_{i}=x\right]-E\left[y_{i}|D_{i}=0,X_{i}=x\right]
-\end{eqnarray*}
-
-\end_inset
-
-However,
- we cannot simplify integrate out 
-\begin_inset Formula $x$
-\end_inset
-
- to have ATE,
- because 
-\begin_inset Formula 
-\begin{align*}
-\mathrm{ATE} & =\int E\left[y_{i}|D_{i}=1,X_{i}=x\right]\mathrm{d}F_{x}-\int E\left[y_{i}|D_{i}=0,X_{i}=x\right]\mathrm{d}F_{x}\\
- & \neq E\left[y_{i}|D_{i}=1\right]-E\left[y_{i}|D_{i}=0\right].
-\end{align*}
-
-\end_inset
-
-Because 
-\begin_inset Formula $D_{i}$
-\end_inset
-
- depends on 
-\begin_inset Formula $x$
-\end_inset
-
-,
- when you integrate out 
-\begin_inset Formula $x$
-\end_inset
-
-,
- it also affects 
-\begin_inset Formula $D$
-\end_inset
-
-.
- However,
- under different 
-\begin_inset Formula $x$
-\end_inset
-
-,
- the prob of 1 and 0 are different.
- 
-\end_layout
-
-\begin_layout Subsection
-Structure and Identification
 \end_layout
 
 \begin_layout Standard
@@ -435,6 +158,649 @@ structural causality
  It assumes that there is a DGP that produces the observational data.
  If we can use data to recover the DGP or some features of the DGP,
  then we have learned causality or some implications of causality.
+\end_layout
+
+\begin_layout Standard
+In recent years,
+ an alternative approach is the potential outcome framework,
+ mainly coming from biostatistics and spreading into econometrics.
+ The idea is to think about the outcomes as if they are from an experiment where the researcher can ``manipulate'' the treatment—
+a factor of interest—
+and monitor the the difference in the outcomes.
+ In reality when an experiment cannot be literally carried out,
+ we still try to modify or argue for the settings to resemble an experiment.
+ 
+\end_layout
+
+\begin_layout Section
+Potential Outcome Framework
+\end_layout
+
+\begin_layout Standard
+This a thought experiment.
+ A personal has two potential outcomes 
+\begin_inset Formula $Y^{(1)}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y^{(0)}$
+\end_inset
+
+,
+ and his treatment effect is the difference 
+\begin_inset Formula $\Delta=Y^{(1)}-Y^{(0)}.$
+\end_inset
+
+ However,
+ no one can step into the same river twice.
+ One and only one of the potential outcomes will be realized,
+ and therefore 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is unobservable.
+ Given the treatment status 
+\begin_inset Formula $D\in\{0,1\}$
+\end_inset
+
+,
+ in reality we can be observed is 
+\begin_inset Formula 
+\[
+Y=DY^{(1)}+(1-D)Y^{(0)}.
+\]
+
+\end_inset
+
+We want to use the observable 
+\begin_inset Formula $Y$
+\end_inset
+
+ to learn the ATE 
+\begin_inset Formula 
+\[
+\mathrm{ATE}:=\E[\Delta]=\E[Y^{(1)}]-\E[Y^{(0)}].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Randomized controlled trials
+\series default
+.
+ If the treatment is randomly assigned by flipping a coin (the coin does not need to be even),
+ then 
+\begin_inset Formula 
+\begin{equation}
+\begin{pmatrix}Y^{(1)}\\
+Y^{(0)}
+\end{pmatrix}\perp D.\label{eq:indep}
+\end{equation}
+
+\end_inset
+
+It implies
+\begin_inset Formula 
+\[
+\E\left[Y|D=1\right]=\E\left[DY^{(1)}+(1-D)Y^{(0)}|D=1\right]=\E\left[Y^{(1)}|D=1\right]\stackrel{\mathrm{idp}}{=}\E\left[Y^{(1)}\right].
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula $\left(Y,D\right)$
+\end_inset
+
+ are observable,
+ the LHS is operational.
+ Independence between 
+\begin_inset Formula $Y^{(1)}$
+\end_inset
+
+ and 
+\begin_inset Formula $D$
+\end_inset
+
+ ensures that the conditional expectation 
+\begin_inset Formula $\E\left[Y^{(1)}|D=1\right]$
+\end_inset
+
+ equals the unconditional expectation 
+\begin_inset Formula $\E[Y^{(1)}]$
+\end_inset
+
+.
+ Similarly,
+ 
+\begin_inset Formula 
+\[
+\E\left[Y|D=0\right]=\E\left[Y^{(0)}|D=0\right]\stackrel{\mathrm{idp}}{=}\E[Y^{(0)}].
+\]
+
+\end_inset
+
+Under RCT,
+ we have an operational formula for ATE:
+\begin_inset Formula 
+\[
+\mathrm{ATE}=\E\left[Y|D=1\right]-\E\left[Y|D=0\right].
+\]
+
+\end_inset
+
+Given the data,
+ we mimic the population average to compute
+\begin_inset Formula 
+\[
+\widehat{\mathrm{ATE}}=\frac{1}{n_{1}}\sum_{\{i:d_{i}=1\}}y_{i}-\frac{1}{n_{0}}\sum_{\{i:d_{i}=0\}}y_{i}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $n_{1}=\sum_{i=1}^{n}\mathbb{I}\{d_{i}=1\}$
+\end_inset
+
+ and 
+\begin_inset Formula $n_{0}=\sum_{i=1}^{n}\mathbb{I}\{d_{i}=0\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The above approach uses conditioning,
+ which is intuitive.
+ There is an alternative,
+ yet equivalent way to ATE,
+ using only unconditional quantities.
+ Notice that 
+\begin_inset Formula 
+\[
+DY=D^{2}Y^{(1)}+D(1-D)Y^{(0)}=DY^{(1)}
+\]
+
+\end_inset
+
+since for either 
+\begin_inset Formula $D\in\{0,1\}$
+\end_inset
+
+,
+ we have 
+\begin_inset Formula $D^{2}=D$
+\end_inset
+
+ and 
+\begin_inset Formula $D(1-D)=0$
+\end_inset
+
+.
+ Again,
+ 
+\begin_inset Formula $Y$
+\end_inset
+
+ depends on 
+\begin_inset Formula $D$
+\end_inset
+
+ but 
+\begin_inset Formula $Y^{(1)}$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $D$
+\end_inset
+
+,
+ and therefore 
+\begin_inset Formula 
+\[
+\E\left[DY\right]=\E\left[DY^{(1)}\right]\stackrel{\mathrm{idp}}{=}\E\left[D\right]\E[Y^{(1)}]=\Pr\left[D=1\right]\E[Y^{(1)}]
+\]
+
+\end_inset
+
+and therefore
+\begin_inset Formula 
+\[
+\E\left[Y^{(1)}\right]=\frac{\E\left[DY\right]}{\Pr\left[D=1\right]}=\frac{\E\left[\mathbb{I}(D=1)Y\right]}{\Pr\left[D=1\right]}
+\]
+
+\end_inset
+
+if 
+\begin_inset Formula $\Pr\left[D=1\right]\neq0$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The numerator is the average of the interaction term between the indicator function of the treatment status 
+\begin_inset Formula $\mathbb{I}(D=1)$
+\end_inset
+
+ and the outcome 
+\begin_inset Formula $Y$
+\end_inset
+
+,
+ and
+\end_layout
+
+\end_inset
+
+ The denominator 
+\begin_inset Formula $\Pr\left[D=1\right]$
+\end_inset
+
+ is called the 
+\series bold
+propensity score
+\series default
+—
+the probability that a person is assigned into the treatment group.
+ 
+\end_layout
+
+\begin_layout Standard
+Similarly,
+ if 
+\begin_inset Formula $\Pr\left[D=0\right]\neq0$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+\E\left[Y^{(0)}\right]=\frac{\E\left[(1-D)Y\right]}{\Pr\left[D=0\right]}=\frac{\E\left[\mathbb{I}(D=0)Y\right]}{\Pr\left[D=0\right]}.
+\]
+
+\end_inset
+
+Therefore,
+ if 
+\begin_inset Formula $\Pr\left[D=1\right]\in(0,1)$
+\end_inset
+
+ the ATE is 
+\begin_inset Formula 
+\begin{align*}
+\mathrm{ATE} & =\frac{\E\left[DY\right]}{\Pr\left[D=1\right]}-\frac{\E\left[(1-D)Y\right]}{\Pr\left[D=0\right]}.
+\end{align*}
+
+\end_inset
+
+ATE is the difference of the two ratios.
+ 
+\end_layout
+
+\begin_layout Standard
+Given data,
+ we can compute 
+\begin_inset Formula $\E\left[DY\right]/\Pr\left[D=1\right]$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\[
+\frac{(\sum_{i=1}^{n}d_{i}y_{i})/n}{n_{1}/n}=\frac{\sum_{i=1}^{n}d_{i}y_{i}}{n_{1}}=\frac{1}{n_{1}}\sum_{\{i:d_{i}=1\}}y_{i}.
+\]
+
+\end_inset
+
+It is easy to see that,
+ the sample version is the same either we compute via the conditioning or the propensity score.
+ Their equivalence is analogous to the fact that the conditional density can be written as the ratio of the joint density and the marginal density.
+ 
+\end_layout
+
+\begin_layout Subsection
+CATE
+\end_layout
+
+\begin_layout Standard
+At a granular level,
+ the researcher also observe some confounding factor (causal inference term) (alternatively,
+ in plain stat term it is called covariate) 
+\begin_inset Formula $W$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The conditional ATE (CATE)
+\begin_inset Formula 
+\[
+\mathrm{ATE}(w)=\E[\Delta|W=w]=\E[Y^{(1)}|w]-\E[Y^{(0)}|w]
+\]
+
+\end_inset
+
+can vary across different realizations of 
+\begin_inset Formula $W$
+\end_inset
+
+.
+ For example,
+ an vaccine is more effective to children than adults.
+ In RCT,
+ if the random treatment assignment is regardless of the age group,
+ we have 
+\begin_inset Formula $(Y^{(1)}(w),Y^{(0)}(w))$
+\end_inset
+
+ depend 
+\begin_inset Formula $W$
+\end_inset
+
+,
+ while 
+\begin_inset Formula $D\bot W$
+\end_inset
+
+,
+ then we maintains (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:indep"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+However,
+ for different age groups,
+ we may want to use different treatment assignment probability.
+ For example,
+ we put 
+\begin_inset Formula $70\%$
+\end_inset
+
+ of the children into the treatment,
+ while we put 
+\begin_inset Formula $40\%$
+\end_inset
+
+ of the adults into the treatment.
+ In this case,
+ 
+\begin_inset Formula $D(w)$
+\end_inset
+
+ also depends on 
+\begin_inset Formula $W$
+\end_inset
+
+.
+ RCT can be implemented in a stratified approach:
+ inside each age group,
+ the researcher flips a coin to assign treatment.
+ If so,
+ the 
+\series bold
+unconfoundedness condition
+\series default
+ (or 
+\series bold
+conditional independence assumption
+\series default
+)
+\begin_inset Formula 
+\[
+\begin{pmatrix}Y^{(1)}(w)\\
+Y^{(0)}(w)
+\end{pmatrix}\perp D(w)\bigg|W=w
+\]
+
+\end_inset
+
+is satisfied.
+ The CATE is made operational via
+\begin_inset Formula 
+\begin{eqnarray}
+\mathrm{ATE}(w) & = & \E\left[Y^{(1)}|W=w\right]-\E\left[Y^{(0)}|W=w\right]\nonumber \\
+ & \stackrel{\mathrm{cia}}{=} & \E\left[Y^{(1)}|D(w)=1,w\right]-\E\left[Y^{(0)}|D(w)=0,W_{i}=w\right]\nonumber \\
+ & = & \E\left[Y|D=1,w\right]-\E\left[Y|D=0,w\right].\label{eq:CATEw}
+\end{eqnarray}
+
+\end_inset
+
+Inside each age group,
+ we just need to compute the difference between the averages of those treated and those untreated,
+ respectively.
+\end_layout
+
+\begin_layout Standard
+We can also do the computation via the propensity score.
+ Denote the (conditional) propensity score as 
+\begin_inset Formula $p(w)=\Pr\left[D=1|W=w\right]$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+\mathrm{ATE}(w) & =\frac{\E\left[DY|w\right]}{p(w)}-\frac{\E\left[(1-D)Y|w\right]}{1-p(w)}.
+\end{align*}
+
+\end_inset
+
+Compared to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CATEw"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ the above expression makes the role of 
+\begin_inset Formula $p(w)$
+\end_inset
+
+ explicit.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Aggregating subgroups
+\series default
+.
+ Now,
+ suppose the researcher has CATE at hand,
+ and she wants to aggregate the CATE across subgroups into an overall ATE.
+ Then by the law of iterated expectations:
+\begin_inset Formula 
+\begin{align}
+\mathrm{ATE} & =\E[\mathrm{ATE}(w)]=\E\left\{ \E\left[Y|D=1,w\right]-\E\left[Y|D=0,w\right]\right\} \label{eq:CATE1}
+\end{align}
+
+\end_inset
+
+Notice that when 
+\begin_inset Formula $D$
+\end_inset
+
+ depends on 
+\begin_inset Formula $w$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\E\left\{ \E\left[Y|D=d,w\right]\right\} \neq\E\left[Y|D=d\right]
+\]
+
+\end_inset
+
+and thus 
+\begin_inset Formula 
+\[
+\mathrm{ATE}\neq\E\left[Y|D=1\right]-\E\left[Y|D=0\right].
+\]
+
+\end_inset
+
+ That is,
+ we cannot simply get rid of 
+\begin_inset Formula $w$
+\end_inset
+
+ in the two sides of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CATEw"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+);
+ we must take into consideration the different treatment assignment probability when aggregating.
+ 
+\end_layout
+
+\begin_layout Standard
+If we use the ratio instead,
+ then 
+\begin_inset Formula 
+\begin{equation}
+\mathrm{ATE}=\E[\mathrm{ATE}(w)]=\E\left[\frac{\E\left[DY|w\right]}{p(w)}-\frac{\E\left[(1-D)Y|w\right]}{1-p(w)}\right],\label{eq:CATE2}
+\end{equation}
+
+\end_inset
+
+where the different 
+\begin_inset Formula $p(w)$
+\end_inset
+
+ is explicitly accounted.
+ Although (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CATE1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CATE2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) are mathematically equivalent,
+ when we use the sample average to mimic the population average,
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CATE2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) is easier to work with as it conditions only on the random variable 
+\begin_inset Formula $W$
+\end_inset
+
+,
+ but not 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Suppose the functional form of 
+\begin_inset Formula $p(w)$
+\end_inset
+
+ is known,
+ and we can use the 
+\series bold
+inverse probability weighted
+\series default
+ (IPW) estimator 
+\begin_inset Formula 
+\[
+\mathrm{IPW}=\frac{1}{n}\sum_{i=1}^{n}\left[\frac{d_{i}y_{i}}{p(w_{i})}-\frac{(1-d_{i})y_{i}}{1-p(w_{i})}\right].
+\]
+
+\end_inset
+
+Notice 
+\begin_inset Formula 
+\begin{align*}
+\E\left[\frac{d_{i}y_{i}}{p(w_{i})}\right] & =\E\left\{ \E\left[\frac{dy}{p(w)}\Bigg|W=w\right]\right\} =\E\left\{ \frac{1}{p(w)}\E\left[dy|w\right]\right\} =\E\left\{ \frac{1}{p(w_{})}\E\left[dy^{(1)}|w_{}\right]\right\} \\
+ & \stackrel{\mathrm{cia}}{=}\E\left\{ \frac{\E\left[d_{}|w_{}\right]}{p(w_{})}\E\left[y^{(1)}|w\right]\right\} =\E\left\{ \E\left[y_{}^{(1)}|w_{}\right]\right\} =\E\left[y_{}^{(1)}\right],
+\end{align*}
+
+\end_inset
+
+and similarly 
+\begin_inset Formula 
+\[
+\E\left[\frac{\left(1-d_{i}\right)y_{i}}{1-p(w_{i})}\right]=\E\left[y^{(0)}\right].
+\]
+
+\end_inset
+
+We have 
+\begin_inset Formula 
+\begin{align*}
+\E\left[\mathrm{IPW}\right] & =\E[y^{(1)}]-\E[y^{(0)}]=\mathrm{ATE}.
+\end{align*}
+
+\end_inset
+
+We conclude that 
+\begin_inset Formula $\mathrm{IPW}$
+\end_inset
+
+ is an unbiased estimator of 
+\begin_inset Formula $\mathrm{ATE}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Structure and Identification
 \end_layout
 
 \begin_layout Standard
@@ -478,7 +844,7 @@ Consider a continuous treatment
  Suppose the DGP,
  or the structural model,
  is 
-\begin_inset Formula $Y=h\left(D,w,u\right)$
+\begin_inset Formula $Y=h\left(D,W,U\right)$
 \end_inset
 
  where 
@@ -486,11 +852,11 @@ Consider a continuous treatment
 \end_inset
 
  and 
-\begin_inset Formula $w$
+\begin_inset Formula $W$
 \end_inset
 
  are observable and 
-\begin_inset Formula $u$
+\begin_inset Formula $U$
 \end_inset
 
  is unobservable.
@@ -501,7 +867,7 @@ average causal effect
 ) as
 \begin_inset Formula 
 \[
-ATE\left(d,w\right)=E\left[\lim_{\Delta\to0}\frac{h\left(d+\Delta,w,u\right)-h\left(d,w,u\right)}{\Delta}\right]=E\left[\frac{\partial}{\partial d}h\left(d,w,u\right)\right],
+\mathrm{ATE}\left(d,w\right)=\E\left[\lim_{\Delta\to0}\frac{h\left(d+\Delta,w,U\right)-h\left(d,w,U\right)}{\Delta}\right]=\E\left[\frac{\partial}{\partial d}h\left(d,w,U\right)\right],
 \]
 
 \end_inset
@@ -521,7 +887,7 @@ where the continuous differentiability of
 \end_inset
 
  explicitly shows up in 
-\begin_inset Formula $ATE\left(d,w\right)$
+\begin_inset Formula $\mathrm{ATE}\left(d,w\right)$
 \end_inset
 
  because the effect can vary at different values of 
@@ -530,7 +896,7 @@ where the continuous differentiability of
 
 .
  ATE here is the average effect in the population of individuals if we hypothetically move 
-\begin_inset Formula $D$
+\begin_inset Formula $d$
 \end_inset
 
  a tiny bit around 
@@ -538,7 +904,7 @@ where the continuous differentiability of
 \end_inset
 
 ,
- keeping all other factors 
+ keeping 
 \begin_inset Formula $w$
 \end_inset
 
@@ -547,12 +913,12 @@ where the continuous differentiability of
 
 \begin_layout Standard
 If we do not intend to model the underlying economic mechanism 
-\begin_inset Formula $h\left(D,w,u\right)$
+\begin_inset Formula $h\left(d,w,u\right)$
 \end_inset
 
 ,
  can we still learn 
-\begin_inset Formula $ATE\left(d,w\right)$
+\begin_inset Formula $\mathrm{ATE}\left(d,w\right)$
 \end_inset
 
  which bears the structural causal interpretation from the 
@@ -560,23 +926,26 @@ If we do not intend to model the underlying economic mechanism
 conditional mean function
 \emph default
  (CEF) 
-\begin_inset Formula $m\left(d,w\right)=E\left[y|d,w\right]=\int yf\left(y|d,w\right)\mathrm{d}y$
+\begin_inset Formula $m\left(d,w\right)=\E\left[Y|d,w\right]=\int yf\left(y|d,w\right)\mathrm{d}y$
 \end_inset
 
 ,
  which is a mechanical statistical object?
  The answer is positive under CIA:
  
-\begin_inset Formula $\left(u\perp D\right)|w$
+\begin_inset Formula 
+\[
+U\perp D\,|\,W.
+\]
+
 \end_inset
 
-.
  Notice
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial}{\partial d}m\left(d,w\right) & =\frac{\partial}{\partial d}E\left[y|d,w\right]=\frac{\partial}{\partial d}E\left[h\left(d,w,u\right)|d,w\right]=\frac{\partial}{\partial d}\int h\left(d,w,u\right)f\left(u|d,w\right)du\\
- & =\int\frac{\partial}{\partial d}\left[h\left(d,w,u\right)f\left(u|d,w\right)\right]du\\
- & =\int\left[\frac{\partial}{\partial d}h\left(d,w,u\right)\right]f\left(u|d,w\right)du+\int h\left(d,w,u\right)\left[\frac{\partial}{\partial d}f\left(u|d,w\right)\right]du,
+\frac{\partial}{\partial d}m\left(d,w\right) & =\frac{\partial}{\partial d}\E\left[Y|d,w\right]=\frac{\partial}{\partial d}\E\left[h\left(d,w,U\right)|d,w\right]=\frac{\partial}{\partial d}\int h\left(d,w,u\right)f\left(u|d,w\right)\mathrm{d}u\\
+ & =\int\frac{\partial}{\partial d}\left[h\left(d,w,u\right)f\left(u|d,w\right)\right]\mathrm{d}u\\
+ & =\int\left[\frac{\partial}{\partial d}h\left(d,w,u\right)\right]f\left(u|d,w\right)\mathrm{d}u+\int h\left(d,w,u\right)\left[\frac{\partial}{\partial d}f\left(u|d,w\right)\right]\mathrm{d}u,
 \end{align*}
 
 \end_inset
@@ -591,19 +960,18 @@ where the second line implicitly assumes interchangeability between the integral
  Thus 
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial d}m\left(d,w\right)=\int\left[\frac{\partial}{\partial d}h\left(d,w,u\right)\right]f\left(u|d,w\right)du=E\left[\frac{\partial}{\partial d}h\left(d,w,u\right)|d,w\right]=ATE\left(d,w\right).
+\frac{\partial}{\partial d}m\left(d,w\right)=\int\left[\frac{\partial}{\partial d}h\left(d,w,u\right)\right]f\left(u|d,w\right)\mathrm{d}u=\E\left[\frac{\partial}{\partial d}h\left(d,w,u\right)|d,w\right]=\mathrm{ATE}\left(d,w\right).
 \]
 
 \end_inset
 
-This is an important result.
- It says that if CIA holds,
+It says that if CIA holds,
  we can learn the causal effect of 
-\begin_inset Formula $d$
+\begin_inset Formula $D$
 \end_inset
 
  on 
-\begin_inset Formula $y$
+\begin_inset Formula $Y$
 \end_inset
 
  by the partial derivative of conditional expectation function (CEF).
@@ -629,46 +997,46 @@ CIA is the key condition that links the CEF and the causal effect.
 
 \begin_layout Exercise
 Sometimes applied researchers assume by brute force that 
-\begin_inset Formula $y=m\left(d,w\right)+u$
+\begin_inset Formula $Y=m\left(D,W\right)+U$
 \end_inset
 
  is the DGP and 
-\begin_inset Formula $E\left[u|d,w\right]=0$
+\begin_inset Formula $\E\left[U|D,W\right]=0$
 \end_inset
 
 ,
  where 
-\begin_inset Formula $d$
+\begin_inset Formula $D$
 \end_inset
 
  is the variable of interest and 
-\begin_inset Formula $w$
+\begin_inset Formula $W$
 \end_inset
 
- is the vector of other control variables.
+ is the covariate.
  Under these assumptions,
  
 \begin_inset Formula 
 \[
-ATE\left(d,w\right)=E\left[\frac{\partial}{\partial d}\left(m\left(d,w\right)+u\right)|d,w\right]=\frac{\partial m\left(d,w\right)}{\partial d}+\frac{\partial}{\partial d}E\left[u|d,w\right]=\frac{\partial m\left(d,w\right)}{\partial d},
+\mathrm{ATE}\left(d,w\right)=\E\left[\frac{\partial}{\partial d}\left(m\left(d,w\right)+u\right)|d,w\right]=\frac{\partial m\left(d,w\right)}{\partial d}+\frac{\partial}{\partial d}\E\left[U|d,w\right]=\frac{\partial m\left(d,w\right)}{\partial d},
 \]
 
 \end_inset
 
 where the second equality holds if 
-\begin_inset Formula $\frac{\partial}{\partial d}E\left[u|d,w\right]=E\left[\frac{\partial}{\partial d}u|d,w\right]$
+\begin_inset Formula $\frac{\partial}{\partial d}\E\left[u|d,w\right]=\E\left[\frac{\partial}{\partial d}u|d,w\right]$
 \end_inset
 
 .
  At a first glance,
  it seems that the mean independence assumption 
-\begin_inset Formula $E\left[u|d,w\right]=0$
+\begin_inset Formula $\E\left[U|d,w\right]=0$
 \end_inset
 
 ,
  which is weaker than CIA,
  implies the equivalence between 
-\begin_inset Formula $ATE\left(d,w\right)$
+\begin_inset Formula $\mathrm{ATE}\left(d,w\right)$
 \end_inset
 
  and 
@@ -678,14 +1046,15 @@ where the second equality holds if
  here.
  However,
  such slight weakening is achieved by at the cost of assuming 
-\begin_inset Formula $h\left(d,w,u\right)$
+\begin_inset Formula $h\left(D,W,U\right)$
 \end_inset
 
  follows the additive separable form 
-\begin_inset Formula $m\left(d,w\right)+u$
+\begin_inset Formula $m\left(D,W\right)+U$
 \end_inset
 
 .
+ There is a tradeoff between the restrictiveness of the assumption and the generality of the function form.
  
 \end_layout
 
@@ -704,9 +1073,7 @@ reduced-form
  approach,
  which documents stylized facts when suitable economic theory is not available.
  The most prominent reduced-form approach is the potential outcome framework,
- which originated from biostatistics.
- Thanks to its simplicity,
- many statisticians jump on the bandwagon.
+ as in the first part of the lecture notes.
 \end_layout
 
 \begin_layout Section
@@ -774,7 +1141,7 @@ ad hoc
  regressions are likely falling short of external validity;
  what is worse those most crucial economic issues are not to be experimented with.
  You can go to poor villages in a forgotten concern of the world to randomly distribute deworming pills,
- but how about you try to persuade the PBOC to experiment with interest rates?
+ but there is no way you can persuade the PBOC to experiment with interest rates.
 \end_layout
 
 \begin_layout Standard
@@ -826,10 +1193,6 @@ Rubin (1943– ).
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -848,11 +1211,6 @@ texttt{ Zhentao Shi.
  
 \backslash
 today}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset

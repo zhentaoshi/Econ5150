@@ -37,7 +37,7 @@ theorems-ams-chap-bytype
 \float_alignment class
 \paperfontsize 12
 \spacing single
-\use_hyperref true
+\use_hyperref false
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
