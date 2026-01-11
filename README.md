@@ -19,11 +19,22 @@ This repository hosts lecture notes and code. They will be updated as the course
 * Hansen (2021): Econometrics
 
 
+### Introduction
+
+As a sequel to ECON5120, this course develops a modern toolkit for applied econometric work: credible causal questions, transparent identification assumptions, and methods that remain reliable in high-dimensional data and computationally intensive settings.
+In the era of AI, econometrics must evolve—not by replacing economic reasoning, but by combining it with statistically principled estimation, careful uncertainty quantification, and reproducible workflows.
+
+By the end of the course, you should be able to:
+
+
+* Implement estimation and inference for linear and nonlinear models, including likelihood-based methods and moment-based methods.
+* Use asymptotic approximations as guidance, and recognize settings where they can fail (extreme estimators, nonstandard problems).
+* Apply regularization and ML methods as components of econometric procedures (prediction + causal inference), with attention to overfitting and valid inference.
+* Build computational solutions (optimization, simulation, bootstrap) and present results in a replicable code-and-data pipeline.
+
 
 ### Topics
 
-As a sequel to ECON5120, this course will cover advanced topics in applied econometrics.
-In the era of AI, econometrics must evolve. The course contents will be substantially updated to reflect state-of-the-art understanding of quantitative methods used in economic studies.
 
 * Linear Models
   * Causal inference
