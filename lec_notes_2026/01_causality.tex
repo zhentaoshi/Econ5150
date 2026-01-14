@@ -1,0 +1,411 @@
+%% LyX 2.4.3 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,oneside,english]{book}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage[authoryear]{natbib}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{definition}
+\newtheorem{xca}[thm]{\protect\exercisename}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\exercisename}{Exercise}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+
+\chapter{Causality }
+
+Unlike physical laws such as Einstein's mass--energy equivalence
+$E=mc^{2}$ and Newton's universal gravitation $F=Gm_{1}m_{2}/r^{2}$,
+economic phenomena can rarely be summarized in such a minimalistic
+style. When using experiments to verify physical laws, scientists
+often manage to come up with smart design in which signal-to-noise
+ratio is so high that small disturbances are kept at a negligible
+level. On the contrary, economic laws do not fit a laboratory for
+experimentation. What is worse, the subjects in economic studies ---
+human beings --- are heterogeneous and with many features that are
+hard to control. People from distinctive cultural and family backgrounds
+respond to the same issue differently and researchers can do little
+to homogenize them. The signal-to-noise ratios in economic laws are
+often significantly lower than those of physical laws, mainly due
+to the lack of laboratory setting and the heterogeneous nature of
+the subjects. 
+\global\long\def\E{\mathbb{E}}%
+ 
+
+Educational return and the demand-supply system are two classical
+topics in econometrics. A person's incomes is determined by too many
+random factors in the academic and career path that is impossible
+to exhaustively observe and control. The observable prices and quantities
+are outcomes of equilibrium so the demand and supply affect each other. 
+
+Generations of thinkers have been debating the definitions of causality.
+In economics, the long-standing tradition is \emph{structural causality}.
+Structural causality is a thought experiment. It assumes that there
+is a DGP that produces the observational data. If we can use data
+to recover the DGP or some features of the DGP, then we have learned
+causality or some implications of causality.
+
+In recent years, the \emph{potential outcome framework} emerges as an alternative, 
+mainly coming from biostatistics and spreading into econometrics.
+The idea is to think about the outcomes as if they are from an experiment
+where the researcher can ``manipulate'' the treatment---a factor
+of interest---and monitor the the difference in the outcomes. In
+reality when an experiment cannot be literally carried out, we still
+try to modify or argue for the settings to resemble an experiment. 
+
+It is useful to contrast these two cultures. The structural approach
+starts from a model of the economic mechanism and defines causality through the
+behavior of the model under counterfactual changes (policy rules, prices, technologies,
+preferences). The goal is often to recover \emph{deep parameters} and use their
+invariance to analyze environments not yet observed.
+The potential outcome framework starts from a well-defined intervention, and the goal is to
+make the causal estimand explicit (ATE, CATE, LATE, etc.) and to justify identification
+by experimental design.
+In practice, the two can be complementary: a structural model implies a set of potential
+outcomes, and potential-outcome estimates can be used to discipline or validate parts of
+a structural model.
+
+
+\textbf{Notations}. For a generic object, we use an uppercase $Y$
+to denote the random variable (measurable function), and an lowercase
+$y$ to denote its realization (a point in the sample space). 
+
+\section{Potential Outcome Framework}
+
+This a thought experiment. A personal has two potential outcomes $Y^{(1)}$
+and $Y^{(0)}$, and his treatment effect is the difference $\Delta=Y^{(1)}-Y^{(0)}.$
+However, no one can step into the same river twice. One and only one
+of the potential outcomes will be realized, and therefore $\Delta$
+is unobservable. Given the treatment status $D\in\{0,1\}$, in reality
+we can be observed is 
+\[
+Y=DY^{(1)}+(1-D)Y^{(0)}.
+\]
+We want to use the observable $Y$ to learn the ATE 
+\[
+\mathrm{ATE}:=\E[\Delta]=\E[Y^{(1)}]-\E[Y^{(0)}].
+\]
+
+If the treatment is randomly
+assigned by flipping a coin (the coin does not need to be even), then
+\begin{equation}
+\begin{pmatrix}Y^{(1)}\\
+Y^{(0)}
+\end{pmatrix}\perp D.\label{eq:indep}
+\end{equation}
+It implies
+\[
+\E\left[Y|D=1\right]=\E\left[DY^{(1)}+(1-D)Y^{(0)}|D=1\right]=\E\left[Y^{(1)}|D=1\right]\stackrel{\mathrm{idp}}{=}\E\left[Y^{(1)}\right].
+\]
+since $\left(Y,D\right)$ are observable, the LHS is operational.
+Independence between $Y^{(1)}$ and $D$ ensures that the conditional
+expectation $\E\left[Y^{(1)}|D=1\right]$ equals the unconditional
+expectation $\E[Y^{(1)}]$. Similarly, 
+\[
+\E\left[Y|D=0\right]=\E\left[Y^{(0)}|D=0\right]\stackrel{\mathrm{idp}}{=}\E[Y^{(0)}].
+\]
+Under RCT, we have an operational formula for ATE:
+\[
+\mathrm{ATE}=\E\left[Y|D=1\right]-\E\left[Y|D=0\right].
+\]
+Given the data, we mimic the population average to compute
+\[
+\widehat{\mathrm{ATE}}=\frac{1}{n_{1}}\sum_{\{i:d_{i}=1\}}y_{i}-\frac{1}{n_{0}}\sum_{\{i:d_{i}=0\}}y_{i}
+\]
+where $n_{1}=\sum_{i=1}^{n}\mathbb{I}\{d_{i}=1\}$ and $n_{0}=\sum_{i=1}^{n}\mathbb{I}\{d_{i}=0\}$.
+
+The above approach uses conditioning, which is intuitive. There is
+an alternative, yet equivalent way to ATE, using only unconditional
+quantities. Notice that 
+\[
+DY=D^{2}Y^{(1)}+D(1-D)Y^{(0)}=DY^{(1)}
+\]
+since for either $D\in\{0,1\}$, we have $D^{2}=D$ and $D(1-D)=0$.
+Again, $Y$ depends on $D$ but $Y^{(1)}$ is independent of $D$,
+and therefore 
+\[
+\E\left[DY\right]=\E\left[DY^{(1)}\right]\stackrel{\mathrm{idp}}{=}\E\left[D\right]\E[Y^{(1)}]=\Pr\left[D=1\right]\E[Y^{(1)}]
+\]
+and therefore
+\[
+\E\left[Y^{(1)}\right]=\frac{\E\left[DY\right]}{\Pr\left[D=1\right]}=\frac{\E\left[\mathbb{I}(D=1)Y\right]}{\Pr\left[D=1\right]}
+\]
+if $\Pr\left[D=1\right]\neq0$.  The denominator $\Pr\left[D=1\right]$
+is called the \textbf{propensity score}---the probability that a
+person is assigned into the treatment group. 
+
+Similarly, if $\Pr\left[D=0\right]\neq0$ we have 
+\[
+\E\left[Y^{(0)}\right]=\frac{\E\left[(1-D)Y\right]}{\Pr\left[D=0\right]}=\frac{\E\left[\mathbb{I}(D=0)Y\right]}{\Pr\left[D=0\right]}.
+\]
+Therefore, if $\Pr\left[D=1\right]\in(0,1)$ the ATE is 
+\begin{align*}
+\mathrm{ATE} & =\frac{\E\left[DY\right]}{\Pr\left[D=1\right]}-\frac{\E\left[(1-D)Y\right]}{\Pr\left[D=0\right]}.
+\end{align*}
+ATE is the difference of the two ratios. 
+
+Given data, we can compute $\E\left[DY\right]/\Pr\left[D=1\right]$
+as 
+\[
+\frac{(\sum_{i=1}^{n}d_{i}y_{i})/n}{n_{1}/n}=\frac{\sum_{i=1}^{n}d_{i}y_{i}}{n_{1}}=\frac{1}{n_{1}}\sum_{\{i:d_{i}=1\}}y_{i}.
+\]
+It is easy to see that, the sample version is the same either we compute
+via the conditioning or the propensity score. Their equivalence is
+analogous to the fact that the conditional density can be written
+as the ratio of the joint density and the marginal density. 
+
+\subsection{CATE}
+
+At a granular level, the researcher also observe some confounding
+factor (causal inference term) (alternatively, in plain stat term
+it is called covariate) $W$.
+
+The conditional ATE (CATE)
+\[
+\mathrm{ATE}(w)=\E[\Delta|W=w]=\E[Y^{(1)}|w]-\E[Y^{(0)}|w]
+\]
+can vary across different realizations of $W$. For example, an vaccine
+is more effective to children than adults. In RCT, if the random treatment
+assignment is regardless of the age group, we have $(Y^{(1)}(w),Y^{(0)}(w))$
+depend $W$, while $D\bot W$, then we maintains (\ref{eq:indep}). 
+
+However, for different age groups, we may want to use different treatment
+assignment probability. For example, we put $70\%$ of the children
+into the treatment, while we put $40\%$ of the adults into the treatment.
+In this case, $D(w)$ also depends on $W$. RCT can be implemented
+in a stratified approach: inside each age group, the researcher flips
+a coin to assign treatment. If so, the \textbf{unconfoundedness condition}
+(or \textbf{conditional independence assumption})
+\[
+\begin{pmatrix}Y^{(1)}(w)\\
+Y^{(0)}(w)
+\end{pmatrix}\perp D(w)\bigg|W=w
+\]
+is satisfied. The CATE is made operational via
+\begin{eqnarray}
+\mathrm{ATE}(w) & = & \E\left[Y^{(1)}|W=w\right]-\E\left[Y^{(0)}|W=w\right]\nonumber \\
+ & \stackrel{\mathrm{cia}}{=} & \E\left[Y^{(1)}|D(w)=1,w\right]-\E\left[Y^{(0)}|D(w)=0,W_{i}=w\right]\nonumber \\
+ & = & \E\left[Y|D=1,w\right]-\E\left[Y|D=0,w\right].\label{eq:CATEw}
+\end{eqnarray}
+Inside each age group, we just need to compute the difference between
+the averages of those treated and those untreated, respectively.
+
+We can also do the computation via the propensity score. Denote the
+(conditional) propensity score as $p(w)=\Pr\left[D=1|W=w\right]$.
+Then 
+\begin{align*}
+\mathrm{ATE}(w) & =\frac{\E\left[DY|w\right]}{p(w)}-\frac{\E\left[(1-D)Y|w\right]}{1-p(w)}.
+\end{align*}
+Compared to \ref{eq:CATEw}, the above expression makes the role of
+$p(w)$ explicit. 
+
+\textbf{Aggregating subgroups}. Now, suppose the researcher has CATE
+at hand, and she wants to aggregate the CATE across subgroups into
+an overall ATE. Then by the law of iterated expectations:
+\begin{align}
+\mathrm{ATE} & =\E[\mathrm{ATE}(w)]=\E\left\{ \E\left[Y|D=1,w\right]-\E\left[Y|D=0,w\right]\right\} \label{eq:CATE1}
+\end{align}
+Notice that when $D$ depends on $w$, 
+\[
+\E\left\{ \E\left[Y|D=d,w\right]\right\} \neq\E\left[Y|D=d\right]
+\]
+and thus 
+\[
+\mathrm{ATE}\neq\E\left[Y|D=1\right]-\E\left[Y|D=0\right].
+\]
+ That is, we cannot simply get rid of $w$ in the two sides of (\ref{eq:CATEw});
+we must take into consideration the different treatment assignment
+probability when aggregating. 
+
+If we use the ratio instead, then 
+\begin{equation}
+\mathrm{ATE}=\E[\mathrm{ATE}(w)]=\E\left[\frac{\E\left[DY|w\right]}{p(w)}-\frac{\E\left[(1-D)Y|w\right]}{1-p(w)}\right],\label{eq:CATE2}
+\end{equation}
+where the different $p(w)$ is explicitly accounted. Although (\ref{eq:CATE1})
+and (\ref{eq:CATE2}) are mathematically equivalent, when we use the
+sample average to mimic the population average, (\ref{eq:CATE2})
+is easier to work with as it conditions only on the random variable
+$W$, but not $D$. Suppose the functional form of $p(w)$ is known,
+and we can use the \textbf{inverse probability weighted} (IPW) estimator
+\[
+\mathrm{IPW}=\frac{1}{n}\sum_{i=1}^{n}\left[\frac{d_{i}y_{i}}{p(w_{i})}-\frac{(1-d_{i})y_{i}}{1-p(w_{i})}\right].
+\]
+Notice 
+\begin{align*}
+\E\left[\frac{d_{i}y_{i}}{p(w_{i})}\right] & =\E\left\{ \E\left[\frac{dy}{p(w)}\Bigg|W=w\right]\right\} =\E\left\{ \frac{1}{p(w)}\E\left[dy|w\right]\right\} =\E\left\{ \frac{1}{p(w_{})}\E\left[dy^{(1)}|w_{}\right]\right\} \\
+ & \stackrel{\mathrm{cia}}{=}\E\left\{ \frac{\E\left[d_{}|w_{}\right]}{p(w_{})}\E\left[y^{(1)}|w\right]\right\} =\E\left\{ \E\left[y_{}^{(1)}|w_{}\right]\right\} =\E\left[y_{}^{(1)}\right],
+\end{align*}
+and similarly 
+\[
+\E\left[\frac{\left(1-d_{i}\right)y_{i}}{1-p(w_{i})}\right]=\E\left[y^{(0)}\right].
+\]
+We have 
+\begin{align*}
+\E\left[\mathrm{IPW}\right] & =\E[y^{(1)}]-\E[y^{(0)}]=\mathrm{ATE}.
+\end{align*}
+We conclude that $\mathrm{IPW}$ is an unbiased estimator of $\mathrm{ATE}$. 
+
+\section{Structure and Identification}
+
+A key issue to resolve before looking at the realized sample is \emph{identification}.
+We say a model or DGP is \emph{identified} if the each possible parameter
+of the model under consideration generates distinctive features of
+the observable data. A model is \emph{under-identified} if more than
+one parameter in the model can generate exact the same features of
+the observable data. In other words, a model is under-identified if
+from the observable data we cannot trace back to a unique parameter
+in the model. A correctly specified model is the prerequisite for
+discussion of identification. In reality, all models are wrong. Thus
+when talking about identification, we are indulged in an imaginary
+world. If in such a thought experiment we still cannot unique distinguish
+the true parameter of the data generating process, then identification
+fails. We cannot determine what is the true model no matter how large
+the sample is.
+
+\subsection{ATE and CEF}
+
+Consider a continuous treatment $D$. Suppose the DGP, or the structural
+model, is $Y=h\left(D,W,U\right)$ where $D$ and $W$ are observable
+and $U$ is unobservable. It is natural to define ATE with the continuous
+treatment (Hansen's book Chapter 2.30 calls it \emph{average causal
+effect}) as
+\[
+\mathrm{ATE}\left(d,w\right)=\E\left[\lim_{\Delta\to0}\frac{h\left(d+\Delta,w,U\right)-h\left(d,w,U\right)}{\Delta}\right]=\E\left[\frac{\partial}{\partial d}h\left(d,w,U\right)\right],
+\]
+where the continuous differentiability of $h\left(d,w,u\right)$ at
+$d$ is implicitly assumed. Unlike the binary treatment case, here
+$d$ explicitly shows up in $\mathrm{ATE}\left(d,w\right)$ because
+the effect can vary at different values of $d$. ATE here is the average
+effect in the population of individuals if we hypothetically move
+$d$ a tiny bit around $d$, keeping $w$ constant.
+
+If we do not intend to model the underlying economic mechanism $h\left(d,w,u\right)$,
+can we still learn $\mathrm{ATE}\left(d,w\right)$ which bears the
+structural causal interpretation from the \emph{conditional mean function}
+(CEF) $m\left(d,w\right)=\E\left[Y|d,w\right]=\int yf\left(y|d,w\right)\mathrm{d}y$,
+which is a mechanical statistical object? The answer is positive under
+CIA: 
+\[
+U\perp D\,|\,W.
+\]
+ Notice
+\begin{align*}
+\frac{\partial}{\partial d}m\left(d,w\right) & =\frac{\partial}{\partial d}\E\left[Y|d,w\right]=\frac{\partial}{\partial d}\E\left[h\left(d,w,U\right)|d,w\right]=\frac{\partial}{\partial d}\int h\left(d,w,u\right)f\left(u|d,w\right)\mathrm{d}u\\
+ & =\int\frac{\partial}{\partial d}\left[h\left(d,w,u\right)f\left(u|d,w\right)\right]\mathrm{d}u\\
+ & =\int\left[\frac{\partial}{\partial d}h\left(d,w,u\right)\right]f\left(u|d,w\right)\mathrm{d}u+\int h\left(d,w,u\right)\left[\frac{\partial}{\partial d}f\left(u|d,w\right)\right]\mathrm{d}u,
+\end{align*}
+where the second line implicitly assumes interchangeability between
+the integral and the partial derivative. Under CIA, $\frac{\partial}{\partial d}f\left(u|d,w\right)=0$
+and the second term drops out. Thus 
+\[
+\frac{\partial}{\partial d}m\left(d,w\right)=\int\left[\frac{\partial}{\partial d}h\left(d,w,u\right)\right]f\left(u|d,w\right)\mathrm{d}u=\E\left[\frac{\partial}{\partial d}h\left(d,w,u\right)|d,w\right]=\mathrm{ATE}\left(d,w\right).
+\]
+It says that if CIA holds, we can learn the causal effect of $D$
+on $Y$ by the partial derivative of conditional expectation function
+(CEF). In particular, if we further assume a linear CEF $m\left(d,w\right)=\mu+\Delta d+\beta_{w}'w$,
+then the causal effect is the coefficient $\Delta$.
+
+CIA is the key condition that links the CEF and the causal effect.
+CIA is not an innocuous assumption. In applications, our causal results
+are credible only when we can convincingly defend CIA.
+\begin{xca}
+Sometimes applied researchers assume by brute force that $Y=m\left(D,W\right)+U$
+is the DGP and $\E\left[U|D,W\right]=0$, where $D$ is the variable
+of interest and $W$ is the covariate. Under these assumptions, 
+\[
+\mathrm{ATE}\left(d,w\right)=\E\left[\frac{\partial}{\partial d}\left(m\left(d,w\right)+u\right)|d,w\right]=\frac{\partial m\left(d,w\right)}{\partial d}+\frac{\partial}{\partial d}\E\left[U|d,w\right]=\frac{\partial m\left(d,w\right)}{\partial d},
+\]
+where the second equality holds if $\frac{\partial}{\partial d}\E\left[u|d,w\right]=\E\left[\frac{\partial}{\partial d}u|d,w\right]$.
+At a first glance, it seems that the mean independence assumption
+$\E\left[U|d,w\right]=0$, which is weaker than CIA, implies the equivalence
+between $\mathrm{ATE}\left(d,w\right)$ and $\partial m\left(d,w\right)/\partial d$
+here. However, such slight weakening is achieved by at the cost of
+assuming $h\left(D,W,U\right)$ follows the additive separable form
+$m\left(D,W\right)+U$. There is a tradeoff between the restrictiveness
+of the assumption and the generality of the function form. 
+
+The \emph{structural approach} here models the economic mechanism,
+hopefully guided by economic theory. In recent years, the belief in
+this econometric tradition is encroached by the more intuitive and
+straightforward \emph{reduced-form} approach, which documents stylized
+facts when suitable economic theory is not available. The most prominent
+reduced-form approach is the potential outcome framework, as in the
+first part of the lecture notes.
+\end{xca}
+
+
+\section{Summary}
+
+There are constant debates about the pros and cons of the two approaches;
+see \emph{Journal of Economic Perspectives} Vol.~24, No.~2 Spring
+2010. In macroeconomics, the so-called Phillips curve, attributed
+to A.W.~Phillips about the negative correlation between inflation
+and unemployment, is a stylized fact learned from the reduced-form
+approach. The Lucas critique (Lucas, 1976) exposed its lack of microfoundation
+and advocated modeling deep parameters that are invariant to policy
+changes. The latter is a structural approach. Ironically, more than
+forty years has passed since the Lucas critique, equations with little
+microfoundation still dominate the analytical apparatus of central
+bankers. For the structural approach, the devotion to a DGP that no
+one has ever seen is hardly justifiable. For the reduced-form approach,
+\emph{ad hoc} regressions are likely falling short of external validity;
+what is worse those most crucial economic issues are not to be experimented
+with. You can go to poor villages in a forgotten concern of the world
+to randomly distribute deworming pills, but there is no way you can
+persuade the PBOC to experiment with interest rates.
+
+When we care about the structural causality concerning some treatment
+$d$ to the dependent variable $y$, under CIA we can find equivalence
+between ATE and the partial derivative of CEF. All analyses are conducted
+in population. We have not touched the sample yet.
+
+\textbf{Historical notes}: Regressions and conditional expectations
+are concepts from statistics and they are imported to econometrics
+in early time. Researchers at the Cowles Commission (now Cowles Foundation
+for Research in Economics) --- Jacob Marschak (1898--1977), Tjalling
+Koopmans (1910--1985, Nobel Prize 1975), Trygve Haavelmo (1911--1999,
+Nobel Prize 1989) and their colleagues --- were trailblazers of the
+econometric structural approach.
+
+The Cowles tradition emphasized
+simultaneous interaction of multiple variables (for example, prices and
+quantities are jointly determined in equilibrium). This pushed econometricians
+to write systems of structural equations and to take identification seriously:
+which features of the underlying system can be learned from the joint
+distribution of observables. 
+Haavelmo's ``probability approach'' (mid-1940s) was particularly influential:
+it advocated formulating an explicit stochastic data generating process and then
+studying estimation and testing as consequences of that probabilistic model.
+In this view, causality is tied to the model's counterfactual implications:
+changing one equation (a policy rule, a technology, a preference parameter)
+while holding other components fixed.
+
+The potential outcome framework is not peculiar to economics. It is
+widely used in other fields such as biostatistics and medical studies.
+It was initiated by Jerzy Neyman (1894--1981) and extended by Donald
+B.~Rubin (1943-- ).
+Neyman's work highlights a different route to
+causal knowledge: rather than specifying a full structural model, one can
+define causal effects via potential outcomes and then use randomization
+for comparison. Rubin later clarified and popularized this framework.
+
+
+\bigskip
+\texttt{ Zhentao Shi. \today}
+\end{document}
