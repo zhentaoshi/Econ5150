@@ -14,6 +14,9 @@
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage[authoryear]{natbib}
 
+
+\newtheorem{remark}{Remark}
+
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
 \theoremstyle{remark}
@@ -115,79 +118,106 @@ estimator is
 \]
 if $X'X$ is invertible. This is one way to motivate the OLS estimator. 
 
-The operation of OLS bears a natural geometric interpretation. Notice
+
+\section{Geometry of OLS}
+
+\renewcommand{\hat}[1]{\widehat{#1}}
+
+
+There is natural geometry interpretation of the OLS estimator in a $n$-dimensional Euclidean space. Notice
 $\mathcal{X}=\left\{ Xb:b\in\mathbb{R}^{p}\right\} $ is the linear
 space spanned by the $p$ columns of $X=\left[X_{\cdot1},\ldots,X_{\cdot p}\right]$,
 which is of $p$-dimension if the columns are linearly independent.
-The OLS estimator is the minimizer of $\min_{b\in\mathbb{R}^{K}}\left\Vert Y-Xb\right\Vert $
+The OLS estimator is the minimizer of $\min_{b\in\mathbb{R}^{p}}\left\Vert Y-Xb\right\Vert $
 (Square the Euclidean norm or not does not change the minimizer because
-$a^{2}$ is a monotonic transformation for $a\geq0$). In other words,
+$a^{2}$ is a monotonic transformation for $a\geq 0$). In other words,
 $X\widehat{\beta}$ is the point in $\mathcal{X}$ such that it is
 the closest to the vector $Y$ in terms of the Euclidean norm.
 
-The relationship $Y=X\widehat{\beta}+\widehat{e}$ decomposes $Y$
-into two orthogonal vectors $X\widehat{\beta}$ and $\widehat{e}$
-as $\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}'X'\widehat{e}=0_{K}^{\prime}$,
-where $\left\langle \cdot,\cdot\right\rangle $ is the \emph{inner
-product} of two vectors. Therefore $X\widehat{\beta}$ is the \emph{projection}
-of $Y$ onto $\mathcal{X}$, and $\widehat{e}$ is the corresponding
-\emph{projection residuals. }The Pythagorean theorem implies $\left\Vert Y\right\Vert ^{2}=\Vert X\widehat{\beta}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.$ 
+Define $$\hat{Y} = X \hat{\beta} = X (X'X)^{-1}X' Y = P_X Y,$$
+where $P_X = X (X'X)^{-1}X'$ is the projector to the columns space of $X$. 
+One the other hand, define 
+$$\hat{e} = Y - \hat{Y} = (I_n - P_X) Y = P_X^\perp Y,$$
+where $P_X^\perp$ is the projector to the null space of $X$. 
+Since the null space and the column space are orthogonal, it is easy to verify that 
+$$\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}'X'\widehat{e}=0_{p}^{\prime}.$$
+The Pythagorean theorem implies $$\left\Vert Y\right\Vert ^{2}=\Vert X\widehat{\beta}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.$$ 
 
-\section{Subvector}
+
+If $X$ has full column rank and we use a SVD 
+$$X=\underset{(n\times n)}{U} \underset{(p\times p)}{S} \underset{(p\times p)}{V}'$$ where
+$U$ and $V$ have orthonormal columns and $S$ is diagonal with the $p$ singular values of $X$, then the fitted values can be written as
+\[
+\widehat{Y}=X\widehat{\beta}=X(X'X)^{-1}X'Y=UU'Y.
+\]
+In other words, in terms of in-sample fitting, OLS using regressors $X$ is equivalent to regressing $Y$ on the orthonormal basis $U$ for the column space of $X$ (the two procedures have the same projection $\widehat{Y}$). The corresponding coefficients satisfy $\widehat{\beta}=VS^{-1}U'Y$.
+
+\section{FWL Theorem}
 
 The Frisch-Waugh-Lovell (FWL) theorem is an algebraic fact about the
-formula of a subvector of the OLS estimator. To derive the FWL theorem
-we need to use the inverse of partitioned matrix. For a positive definite
-symmetric matrix $A=\begin{pmatrix}A_{11} & A_{12}\\
-A_{12}' & A_{22}
-\end{pmatrix}$, the inverse can be written as 
+formula of a subvector of the OLS estimator. 
+Decompose $X = (X_1, X_2)$ where $X_1$ is $n\times (p-1)$ matrix and $X_2$ is an $n\times 1$ vector, so that 
+\begin{equation}\label{eq:x1x2}
+Y = X_1 \hat{\beta}_1 + X_2 \hat{\beta}_2 + \hat{e}.  
+\end{equation}
+To find $\hat{\beta}_2$, we first decompose $X_2$ into its projection onto $\mathrm{span}(X_1)$ and its projection residual:
 \[
-A^{-1}=\begin{pmatrix}\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & -\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1}A_{12}A_{22}^{-1}\\
--A_{22}^{-1}A_{12}'\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & \left(A_{22}-A_{12}'A_{11}^{-1}A_{12}\right)^{-1}
-\end{pmatrix}.
+X_2 = P_1 X_2 + P_1^\perp X_2,
 \]
-In our context of OLS estimator, let $X=\left(\begin{array}{cc}
-X_{1} & X_{2}\end{array}\right)$
+where $P_1 = X_1 (X_1' X_1)^{-1} X_1'$ is the projector onto $\mathrm{span}(X_1)$ and $P_1^\perp=I_n-P_1$.
+Pre-multiply $P_1^\perp$ on both sides of \eqref{eq:x1x2}, we have 
+\[
+P_1^\perp Y = P_1^\perp X_1 \hat{\beta}_1 +  P_1^\perp X_2 \hat{\beta}_2+P_1^\perp\hat{e}
+= P_1^\perp X_2 \hat{\beta}_2+ \hat{e}
+\]
+since $P_1^\perp X_1=0$ and $P_1^\perp \hat{e} = \hat{e}$.
 
+Because $\tilde{X}_2 = P_1^\perp X_2$ is orthogonal to $\mathrm{span}(X_1)$, the coefficient on $X_2$ in the full regression is pinned down entirely by $\tilde{X}_2$:
+\[
+\hat{\beta}_2=(\tilde{X}_2'\tilde{X}_2)^{-1}\tilde{X}_2' Y
+=(X_2'P_1^\perp X_2)^{-1}X_2'P_1^\perp Y.
+\]
+
+\section{Omitted Variable Bias}
+
+Suppose that researcher A runs a full regression $Y = X_1 \hat{\beta}_1 + X_2 \hat{\beta}_2 + \hat{e}$. When he sends the data to researcher B, he omits $X_2$ by accident. Research B can only estimated the coefficient for $X_1$.
+What would be its different from researcher A's $\hat{\beta}_1$?
+
+% \[
+% Y=X_1\beta_1+X_2\beta_2+e,\qquad E[e\mid X_1,X_2]=0.
+% \]
+% If $X_2$ is unobservable and we regress $Y$ on $X_1$ only, the (misspecified) OLS estimator is
+% \[
+% \tilde{\beta}_1=(X_1'X_1)^{-1}X_1'Y=\beta_1+(X_1'X_1)^{-1}X_1'X_2\,\beta_2+(X_1'X_1)^{-1}X_1'e.
+% \]
+% Therefore, conditional on $(X_1,X_2)$,
+% \[
+% E[\tilde{\beta}_1\mid X_1,X_2]=\beta_1+(X_1'X_1)^{-1}X_1'X_2\,\beta_2.
+% \]
+% The bias term is driven by the part of $X_2$ that lies in $\mathrm{span}(X_1)$. In the notation of the previous section, project $X_2$ onto $\mathrm{span}(X_1)$:
+% \[
+% X_2= P_1X_2+P_1^\perp X_2=X_1\hat{\pi}+\tilde{X}_2,\qquad \hat{\pi}=(X_1'X_1)^{-1}X_1'X_2.
+% \]
+Notice in researcher A's world:
 \begin{align*}
-\begin{pmatrix}\widehat{\beta}_{1}\\
-\widehat{\beta}_{2}
-\end{pmatrix} & =\widehat{\beta}=(X'X)^{-1}X'Y\\
- & =\left(\begin{pmatrix}X_{1}'\\
-X_{2}'
-\end{pmatrix}\begin{pmatrix}X_{1} & X_{2}\end{pmatrix}\right)^{-1}\begin{pmatrix}X_{1}'Y\\
-X_{2}'Y
-\end{pmatrix}\\
- & =\begin{pmatrix}X_{1}'X_{1} & X_{1}'X_{2}\\
-X_{2}'X_{1} & X_{2}'X_{2}
-\end{pmatrix}^{-1}\begin{pmatrix}X_{1}'Y\\
-X_{2}'Y
-\end{pmatrix}\\
- & =\begin{pmatrix}\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
-\heartsuit & \heartsuit
-\end{pmatrix}\begin{pmatrix}X_{1}'Y\\
-X_{2}'Y
-\end{pmatrix}.
+  Y & = X_1 \hat{\beta}_1 + X_2 \hat{\beta}_2 + \hat{e} \\
+    & = X_1 \hat{\beta}_1 + (P_1X_2+P_1^\perp X_2) \hat{\beta}_2 + \hat{e} \\
+    & = ( X_1 \hat{\beta}_1 + P_1X_2 \hat{\beta}_2 ) + ( P_1^\perp X_2 \hat{\beta}_2 + \hat{e}) \\
+    & = X_1 (\hat{\beta}_1 + \hat{\pi}\hat{\beta}_2 ) + ( P_1^\perp X_2 \hat{\beta}_2 + \hat{e}),
 \end{align*}
+where $\hat{\pi}=(X_1'X_1)^{-1}X_1'X_2.$
+In other words, researcher B will obtain the coefficient $(\hat{\beta}_1 + \hat{\pi}\hat{\beta}_2 )$ associated with $X_1$, and his residual is $( P_1^\perp X_2 \hat{\beta}_2 + \hat{e})$.
 
-The subvector
-\begin{align*}
-\widehat{\beta}_{1} & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}'Y\\
- & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'P_{X_{2}}Y\\
- & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}\left(X_{1}'Y-X_{1}'P_{X_{2}}Y\right)\\
- & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'M_{X_{2}}Y.
-\end{align*}
+Intuitively, regressing on $X_1$ only forces the component $P_1X_2=X_1\hat{\pi}$ to be absorbed by the coefficient on $X_1$, while the orthogonal component $P_1^\perp X_2 \hat{\beta}_2$ becomes part of the residual.
 
-Notice that $\widehat{\beta}_{1}$ can be obtained by the following:
-\begin{enumerate}
-\item Regress $Y$ on $X_{2}$, obtain the residual $\tilde{Y}$;
-\item Regress $X_{1}$ on $X_{2}$, obtain the residual $\tilde{X}_{1}$;
-\item Regress $\tilde{Y}$ on $\tilde{X}_{1}$, obtain OLS estimates $\widehat{\beta}_{1}$.
-\end{enumerate}
-Similar derivation can also be carried out in the population linear
-projection. See Hansen (2020) {[}E{]} Chapter 2.22-23.
+ 
+ 
 
 \section{Summary}
+
+
+The derivations above are finite-sample linear algebra in $\mathbb{R}^n$: $X_1$ and $X_2$ span subspaces of $\mathbb{R}^n$, and $P_1$ and $P_1^\perp$ are ordinary projection matrices. There are population counterparts of both the FWL theorem and the omitted variable bias formula. In that setting, $Y$ and the components of $X$ are random variables that live in a Hilbert space (typically an $L^2$ space), and ``projection'' is defined by the linear projection (orthogonality) operator rather than an $n\times n$ matrix. The same logic goes through with population inner products (expectations) replacing sample inner products, but the geometry is more abstract, so we omit the full display.
+
 
 \textbf{Historical notes}: Carl Friedrich Gauss (1777--1855) claimed
 he had come up with the operation of OLS in 1795. With only three
