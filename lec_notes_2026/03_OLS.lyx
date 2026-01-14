@@ -143,7 +143,7 @@ Notation:
 \end_inset
 
  is a 
-\begin_inset Formula $K\times1$
+\begin_inset Formula $p\times1$
 \end_inset
 
  vector.
@@ -165,17 +165,17 @@ x_{2}'\\
 \vdots\\
 x_{n}'
 \end{array}\right]=\left[\begin{array}{cccc}
-x_{11} & x_{12} & \cdots & x_{1K}\\
-x_{21} & x_{22} & \cdots & x_{2K}\\
+x_{11} & x_{12} & \cdots & x_{1p}\\
+x_{21} & x_{22} & \cdots & x_{2p}\\
 \vdots & \vdots & \ddots & \vdots\\
-x_{n1} & x_{22} & \cdots & x_{nK}
+x_{n1} & x_{22} & \cdots & x_{np}
 \end{array}\right]
 \]
 
 \end_inset
 
  is an 
-\begin_inset Formula $n\times K$
+\begin_inset Formula $n\times p$
 \end_inset
 
  matrix.
@@ -379,20 +379,20 @@ if
 \begin_layout Standard
 The operation of OLS bears a natural geometric interpretation.
  Notice 
-\begin_inset Formula $\mathcal{X}=\left\{ Xb:b\in\mathbb{R}^{K}\right\} $
+\begin_inset Formula $\mathcal{X}=\left\{ Xb:b\in\mathbb{R}^{p}\right\} $
 \end_inset
 
  is the linear space spanned by the 
-\begin_inset Formula $K$
+\begin_inset Formula $p$
 \end_inset
 
  columns of 
-\begin_inset Formula $X=\left[X_{\cdot1},\ldots,X_{\cdot K}\right]$
+\begin_inset Formula $X=\left[X_{\cdot1},\ldots,X_{\cdot p}\right]$
 \end_inset
 
 ,
  which is of 
-\begin_inset Formula $K$
+\begin_inset Formula $p$
 \end_inset
 
 -dimension if the columns are linearly independent.

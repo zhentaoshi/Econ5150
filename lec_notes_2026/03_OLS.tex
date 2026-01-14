@@ -1,0 +1,203 @@
+%% LyX 2.4.3 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,oneside]{book}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage[authoryear]{natbib}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{remark}
+    \ifx\thechapter\undefined
+      \newtheorem{rem}{\protect\remarkname}
+    \else
+      \newtheorem{rem}{\protect\remarkname}[chapter]
+    \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+
+\makeatother
+
+\providecommand{\remarkname}{Remark}
+
+\begin{document}
+\setcounter{chapter}{2}
+
+\chapter{Least Squares }
+
+Notation: $y_{i}$ is a scalar, and $x_{i}=\left(x_{i1},\ldots,x_{iK}\right)'$
+is a $p\times1$ vector. $Y=\left(y_{1},\ldots,y_{n}\right)'$ is
+an $n\times1$ vector, and 
+\[
+X=\left[\begin{array}{c}
+x_{1}'\\
+x_{2}'\\
+\vdots\\
+x_{n}'
+\end{array}\right]=\left[\begin{array}{cccc}
+x_{11} & x_{12} & \cdots & x_{1p}\\
+x_{21} & x_{22} & \cdots & x_{2p}\\
+\vdots & \vdots & \ddots & \vdots\\
+x_{n1} & x_{22} & \cdots & x_{np}
+\end{array}\right]
+\]
+ is an $n\times p$ matrix. $I_{n}$ is an $n\times n$ identity matrix.
+
+Ordinary least squares (OLS) is the most basic estimation technique
+in econometrics. It is simple and transparent. Understanding it thoroughly
+paves the way to study more sophisticated linear estimators. Moreover,
+many nonlinear estimators resemble the behavior of linear estimators
+in a neighborhood of the true value. In this lecture, we learn a series
+of facts from the linear algebra operation. 
+
+\section{Estimator}
+
+As we have learned from the linear projection model, the projection
+coefficient $\beta$ in the regression 
+\[
+\begin{aligned}y & =x'\beta+e\end{aligned}
+\]
+can be written as 
+\begin{equation}
+\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].\label{eq:pop_OLS}
+\end{equation}
+ We draw a pair of $\left(y,x\right)$ from the joint distribution,
+and we mark it as $\left(y_{i},x_{i}\right)$ for $i=1,\ldots,n$
+repeated experiments. We possess a \emph{sample} $\left(y_{i},x_{i}\right)_{i=1}^{n}$.
+\begin{rem}
+Is $\left(y_{i},x_{i}\right)$ random or deterministic? Before we
+make the observation, they are treated as random variables whose realized
+values are uncertain. $\left(y_{i},x_{i}\right)$ is treated as random
+when we talk about statistical properties --- statistical properties
+of a fixed number is meaningless. After we make the observation, they
+become deterministic values which cannot vary anymore.
+\end{rem}
+%
+\begin{rem}
+In reality, we have at hand fixed numbers (more recently, words, photos,
+audio clips, video clips, etc., which can all be represented in digital
+formats with 0 and 1) to feed into a computational operation, and
+the operation will return one or some numbers. All statistical interpretation
+about these numbers are drawn from the probabilistic thought experiments.
+A \emph{thought experiment} is an academic jargon for a \emph{story}
+in plain language. Under the axiomatic approach of probability theory,
+such stories are mathematical consistent and coherent. But mathematics
+is a tautological system, not science. The scientific value of a probability
+model depends on how close it is to the \emph{truth} or implications
+of the truth. In this course, we suppose that the data are generated
+from some mechanism, which is taken as the truth. In the linear regression
+model for example, the joint distribution of $\left(y,x\right)$ is
+the truth, while we are interested in the linear projection coefficient
+$\beta$, which is an implication of the truth as in (\ref{eq:pop_OLS}).
+Probabilists suppose there is a dragon and try to tell the dragon's
+behaviors. Statisticians observe many snakes on earth, and try to
+tell what a dragon looks like.
+\end{rem}
+The sample mean is a natural estimator of the population mean. Replace
+the population mean $E\left[\cdot\right]$ in (\ref{eq:pop_OLS})
+by the sample mean $\frac{1}{n}\sum_{i=1}^{n}\cdot$, and the resulting
+estimator is 
+\[
+\widehat{\beta}=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}y_{i}=\left(\frac{X'X}{n}\right)^{-1}\frac{X'y}{n}=\left(X'X\right)^{-1}X'y
+\]
+if $X'X$ is invertible. This is one way to motivate the OLS estimator. 
+
+The operation of OLS bears a natural geometric interpretation. Notice
+$\mathcal{X}=\left\{ Xb:b\in\mathbb{R}^{p}\right\} $ is the linear
+space spanned by the $p$ columns of $X=\left[X_{\cdot1},\ldots,X_{\cdot p}\right]$,
+which is of $p$-dimension if the columns are linearly independent.
+The OLS estimator is the minimizer of $\min_{b\in\mathbb{R}^{K}}\left\Vert Y-Xb\right\Vert $
+(Square the Euclidean norm or not does not change the minimizer because
+$a^{2}$ is a monotonic transformation for $a\geq0$). In other words,
+$X\widehat{\beta}$ is the point in $\mathcal{X}$ such that it is
+the closest to the vector $Y$ in terms of the Euclidean norm.
+
+The relationship $Y=X\widehat{\beta}+\widehat{e}$ decomposes $Y$
+into two orthogonal vectors $X\widehat{\beta}$ and $\widehat{e}$
+as $\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}'X'\widehat{e}=0_{K}^{\prime}$,
+where $\left\langle \cdot,\cdot\right\rangle $ is the \emph{inner
+product} of two vectors. Therefore $X\widehat{\beta}$ is the \emph{projection}
+of $Y$ onto $\mathcal{X}$, and $\widehat{e}$ is the corresponding
+\emph{projection residuals. }The Pythagorean theorem implies $\left\Vert Y\right\Vert ^{2}=\Vert X\widehat{\beta}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.$ 
+
+\section{Subvector}
+
+The Frisch-Waugh-Lovell (FWL) theorem is an algebraic fact about the
+formula of a subvector of the OLS estimator. To derive the FWL theorem
+we need to use the inverse of partitioned matrix. For a positive definite
+symmetric matrix $A=\begin{pmatrix}A_{11} & A_{12}\\
+A_{12}' & A_{22}
+\end{pmatrix}$, the inverse can be written as 
+\[
+A^{-1}=\begin{pmatrix}\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & -\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1}A_{12}A_{22}^{-1}\\
+-A_{22}^{-1}A_{12}'\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & \left(A_{22}-A_{12}'A_{11}^{-1}A_{12}\right)^{-1}
+\end{pmatrix}.
+\]
+In our context of OLS estimator, let $X=\left(\begin{array}{cc}
+X_{1} & X_{2}\end{array}\right)$
+
+\begin{align*}
+\begin{pmatrix}\widehat{\beta}_{1}\\
+\widehat{\beta}_{2}
+\end{pmatrix} & =\widehat{\beta}=(X'X)^{-1}X'Y\\
+ & =\left(\begin{pmatrix}X_{1}'\\
+X_{2}'
+\end{pmatrix}\begin{pmatrix}X_{1} & X_{2}\end{pmatrix}\right)^{-1}\begin{pmatrix}X_{1}'Y\\
+X_{2}'Y
+\end{pmatrix}\\
+ & =\begin{pmatrix}X_{1}'X_{1} & X_{1}'X_{2}\\
+X_{2}'X_{1} & X_{2}'X_{2}
+\end{pmatrix}^{-1}\begin{pmatrix}X_{1}'Y\\
+X_{2}'Y
+\end{pmatrix}\\
+ & =\begin{pmatrix}\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
+\heartsuit & \heartsuit
+\end{pmatrix}\begin{pmatrix}X_{1}'Y\\
+X_{2}'Y
+\end{pmatrix}.
+\end{align*}
+
+The subvector
+\begin{align*}
+\widehat{\beta}_{1} & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}'Y\\
+ & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'P_{X_{2}}Y\\
+ & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}\left(X_{1}'Y-X_{1}'P_{X_{2}}Y\right)\\
+ & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'M_{X_{2}}Y.
+\end{align*}
+
+Notice that $\widehat{\beta}_{1}$ can be obtained by the following:
+\begin{enumerate}
+\item Regress $Y$ on $X_{2}$, obtain the residual $\tilde{Y}$;
+\item Regress $X_{1}$ on $X_{2}$, obtain the residual $\tilde{X}_{1}$;
+\item Regress $\tilde{Y}$ on $\tilde{X}_{1}$, obtain OLS estimates $\widehat{\beta}_{1}$.
+\end{enumerate}
+Similar derivation can also be carried out in the population linear
+projection. See Hansen (2020) {[}E{]} Chapter 2.22-23.
+
+\section{Summary}
+
+\textbf{Historical notes}: Carl Friedrich Gauss (1777--1855) claimed
+he had come up with the operation of OLS in 1795. With only three
+data points at hand, Gauss successfully applied his method to predict
+the location of the dwarf planet Ceres in 1801. While Gauss did not
+publish the work on OLS until 1809, Adrien-Marie Legendre (1752--1833)
+presented this method in 1805. Today people tend to attribute OLS
+to Gauss, assuming that a giant like Gauss had no need to tell a lie
+to steal Legendre's discovery.
+
+\bigskip
+\texttt{ Zhentao Shi. \today}
+\end{document}
