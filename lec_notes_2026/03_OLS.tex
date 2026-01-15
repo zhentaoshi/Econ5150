@@ -41,7 +41,7 @@
 
 \chapter{Least Squares }
 
-Notation: $y_{i}$ is a scalar, and $x_{i}=\left(x_{i1},\ldots,x_{iK}\right)'$
+Notation: $y_{i}$ is a scalar, and $x_{i}=\left(x_{i1},\ldots,x_{ip}\right)'$
 is a $p\times1$ vector. $Y=\left(y_{1},\ldots,y_{n}\right)'$ is
 an $n\times1$ vector, and 
 \[
@@ -183,21 +183,6 @@ Because $\tilde{X}_2 = P_1^\perp X_2$ is orthogonal to $\mathrm{span}(X_1)$, the
 Suppose that researcher A runs a full regression $Y = X_1 \hat{\beta}_1 + X_2 \hat{\beta}_2 + \hat{e}$. When he sends the data to researcher B, he omits $X_2$ by accident. Research B can only estimated the coefficient for $X_1$.
 What would be its different from researcher A's $\hat{\beta}_1$?
 
-% \[
-% Y=X_1\beta_1+X_2\beta_2+e,\qquad E[e\mid X_1,X_2]=0.
-% \]
-% If $X_2$ is unobservable and we regress $Y$ on $X_1$ only, the (misspecified) OLS estimator is
-% \[
-% \tilde{\beta}_1=(X_1'X_1)^{-1}X_1'Y=\beta_1+(X_1'X_1)^{-1}X_1'X_2\,\beta_2+(X_1'X_1)^{-1}X_1'e.
-% \]
-% Therefore, conditional on $(X_1,X_2)$,
-% \[
-% E[\tilde{\beta}_1\mid X_1,X_2]=\beta_1+(X_1'X_1)^{-1}X_1'X_2\,\beta_2.
-% \]
-% The bias term is driven by the part of $X_2$ that lies in $\mathrm{span}(X_1)$. In the notation of the previous section, project $X_2$ onto $\mathrm{span}(X_1)$:
-% \[
-% X_2= P_1X_2+P_1^\perp X_2=X_1\hat{\pi}+\tilde{X}_2,\qquad \hat{\pi}=(X_1'X_1)^{-1}X_1'X_2.
-% \]
 Notice in researcher A's world:
 \begin{align*}
   Y & = X_1 \hat{\beta}_1 + X_2 \hat{\beta}_2 + \hat{e} \\

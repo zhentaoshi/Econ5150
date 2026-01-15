@@ -75,7 +75,8 @@ By the end of the course, you should be able to:
 * Week 1: potential outcome framework, average treatment effect, conditional ATE, propensity score, conditional independence assumptions, continuous treatment
   * CHKSS Ch.2, Ch.5; Hansen Ch.2.1-8, 2.30
 
-* Week 2: causal inference based on regressions, conditional mean, linear projection, omitted variable bias, FWL theorem
+* Week 2: causal inference based on regressions, conditional mean, linear projection, FWL theorem, omitted variable bias, ridgeless regression
+  * CHKSS Ch.0, Ch.1.1, Ch.1.2 (up to p.20), Ch.1.3 (up to p.25); Hansen 2.15-25; 3.1-18
 
 ## License
 
