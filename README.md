@@ -18,6 +18,10 @@ This repository hosts lecture notes and code. They will be updated as the course
 <!-- * Hansen (2021): Probability and Statistics for Economists -->
 * Hansen (2021): Econometrics
 
+**Recommended reading**
+* Goodfellow, Bengio, and Courville (2016): Deep learning, MIT Press [[link](https://www.deeplearningbook.org/)].
+* Hastie, Tibshirani, and Friedman (2009): The Elements of Statistical Learning [[link](https://hastie.su.domains/ElemStatLearn/)]
+
 
 ### Introduction
 
