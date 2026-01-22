@@ -76,7 +76,10 @@ By the end of the course, you should be able to:
   * CHKSS Ch.2, Ch.5; Hansen Ch.2.1-8, 2.30
 
 * Week 2: causal inference based on regressions, conditional mean, linear projection, FWL theorem, omitted variable bias, ridgeless regression
-  * CHKSS Ch.0, Ch.1.1, Ch.1.2 (up to p.20), Ch.1.3 (up to p.25); Hansen 2.15-25; 3.1-18
+  * CHKSS Ch.0, Ch.1.1, Ch.1.2 (up to p.20), Ch.1.3 (up to p.25); Hansen Ch.2.15-25; 3.1-18
+ 
+* Week 3: finite sample mean and variance of OLS, in-sample overfitting, out-of-sample prediction, asymptopia, modes of convergence
+  * CHKSS the rest of Ch.1; Hansen Ch.4.1-12, 6.1-2
 
 ## License
 
