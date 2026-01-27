@@ -1,0 +1,22 @@
+{
+  // "image": "ztshi/econ5821:v0.1",
+  "image": "jupyter/datascience-notebook:x86_64-python-3.11",
+  "hostRequirements": {
+    "cpus": 2
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "",
+  "postCreateCommand": "",
+  "customizations": {
+    "codespaces": {
+      "openFiles": []
+    },
+    "vscode": {
+      "extensions": [
+        "ms-toolsai.jupyter",
+        "ms-python.python",
+        "shd101wyy.markdown-preview-enhanced"
+      ]
+    }
+  }
+}
