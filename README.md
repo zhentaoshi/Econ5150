@@ -85,6 +85,10 @@ By the end of the course, you should be able to:
 * Week 3: finite sample mean and variance of OLS, in-sample overfitting, out-of-sample prediction, asymptopia, modes of convergence
   * CHKSS the rest of Ch.1; Hansen Ch.4.1-12, 6.1-2
 
+* Week 4: LLN, CLT, asymptotic properties of OLS estimator. Ridge, bias and variance tradeoff.
+  * CHKSS Ch.3.3; Hansen Ch 29.1-7.
+
+
 ## License
 
 This work is licensed under
