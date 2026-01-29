@@ -141,12 +141,14 @@ $$
 \begin{align*}
 E[\| \widehat{\beta}_{ridge}(\lambda) - \beta \|^2] & = E[\| \widehat{\beta}_{ridge}(\lambda) - E[\widehat{\beta}_{ridge}(\lambda)] + E[\widehat{\beta}_{ridge}(\lambda)] - \beta \|^2] \\
 & = E[\| \widehat{\beta}_{ridge}(\lambda) - E[\widehat{\beta}_{ridge}(\lambda)]\|^2] + E[\|E[\widehat{\beta}_{ridge}(\lambda)] - \beta \|^2] \\
-& = \mathrm{bias}^2 + \mathrm{variance} \\
+& = \mathrm{variance} + \mathrm{bias}^2 \\
 & = \sum_{j=1}^p \frac{\lambda^2}{ (d_j+\lambda)^2} \tilde\beta_j^2 + \frac{\sigma^2}{n} \sum_{j=1}^p \frac{d_j}{(d_j+\lambda)^2}
 \end{align*}
 $$
 When $\lambda \to 0$, the bias term goes to 0 and the variance term goes to $\frac{\sigma^2}{n} \sum_{j=1}^p d_j$. If $p$ is fixed, $\tilde\beta_j \asymp 1$ and $d_j \asymp 1$ for all $j$, the order of the squared bias is $O(\lambda^2)$ and the order of the variance is $O(n^{-1})$. To make the bias of the same order as the variance, we need $\lambda \asymp n^{-1/2}$. 
 
+**Remark**: The calculation of the MSE implies that OLS is consistent in $\| \hat{\beta} - 
+\beta \| \stackrel{p}{\rightarrow} 0 $ if $p/n \to 0$.
 
 ## Lasso
 
@@ -181,13 +183,7 @@ $$
 $$
 where $x_j$ denotes column $j$ of $X$.
 
-**Interpretation.** Lasso sets $\widehat\beta_j=0$ whenever the (absolute) sample covariance $\left|\frac{1}{n}x_j'\widehat e\right|$ is not large enough to overcome the threshold $\lambda$. The active set consists of regressors whose covariance with the residual hits the boundary.
-
-**Special case (orthonormal design).** If $\frac{1}{n}X'X=I_p$, the KKT conditions imply a coordinate-wise closed form (soft-thresholding). Let $z:=\frac{1}{n}X'Y$, then
-$$
-\widehat\beta_j=\mathrm{sign}(z_j)\left(|z_j|-\lambda\right)_+,
-\qquad (a)_+ := \max\{a,0\}.
-$$
+Lasso sets $\widehat\beta_j=0$ whenever the (absolute) sample covariance $\left|\frac{1}{n}x_j'\widehat e\right|$ is not large enough to overcome the threshold $\lambda$. The active set consists of regressors whose covariance with the residual hits the boundary.
 
 
 ## Restricted Eigenvalue Condition
