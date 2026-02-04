@@ -211,7 +211,7 @@ $$
 
 **Why it matters.** The RE condition prevents strong collinearity *among sparse combinations of regressors*. It is a standard assumption used to derive lasso error bounds such as $\|\widehat\beta-\beta\|_2$ and $\|\widehat\beta-\beta\|_1$ rates, and to justify variable selection results under additional assumptions.
 
-## Appendix: Consistency of Lasso
+## Consistency of Lasso
 
 ### Step 1: Basic inequality 
 
@@ -274,13 +274,13 @@ $$
 \|\Delta\|_1 \le 4\|\Delta_S\|_1 \le 12\frac{\lambda s}{\kappa(s,3)^2}.
 $$
 
-### Step 3: Conclude consistency by choosing $\lambda=\lambda_n$
+### Step 3: Conclude consistency by choosing a proper $\lambda_n$
 
 Under standard tail conditions (e.g., sub-Gaussian errors and normalized columns), one can show
 $$
 \left\|\frac{1}{n}X'e\right\|_\infty = O_p\!\left(\sqrt{\frac{\log p}{n}}\right),
 $$
-so taking $\lambda \asymp \sqrt{\frac{\log p}{n}}$ satisfies Step 1 with high probability. Then the bounds above yield
+so there exists a constant $C$ such that if we set $\lambda = \lambda_n = C \sqrt{\frac{\log p}{n}}$, the needed condition in Step 1 holds with high probability. Then the bounds above yield
 $$
 \frac{1}{n}\|X(\widehat\beta-\beta_0)\|_2^2 = O_p\!\left(\frac{s\log p}{n}\right),
 \qquad
@@ -297,3 +297,55 @@ $$
 \qquad \lambda\ge 0,
 $$
 where the weights $w_j>0$ are constructed from an initial estimator $\widetilde\beta$ (e.g., OLS when $p\ll n$, or ridge otherwise). A common choice is $w_j=1/|\widetilde\beta_j|.$
+
+
+## Double Machine Learning
+
+Consider a regression
+$$
+y = d\theta_0 + w'\eta_0 + u 
+$$
+where $d$ is the regressor of interest and $w$ is a control vector. Thus $\theta$ is the **parameter of interest** and $\eta$ is **nuisance parameter**. 
+
+**Neyman orthogonality** looks for a score function $\psi( \theta, \eta; \text{data}_i) =\psi( \theta, \eta) $ such that 
+$$
+E[\psi(\theta,\eta)]=0,\qquad (\theta_0,\eta_0)\text{ solves }E[\psi(\theta_0,\eta_0)]=0.
+$$
+If we plug in an estimate $\widehat\eta$, then (heuristically) a first-order expansion around $\eta_0$ gives
+$$
+E[\psi(\theta_0,\widehat\eta)] =E[\psi(\theta_0,\eta_0)]
++\partial_\eta E[\psi(\theta_0,\eta)]\big|_{\eta=\eta_0}\,(\widehat\eta-\eta_0)
++\text{higher-order terms}.
+$$
+Since $E[\psi(\theta_0,\eta_0)]=0$, the leading bias term is proportional to the derivative $\partial_\eta E[\psi(\theta_0,\eta)]|_{\eta_0}$ times the nuisance error.
+
+If we choose $\psi$ so that this derivative 
+$$
+\partial_\eta E[\psi(\theta_0,\eta)]\big|_{\eta=\eta_0}=0.
+$$
+Then the effect of nuisance estimation is only **second order**, so even a relatively slow (but consistent) ML estimator of $\eta_0$ can be good enough to get
+$$
+\sqrt n(\widehat\theta-\theta_0)\Rightarrow N(0,\cdot).
+$$
+
+Specifically, in the linear regression model we construct
+$$
+\psi(\theta, \eta) = \tilde{d} \cdot (y - \tilde d \theta)
+$$
+where $\tilde d = d - w' \gamma_d$. It is easy to verify that $$
+E[ \psi(\theta_0, \eta_0)]  = E[\tilde{d} \cdot (y - \tilde d \theta)] \big|_{\theta = \theta_0} = 0
+$$ by the FWL theorem. 
+Notice that $y$ depend on $(\theta, \eta)$ and $\frac{\partial y}{\partial \eta} = w.$  We verify
+$$
+\partial_{\eta} E[\psi (\theta_0, \eta)] \big|_{\eta = \eta_0} 
+= E[  \tilde{d} \cdot  \frac{\partial y}{\partial \eta}    ] \big|_{\eta = \eta_0} 
+= E[  \tilde{d} \cdot w  ] = 0.
+$$
+
+In high-dimensional settings we estimate nuisance components by machine learning methods such as lasso. These nuisance estimators typically converge more slowly than $n^{-1/2}$, so a naive plug-in estimator for $\theta$ can inherit **first-order bias** from nuisance estimation error.
+DML constructs an orthogonal score so that small errors in estimating the high-dimensional nuisance components have only second-order effects on inference for $\theta$.
+
+
+Neyman orthogonality is true if we specify $\psi(\theta, \eta) = \tilde{d} \cdot ( \tilde y - \tilde d \theta)$, where $\tilde y = y - w' \gamma_y$ is the (population) regression residual. 
+In this case, we also want to run lasso of $y$ on $w$ to get rid of the influence from high-dimensionality. That's where the name "double ML" refers to.
+
