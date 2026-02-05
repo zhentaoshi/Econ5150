@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Econ5150 · Applied Econometrics</title>
+  <meta name="description" content="Econ5150 Applied Econometrics — modern causal inference, ML-enabled econometrics, and computational workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --bg-2: #0a1424;
+      --ink: #e9edf5;
+      --muted: #a7b2c6;
+      --accent: #4ef2c7;
+      --accent-2: #7aa2ff;
+      --line: rgba(255, 255, 255, 0.08);
+      --glow: 0 0 20px rgba(78, 242, 199, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, -apple-system, Segoe UI, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(122, 162, 255, 0.18), transparent 50%),
+                  radial-gradient(1000px 700px at -10% 10%, rgba(78, 242, 199, 0.18), transparent 50%),
+                  linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      overflow-x: hidden;
+    }
+
+    .grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at 50% 20%, black 20%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-orb {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(78,242,199,0.35) 0%, transparent 60%);
+      filter: blur(2px);
+      right: -120px;
+      top: 120px;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      padding: 36px 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      font-family: "Share Tech Mono", monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      align-items: center;
+      padding: 36px 0 60px;
+    }
+
+    .hero h2 {
+      margin: 0 0 16px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0 0 20px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .hero .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(78, 242, 199, 0.4);
+      background: rgba(78, 242, 199, 0.08);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: var(--glow);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(8, 12, 24, 0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 36px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-family: "Share Tech Mono", monospace;
+      color: var(--accent-2);
+      margin: 0 0 20px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(8, 12, 24, 0.5);
+    }
+
+    .card h4 {
+      margin: 0 0 12px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card li:last-child { border-bottom: none; }
+
+    .highlight {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      border: 1px solid rgba(122, 162, 255, 0.4);
+      color: var(--ink);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: rgba(122, 162, 255, 0.08);
+    }
+
+    footer {
+      padding: 40px 0 60px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pulse {
+      position: relative;
+      display: inline-block;
+    }
+
+    .pulse::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 999px;
+      border: 1px solid rgba(78, 242, 199, 0.45);
+      opacity: 0;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0; transform: scale(0.9); }
+      40% { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.15); }
+    }
+
+    @media (max-width: 720px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .hero { padding-top: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid" aria-hidden="true"></div>
+  <div class="glow-orb" aria-hidden="true"></div>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1>Econ5150</h1>
+        <span>Applied Econometrics</span>
+      </div>
+      <div class="pill">Spring 2026</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h2>Build credible causal answers in high-dimensional, AI-era data.</h2>
+          <p>
+            This course develops a modern toolkit for applied econometric work: transparent identification,
+            principled inference, and computationally robust methods that remain reliable at scale.
+            You will combine economic reasoning with machine learning and reproducible workflows.
+          </p>
+          <a class="cta pulse" href="#overview">Explore course map</a>
+        </div>
+        <div class="stats">
+          <div class="stat-card">
+            <strong>Time</strong>
+            <span>Thursday · 9:30am–12:15pm</span>
+          </div>
+          <div class="stat-card">
+            <strong>Venue</strong>
+            <span>ELB 304</span>
+          </div>
+          <div class="stat-card">
+            <strong>Assessment</strong>
+            <span>Midterm 50% · Final 50%</span>
+          </div>
+          <div class="stat-card">
+            <strong>Prerequisite</strong>
+            <span>ECON5120</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview">
+        <h3 class="section-title">Course Summary</h3>
+        <div class="split">
+          <div class="card">
+            <h4>What you will learn</h4>
+            <ul>
+              <li><span class="highlight">Linear and nonlinear estimation</span> with likelihood and moment-based methods.</li>
+              <li><span class="highlight">Asymptotic reasoning</span> and when it fails in nonstandard settings.</li>
+              <li><span class="highlight">Regularization + ML</span> for prediction and causal inference without overfitting.</li>
+              <li><span class="highlight">Computational workflows</span> using optimization, simulation, and bootstrap.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Course focus</h4>
+            <p style="margin:0;color:var(--muted);line-height:1.6;">
+              Econ5150 is the sequel to ECON5120. It emphasizes credible causal questions, clear identification
+              assumptions, and estimation methods that remain robust in high-dimensional and computationally intensive
+              environments. The course integrates classic econometric theory with modern ML-enabled inference.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="section-title">Core Topics</h3>
+        <div class="split">
+          <div class="card">
+            <h4>Linear Models</h4>
+            <ul>
+              <li>Causal inference and linear projections</li>
+              <li>OLS large-sample theory</li>
+              <li>Shrinkage, ridge, and bias-variance tradeoffs</li>
+              <li>Overfitting and out-of-sample prediction</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Nonlinear Models</h4>
+            <ul>
+              <li>Maximum likelihood and limited dependent variables</li>
+              <li>Extreme estimators and GMM</li>
+              <li>Quantile regression and nonparametrics</li>
+              <li>Numerical optimization + ML for causal inference</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Special Topics</h4>
+            <ul>
+              <li>Time series</li>
+              <li>Factor models</li>
+              <li>Panel data methods</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="section-title">Current Reading Map</h3>
+        <div class="card">
+          <ul>
+            <li><span class="highlight">Week 1:</span> potential outcomes, ATE/CATE, propensity score, continuous treatments.</li>
+            <li><span class="highlight">Week 2:</span> regression-based causal inference, FWL theorem, OVB, ridgeless regression.</li>
+            <li><span class="highlight">Week 3:</span> finite-sample OLS properties, prediction vs. inference, modes of convergence.</li>
+            <li><span class="highlight">Week 4:</span> LLN/CLT, asymptotics for OLS, ridge and bias-variance tradeoff.</li>
+            <li><span class="highlight">Week 5:</span> lasso, KKT, restricted eigenvalues, Neyman orthogonality.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="section-title">Textbooks</h3>
+        <div class="tag-grid">
+          <div class="tag">Applied Causal Inference Powered by ML and AI · CHKSS (2025)</div>
+          <div class="tag">Hansen · Econometrics (2021)</div>
+          <div class="tag">Goodfellow/Bengio/Courville · Deep Learning (Recommended)</div>
+          <div class="tag">Hastie/Tibshirani/Friedman · Elements of Statistical Learning (Recommended)</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      This site is generated from the Econ5150 course repository and will evolve as new lectures and code are released.
+    </footer>
+  </div>
+</body>
+</html>
