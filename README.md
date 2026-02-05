@@ -88,6 +88,8 @@ By the end of the course, you should be able to:
 * Week 4: LLN, CLT, asymptotic properties of OLS estimator. Ridge, bias and variance tradeoff.
   * CHKSS Ch.3.3; Hansen Ch 29.1-7.
 
+* Week 5: lasso, KKT condition, adaptive lasso, restricted eigenvalue condition, consistency, Neyman orthogonality
+  * CHKSS Ch.3, Ch.4.1-4.3
 
 ## License
 
