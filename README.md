@@ -91,6 +91,9 @@ By the end of the course, you should be able to:
 * Week 5: lasso, KKT condition, adaptive lasso, restricted eigenvalue condition, consistency, Neyman orthogonality
   * CHKSS Ch.3, Ch.4.1-4.3
 
+* Week 6: Neyman orthogonality, desparsified lasso, Shannon entropy, Kullback-Leibler distance, differential entropy, likelihood
+  * Hansen (probability book) Ch.10.1-7
+
 ## License
 
 This work is licensed under
