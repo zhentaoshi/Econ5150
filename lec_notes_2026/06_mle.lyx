@@ -12,7 +12,7 @@ theorems-ams-chap-bytype
 \maintain_unincluded_children no
 \language english
 \language_package none
-\inputencoding utf8x
+\inputencoding utf8
 \fontencoding T1
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -33,6 +33,8 @@ theorems-ams-chap-bytype
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize 11
 \spacing single
 \use_hyperref true
