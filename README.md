@@ -94,6 +94,9 @@ By the end of the course, you should be able to:
 * Week 6: Neyman orthogonality, desparsified lasso, Shannon entropy, Kullback-Leibler distance, differential entropy, likelihood
   * Hansen (probability book) Ch.10.1-7
 
+* Week 7: Consistency and asymptotic normality of MLE, Logistic regression, and multinomial logit.
+  * Hansen (probability book) Ch.10.12-19, Hansen Ch.25.1-8, Ch.26.1-5
+
 ## License
 
 This work is licensed under
