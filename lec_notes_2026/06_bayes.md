@@ -89,7 +89,7 @@ $$
 $$
 For logistic regression, this posterior generally does not simplify to a standard distribution.
 
-### Step 4: Compute the posterior
+### Step 4: Computing the posterior
 
 In practice, we use numerical methods such as Markov Chain Monte Carlo (MCMC) to draw $\theta^{(1)},\ldots,\theta^{(S)}\sim p(\theta\mid y)$ approximately; alternatives include Laplace approximations and variational inference. The posterior summaries include posterior means/medians, marginal credible intervals for components of $\theta$, and functionals such as predicted probabilities. 
 

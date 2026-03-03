@@ -1,14 +1,8 @@
----
-title: "Least Squares"
-author: Zhentao Shi
-format: html
----
+# Least Squares
 
 
 
-Notation: $y_{i}$ is a scalar, and
-$x_{i}=\left(x_{i1},\ldots,x_{ip}\right)'$ is a $p\times1$ vector.
-$Y=\left(y_{1},\ldots,y_{n}\right)'$ is an $n\times1$ vector, and
+Notation: $y_{i}$ is a scalar, and $x_{i}=\left(x_{i1},\ldots,x_{ip}\right)'$ is a $p\times1$ vector. $Y=\left(y_{1},\ldots,y_{n}\right)'$ is an $n\times1$ vector, and
 $$X=\left[\begin{array}{c}
 x_{1}'\\
 x_{2}'\\
@@ -19,8 +13,7 @@ x_{11} & x_{12} & \cdots & x_{1p}\\
 x_{21} & x_{22} & \cdots & x_{2p}\\
 \vdots & \vdots & \ddots & \vdots\\
 x_{n1} & x_{22} & \cdots & x_{np}
-\end{array}\right]$$ is an $n\times p$ matrix. $I_{n}$ is an $n\times n$
-identity matrix.
+\end{array}\right]$$ is an $n\times p$ matrix. $I_{n}$ is an $n\times n$ identity matrix.
 
 Ordinary least squares (OLS) is the most basic estimation technique in
 econometrics. It is simple and transparent. Understanding it thoroughly
