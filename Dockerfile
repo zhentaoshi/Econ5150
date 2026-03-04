@@ -1,12 +1,21 @@
-FROM ztshi/econ_data_sci:latest 
-# tag “lastest”. updated on 2023-1-24
+# Use the official Jupyter R-notebook image which comes with R, Jupyter, and essential tools.
+# This image provides a pre-configured environment for running Jupyter Notebooks with an R kernel.
+FROM quay.io/jupyter/r-notebook:latest
 
-# copy the contents in the repo to HOME folder
-# according to 
-# https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
-COPY . ${HOME}
-USER root
-RUN chown -R ${NB_UID} ${HOME}
-USER ${NB_USER}
+# Install R packages required for slides_09_optimization.ipynb
+# We use mamba (a faster drop-in replacement for conda) to install pre-compiled binaries
+# which handles system dependencies (like libnlopt-dev) automatically.
+# Packages: magrittr, numDeriv, nloptr, optimx, CVXR
+RUN mamba install --yes \
+    'r-magrittr' \
+    'r-numderiv' \
+    'r-nloptr' \
+    'r-optimx' \
+    'r-cvxr' \
+    && mamba clean --all -f -y
 
-# RUN git clone https://github.com/zhentaoshi/Econ5150
+# The base image sets up the user "jovyan" and the entrypoint "start-notebook.sh" automatically.
+# Workdir is /home/jovyan/work by default.
+#
+# To run this container and mount your current directory:
+#   docker run -p 8888:8888 -v "${PWD}:/home/jovyan/work" <image_name>
