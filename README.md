@@ -97,6 +97,9 @@ By the end of the course, you should be able to:
 * Week 7: Consistency and asymptotic normality of MLE, Logistic regression, and multinomial logit.
   * Hansen (probability book) Ch.10.12-19, Hansen Ch.25.1-8, Ch.26.1-5
 
+* Week 8: Poisson regression, GMM, numerical optimization
+  * Hansen (probability book) Ch.12.1-6, Hansen Ch.13.1-12, 20, 25
+
 ## License
 
 This work is licensed under
