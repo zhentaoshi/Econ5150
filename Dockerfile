@@ -12,6 +12,8 @@ RUN mamba install --yes \
     'r-nloptr' \
     'r-optimx' \
     'r-cvxr' \
+    'r-mcmc' \
+    'r-languageserver' \
     && mamba clean --all -f -y
 
 # The base image sets up the user "jovyan" and the entrypoint "start-notebook.sh" automatically.

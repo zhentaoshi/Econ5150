@@ -1,7 +1,7 @@
 {
   // "image": "ztshi/econ5821:v1.2.0",
   // "image": "jupyter/datascience-notebook:x86_64-python-3.11",
-  "image": "ztshi/r-opt:v0.1",
+  "image": "ztshi/r-opt:v0.2",
   "hostRequirements": {
     "cpus": 2
   },
