@@ -37,7 +37,7 @@ Many familiar "point estimates" are Bayes actions under particular loss function
 
 When the decision is about a future outcome $\tilde y$, Bayesian decision theory then uses the posterior predictive distribution
 $$
-p(\tilde y\mid y)=\int p(\tilde y\mid \theta)\,p(\theta\mid y)\,d\theta.
+p(\tilde y\mid y)=\int p(\tilde y\mid \theta, y)\,p(\theta\mid y)\,d\theta.
 $$
 
 ### The Frequentist View
