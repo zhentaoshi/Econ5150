@@ -100,6 +100,9 @@ By the end of the course, you should be able to:
 * Week 8: Poisson regression, GMM, numerical optimization
   * Hansen (probability book) Ch.12.1-6, Hansen Ch.13.1-12, 20, 25
 
+* Week 9: Bootstrap, Bayes inference
+  * Hansen Ch.10.1-3, 6-11, 19, 21, 25, 26; Ch. (probability book) Ch.16.1-5, 10
+
 ## License
 
 This work is licensed under
