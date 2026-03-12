@@ -19,7 +19,7 @@ econ5150/
 ## Environment Setup
 
 ### Dev Container (VS Code)
-Open the repo in a Dev Container using `.devcontainer/devcontainer.json`. The container uses `ztshi/r-opt:v0.2` image.
+Open the repo in a Dev Container using `.devcontainer/devcontainer.json`.
 
 ### Docker (Jupyter + R)
 ```bash
@@ -72,7 +72,6 @@ Edit `.lyx` files in `lyx/`, then export PDFs to `lec_notes_2026/` with matching
 - **Imports**: Standard library first, then third-party (numpy, pandas, matplotlib), then local modules
 - **Comments**: Use `# %%` cell markers for Jupyter-style scripts
 - **Functions**: Document purpose with brief docstrings
-- **Reproducibility**: Set random seeds with `np.random.seed()` for reproducible results
 - **Parallel processing**: Use `if __name__ == '__main__':` guard on Windows
 
 ```python
@@ -94,7 +93,7 @@ def ci(x):
 - **Assignment**: Use `<-` for assignment (consistent with codebase)
 - **Comments**: Use `# %%` cell markers for notebook-style scripts
 - **Functions**: Keep functions compact with explicit `return()`
-- **Libraries**: Load with `library()` at the top; prefer tidyverse style with pipes (`%>%`)
+- **Libraries**: Load with `library()` at the top
 
 ```r
 CI <- function(x) {
