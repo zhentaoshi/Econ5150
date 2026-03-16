@@ -1,6 +1,6 @@
 # Use the official Jupyter R-notebook image which comes with R, Jupyter, and essential tools.
 # This image provides a pre-configured environment for running Jupyter Notebooks with an R kernel.
-FROM quay.io/jupyter/r-notebook:latest
+FROM quay.io/jupyter/r-notebook:ubuntu-24.04
 
 # Install R packages required for slides_09_optimization.ipynb
 # We use mamba (a faster drop-in replacement for conda) to install pre-compiled binaries
