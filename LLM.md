@@ -52,8 +52,20 @@ Try a prompt: "`install openclaw`".
 openclaw --version
 ```
 
+
 ## Openclaw
 
+### Codespace
+
+In the model setting, choose `ollama:qwen3.5:0.8b`.
+
+```
+openclaw onboard
+openclaw gateway
+openclaw tui
+```
+
+### Local VM
 Set the model as `ollama:qwen3.5:0.8b`
 ```
 openclaw agent --local
