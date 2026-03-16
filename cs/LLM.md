@@ -75,3 +75,8 @@ ollama launch openclaw
 ## Real Use
 
 For any realistic use, we cannot count on a laptop. We either use the cluster in the department, or use the online version of full strength.
+
+Here are some use cases.
+
+* Install `r-base-code` into the system
+* Write an R script of using Monte Carlo simulations to compute pi. Save it as `pi.R`. Run the script and report the result.

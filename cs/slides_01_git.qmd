@@ -35,11 +35,16 @@ execute:
   - online copy
   - collaboration
 
-As a fundamental tool for coding, there are plenty of excellent tutorials online.
 
-* Youtube videos
-  * 10-min [video](https://www.youtube.com/watch?v=q4CQBuZ4IGo) in Chinese.
-  * 1-hour [video](https://www.youtube.com/watch?v=RGOj5yH7evk) for beginners.
+---
+
+## Full-Length Tutorials
+
+* [Atlassian Online Tutorial](https://www.atlassian.com/git/tutorials)
+* [Pro Git](http://git-scm.com/book/en/v2)
+
+Short tutorials are listed at the end of the slides as reading assignments.
+
 
 ---
 
@@ -78,10 +83,15 @@ As a fundamental tool for coding, there are plenty of excellent tutorials online
 
 ## Basic Commands
 
-### Local
+### Identity
 
 * `git config --global user.name <name>`
 * `git config --global user.email <email>`
+
+
+---
+
+### Local
 
 * .gitignore
 * `git help <command>` gets help for a git command
@@ -199,3 +209,37 @@ Collaboration typically works as the following:
 
 
 ---
+
+## Exercises
+
+1. Initial a git repo in a folder (either local or on SCRP)
+2. Create an md file called `hello.md`, and write "Hello World!" in it.
+3. Commit the changes.
+4. Register a github account (if you haven't done so).
+5. Push the latest commit to github.
+
+
+---
+
+## Readings
+
+As a fundamental tool for coding, there are plenty of excellent tutorials online.
+
+<!-- * Grant McDermott's lecture notes: [Git](https://raw.githack.com/uo-ec510-2020-spring/lectures/master/02-git/02-git.html#1), [Shell](https://raw.githack.com/uo-ec510-2020-spring/lectures/master/03-shell/03-shell.html#1) -->
+* Youtube videos
+  * 10-min [video](https://www.youtube.com/watch?v=q4CQBuZ4IGo) in Chinese.
+  * 1-hour [video](https://www.youtube.com/watch?v=RGOj5yH7evk) for beginners.
+
+::: {.fragment}
+
+**Extra reading**
+
+* [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/)
+:::
+
+::: {.fragment}
+
+**Final words**:
+Don't expect you can be a Git guru in one day.
+It is learning by doing.
+:::

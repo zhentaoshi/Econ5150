@@ -36,7 +36,7 @@ Docker is a tool to build, ship, and run applications as containers based on ima
 - Image: a read-only template
 - Container: a running instance of an image
 - Registry: a place to store and retrieve images
-- Docker Hub: the default public registry
+- DockerHub: the default public registry
 
 ---
 
@@ -46,7 +46,7 @@ Docker is a tool to build, ship, and run applications as containers based on ima
 Image:
 
 - Built once, reused many times
-- Versioned by tags (e.g., `ztshi/econ5821:v0.1`)
+- Versioned by tags (e.g., `ztshi/r-opt:v0.5`)
 :::
 
 ::: fragment
@@ -61,8 +61,8 @@ Container:
 ## Basic Commands
 
 ```bash
-docker pull ztshi/econ5821:v0.1
-docker run --rm -it ztshi/econ5821:v0.1 -V
+docker pull ztshi/r-opt:v0.5
+docker run --rm -it ztshi/r-opt:v0.5 -V
 docker stop <container_id>
 ```
 
@@ -105,11 +105,33 @@ Tags are just names pointing to an image ID.
 
 ---
 
-## Docker Hub Basics
+## DockerHub Basics
 
 - Public registry for images
 - Official images maintained by Docker or vendors
 - You can publish your own images
+- My DockerHub profile: [ztshi](https://hub.docker.com/repositories/ztshi)
+
+
+::: fragment
+
+Pull and Push
+
+```bash
+docker login
+docker tag myimage:0.1 yourname/myimage:0.1
+docker push yourname/myimage:0.1
+docker pull yourname/myimage:0.1
+```
+:::
+
+---
+
+## Tags and Versions
+
+- `latest` is just a tag, not always the newest
+- Prefer explicit versions for reproducibility
+- Example: `ztshi/r-opt:v0.5`
 
 ---
 
