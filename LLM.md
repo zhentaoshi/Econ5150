@@ -3,7 +3,7 @@
 
 ## Demo
 
-The current configuration is Ubuntu 24.04s
+The current container is configured based on Ubuntu 24.04s
 
 ## Ollama
 
@@ -12,22 +12,31 @@ The current configuration is Ubuntu 24.04s
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
+`ollama` provides [many choices of LLMs](https://ollama.com/search) 
+
 ```
 ollama serve
 ollama run qwen3.5:0.8b
 ```
+This is a local service. We can now start a dialogue with this LLM.
 
-We can now start a dialogue with this LLM.
-This is a local service.
-
-* Install `opencode`
-
-`opencode` is an AI agent.
+* Install `opencode`, an AI agent.
 ```
 curl -fsSL https://opencode.ai/install | bash
 ```
+`opencode` is an interface. We need an LLM as workhorse.
+You can choose either `qwen3.5:0.8b` or `MiniMax M2.5 Free`.
 
+Try a prompt: "`install openclaw`".
 
+```
+openclaw --version
+```
+Set the model as `ollama:qwen3.5:0.8b`
+```
+openclaw agent --local
+ollama launch openclaw
+```
 
 * Load 
 
