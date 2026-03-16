@@ -1,5 +1,36 @@
 # Large Language Models
 
+
+## Demo
+
+The current configuration is Ubuntu 24.04s
+
+## Ollama
+
+* Install `ollama`
+```
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+```
+ollama serve
+ollama run qwen3.5:0.8b
+```
+
+We can now start a dialogue with this LLM.
+This is a local service.
+
+* Install `opencode`
+
+`opencode` is an AI agent.
+```
+curl -fsSL https://opencode.ai/install | bash
+```
+
+
+
+* Load 
+
 The current status of large language models as on **2026-03-07**.
 
 With a laptop of reasonable configuration, it is possible to host a LLM locally.
