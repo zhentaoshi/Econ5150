@@ -96,6 +96,7 @@ Tip: outputs should answer a question, not just “look nice”.
 	- Python version and packages
 	- data sources (where they come from)
 * Randomness is controlled (set seeds)
+* Docker is helpful in fixing the environment.
 
 
 ---
@@ -103,7 +104,6 @@ Tip: outputs should answer a question, not just “look nice”.
 ## Best practices
 
 * Restart kernel and **Run All** before sharing
-* Keep notebooks focused: one notebook = one story
 * Put reusable code in scripts/modules (not copied across notebooks)
 * Separate:
 	- raw data (read-only)
@@ -120,14 +120,14 @@ Tip: outputs should answer a question, not just “look nice”.
 * Notebooks contain outputs → diffs can be noisy
 
 ::: fragment
-Options: clear outputs before committing, or use tools that produce cleaner diffs.
+Options: clear outputs before committing.
 :::
 
 ---
 
 ## JupyterLab, VS Code, and Quarto
 
-* **JupyterLab**: classic notebook-focused IDE
+* **JupyterLab**: notebook-focused IDE
 * **VS Code**: notebooks + Python tooling + Git in one place
 * **Quarto**: turn notebooks/Markdown into reports and slides
 
@@ -138,4 +138,4 @@ Options: clear outputs before committing, or use tools that produce cleaner diff
 * Notebooks are excellent for research exploration and communication
 * Treat them like scientific documents: clarity + traceability
 * Pair notebooks with good habits: environments, version control, and rerunnable workflows
-
+* An example [https://github.com/metricshilab/panel-lp-replication](https://github.com/metricshilab/panel-lp-replication)
