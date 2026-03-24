@@ -22,12 +22,12 @@ def capture(i):
 
 
 
-Rep = 80000; sample_size = 200000
+Rep = 800; sample_size = 200000 # multicore wins
+Rep = 800; sample_size = 2000 # single-core wins
 
-# Rep = 10000; sample_size = 10
 
 pts0 = time.time()  # check time
-# out = [capture(i) for i in range(Rep)]  # single-core execution of capture function
+out = [capture(i) for i in range(Rep)]  # single-core execution of capture function
 pts1 = time.time() - pts0  # check time elapsed
 print(f"single-core loop takes {pts1} seconds")
 
