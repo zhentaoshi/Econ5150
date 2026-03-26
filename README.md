@@ -105,6 +105,8 @@ By the end of the course, you should be able to:
 
 * Week 10: Basic CS tools: linux, git, and docker
 
+* Week 11: parallel computing, cloud computing, time series
+
 ## License
 
 This work is licensed under
