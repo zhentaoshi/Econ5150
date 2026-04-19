@@ -107,6 +107,8 @@ By the end of the course, you should be able to:
 
 * Week 11: parallel computing, cloud computing, time series
 
+* Week 12: machine learning and neural networks
+
 ## License
 
 This work is licensed under
